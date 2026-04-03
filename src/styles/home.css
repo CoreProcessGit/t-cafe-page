@@ -1,0 +1,25 @@
+.hero { max-width: 1200px; margin: 0 auto; padding: 120px 24px 80px; display: flex; align-items: center; gap: 60px; }
+.hero-content { flex: 1; }
+.hero-badge { display: inline-block; padding: 4px 12px; background: #DEEBFF; color: #0052CC; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+.hero h1 { font-size: 48px; font-weight: 700; line-height: 1.1; margin-bottom: 8px; }
+.hero-subtitle { font-size: 20px; color: #6B778C; margin-bottom: 16px; }
+.hero-description { font-size: 16px; color: #42526E; max-width: 480px; margin-bottom: 32px; line-height: 1.7; }
+.hero-actions { display: flex; gap: 12px; }
+.hero-image { flex: 1; }
+.features { max-width: 1200px; margin: 0 auto; padding: 80px 24px; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { padding: 32px; border: 1px solid #EBECF0; border-radius: 8px; transition: all 0.2s; }
+.feature-card:hover { border-color: #0052CC; box-shadow: 0 4px 12px rgba(0,82,204,0.08); }
+.feature-icon { width: 48px; height: 48px; background: #DEEBFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #0052CC; margin-bottom: 16px; }
+.feature-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.feature-card p { font-size: 14px; color: #6B778C; line-height: 1.6; }
+.screenshots { background: #FAFBFC; padding: 80px 24px; }
+.screenshots-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.screenshot-item { text-align: center; }
+.screenshot-caption { margin-top: 12px; font-size: 14px; font-weight: 600; color: #42526E; }
+.cta { max-width: 800px; margin: 0 auto; padding: 80px 24px; text-align: center; }
+.cta h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
+.cta p { font-size: 16px; color: #6B778C; margin-bottom: 32px; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; }
+@media (max-width: 768px) { .hero { flex-direction: column; padding: 100px 24px 40px; } .hero h1 { font-size: 32px; } .features-grid, .screenshots-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) { .features-grid, .screenshots-grid { grid-template-columns: repeat(2, 1fr); } }

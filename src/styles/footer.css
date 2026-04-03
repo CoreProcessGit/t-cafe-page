@@ -1,0 +1,9 @@
+.footer { background: #172B4D; color: #fff; padding: 40px 24px; }
+.footer-content { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-logo .logo-text { color: #fff; font-size: 18px; }
+.footer-logo p { font-size: 12px; color: #A5ADBA; margin-top: 4px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: #A5ADBA; font-size: 13px; text-decoration: none; }
+.footer-links a:hover { color: #fff; }
+.footer-copyright p { font-size: 12px; color: #6B778C; }
+@media (max-width: 768px) { .footer-content { flex-direction: column; gap: 24px; text-align: center; } }

@@ -40,7 +40,7 @@ const Home = () => {
           </p>
           <div className="hero-actions">
             <a href="https://marketplace.atlassian.com" className="btn-primary" target="_blank" rel="noopener noreferrer">Get Started</a>
-            <a href="#features" className="btn-secondary">Learn More</a>
+            <a href="javascripts:void(0)" className="btn-secondary">Learn More</a>
           </div>
         </div>
         <div className="hero-image">

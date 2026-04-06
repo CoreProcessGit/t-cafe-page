@@ -1,8 +1,3 @@
-/* ============================================================
-   T-CAFE Home — Deep Indigo + Emerald
-   ============================================================ */
-
-/* ---- Hero ---- */
 .hero {
   position: relative;
   background: linear-gradient(135deg, #1E1B4B 0%, #312E81 40%, #3730A3 100%);
@@ -176,7 +171,6 @@
 }
 .section-header p { font-size: 16px; color: #64748b; line-height: 1.7; }
 
-/* ---- Features ---- */
 .features { padding: 100px 0; }
 .features-grid {
   display: grid;
@@ -226,7 +220,6 @@
 }
 .feature-list li svg { color: #10B981; flex-shrink: 0; }
 
-/* ---- Screenshots ---- */
 .screenshots { background: #f8fafc; padding: 100px 0; }
 .screenshot-tabs {
   display: flex;
@@ -276,7 +269,6 @@
   border-radius: 12px;
 }
 
-/* ---- CTA ---- */
 .cta {
   position: relative;
   background: linear-gradient(135deg, #1E1B4B 0%, #312E81 50%, #3730A3 100%);
@@ -303,7 +295,6 @@
 }
 .cta-trust svg { color: #34D399; }
 
-/* ---- Animations ---- */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(32px); }
   to { opacity: 1; transform: translateY(0); }
@@ -311,7 +302,6 @@
 .animate { opacity: 0; transition: none; }
 .animate.visible { animation: fadeUp 0.7s ease forwards; }
 
-/* ---- Responsive ---- */
 @media (max-width: 1024px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
   .hero-inner { gap: 40px; }

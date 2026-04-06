@@ -10,14 +10,12 @@
 .btn-nav { padding: 8px 16px; background: #0052CC; color: #fff !important; border-radius: 3px; font-weight: 500; }
 .btn-nav:hover { background: #0747A6; text-decoration: none !important; }
 
-/* Hamburger button */
 .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; z-index: 102; }
 .hamburger span { display: block; width: 22px; height: 2px; background: #42526E; border-radius: 2px; transition: all 0.3s ease; }
 .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* Overlay */
 .menu-overlay { display: none; }
 
 @media (max-width: 768px) {

@@ -107,16 +107,11 @@ const Support = () => {
       <section className="contact-support">
         <h2>Still need help?</h2>
         <p>Our team is ready to assist you.</p>
-        <div className="contact-methods">
+        <div className="contact-methods single">
           <div className="contact-method">
             <h3>Email Support</h3>
             <p>We'll respond within 1-2 business days.</p>
             <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a>
-          </div>
-          <div className="contact-method">
-            <h3>Phone Support</h3>
-            <p>Mon-Fri, 9:00 AM - 6:00 PM (KST)</p>
-            <span>+82-2-561-0415</span>
           </div>
         </div>
       </section>

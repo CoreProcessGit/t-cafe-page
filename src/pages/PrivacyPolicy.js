@@ -104,7 +104,6 @@ const PrivacyPolicy = () => {
         <h2>11. Contact Us</h2>
         <p><strong>COREPROCESS</strong></p>
         <p>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></p>
-        <p>Phone: +82-2-561-0415</p>
       </div>
     </div>
   );

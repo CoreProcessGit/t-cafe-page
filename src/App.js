@@ -10,7 +10,7 @@ import TermsOfService from './pages/TermsOfService';
 
 function App() {
   return (
-    <BrowserRouter basename="/t-cafe-page">
+    <BrowserRouter>
       <ScrollToTop />
       <Header />
       <Routes>

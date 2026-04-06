@@ -9,4 +9,23 @@
 .nav-links a:hover, .nav-links a.active { color: #0052CC; text-decoration: none; }
 .btn-nav { padding: 8px 16px; background: #0052CC; color: #fff !important; border-radius: 3px; font-weight: 500; }
 .btn-nav:hover { background: #0747A6; text-decoration: none !important; }
-@media (max-width: 768px) { .nav-links { display: none; } }
+
+/* Hamburger button */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; z-index: 102; }
+.hamburger span { display: block; width: 22px; height: 2px; background: #42526E; border-radius: 2px; transition: all 0.3s ease; }
+.hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+/* Overlay */
+.menu-overlay { display: none; }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links { display: none; position: fixed; top: 64px; left: 0; right: 0; background: #fff; flex-direction: column; padding: 16px 24px; gap: 0; border-bottom: 1px solid #DFE1E6; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 101; }
+  .nav-links.show { display: flex; }
+  .nav-links a { padding: 12px 0; border-bottom: 1px solid #F4F5F7; width: 100%; }
+  .nav-links a:last-child { border-bottom: none; }
+  .btn-nav { text-align: center; margin-top: 8px; display: block; }
+  .menu-overlay { display: block; position: fixed; top: 64px; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); z-index: 100; }
+}

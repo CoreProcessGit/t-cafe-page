@@ -82,7 +82,7 @@ const SubProcessors = () => {
           <li>Email to administrators where contact information is available</li>
           <li>Atlassian Marketplace listing updates</li>
         </ul>
-        <p>Customers subject to GDPR or similar data protection laws may object to any new sub-processor by contacting COREPROCESS at <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a> within thirty (30) days of notification. If COREPROCESS cannot accommodate the objection, the customer may terminate the affected services in accordance with the <a href="/terms-of-service">Terms of Service</a>.</p>
+        <p>Customers subject to GDPR or similar data protection laws may object to any new sub-processor by contacting COREPROCESS at <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a> within thirty (30) days of notification. If COREPROCESS cannot accommodate the objection, the customer may terminate the affected services in accordance with the <a href="/terms-of-service">Terms of Service</a>.</p>
 
         <h2>6. Sub-processor Due Diligence</h2>
         <p>Before engaging any sub-processor, COREPROCESS conducts reasonable due diligence to ensure that the sub-processor:</p>
@@ -110,8 +110,8 @@ const SubProcessors = () => {
         <p><strong>{'COREPROCESS Corp.'}</strong> (COREPROCESS)</p>
         <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
         <p>Representative: {'JongSun.Kim'}</p>
-        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
-        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Data protection (DPO): <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
+        <p>Privacy inquiries: <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
         <p>For more information about how we handle your data, please refer to our <a href="/privacy-policy">Privacy Policy</a> and <a href="/dpa">Data Processing Addendum</a>.</p>
       </div>
     </div>

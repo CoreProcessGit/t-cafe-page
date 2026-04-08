@@ -159,7 +159,7 @@ const PrivacyPolicy = () => {
         </ul>
 
         <h3>9.4 How to Exercise Your Rights</h3>
-        <p>To exercise any of these rights, contact us at <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>. We will respond to your request within thirty (30) days, or as required by applicable law. We may need to verify your identity before processing certain requests.</p>
+        <p>To exercise any of these rights, contact us at <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a>. We will respond to your request within thirty (30) days, or as required by applicable law. We may need to verify your identity before processing certain requests.</p>
 
         <h2>10. International Data Transfers</h2>
         <p>The App may transfer and process personal data across international borders. We rely on the following legal mechanisms to ensure adequate protection:</p>
@@ -203,8 +203,8 @@ const PrivacyPolicy = () => {
         <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
         <p>Business Registration No.: {'101-86-46676'}</p>
         <p>Representative: {'JongSun.Kim'}</p>
-        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
-        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Privacy inquiries: <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
+        <p>Data protection (DPO): <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
         <p>For data protection inquiries from EEA residents, you also have the right to contact your local data protection supervisory authority. A list of EEA supervisory authorities is available at: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener noreferrer">https://edpb.europa.eu/about-edpb/about-edpb/members_en</a></p>
 
         <h2>16. Korean PIPA Required Information (개인정보 처리방침 필수 고지)</h2>
@@ -214,8 +214,8 @@ const PrivacyPolicy = () => {
         <ul>
           <li><strong>Name (성명)</strong>: {'JongSun.Kim'}</li>
           <li><strong>Position (직책)</strong>: {'CEO'}</li>
-          <li><strong>Phone (연락처)</strong>: {'security@coreprocess.co.kr'}</li>
-          <li><strong>Email</strong>: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></li>
+          <li><strong>Phone (연락처)</strong>: {'privacy@t-cafe.com'}</li>
+          <li><strong>Email</strong>: <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></li>
         </ul>
 
         <h3>16.2 Business Operator Information (사업자 정보)</h3>
@@ -242,7 +242,7 @@ const PrivacyPolicy = () => {
         </ul>
 
         <h3>16.4 Rights of Data Subjects and How to Exercise Them (정보주체의 권리 및 행사 방법)</h3>
-        <p>Under PIPA, data subjects in the Republic of Korea have the right to (i) request access to their personal information, (ii) request correction or deletion, (iii) request suspension of processing, and (iv) withdraw consent at any time. To exercise these rights, please contact the Personal Information Protection Officer using the contact information above, or send a written request to <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>. We will respond without undue delay and in any case within ten (10) days, in accordance with PIPA Article 38.</p>
+        <p>Under PIPA, data subjects in the Republic of Korea have the right to (i) request access to their personal information, (ii) request correction or deletion, (iii) request suspension of processing, and (iv) withdraw consent at any time. To exercise these rights, please contact the Personal Information Protection Officer using the contact information above, or send a written request to <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a>. We will respond without undue delay and in any case within ten (10) days, in accordance with PIPA Article 38.</p>
 
         <h3>16.5 Right to Lodge a Complaint (개인정보 침해 신고)</h3>
         <p>If you believe that your personal information rights have been infringed, you may file a complaint with the following Korean authorities:</p>

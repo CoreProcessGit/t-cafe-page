@@ -206,7 +206,7 @@ const DPA = () => {
           <li>The processing does not include, on a large scale, special categories of personal data (as defined in Article 9(1) of the GDPR) or personal data relating to criminal convictions and offences (as defined in Article 10 of the GDPR); and</li>
           <li>The processing is unlikely to result in a risk to the rights and freedoms of natural persons, taking into account the nature, context, scope and purposes of the processing.</li>
         </ul>
-        <p>If, in the future, the conditions for the Article 27(2)(a) exemption no longer apply, COREPROCESS shall designate a representative in the European Union and (if applicable) the United Kingdom in writing without undue delay and update this DPA accordingly. The Customer may request a status confirmation of the representative designation at any time by contacting COREPROCESS at <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>.</p>
+        <p>If, in the future, the conditions for the Article 27(2)(a) exemption no longer apply, COREPROCESS shall designate a representative in the European Union and (if applicable) the United Kingdom in writing without undue delay and update this DPA accordingly. The Customer may request a status confirmation of the representative designation at any time by contacting COREPROCESS at <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a>.</p>
 
         <h2>13. Return or Deletion of Personal Data</h2>
         <p>Upon termination of the Customer's subscription to the App or upon the Customer's written request:</p>
@@ -235,8 +235,8 @@ const DPA = () => {
         <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
         <p>Business Registration No.: {'101-86-46676'}</p>
         <p>Representative: {'JongSun.Kim'}</p>
-        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
-        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Data protection (DPO): <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
+        <p>Privacy inquiries: <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
         <p>For more information about how we collect and process Personal Data, please refer to our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</p>
 
         <h2 id="scc-annexes">19. SCC Annexes (Module Two — Controller-to-Processor)</h2>
@@ -245,7 +245,7 @@ const DPA = () => {
         <h3>Annex I.A — List of Parties</h3>
         <ul>
           <li><strong>Data Exporter</strong>: The Customer entity that has installed the App through the Atlassian Marketplace and accepted these Terms. Role: Controller. Activities relevant to the data transferred: use of the App for test management within the Customer's Jira Cloud instance. Contact details: as recorded in the Customer's Atlassian Marketplace account.</li>
-          <li><strong>Data Importer</strong>: {'COREPROCESS Corp.'} (COREPROCESS), located at {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}, Republic of Korea. Role: Processor. Activities relevant to the data transferred: provision and operation of the T-CAFE test management application, including hosting, security monitoring, technical support, and incident response. Contact person: Data Protection Officer, <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>.</li>
+          <li><strong>Data Importer</strong>: {'COREPROCESS Corp.'} (COREPROCESS), located at {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}, Republic of Korea. Role: Processor. Activities relevant to the data transferred: provision and operation of the T-CAFE test management application, including hosting, security monitoring, technical support, and incident response. Contact person: Data Protection Officer, <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a>.</li>
         </ul>
 
         <h3>Annex I.B — Description of Transfer</h3>

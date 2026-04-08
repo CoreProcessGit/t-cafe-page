@@ -188,8 +188,8 @@ const TermsOfService = () => {
         <p>Business Registration No.: {'101-86-46676'}</p>
         <p>Representative: {'JongSun.Kim'}</p>
         <p>Legal inquiries: <a href="mailto:contact@coreprocess.co.kr">{'contact@coreprocess.co.kr'}</a></p>
-        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
-        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Privacy inquiries: <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
+        <p>Data protection (DPO): <a href="mailto:privacy@t-cafe.com">{'privacy@t-cafe.com'}</a></p>
         <p>Security reports: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
         <p>For data protection or security inquiries, please also refer to our <a href="/privacy-policy">Privacy Policy</a> and <a href="/security-policy">Security Policy</a>.</p>
       </div>

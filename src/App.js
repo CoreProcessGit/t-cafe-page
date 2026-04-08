@@ -7,6 +7,9 @@ import ScrollToTop from './components/ScrollToTop';
 import Support from './pages/Support';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import DPA from './pages/DPA';
+import SubProcessors from './pages/SubProcessors';
+import SecurityPolicy from './pages/SecurityPolicy';
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
         <Route path="/support" element={<Support />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/dpa" element={<DPA />} />
+        <Route path="/sub-processors" element={<SubProcessors />} />
+        <Route path="/security-policy" element={<SecurityPolicy />} />
       </Routes>
       <Footer />
     </BrowserRouter>

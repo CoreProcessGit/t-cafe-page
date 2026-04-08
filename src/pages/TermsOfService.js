@@ -9,9 +9,22 @@ const TermsOfService = () => {
         <p className="last-updated">Last Updated: April 2026</p>
 
         <h2>1. Acceptance of Terms</h2>
-        <p>By installing, accessing, or using the T-CAFE application ("the App"), you agree to these Terms. The App is developed by COREPROCESS.</p>
+        <p>By installing, accessing, or using the T-CAFE application ("the App"), you ("you", "your", "Customer") agree to these Terms of Service ("Terms"). The App is developed and provided by COREPROCESS ("we", "us", "our", "COREPROCESS").</p>
+        <p>If you do not agree to these Terms, you must not install, access, or use the App. If you are entering into these Terms on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.</p>
 
-        <h2>2. Description of Service</h2>
+        <h2>2. Definitions</h2>
+        <ul>
+          <li><strong>"App"</strong> means the T-CAFE test management application distributed through the Atlassian Marketplace, including all updates, modifications, and related documentation.</li>
+          <li><strong>"Atlassian"</strong> means Atlassian Pty Ltd and its affiliates, the operator of the Atlassian Marketplace and Jira Cloud platform.</li>
+          <li><strong>"Customer Data"</strong> means any data, content, or information that you or your authorized users submit to, store in, or process through the App, including test cases, test plans, test results, attachments, and configuration data.</li>
+          <li><strong>"End User"</strong> means any individual authorized by you to access and use the App through your Jira Cloud instance.</li>
+          <li><strong>"Hosted Service"</strong> means the backend services provided by COREPROCESS to operate the App, including the API server and MySQL database, which are operated by COREPROCESS on its own internal infrastructure in the Republic of Korea.</li>
+          <li><strong>"Order"</strong> means the subscription or purchase you make through the Atlassian Marketplace.</li>
+          <li><strong>"Subscription Term"</strong> means the period during which you are licensed to use the App, as specified in your Order.</li>
+          <li><strong>"Trial Period"</strong> means the free evaluation period offered before purchase, as specified in Section 6.</li>
+        </ul>
+
+        <h2>3. Description of Service</h2>
         <p>T-CAFE is a test management application for Atlassian Jira Cloud providing:</p>
         <ul>
           <li>Test case creation and management (Single and Factor Combination types)</li>
@@ -21,56 +34,156 @@ const TermsOfService = () => {
           <li>File attachment management</li>
           <li>Multi-language support (English, Korean, Japanese)</li>
         </ul>
+        <p>Specific features available may vary by edition (Standard or Advanced) and Subscription Term.</p>
 
-        <h2>3. Eligibility</h2>
-        <p>The App is intended for licensed Atlassian Jira Cloud users with active subscriptions, authorized by their Jira administrator.</p>
+        <h2>4. Eligibility</h2>
+        <p>The App is intended for licensed Atlassian Jira Cloud users with active subscriptions, authorized by their Jira administrator. The App is not intended for individuals under the age of 16 (EEA), 13 (United States), or 14 (Republic of Korea), and we do not knowingly collect or process data from such individuals.</p>
 
-        <h2>4. User Responsibilities</h2>
+        <h2>5. License Grant</h2>
+        <p>Subject to your compliance with these Terms and timely payment of all applicable fees, COREPROCESS grants you a limited, non-exclusive, non-transferable, non-sublicensable license to install and use the App for your internal business purposes during the Subscription Term.</p>
+
+        <h2>6. Trial Period</h2>
+        <p>COREPROCESS may offer a free Trial Period for new customers, as specified on the Atlassian Marketplace listing. During the Trial Period:</p>
+        <ul>
+          <li>You may evaluate the full functionality of the App without payment.</li>
+          <li>The Trial Period is limited to thirty (30) days unless otherwise specified.</li>
+          <li>At the end of the Trial Period, your subscription will convert to a paid plan unless cancelled, in accordance with Atlassian Marketplace policies.</li>
+          <li>Any Customer Data created during the Trial Period will be retained if you continue with a paid subscription.</li>
+        </ul>
+
+        <h2>7. Payment Terms</h2>
+        <p>All fees for the App are processed through the Atlassian Marketplace. By purchasing a subscription, you agree to:</p>
+        <ul>
+          <li>Pay all applicable fees as set forth on the Atlassian Marketplace listing for your chosen tier and team size.</li>
+          <li>Comply with the Atlassian Marketplace billing terms and payment cycles (monthly or annual).</li>
+          <li>Promptly update billing information through Atlassian to ensure continuous service.</li>
+          <li>Acknowledge that fees are exclusive of any taxes, which you are responsible for.</li>
+        </ul>
+        <p>Failure to pay applicable fees may result in suspension or termination of your access to the App in accordance with Atlassian Marketplace policies.</p>
+
+        <h2>8. Refund Policy</h2>
+        <p>Refunds are governed by the Atlassian Marketplace refund policy. In general:</p>
+        <ul>
+          <li>You may be entitled to a refund within thirty (30) days of your initial purchase, subject to Atlassian's terms.</li>
+          <li>Refund requests must be submitted through the Atlassian Marketplace.</li>
+          <li>COREPROCESS does not directly process refunds; all refunds are handled by Atlassian.</li>
+          <li>Pro-rated refunds for partial subscription periods are not provided unless required by applicable law.</li>
+        </ul>
+
+        <h2>9. User Responsibilities</h2>
         <p>You agree to:</p>
         <ul>
-          <li>Use the App only for test management purposes</li>
-          <li>Not attempt to access other instances' data</li>
-          <li>Not reverse engineer or decompile the App</li>
-          <li>Not store illegal or harmful content</li>
-          <li>Maintain Jira account credential security</li>
-          <li>Comply with Atlassian's Terms of Service</li>
+          <li>Use the App only for lawful test management purposes consistent with these Terms.</li>
+          <li>Not attempt to access other instances' data or any data not authorized for your account.</li>
+          <li>Not reverse engineer, decompile, disassemble, or attempt to derive the source code of the App, except to the extent expressly permitted by applicable law.</li>
+          <li>Not store illegal, infringing, defamatory, harmful, or otherwise objectionable content in the App.</li>
+          <li>Maintain the security and confidentiality of your Jira account credentials and any API keys issued for the App.</li>
+          <li>Comply with the Atlassian Cloud Terms of Service and all applicable laws and regulations.</li>
+          <li>Promptly notify COREPROCESS of any unauthorized access to or use of your account.</li>
+          <li>Ensure that your End Users comply with these Terms.</li>
         </ul>
 
-        <h2>5. Data Ownership</h2>
+        <h2>10. Data Ownership and Processing</h2>
         <ul>
-          <li><strong>Your Data</strong>: All content you create remains your property</li>
-          <li><strong>Export</strong>: Export your data anytime (CSV, JSON, Excel)</li>
-          <li><strong>Our Rights</strong>: We do not claim ownership of your content</li>
+          <li><strong>Your Data</strong>: All Customer Data you create or upload through the App remains your property. COREPROCESS does not claim ownership of Customer Data.</li>
+          <li><strong>Data Use</strong>: COREPROCESS processes Customer Data solely to provide the App's functionality, as described in our <a href="/privacy-policy">Privacy Policy</a>.</li>
+          <li><strong>Export</strong>: You may export your data at any time in CSV, JSON, or Excel format through the App's interface.</li>
+          <li><strong>Sub-processors</strong>: COREPROCESS may engage sub-processors to assist in providing the App. A current list of sub-processors is available in our <a href="/privacy-policy">Privacy Policy</a>.</li>
+          <li><strong>Data Processing Addendum</strong>: For customers subject to GDPR or other data protection laws, please refer to our <a href="/dpa">Data Processing Addendum (DPA)</a>.</li>
         </ul>
 
-        <h2>6. Service Availability</h2>
-        <p>We strive for availability but do not guarantee uninterrupted service. The App depends on Jira Cloud, Forge infrastructure, our database server, and network connectivity.</p>
+        <h2>11. Service Availability</h2>
+        <p>COREPROCESS strives to maintain high availability of the App, but does not guarantee uninterrupted or error-free service. The App depends on third-party services including Jira Cloud, the Atlassian Forge platform, our database servers, and network connectivity.</p>
+        <ul>
+          <li>Planned maintenance will be communicated in advance through the Marketplace listing or in-app notifications when reasonably possible.</li>
+          <li>COREPROCESS does not provide a formal Service Level Agreement (SLA) unless otherwise agreed in writing.</li>
+          <li>Unplanned outages may occur due to factors beyond our reasonable control.</li>
+        </ul>
 
-        <h2>7. Intellectual Property</h2>
-        <p>The App is owned by COREPROCESS. We grant a limited, non-exclusive, non-transferable license to use the App. You may not copy, modify, distribute, sell, or use the App to develop competing products.</p>
+        <h2>12. Intellectual Property</h2>
+        <p>The App, including all software, design, documentation, trademarks, logos, and content provided by COREPROCESS, is the exclusive property of COREPROCESS and is protected by intellectual property laws. We grant you a limited, non-exclusive, non-transferable license to use the App during your Subscription Term.</p>
+        <p>You may not:</p>
+        <ul>
+          <li>Copy, modify, distribute, sell, or sublicense the App or any portion thereof.</li>
+          <li>Use the App to develop competing products or services.</li>
+          <li>Remove, alter, or obscure any proprietary notices, trademarks, or labels on the App.</li>
+          <li>Use COREPROCESS's name, logo, or trademarks without prior written consent, except as permitted by applicable law.</li>
+        </ul>
+        <p><strong>Feedback</strong>: Any feedback, suggestions, or ideas you provide regarding the App may be used by COREPROCESS without restriction or compensation to you.</p>
+        <p><strong>Open Source</strong>: The App may include open source software components, which are licensed under their respective licenses. A list of such components is available upon request.</p>
 
-        <h2>8. Limitation of Liability</h2>
-        <h3>8.1 Disclaimer</h3>
-        <p className="uppercase">The App is provided "as is" without warranties of any kind.</p>
+        <h2>13. Limitation of Liability</h2>
+        <h3>13.1 Disclaimer of Warranties</h3>
+        <p className="uppercase">The App is provided "as is" and "as available" without warranties of any kind, whether express, implied, statutory, or otherwise. COREPROCESS expressly disclaims all warranties, including but not limited to implied warranties of merchantability, fitness for a particular purpose, title, and non-infringement.</p>
 
-        <h3>8.2 Limitation</h3>
-        <p className="uppercase">COREPROCESS shall not be liable for indirect, incidental, special, or consequential damages.</p>
+        <h3>13.2 Limitation of Damages</h3>
+        <p className="uppercase">To the maximum extent permitted by applicable law, COREPROCESS shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of profits, revenue, data, use, goodwill, or other intangible losses, arising out of or related to your use of or inability to use the App, regardless of the legal theory and whether or not COREPROCESS has been advised of the possibility of such damages.</p>
 
-        <h3>8.3 Maximum Liability</h3>
-        <p>Our total cumulative liability shall not exceed <strong>[TO BE DETERMINED]</strong>.</p>
+        <h3>13.3 Maximum Liability</h3>
+        <p>To the maximum extent permitted by applicable law, COREPROCESS's total cumulative liability arising out of or related to these Terms or the App shall not exceed the greater of (a) the total fees paid by you to COREPROCESS through the Atlassian Marketplace during the twelve (12) months immediately preceding the event giving rise to the claim, or (b) one hundred United States dollars (USD $100).</p>
+        <p><em>Note: This liability cap follows industry standard practice for SaaS Marketplace applications. Specific amounts should be reviewed and confirmed by qualified legal counsel before final publication.</em></p>
 
-        <h2>9. Termination</h2>
-        <p>You may stop using the App by uninstalling it. We may suspend access for Terms violations. Upon termination, export your data before uninstalling.</p>
+        <h2>14. Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless COREPROCESS, its affiliates, officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or related to:</p>
+        <ul>
+          <li>Your violation of these Terms or any applicable law.</li>
+          <li>Your or your End Users' use or misuse of the App.</li>
+          <li>Customer Data you upload or process through the App, including any infringement of third-party rights.</li>
+          <li>Your negligence, willful misconduct, or fraud.</li>
+        </ul>
 
-        <h2>10. Governing Law</h2>
-        <p>These Terms are governed by the laws of the Republic of Korea. Disputes shall be subject to Seoul courts.</p>
+        <h2>15. Force Majeure</h2>
+        <p>COREPROCESS shall not be liable for any failure or delay in performance under these Terms due to causes beyond its reasonable control, including but not limited to:</p>
+        <ul>
+          <li>Acts of God, natural disasters, fires, floods, earthquakes, or pandemics.</li>
+          <li>War, terrorism, civil unrest, or government actions.</li>
+          <li>Internet, telecommunications, or power failures.</li>
+          <li>Failures or outages of third-party services including Atlassian Forge, Jira Cloud, cloud hosting providers, or DNS services.</li>
+          <li>Cyber attacks, denial of service attacks, or other malicious actions by third parties.</li>
+        </ul>
 
-        <h2>11. Changes to Terms</h2>
-        <p>We will notify users of material changes through the Marketplace listing or in-app notification.</p>
+        <h2>16. Termination</h2>
+        <p><strong>Termination by You</strong>: You may terminate your subscription at any time by uninstalling the App through the Atlassian Marketplace. No refunds will be provided for the unused portion of your Subscription Term except as required by applicable law or the Atlassian Marketplace refund policy.</p>
+        <p><strong>Termination by COREPROCESS</strong>: COREPROCESS may suspend or terminate your access to the App immediately if:</p>
+        <ul>
+          <li>You materially breach these Terms and fail to cure such breach within thirty (30) days of notice.</li>
+          <li>You fail to pay applicable fees.</li>
+          <li>You use the App in a manner that poses a security risk to COREPROCESS or other users.</li>
+          <li>Required by law or court order.</li>
+        </ul>
+        <p><strong>Effect of Termination</strong>: Upon termination, your right to use the App ceases immediately. You should export your Customer Data before termination. COREPROCESS will retain Customer Data for thirty (30) days after termination, after which it will be permanently deleted unless retention is required by law.</p>
+        <p><strong>Survival</strong>: Sections 10 (Data Ownership), 12 (Intellectual Property), 13 (Limitation of Liability), 14 (Indemnification), 18 (Governing Law), and any other sections that by their nature should survive termination shall survive termination of these Terms.</p>
 
-        <h2>12. Contact Us</h2>
+        <h2>17. Changes to Terms</h2>
+        <p>COREPROCESS reserves the right to modify these Terms at any time. We will notify users of material changes through the Atlassian Marketplace listing, in-app notifications, or email at least thirty (30) days before the changes take effect, except where immediate changes are required by law or to address security risks.</p>
+        <p>Your continued use of the App after the effective date of the modified Terms constitutes acceptance of the changes. If you do not agree to the modified Terms, you must stop using the App and uninstall it.</p>
+
+        <h2>18. Governing Law and Dispute Resolution</h2>
+        <p>These Terms are governed by and construed in accordance with the laws of the State of Delaware, United States of America, without regard to its conflict of laws principles. The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
+        <p>Any disputes, claims, or controversies arising out of or related to these Terms or the App shall be subject to the exclusive jurisdiction of the state and federal courts located in the State of Delaware, United States of America, and you and COREPROCESS each consent to the personal jurisdiction and venue of such courts.</p>
+        <p><strong>Consumer Protection Exception</strong>: If you are a consumer residing in the European Economic Area, the United Kingdom, or another jurisdiction where mandatory local consumer protection laws apply, nothing in this section shall deprive you of the protection afforded by such mandatory laws, and you may bring proceedings in the courts of your country of residence.</p>
+        <p><strong>Injunctive Relief</strong>: Nothing in this section shall prevent either party from seeking injunctive or equitable relief in any court of competent jurisdiction to protect its intellectual property rights, confidential information, or to enforce the terms of any license granted under these Terms.</p>
+        <p><strong>Time Limitation</strong>: Any cause of action arising out of or related to these Terms or the App must be commenced within one (1) year after the cause of action accrues, or such action shall be permanently barred, except where prohibited by applicable law.</p>
+
+        <h2>19. Severability</h2>
+        <p>If any provision of these Terms is held to be invalid, illegal, or unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect. The invalid provision shall be deemed modified to the minimum extent necessary to make it valid, legal, and enforceable while preserving the original intent of the parties.</p>
+
+        <h2>20. Assignment</h2>
+        <p>You may not assign, transfer, or delegate your rights or obligations under these Terms without the prior written consent of COREPROCESS. COREPROCESS may assign these Terms in connection with a merger, acquisition, sale of assets, or by operation of law, without your consent.</p>
+        <p>Any attempted assignment in violation of this section shall be null and void.</p>
+
+        <h2>21. Entire Agreement</h2>
+        <p>These Terms, together with the Privacy Policy, any applicable Data Processing Addendum, and any Order placed through the Atlassian Marketplace, constitute the entire agreement between you and COREPROCESS regarding the App and supersede all prior or contemporaneous agreements, understandings, and communications, whether written or oral.</p>
+        <p>In the event of any conflict between these Terms and the Atlassian Marketplace Terms of Use, the Atlassian Marketplace Terms of Use shall prevail with respect to the marketplace transaction itself.</p>
+
+        <h2>22. No Waiver</h2>
+        <p>The failure of COREPROCESS to enforce any provision of these Terms shall not be construed as a waiver of such provision or the right to enforce it later. No waiver of any provision of these Terms shall be effective unless in writing and signed by an authorized representative of COREPROCESS.</p>
+
+        <h2>23. Contact Us</h2>
+        <p>For questions about these Terms, please contact:</p>
         <p><strong>COREPROCESS</strong></p>
         <p>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></p>
+        <p>For data protection or security inquiries, please refer to our <a href="/privacy-policy">Privacy Policy</a>.</p>
       </div>
     </div>
   );

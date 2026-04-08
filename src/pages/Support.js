@@ -38,7 +38,7 @@ const faqs = [
   { q: "I can't create or edit test cases", a: 'This is likely a permissions issue. Only Admin or Team Admin roles can create and edit. Contact your project administrator.' },
   { q: 'Import is failing or showing errors', a: 'Check: file format (CSV/JSON/XLSX), max 5,000 test cases, UTF-8 encoding recommended, "Name" column is required.' },
   { q: 'How do I change the language?', a: 'T-CAFE supports English, Korean, and Japanese. Language is auto-detected from Jira settings, or manually change via the language selector in the header.' },
-  { q: 'How is my data stored and secured?', a: 'Test data is encrypted with AES-256-CBC on our private server in South Korea. Attachments use Atlassian Forge Storage. See our Privacy Policy for details.' },
+  { q: 'How is my data stored and secured?', a: 'Test data is encrypted with AES-256 on our private server in South Korea. Attachments use Atlassian Forge Storage. See our Privacy Policy for details.' },
 ];
 
 const Support = () => {
@@ -111,7 +111,7 @@ const Support = () => {
           <div className="contact-method">
             <h3>Email Support</h3>
             <p>We'll respond within 1-2 business days.</p>
-            <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a>
+            <a href="mailto:contact@coreprocess.co.kr">{'contact@coreprocess.co.kr'}</a>
           </div>
         </div>
       </section>

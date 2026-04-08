@@ -26,9 +26,6 @@ const Header = () => {
         <div className={`nav-links${menuOpen ? ' show' : ''}`}>
           <Link to="/" className={isActive('/')}>Home</Link>
           <Link to="/support" className={isActive('/support')}>Support</Link>
-          <Link to="/privacy-policy" className={isActive('/privacy-policy')}>Privacy</Link>
-          <Link to="/terms-of-service" className={isActive('/terms-of-service')}>Terms</Link>
-          <Link to="/dpa" className={isActive('/dpa')}>DPA</Link>
           <a href="https://marketplace.atlassian.com" className="btn-nav" target="_blank" rel="noopener noreferrer">Marketplace</a>
         </div>
       </nav>

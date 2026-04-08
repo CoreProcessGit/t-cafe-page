@@ -9,7 +9,7 @@ const SecurityPolicy = () => {
         <p className="last-updated">Last Updated: April 2026</p>
 
         <h2>Introduction</h2>
-        <p>COREPROCESS is committed to protecting the security, confidentiality, and integrity of Customer Data processed through the T-CAFE application ("the App"). This Security Policy describes the technical and organizational measures we implement to safeguard Customer Data.</p>
+        <p>COREPROCESS is committed to protecting the security, confidentiality, and integrity of Customer Data processed through the T-CAFE (Test CAFE) application ("the App"), a business-to-business (B2B) test management service. This Security Policy describes the technical and organizational measures we implement to safeguard Customer Data.</p>
         <p>This Security Policy should be read in conjunction with our <a href="/privacy-policy">Privacy Policy</a>, <a href="/terms-of-service">Terms of Service</a>, and <a href="/dpa">Data Processing Addendum</a>.</p>
 
         <h2>1. Security Governance</h2>
@@ -24,7 +24,7 @@ const SecurityPolicy = () => {
         <h2>2. Data Encryption</h2>
         <h3>2.1 Encryption at Rest</h3>
         <ul>
-          <li><strong>Sensitive Customer Data</strong>: Encrypted using AES-256-CBC, including test case content, test steps, preconditions, and other sensitive fields</li>
+          <li><strong>Sensitive Customer Data</strong>: Encrypted using AES-256, including test case content, test steps, preconditions, and other sensitive fields</li>
           <li><strong>Database Backups</strong>: Encrypted using industry-standard encryption</li>
           <li><strong>Encryption Keys</strong>: Managed securely and rotated periodically in accordance with industry best practices</li>
         </ul>
@@ -84,7 +84,7 @@ const SecurityPolicy = () => {
         <h2>5. Multi-Tenant Data Isolation</h2>
         <p>The App is designed for multi-tenant use with strict data isolation:</p>
         <ul>
-          <li>Each Jira Cloud instance's data is isolated using <code>cloud_id</code> and <code>project_key</code> identifiers</li>
+          <li>Each Jira Cloud instance's data is isolated using internal organization and project identifiers</li>
           <li>All database queries enforce tenant boundaries to prevent cross-tenant data access</li>
           <li>One customer's data cannot be accessed by another customer through the App's interface or API</li>
         </ul>
@@ -93,8 +93,8 @@ const SecurityPolicy = () => {
         <h3>6.1 Hosting</h3>
         <ul>
           <li>The App's frontend is hosted on the Atlassian Forge platform, which provides infrastructure-level security managed by Atlassian</li>
-          <li>The backend API server and MySQL database are operated directly by COREPROCESS on its own internal servers located in the Republic of Korea</li>
-          <li>Network traffic between Forge and the backend is secured via Cloudflare's reverse proxy and TLS termination at <code>taa-api.t-cafe.com</code></li>
+          <li>The backend API server and a relational database are operated directly by COREPROCESS on its own internal servers located in the Republic of Korea</li>
+          <li>Network traffic between Forge and the backend is secured via Cloudflare's reverse proxy and TLS termination at the COREPROCESS backend domain</li>
           <li>The internal servers are protected by physical access controls, network firewalls, and operating system-level hardening</li>
         </ul>
 
@@ -182,10 +182,11 @@ const SecurityPolicy = () => {
         <p>If you discover a security vulnerability or have concerns about the security of the App, please report it to us responsibly. We appreciate the efforts of security researchers and will investigate all legitimate reports.</p>
         <p><strong>How to Report:</strong></p>
         <ul>
-          <li>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></li>
+          <li>Email: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></li>
           <li>Subject line: "Security Report - T-CAFE"</li>
           <li>Include: A description of the vulnerability, steps to reproduce, and any relevant technical details</li>
         </ul>
+        <p>COREPROCESS supports coordinated vulnerability disclosure and will work in good faith with researchers who follow responsible disclosure practices.</p>
         <p><strong>Please do NOT:</strong></p>
         <ul>
           <li>Publicly disclose the vulnerability before we have had a reasonable opportunity to address it</li>
@@ -203,6 +204,7 @@ const SecurityPolicy = () => {
           <li>Brazilian General Data Protection Law (LGPD)</li>
           <li>Personal Information Protection Act (PIPA) - Republic of Korea</li>
         </ul>
+        <p>For PIPA-required disclosures (Personal Information Protection Officer, business operator information, retention periods, and rights of data subjects), please refer to Section 16 of our <a href="/privacy-policy">Privacy Policy</a>.</p>
         <p>COREPROCESS is evaluating additional security certifications (such as SOC 2 Type II and ISO 27001) and will update this Security Policy as new certifications are obtained.</p>
 
         <h2>16. Updates to This Policy</h2>
@@ -210,8 +212,11 @@ const SecurityPolicy = () => {
 
         <h2>17. Contact Us</h2>
         <p>For questions about this Security Policy or our security practices, please contact:</p>
-        <p><strong>COREPROCESS</strong></p>
-        <p>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></p>
+        <p><strong>{'COREPROCESS Corp.'}</strong> (COREPROCESS)</p>
+        <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
+        <p>Representative: {'JongSun.Kim'}</p>
+        <p>Security reports: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>General inquiries: <a href="mailto:contact@coreprocess.co.kr">{'contact@coreprocess.co.kr'}</a></p>
         <p>For data protection inquiries, please refer to our <a href="/privacy-policy">Privacy Policy</a> and <a href="/dpa">Data Processing Addendum</a>.</p>
       </div>
     </div>

@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
         <p className="last-updated">Last Updated: April 2026</p>
 
         <h2>1. Introduction</h2>
-        <p>This Privacy Policy describes how COREPROCESS ("we", "us", "our") collects, uses, processes, stores, and protects information through the T-CAFE application ("the App"), a test management plugin distributed through the Atlassian Marketplace for use with Atlassian Jira Cloud.</p>
+        <p>This Privacy Policy describes how COREPROCESS ("we", "us", "our") collects, uses, processes, stores, and protects information through the T-CAFE (Test CAFE) application ("the App"), a business-to-business (B2B) test management plugin distributed through the Atlassian Marketplace for use with Atlassian Jira Cloud.</p>
         <p>By installing and using the App, you acknowledge that you have read, understood, and agree to the practices described in this Privacy Policy. If you do not agree, please do not install or use the App.</p>
         <p>This Privacy Policy should be read in conjunction with our <a href="/terms-of-service">Terms of Service</a>.</p>
 
@@ -86,7 +86,7 @@ const PrivacyPolicy = () => {
         <h2>6. Data Storage and Security</h2>
         <h3>6.1 Storage Location</h3>
         <ul>
-          <li><strong>Test data</strong>: Stored in a MySQL database operated directly by COREPROCESS on its own internal servers located in the Republic of Korea. No third-party cloud hosting provider is used for the storage of Customer Data.</li>
+          <li><strong>Test data</strong>: Stored in a relational database operated directly by COREPROCESS on its own internal servers located in the Republic of Korea. No third-party cloud hosting provider is used for the storage of Customer Data.</li>
           <li><strong>Network access</strong>: The backend API endpoint (taa-api.t-cafe.com) is exposed to authorized clients via Cloudflare, which provides DNS, reverse proxy, network tunnel, and TLS termination services. Cloudflare may temporarily process traffic at its edge locations but does not store Customer Data.</li>
           <li><strong>Attachments</strong>: Stored in each user's Atlassian Forge Storage (managed by Atlassian)</li>
           <li><strong>Temporary upload data</strong>: Processed through Forge Storage and deleted after processing</li>
@@ -95,7 +95,7 @@ const PrivacyPolicy = () => {
 
         <h3>6.2 Security Measures</h3>
         <ul>
-          <li><strong>Encryption at Rest</strong>: AES-256-CBC for sensitive test data</li>
+          <li><strong>Encryption at Rest</strong>: AES-256 for sensitive test data</li>
           <li><strong>Encryption in Transit</strong>: HTTPS/TLS for all data transmission</li>
           <li><strong>Access Control</strong>: Role-based (Admin, Team Admin, Tester, Developer)</li>
           <li><strong>API Security</strong>: API key authentication with hashed credential storage</li>
@@ -106,7 +106,7 @@ const PrivacyPolicy = () => {
         </ul>
 
         <h3>6.3 Data Isolation</h3>
-        <p>Each Jira Cloud instance's data is isolated using cloud_id and project_key identifiers, ensuring that one customer's data cannot be accessed by another customer.</p>
+        <p>Each Jira Cloud instance's data is isolated using internal organization and project identifiers, ensuring that one customer's data cannot be accessed by another customer.</p>
 
         <h2>7. Sub-processors and Third-Party Sharing</h2>
         <p>We may engage third-party service providers ("sub-processors") to assist in providing the App. We do <strong>NOT</strong> sell, rent, or share your personal data with third parties for their own purposes. A complete and up-to-date list of sub-processors used by COREPROCESS is available on our <a href="/sub-processors">Sub-processors</a> page.</p>
@@ -159,7 +159,7 @@ const PrivacyPolicy = () => {
         </ul>
 
         <h3>9.4 How to Exercise Your Rights</h3>
-        <p>To exercise any of these rights, contact us at <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a>. We will respond to your request within thirty (30) days, or as required by applicable law. We may need to verify your identity before processing certain requests.</p>
+        <p>To exercise any of these rights, contact us at <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>. We will respond to your request within thirty (30) days, or as required by applicable law. We may need to verify your identity before processing certain requests.</p>
 
         <h2>10. International Data Transfers</h2>
         <p>The App may transfer and process personal data across international borders. We rely on the following legal mechanisms to ensure adequate protection:</p>
@@ -181,14 +181,8 @@ const PrivacyPolicy = () => {
         </ul>
 
         <h2>12. Children's Privacy</h2>
-        <p>The App is designed for enterprise Jira environments and is not intended for use by children. We do not knowingly collect personal data from individuals under:</p>
-        <ul>
-          <li><strong>16 years of age</strong> in the European Economic Area, the United Kingdom, and Switzerland</li>
-          <li><strong>13 years of age</strong> in the United States (per COPPA)</li>
-          <li><strong>14 years of age</strong> in the Republic of Korea (per Personal Information Protection Act)</li>
-          <li>The applicable minimum age in any other jurisdiction</li>
-        </ul>
-        <p>If you become aware that a child has provided personal data to us without verifiable parental consent, please contact us immediately so we can take appropriate action.</p>
+        <p>T-CAFE is a business-to-business (B2B) service designed exclusively for enterprise Jira Cloud environments and is not directed to children or to consumers. The App is intended to be used solely by individuals authorized by their organization in the course of their employment, contracting, or other business relationship. We do not knowingly collect personal data from children, and we expect that all end users provisioned through your Jira instance are adults acting in a professional capacity.</p>
+        <p>If you become aware that a child has been granted access to the App or that personal data of a child has been processed through the App without verifiable parental consent, please contact us immediately so we can take appropriate action.</p>
 
         <h2>13. Cookies and Tracking</h2>
         <p>The App itself does not use browser cookies or third-party tracking technologies for advertising or analytics. The App may use session storage or local storage for essential functionality (such as user preferences and authentication state), which is necessary for the operation of the App and does not constitute tracking under GDPR ePrivacy Directive.</p>
@@ -205,9 +199,59 @@ const PrivacyPolicy = () => {
 
         <h2>15. Contact Us</h2>
         <p>For questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact:</p>
-        <p><strong>COREPROCESS</strong></p>
-        <p>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></p>
+        <p><strong>{'COREPROCESS Corp.'}</strong> (COREPROCESS)</p>
+        <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
+        <p>Business Registration No.: {'101-86-46676'}</p>
+        <p>Representative: {'JongSun.Kim'}</p>
+        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
         <p>For data protection inquiries from EEA residents, you also have the right to contact your local data protection supervisory authority. A list of EEA supervisory authorities is available at: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener noreferrer">https://edpb.europa.eu/about-edpb/about-edpb/members_en</a></p>
+
+        <h2>16. Korean PIPA Required Information (개인정보 처리방침 필수 고지)</h2>
+        <p>The following disclosures are provided to comply with the Republic of Korea's Personal Information Protection Act ("PIPA", 개인정보 보호법) and related regulations.</p>
+
+        <h3>16.1 Personal Information Protection Officer (개인정보보호책임자, CPO)</h3>
+        <ul>
+          <li><strong>Name (성명)</strong>: {'JongSun.Kim'}</li>
+          <li><strong>Position (직책)</strong>: {'CEO'}</li>
+          <li><strong>Phone (연락처)</strong>: {'security@coreprocess.co.kr'}</li>
+          <li><strong>Email</strong>: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></li>
+        </ul>
+
+        <h3>16.2 Business Operator Information (사업자 정보)</h3>
+        <ul>
+          <li><strong>Legal Entity Name (법인명)</strong>: {'COREPROCESS Corp.'}</li>
+          <li><strong>Representative (대표자)</strong>: {'JongSun.Kim'}</li>
+          <li><strong>Business Registration Number (사업자등록번호)</strong>: {'101-86-46676'}</li>
+          <li><strong>Business Address (사업장 주소)</strong>: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</li>
+        </ul>
+
+        <h3>16.3 Items, Purposes, and Retention Period of Personal Information (수집 항목·목적·보유기간)</h3>
+        <ul>
+          <li><strong>Items collected (수집 항목)</strong>: Atlassian account ID, display name, email address, avatar URL; project key, name, and configuration; user-generated test content; technical data (request timestamps, IP addresses, audit logs). See Section 3 for the full list.</li>
+          <li><strong>Purpose of collection (수집 목적)</strong>: Provision of the App's core functionality, user and permission management, defect tracking, reporting and analytics, security monitoring, and service improvement. See Section 5.</li>
+          <li><strong>Retention period (보유 및 이용기간)</strong>:
+            <ul>
+              <li>Active data: while the App is installed and the subscription is active</li>
+              <li>Upon uninstallation: deleted from active systems within thirty (30) days</li>
+              <li>Encrypted backups: up to ninety (90) days from the date of backup</li>
+              <li>Security and audit logs: up to one (1) year</li>
+              <li>Where required by applicable law (e.g., tax records under the Korean Framework Act on National Taxes), data may be retained for the period mandated by such law</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>16.4 Rights of Data Subjects and How to Exercise Them (정보주체의 권리 및 행사 방법)</h3>
+        <p>Under PIPA, data subjects in the Republic of Korea have the right to (i) request access to their personal information, (ii) request correction or deletion, (iii) request suspension of processing, and (iv) withdraw consent at any time. To exercise these rights, please contact the Personal Information Protection Officer using the contact information above, or send a written request to <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>. We will respond without undue delay and in any case within ten (10) days, in accordance with PIPA Article 38.</p>
+
+        <h3>16.5 Right to Lodge a Complaint (개인정보 침해 신고)</h3>
+        <p>If you believe that your personal information rights have been infringed, you may file a complaint with the following Korean authorities:</p>
+        <ul>
+          <li>Personal Information Protection Commission (개인정보보호위원회): <a href="https://www.pipc.go.kr" target="_blank" rel="noopener noreferrer">https://www.pipc.go.kr</a></li>
+          <li>Korea Internet &amp; Security Agency, Personal Information Infringement Report Center (개인정보침해 신고센터): <a href="https://privacy.kisa.or.kr" target="_blank" rel="noopener noreferrer">https://privacy.kisa.or.kr</a> / Tel. 118</li>
+          <li>Supreme Prosecutors' Office, Cyber Investigation Division (대검찰청 사이버수사과): <a href="https://www.spo.go.kr" target="_blank" rel="noopener noreferrer">https://www.spo.go.kr</a></li>
+          <li>National Police Agency, Cyber Bureau (경찰청 사이버수사국): <a href="https://ecrm.police.go.kr" target="_blank" rel="noopener noreferrer">https://ecrm.police.go.kr</a></li>
+        </ul>
       </div>
     </div>
   );

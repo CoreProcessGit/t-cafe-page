@@ -9,7 +9,7 @@ const TermsOfService = () => {
         <p className="last-updated">Last Updated: April 2026</p>
 
         <h2>1. Acceptance of Terms</h2>
-        <p>By installing, accessing, or using the T-CAFE application ("the App"), you ("you", "your", "Customer") agree to these Terms of Service ("Terms"). The App is developed and provided by COREPROCESS ("we", "us", "our", "COREPROCESS").</p>
+        <p>By installing, accessing, or using the T-CAFE (Test CAFE) application ("the App"), you ("you", "your", "Customer") agree to these Terms of Service ("Terms"). The App is developed and provided by COREPROCESS ("we", "us", "our", "COREPROCESS"), a business-to-business (B2B) test management service for organizations using Atlassian Jira Cloud.</p>
         <p>If you do not agree to these Terms, you must not install, access, or use the App. If you are entering into these Terms on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.</p>
 
         <h2>2. Definitions</h2>
@@ -18,7 +18,7 @@ const TermsOfService = () => {
           <li><strong>"Atlassian"</strong> means Atlassian Pty Ltd and its affiliates, the operator of the Atlassian Marketplace and Jira Cloud platform.</li>
           <li><strong>"Customer Data"</strong> means any data, content, or information that you or your authorized users submit to, store in, or process through the App, including test cases, test plans, test results, attachments, and configuration data.</li>
           <li><strong>"End User"</strong> means any individual authorized by you to access and use the App through your Jira Cloud instance.</li>
-          <li><strong>"Hosted Service"</strong> means the backend services provided by COREPROCESS to operate the App, including the API server and MySQL database, which are operated by COREPROCESS on its own internal infrastructure in the Republic of Korea.</li>
+          <li><strong>"Hosted Service"</strong> means the backend services provided by COREPROCESS to operate the App, including the API server and a relational database, which are operated by COREPROCESS on its own internal infrastructure in the Republic of Korea.</li>
           <li><strong>"Order"</strong> means the subscription or purchase you make through the Atlassian Marketplace.</li>
           <li><strong>"Subscription Term"</strong> means the period during which you are licensed to use the App, as specified in your Order.</li>
           <li><strong>"Trial Period"</strong> means the free evaluation period offered before purchase, as specified in Section 6.</li>
@@ -37,7 +37,8 @@ const TermsOfService = () => {
         <p>Specific features available may vary by edition (Standard or Advanced) and Subscription Term.</p>
 
         <h2>4. Eligibility</h2>
-        <p>The App is intended for licensed Atlassian Jira Cloud users with active subscriptions, authorized by their Jira administrator. The App is not intended for individuals under the age of 16 (EEA), 13 (United States), or 14 (Republic of Korea), and we do not knowingly collect or process data from such individuals.</p>
+        <p>T-CAFE is a business-to-business (B2B) service intended exclusively for organizations licensed to use Atlassian Jira Cloud and for the end users authorized by those organizations (such as employees, contractors, and project members). The App is not directed to consumers or to individuals acting outside the scope of their organization. Each user must be authorized by their Jira administrator and must have an active Atlassian account.</p>
+        <p>If you are entering into these Terms on behalf of an organization, you represent and warrant that you have the authority to bind that organization, that the organization is a legal entity in good standing, and that all end users you authorize are acting in the course of their employment or engagement with the organization.</p>
 
         <h2>5. License Grant</h2>
         <p>Subject to your compliance with these Terms and timely payment of all applicable fees, COREPROCESS grants you a limited, non-exclusive, non-transferable, non-sublicensable license to install and use the App for your internal business purposes during the Subscription Term.</p>
@@ -47,8 +48,9 @@ const TermsOfService = () => {
         <ul>
           <li>You may evaluate the full functionality of the App without payment.</li>
           <li>The Trial Period is limited to thirty (30) days unless otherwise specified.</li>
-          <li>At the end of the Trial Period, your subscription will convert to a paid plan unless cancelled, in accordance with Atlassian Marketplace policies.</li>
-          <li>Any Customer Data created during the Trial Period will be retained if you continue with a paid subscription.</li>
+          <li>The Trial Period does <strong>not</strong> require billing information at sign-up. At the end of the Trial Period, the trial will automatically expire, and continued use of the App requires you to proactively subscribe to a paid plan through the Atlassian Marketplace, in accordance with Atlassian Marketplace policies. There is no automatic conversion to a paid plan and no charge will be made unless you affirmatively place a paid Order.</li>
+          <li>Where required by applicable consumer protection law (including in the European Union and the United Kingdom), the conditions, duration, and post-trial behavior of the Trial Period will be clearly communicated before you begin the trial.</li>
+          <li>Any Customer Data created during the Trial Period will be retained if you continue with a paid subscription, and will be deleted in accordance with Section 16 if you do not subscribe.</li>
         </ul>
 
         <h2>7. Payment Terms</h2>
@@ -120,8 +122,7 @@ const TermsOfService = () => {
         <p className="uppercase">To the maximum extent permitted by applicable law, COREPROCESS shall not be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, including but not limited to loss of profits, revenue, data, use, goodwill, or other intangible losses, arising out of or related to your use of or inability to use the App, regardless of the legal theory and whether or not COREPROCESS has been advised of the possibility of such damages.</p>
 
         <h3>13.3 Maximum Liability</h3>
-        <p>To the maximum extent permitted by applicable law, COREPROCESS's total cumulative liability arising out of or related to these Terms or the App shall not exceed the greater of (a) the total fees paid by you to COREPROCESS through the Atlassian Marketplace during the twelve (12) months immediately preceding the event giving rise to the claim, or (b) one hundred United States dollars (USD $100).</p>
-        <p><em>Note: This liability cap follows industry standard practice for SaaS Marketplace applications. Specific amounts should be reviewed and confirmed by qualified legal counsel before final publication.</em></p>
+        <p>To the maximum extent permitted by applicable law, COREPROCESS's total cumulative liability arising out of or related to these Terms or the App shall not exceed an amount equal to the total fees paid by you to COREPROCESS through the Atlassian Marketplace during the twelve (12) months immediately preceding the event giving rise to the claim.</p>
 
         <h2>14. Indemnification</h2>
         <p>You agree to indemnify, defend, and hold harmless COREPROCESS, its affiliates, officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising out of or related to:</p>
@@ -159,9 +160,10 @@ const TermsOfService = () => {
         <p>Your continued use of the App after the effective date of the modified Terms constitutes acceptance of the changes. If you do not agree to the modified Terms, you must stop using the App and uninstall it.</p>
 
         <h2>18. Governing Law and Dispute Resolution</h2>
-        <p>These Terms are governed by and construed in accordance with the laws of the State of Delaware, United States of America, without regard to its conflict of laws principles. The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
-        <p>Any disputes, claims, or controversies arising out of or related to these Terms or the App shall be subject to the exclusive jurisdiction of the state and federal courts located in the State of Delaware, United States of America, and you and COREPROCESS each consent to the personal jurisdiction and venue of such courts.</p>
-        <p><strong>Consumer Protection Exception</strong>: If you are a consumer residing in the European Economic Area, the United Kingdom, or another jurisdiction where mandatory local consumer protection laws apply, nothing in this section shall deprive you of the protection afforded by such mandatory laws, and you may bring proceedings in the courts of your country of residence.</p>
+        <p>These Terms are governed by and construed in accordance with the laws of the Republic of Korea, without regard to its conflict of laws principles. The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
+        <p>Any disputes, claims, or controversies arising out of or related to these Terms or the App shall be subject to the exclusive jurisdiction of the <strong>Seoul Central District Court</strong> of the Republic of Korea as the court of first instance, and you and COREPROCESS each consent to the personal jurisdiction and venue of such court.</p>
+        <p><strong>Korean Consumer Protection Exception</strong>: To the extent the Korean Framework Act on Consumers (소비자기본법), the Act on the Consumer Protection in Electronic Commerce (전자상거래 등에서의 소비자보호에 관한 법률), or any other mandatory Korean consumer protection law applies to a Korean consumer, the jurisdictional provisions of this Section shall not override any mandatory venue rights afforded to such consumer under those laws.</p>
+        <p><strong>EEA / UK Consumer Protection Exception</strong>: If you are a consumer residing in the European Economic Area, the United Kingdom, or another jurisdiction where mandatory local consumer protection laws apply, nothing in this Section shall deprive you of the protection afforded by such mandatory laws, and you may bring proceedings in the courts of your country of residence.</p>
         <p><strong>Injunctive Relief</strong>: Nothing in this section shall prevent either party from seeking injunctive or equitable relief in any court of competent jurisdiction to protect its intellectual property rights, confidential information, or to enforce the terms of any license granted under these Terms.</p>
         <p><strong>Time Limitation</strong>: Any cause of action arising out of or related to these Terms or the App must be commenced within one (1) year after the cause of action accrues, or such action shall be permanently barred, except where prohibited by applicable law.</p>
 
@@ -181,9 +183,15 @@ const TermsOfService = () => {
 
         <h2>23. Contact Us</h2>
         <p>For questions about these Terms, please contact:</p>
-        <p><strong>COREPROCESS</strong></p>
-        <p>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></p>
-        <p>For data protection or security inquiries, please refer to our <a href="/privacy-policy">Privacy Policy</a>.</p>
+        <p><strong>{'COREPROCESS Corp.'}</strong> (COREPROCESS)</p>
+        <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
+        <p>Business Registration No.: {'101-86-46676'}</p>
+        <p>Representative: {'JongSun.Kim'}</p>
+        <p>Legal inquiries: <a href="mailto:contact@coreprocess.co.kr">{'contact@coreprocess.co.kr'}</a></p>
+        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Security reports: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>For data protection or security inquiries, please also refer to our <a href="/privacy-policy">Privacy Policy</a> and <a href="/security-policy">Security Policy</a>.</p>
       </div>
     </div>
   );

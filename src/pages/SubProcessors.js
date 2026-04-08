@@ -9,11 +9,11 @@ const SubProcessors = () => {
         <p className="last-updated">Last Updated: April 2026</p>
 
         <h2>Introduction</h2>
-        <p>This page lists the sub-processors that COREPROCESS engages to assist in providing the T-CAFE application ("the App"). A "sub-processor" is a third-party service provider that may process Customer Personal Data on behalf of COREPROCESS in connection with the App.</p>
+        <p>This page lists the sub-processors that COREPROCESS engages to assist in providing the T-CAFE (Test CAFE) application ("the App"), a business-to-business (B2B) test management service. A "sub-processor" is a third-party service provider that may process Customer Personal Data on behalf of COREPROCESS in connection with the App.</p>
         <p>COREPROCESS ensures that each sub-processor is bound by contractual obligations to maintain the confidentiality and security of Customer Personal Data consistent with our <a href="/privacy-policy">Privacy Policy</a>, <a href="/dpa">Data Processing Addendum</a>, and applicable data protection laws.</p>
 
         <h2>1. COREPROCESS-Operated Infrastructure</h2>
-        <p>The T-CAFE backend infrastructure (API servers and MySQL database) is operated directly by COREPROCESS on its own internal servers located in the Republic of Korea. No third-party cloud hosting provider is engaged for the storage or processing of Customer Data. As a result, COREPROCESS is solely responsible for the operation, security, and maintenance of the backend infrastructure.</p>
+        <p>The T-CAFE backend infrastructure (API servers and a relational database) is operated directly by COREPROCESS on its own internal servers located in the Republic of Korea. No third-party cloud hosting provider is engaged for the storage or processing of Customer Data. As a result, COREPROCESS is solely responsible for the operation, security, and maintenance of the backend infrastructure.</p>
 
         <h2>2. Infrastructure Sub-processors</h2>
         <p>The following sub-processors provide essential infrastructure services for the App's operation:</p>
@@ -37,7 +37,7 @@ const SubProcessors = () => {
               </tr>
               <tr>
                 <td><strong>Cloudflare, Inc.</strong></td>
-                <td>DNS management, reverse proxy, network tunnel, DDoS protection, and TLS termination for the COREPROCESS backend domain (taa-api.t-cafe.com)</td>
+                <td>DNS management, reverse proxy, network tunnel, DDoS protection, and TLS termination for the COREPROCESS backend domain</td>
                 <td>Global (edge network); customer's nearest edge location</td>
                 <td><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
               </tr>
@@ -82,7 +82,7 @@ const SubProcessors = () => {
           <li>Email to administrators where contact information is available</li>
           <li>Atlassian Marketplace listing updates</li>
         </ul>
-        <p>Customers subject to GDPR or similar data protection laws may object to any new sub-processor by contacting COREPROCESS at <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a> within thirty (30) days of notification. If COREPROCESS cannot accommodate the objection, the customer may terminate the affected services in accordance with the <a href="/terms-of-service">Terms of Service</a>.</p>
+        <p>Customers subject to GDPR or similar data protection laws may object to any new sub-processor by contacting COREPROCESS at <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a> within thirty (30) days of notification. If COREPROCESS cannot accommodate the objection, the customer may terminate the affected services in accordance with the <a href="/terms-of-service">Terms of Service</a>.</p>
 
         <h2>6. Sub-processor Due Diligence</h2>
         <p>Before engaging any sub-processor, COREPROCESS conducts reasonable due diligence to ensure that the sub-processor:</p>
@@ -107,8 +107,11 @@ const SubProcessors = () => {
 
         <h2>9. Contact Us</h2>
         <p>For questions about this Sub-processor list or to request additional information about a specific sub-processor, please contact:</p>
-        <p><strong>COREPROCESS</strong></p>
-        <p>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></p>
+        <p><strong>{'COREPROCESS Corp.'}</strong> (COREPROCESS)</p>
+        <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
+        <p>Representative: {'JongSun.Kim'}</p>
+        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
         <p>For more information about how we handle your data, please refer to our <a href="/privacy-policy">Privacy Policy</a> and <a href="/dpa">Data Processing Addendum</a>.</p>
       </div>
     </div>

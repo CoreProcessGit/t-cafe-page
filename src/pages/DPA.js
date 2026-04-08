@@ -9,7 +9,7 @@ const DPA = () => {
         <p className="last-updated">Last Updated: April 2026</p>
 
         <h2>Introduction</h2>
-        <p>This Data Processing Addendum ("DPA") forms part of the Terms of Service ("Terms") between you ("Customer", "Controller") and COREPROCESS ("we", "us", "our", "Processor") governing your use of the T-CAFE application ("the App") distributed through the Atlassian Marketplace.</p>
+        <p>This Data Processing Addendum ("DPA") forms part of the Terms of Service ("Terms") between you ("Customer", "Controller") and COREPROCESS ("we", "us", "our", "Processor") governing your use of the T-CAFE (Test CAFE) application ("the App"), a business-to-business (B2B) test management service distributed through the Atlassian Marketplace.</p>
         <p>This DPA applies to the extent COREPROCESS processes Personal Data on behalf of the Customer in connection with the App, and is intended to ensure compliance with the General Data Protection Regulation (Regulation (EU) 2016/679) ("GDPR"), the United Kingdom General Data Protection Regulation ("UK GDPR"), the California Consumer Privacy Act ("CCPA") as amended by the California Privacy Rights Act ("CPRA"), the Brazilian General Data Protection Law (Lei Geral de Proteção de Dados, "LGPD"), and other applicable data protection laws.</p>
         <p>By installing and using the App, you accept this DPA on behalf of yourself and any organization you represent. If you do not agree to this DPA, you must not install or use the App.</p>
 
@@ -90,19 +90,30 @@ const DPA = () => {
           <li><strong>Audit cooperation</strong>: Make available information necessary to demonstrate compliance with this DPA, in accordance with Section 11.</li>
         </ul>
 
+        <h3>5.1 CCPA / CPRA Service Provider Status</h3>
+        <p>For the purposes of the California Consumer Privacy Act of 2018 ("CCPA") as amended by the California Privacy Rights Act of 2020 ("CPRA"), COREPROCESS acts as a "Service Provider" with respect to Customer Personal Data of California residents. COREPROCESS shall:</p>
+        <ul>
+          <li>Not sell or share Customer Personal Data within the meaning of the CCPA/CPRA;</li>
+          <li>Not retain, use, or disclose Customer Personal Data for any purpose other than the specific business purpose of providing the App as set forth in this DPA and the Terms of Service, including not retaining, using, or disclosing Customer Personal Data outside the direct business relationship between the parties;</li>
+          <li>Not combine Customer Personal Data received from the Customer with personal information received from any other source, except as permitted by the CCPA/CPRA and its implementing regulations;</li>
+          <li>Comply with all applicable obligations under the CCPA/CPRA and provide the same level of privacy protection required of businesses;</li>
+          <li>Notify the Customer if it determines that it can no longer meet its obligations under the CCPA/CPRA.</li>
+        </ul>
+        <p>The Customer has the right, upon notice, to take reasonable and appropriate steps to stop and remediate any unauthorized use of Customer Personal Data by COREPROCESS.</p>
+
         <h2>6. Security Measures</h2>
         <p>COREPROCESS shall implement and maintain appropriate technical and organizational measures designed to protect Customer Personal Data against unauthorized or unlawful Processing, accidental loss, destruction, damage, alteration, or disclosure. These measures include:</p>
 
         <h3>6.1 Technical Measures</h3>
         <ul>
-          <li><strong>Encryption at Rest</strong>: AES-256-CBC encryption for sensitive Customer Personal Data stored in the database</li>
+          <li><strong>Encryption at Rest</strong>: AES-256 encryption for sensitive Customer Personal Data stored in the database</li>
           <li><strong>Encryption in Transit</strong>: HTTPS/TLS for all data transmission between the App, the customer, and COREPROCESS infrastructure</li>
           <li><strong>Access Control</strong>: Role-based access control (RBAC) with four distinct roles (Admin, Team Admin, Tester, Developer)</li>
           <li><strong>Authentication</strong>: API key authentication with cryptographically hashed credential storage</li>
           <li><strong>Input Validation</strong>: XSS prevention via DOMPurify sanitization</li>
           <li><strong>SQL Injection Prevention</strong>: Parameterized queries throughout the application</li>
           <li><strong>Network Security</strong>: HTTP security headers via Helmet middleware, CORS restrictions, and rate limiting</li>
-          <li><strong>Data Isolation</strong>: Multi-tenant data isolation using cloud_id and project_key identifiers</li>
+          <li><strong>Data Isolation</strong>: Multi-tenant data isolation using internal organization and project identifiers</li>
         </ul>
 
         <h3>6.2 Organizational Measures</h3>
@@ -186,7 +197,16 @@ const DPA = () => {
           <li><strong>Adequacy Decisions</strong>: Where the recipient country has been recognized as providing adequate protection (such as the Republic of Korea, recognized by Adequacy Decision of December 17, 2021)</li>
           <li><strong>Other Approved Mechanisms</strong>: Any other transfer mechanism approved under Applicable Data Protection Laws</li>
         </ul>
-        <p>The parties agree that for the purposes of the Standard Contractual Clauses, the Customer is the data exporter and COREPROCESS is the data importer, and Module Two (Controller-to-Processor) shall apply.</p>
+        <p>The parties agree that for the purposes of the Standard Contractual Clauses, the Customer is the data exporter and COREPROCESS is the data importer, and <strong>Module Two (Controller-to-Processor)</strong> shall apply. The Annexes to the SCCs (Annex I — List of Parties and Description of Transfer; Annex II — Technical and Organisational Measures; Annex III — List of Sub-processors) are completed in <a href="#scc-annexes">Section 19 (SCC Annexes)</a> of this DPA and form an integral part of the SCCs as incorporated by reference herein.</p>
+
+        <h3>12.1 EU / UK Representative (GDPR Article 27)</h3>
+        <p>COREPROCESS does not currently maintain a designated representative in the European Union or the United Kingdom under Article 27 of the GDPR / UK GDPR. COREPROCESS takes the position that the exemption under <strong>GDPR Article 27(2)(a)</strong> applies to its processing of Customer Personal Data, on the basis that:</p>
+        <ul>
+          <li>The processing is occasional, in the context of a B2B service used by professional end users authorized by the Customer organization;</li>
+          <li>The processing does not include, on a large scale, special categories of personal data (as defined in Article 9(1) of the GDPR) or personal data relating to criminal convictions and offences (as defined in Article 10 of the GDPR); and</li>
+          <li>The processing is unlikely to result in a risk to the rights and freedoms of natural persons, taking into account the nature, context, scope and purposes of the processing.</li>
+        </ul>
+        <p>If, in the future, the conditions for the Article 27(2)(a) exemption no longer apply, COREPROCESS shall designate a representative in the European Union and (if applicable) the United Kingdom in writing without undue delay and update this DPA accordingly. The Customer may request a status confirmation of the representative designation at any time by contacting COREPROCESS at <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>.</p>
 
         <h2>13. Return or Deletion of Personal Data</h2>
         <p>Upon termination of the Customer's subscription to the App or upon the Customer's written request:</p>
@@ -211,9 +231,98 @@ const DPA = () => {
 
         <h2>18. Contact Us</h2>
         <p>For questions, requests, or notifications related to this DPA or the processing of Personal Data, please contact:</p>
-        <p><strong>COREPROCESS</strong></p>
-        <p>Email: <a href="mailto:cp.content100@gmail.com">cp.content100@gmail.com</a></p>
+        <p><strong>{'COREPROCESS Corp.'}</strong> (COREPROCESS)</p>
+        <p>Address: {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}</p>
+        <p>Business Registration No.: {'101-86-46676'}</p>
+        <p>Representative: {'JongSun.Kim'}</p>
+        <p>Data protection (DPO): <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
+        <p>Privacy inquiries: <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a></p>
         <p>For more information about how we collect and process Personal Data, please refer to our <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</p>
+
+        <h2 id="scc-annexes">19. SCC Annexes (Module Two — Controller-to-Processor)</h2>
+        <p>The following Annexes complete the Standard Contractual Clauses approved by the European Commission Implementing Decision (EU) 2021/914 of 4 June 2021 ("SCCs"), as incorporated into Section 12 of this DPA. They apply to transfers of Customer Personal Data from the European Economic Area, the United Kingdom, or Switzerland to COREPROCESS in the Republic of Korea (subject to the Adequacy Decision of December 17, 2021) or to any other third country covered by the SCCs.</p>
+
+        <h3>Annex I.A — List of Parties</h3>
+        <ul>
+          <li><strong>Data Exporter</strong>: The Customer entity that has installed the App through the Atlassian Marketplace and accepted these Terms. Role: Controller. Activities relevant to the data transferred: use of the App for test management within the Customer's Jira Cloud instance. Contact details: as recorded in the Customer's Atlassian Marketplace account.</li>
+          <li><strong>Data Importer</strong>: {'COREPROCESS Corp.'} (COREPROCESS), located at {'Room 801, Dasan Station Leader’s Tower, 123 Dasanjungang-ro 123beon-gil, Namyangju-si, Gyeonggi-do, South Korea'}, Republic of Korea. Role: Processor. Activities relevant to the data transferred: provision and operation of the T-CAFE test management application, including hosting, security monitoring, technical support, and incident response. Contact person: Data Protection Officer, <a href="mailto:security@coreprocess.co.kr">{'security@coreprocess.co.kr'}</a>.</li>
+        </ul>
+
+        <h3>Annex I.B — Description of Transfer</h3>
+        <ul>
+          <li><strong>Categories of data subjects</strong>: The Customer's employees, contractors, project members, and other individuals authorized to use the Customer's Jira Cloud instance; any individuals identified within content created or uploaded to the App by the Customer's authorized users.</li>
+          <li><strong>Categories of personal data</strong>:
+            <ul>
+              <li>Atlassian account identifiers: account ID, email address, display name, avatar URL</li>
+              <li>User-generated content: test case names and descriptions, test steps, test plans, test execution results, comments, attachments</li>
+              <li>Technical data: IP addresses, request timestamps, request identifiers, audit logs</li>
+            </ul>
+          </li>
+          <li><strong>Special categories of data</strong>: None expected. The Customer must not upload special categories of personal data (Article 9 GDPR) or criminal-conviction data (Article 10 GDPR) to the App.</li>
+          <li><strong>Frequency of transfer</strong>: Continuous, for the duration of the Customer's subscription.</li>
+          <li><strong>Nature of processing</strong>: Storage, retrieval, organization, structuring, alteration (by authorized users), consultation, transmission, restriction, and deletion, all in connection with the provision of the App.</li>
+          <li><strong>Purpose of transfer and processing</strong>: Provision of test management functionality to the Customer; user authentication and authorization; reporting and analytics for the Customer's authorized users; security monitoring and incident response; technical support; compliance with legal obligations.</li>
+          <li><strong>Retention period</strong>: As described in Section 13 of this DPA — active data for the duration of the subscription, deletion within thirty (30) days after termination, encrypted backups for up to ninety (90) days, audit logs for up to one (1) year, except where longer retention is required by applicable law.</li>
+          <li><strong>Subject matter, nature and duration of processing by sub-processors</strong>: As listed in <a href="/sub-processors">Sub-processors</a> page and Annex III below.</li>
+        </ul>
+
+        <h3>Annex I.C — Competent Supervisory Authority</h3>
+        <p>For data exporters established in the European Economic Area, the supervisory authority of the EU Member State in which the data exporter is established shall act as competent supervisory authority. For data exporters established in the United Kingdom, the Information Commissioner's Office (ICO) shall act as competent supervisory authority. Where the SCC requires identification of a single competent supervisory authority and the data exporter has not designated one, the supervisory authority of the EU Member State in which the representative of the data exporter (if any) is established, or the Irish Data Protection Commission, shall apply by default.</p>
+
+        <h3>Annex II — Technical and Organisational Measures</h3>
+        <p>COREPROCESS implements the technical and organisational measures set out in Section 6 of this DPA, which are summarized below in alignment with the structure required by the SCCs:</p>
+        <ul>
+          <li><strong>Pseudonymisation and encryption of personal data</strong>: AES-256 encryption at rest for sensitive Customer Personal Data; HTTPS/TLS 1.2+ for all data in transit.</li>
+          <li><strong>Confidentiality, integrity, availability and resilience of processing systems and services</strong>: Role-based access control (Admin, Team Admin, Tester, Developer); API key authentication with hashed credential storage; multi-tenant data isolation by internal organization and project identifiers; HTTP security headers via Helmet middleware; CORS restrictions; rate limiting; XSS prevention via input sanitization; SQL injection prevention via parameterized queries.</li>
+          <li><strong>Ability to restore availability and access to personal data in a timely manner in the event of a physical or technical incident</strong>: Encrypted backups with defined retention (up to 90 days) and recovery procedures.</li>
+          <li><strong>Process for regularly testing, assessing and evaluating the effectiveness of measures</strong>: Periodic review of access privileges; monitoring of dependencies for known vulnerabilities; code review prior to production deployment; post-incident reviews.</li>
+          <li><strong>Identification and authorization of users</strong>: Authentication delegated to Atlassian's identity infrastructure via the Forge platform for end users; restricted personnel access on a need-to-know basis with confidentiality obligations.</li>
+          <li><strong>Protection of data during transmission</strong>: TLS 1.2 or higher for all client-server communication; reverse proxy via Cloudflare with TLS termination at the network edge.</li>
+          <li><strong>Protection of data during storage</strong>: Encrypted database fields for sensitive content; database operated on COREPROCESS-controlled infrastructure in the Republic of Korea.</li>
+          <li><strong>Ensuring physical security of locations at which personal data are processed</strong>: Physical access controls and operating-system-level hardening on COREPROCESS internal servers.</li>
+          <li><strong>Events logging</strong>: Audit logging of authentication attempts, configuration changes, and administrative actions, with personal identifiers minimized where reasonably possible.</li>
+          <li><strong>System configuration, including default configuration</strong>: Secure defaults; production credentials managed via environment variables and not stored in source code repositories.</li>
+          <li><strong>Internal IT and IT security governance and management</strong>: Defined incident response procedures; secure development lifecycle; access privilege reviews.</li>
+          <li><strong>Certification / assurance of processes and products</strong>: Compliance commitments under GDPR, UK GDPR, CCPA/CPRA, LGPD, and Korean PIPA. SOC 2 Type II and ISO 27001 evaluation in progress (no certification claimed at this time).</li>
+          <li><strong>Data minimisation</strong>: Only data necessary for the App's functionality is processed; no advertising tracking, no profiling unrelated to the App's purpose.</li>
+          <li><strong>Data quality</strong>: The Customer's authorized users may directly correct or delete data through the App's interface.</li>
+          <li><strong>Limited data retention</strong>: As described in Section 13 of this DPA.</li>
+          <li><strong>Accountability</strong>: This DPA, the Privacy Policy, the Security Policy, and the Sub-processors page collectively document the processing activities and safeguards.</li>
+          <li><strong>Allowing data portability and ensuring erasure</strong>: Export functionality (CSV, JSON, Excel) is provided through the App's standard interface; deletion is available within the App and upon termination.</li>
+          <li><strong>Measures to be taken by the (sub-)processor to assist the controller</strong>: As set out in Sections 8, 9, and 10 of this DPA.</li>
+        </ul>
+
+        <h3>Annex III — List of Sub-processors</h3>
+        <p>The Customer has authorized the use of the following Sub-processors. The current and authoritative list is maintained on the <a href="/sub-processors">Sub-processors</a> page and is incorporated into this DPA by reference.</p>
+        <div className="subprocessor-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Sub-processor</th>
+                <th>Processing Operations</th>
+                <th>Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Atlassian Pty Ltd</strong></td>
+                <td>App hosting via Forge platform, user authentication, attachment storage</td>
+                <td>Global (Atlassian Cloud regions)</td>
+              </tr>
+              <tr>
+                <td><strong>Cloudflare, Inc.</strong></td>
+                <td>DNS, reverse proxy, network tunnel, DDoS protection, TLS termination</td>
+                <td>Global (edge network)</td>
+              </tr>
+              <tr>
+                <td><strong>Google LLC (Gmail)</strong></td>
+                <td>Email communication for support and notifications</td>
+                <td>United States</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Refer to the <a href="/sub-processors">Sub-processors</a> page for the most up-to-date list and additional details.</p>
       </div>
     </div>
   );

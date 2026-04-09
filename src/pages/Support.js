@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/support.css';
 
 const docSections = [
@@ -6,29 +7,29 @@ const docSections = [
     title: 'Getting Started',
     color: 'blue',
     items: [
-      { title: 'Installation Guide', desc: 'How to install and set up T-CAFE on your Jira Cloud instance.', search: 'installation setup install' },
-      { title: 'Quick Start', desc: 'Create your first test case and test plan in minutes.', search: 'quick start first steps beginner' },
-      { title: 'User Roles & Permissions', desc: 'Understand Admin, Team Admin, Tester, and Developer roles.', search: 'user roles permissions admin' },
+      { title: 'Installation Guide', desc: 'How to install and set up T-CAFE on your Jira Cloud instance.', search: 'installation setup install', slug: 'getting-started' },
+      { title: 'Quick Start', desc: 'Create your first test case and test plan in minutes.', search: 'quick start first steps beginner', slug: 'getting-started' },
+      { title: 'User Roles & Permissions', desc: 'Understand Admin, Team Admin, Tester, and Developer roles.', search: 'user roles permissions admin', slug: 'permissions' },
     ]
   },
   {
     title: 'Features',
     color: 'green',
     items: [
-      { title: 'Test Case Management', desc: 'Create, edit, import, export, and organize test cases with folders.', search: 'test case create edit' },
-      { title: 'Test Plans & Execution', desc: 'Create test plans, assign test cases, and track execution results.', search: 'test plan execution run' },
-      { title: 'Factor Combination Testing', desc: 'Generate test combinations with Full, Pairwise, or Mixed algorithms.', search: 'factor combination pairwise' },
-      { title: 'Test Reports & Analytics', desc: 'View execution statistics, export reports in CSV, JSON, or Excel.', search: 'test report analytics' },
-      { title: 'Defect Tracking', desc: 'Create Jira issues with rich text editor and image markup tool.', search: 'defect bug issue create' },
-      { title: 'Configuration', desc: 'Customize priorities, case types, components, plan statuses, and UDFs.', search: 'configuration settings priority' },
+      { title: 'Test Case Management', desc: 'Create, edit, import, export, and organize test cases with folders.', search: 'test case create edit', slug: 'test-cases' },
+      { title: 'Test Plans & Execution', desc: 'Create test plans, assign test cases, and track execution results.', search: 'test plan execution run', slug: 'test-plans' },
+      { title: 'Factor Combination Testing', desc: 'Generate test combinations with Full, Pairwise, or Mixed algorithms.', search: 'factor combination pairwise', slug: 'factor-combination' },
+      { title: 'Test Reports & Analytics', desc: 'View execution statistics, export reports in CSV, JSON, or Excel.', search: 'test report analytics', slug: 'test-reports' },
+      { title: 'Defect Tracking', desc: 'Create Jira issues directly from failed test cases.', search: 'defect bug issue create', slug: 'test-execution' },
+      { title: 'Configuration', desc: 'Customize priorities, case types, components, plan statuses, and UDFs.', search: 'configuration settings priority', slug: 'configuration' },
     ]
   },
   {
     title: 'Import & Export',
     color: 'purple',
     items: [
-      { title: 'Importing Test Cases', desc: 'Import from CSV, JSON, or Excel with validation and encoding support.', search: 'import csv json excel' },
-      { title: 'Exporting Test Cases', desc: 'Export test cases and reports in CSV, JSON, or Excel format.', search: 'export csv json excel' },
+      { title: 'Importing Test Cases', desc: 'Import from CSV, JSON, or Excel with validation and encoding support.', search: 'import csv json excel', slug: 'import-export' },
+      { title: 'Exporting Test Cases', desc: 'Export test cases and reports in CSV, JSON, or Excel format.', search: 'export csv json excel', slug: 'import-export' },
     ]
   }
 ];
@@ -74,7 +75,7 @@ const Support = () => {
                 <h2 className="docs-section-title">{section.title}</h2>
                 <div className="docs-grid">
                   {filtered.map((item, ii) => (
-                    <div key={ii} className="doc-card">
+                    <Link key={ii} to={`/support/guide/${item.slug}`} className="doc-card">
                       <div className={`doc-card-icon ${section.color}`}>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
                       </div>
@@ -82,7 +83,7 @@ const Support = () => {
                         <h3>{item.title}</h3>
                         <p>{item.desc}</p>
                       </div>
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>

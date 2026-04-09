@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import ScrollToTop from './components/ScrollToTop';
 import Support from './pages/Support';
+import GuideLayout from './pages/guide/GuideLayout';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import DPA from './pages/DPA';
@@ -19,6 +20,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/support" element={<Support />} />
+        <Route path="/support/guide" element={<GuideLayout />} />
+        <Route path="/support/guide/:slug" element={<GuideLayout />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/dpa" element={<DPA />} />

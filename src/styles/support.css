@@ -10,8 +10,9 @@
 .docs-section-title { font-size: 20px; font-weight: 700; color: #0f172a; margin-bottom: 20px; margin-top: 48px; padding-bottom: 10px; border-bottom: 2px solid #4F46E5; display: inline-block; }
 .docs-section-title:first-child { margin-top: 0; }
 .docs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px; }
-.doc-card { display: flex; align-items: center; gap: 14px; padding: 20px; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.2s; }
+.doc-card { display: flex; align-items: center; gap: 14px; padding: 20px; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit; }
 .doc-card:hover { border-color: #6366F1; box-shadow: 0 2px 12px rgba(79,70,229,0.08); transform: translateY(-2px); }
+.doc-card:hover .doc-card-content h3 { color: #4F46E5; }
 .doc-card-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .doc-card-icon.blue { background: #EEF2FF; color: #4F46E5; }
 .doc-card-icon.green { background: #ECFDF5; color: #10B981; }

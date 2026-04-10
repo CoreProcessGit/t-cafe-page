@@ -39,7 +39,7 @@ const faqs = [
   { q: "I can't create or edit test cases", a: 'This is likely a permissions issue. Only Admin or Team Admin roles can create and edit. Contact your project administrator.' },
   { q: 'Import is failing or showing errors', a: 'Check: file format (CSV/JSON/XLSX), max 5,000 test cases, UTF-8 encoding recommended, "Name" column is required.' },
   { q: 'How do I change the language?', a: 'T-CAFE supports English, Korean, and Japanese. Language is auto-detected from Jira settings, or manually change via the language selector in the header.' },
-  { q: 'How is my data stored and secured?', a: 'Test data is encrypted with AES-256 on our private server in South Korea. Attachments use Atlassian Forge Storage. See our Privacy Policy for details.' },
+  { q: 'How is my data stored and secured?', a: 'All data, including attachments, is stored on COREPROCESS internal servers in the Republic of Korea (same infrastructure as test data). Test data is encrypted with AES-256. See our Privacy Policy for details.' },
 ];
 
 const Support = () => {

@@ -6,12 +6,13 @@ const Permissions = () => (
   <article className="guide-article">
     <h1>02. 사용자 권한</h1>
     <p className="guide-lead">
-      T-CAFE는 4가지 역할(Role) 기반의 권한 시스템을 제공합니다. 각 역할마다 수행할 수 있는 작업이 다릅니다.
+      T-CAFE는 역할(Role) 기반의 권한 시스템을 제공합니다. 기본 4가지 시스템 역할(Admin, Team Admin, Tester, Developer)이 제공되며, 프로젝트 필요에 따라 커스텀 역할을 추가로 생성할 수 있습니다.
     </p>
 
     <hr />
 
-    <h2>1. 4가지 역할</h2>
+    <h2>1. 시스템 역할 (기본 4가지)</h2>
+    <p>시스템 역할은 삭제할 수 없지만, 각 역할의 세부 권한은 Admin이 변경할 수 있습니다.</p>
     <table>
       <thead>
         <tr>
@@ -51,17 +52,37 @@ const Permissions = () => (
 
     <hr />
 
-    <h2>2. 기본 할당 규칙</h2>
-    <p>T-CAFE는 자동으로 사용자에게 역할을 할당합니다:</p>
+    <h2>2. 커스텀 역할</h2>
+    <p>기본 4가지 역할 외에 프로젝트에 맞는 커스텀 역할을 생성할 수 있습니다.</p>
     <ul>
-      <li><strong>프로젝트 첫 사용자</strong>: <strong>Admin</strong> 자동 할당</li>
-      <li><strong>이후 신규 사용자</strong>: <strong>Tester</strong> 자동 할당</li>
-      <li><strong>역할 변경</strong>: <strong>Admin / Team Admin</strong>이 Configuration → User Permissions에서 변경 가능</li>
+      <li>Configuration → User Permissions → <strong>Roles 탭</strong>에서 생성/수정/삭제</li>
+      <li>9개 기능 영역(Configuration, Test Cases, Test Plans, Factor Combination, Overview, Reports, Attachments, User Management)별로 세부 액션 권한을 토글로 설정</li>
+      <li>시스템 역할은 이름 변경 불가, 권한 변경 가능, 삭제 불가</li>
+      <li>커스텀 역할은 이름과 권한 모두 변경 가능. 배정된 사용자가 없을 때만 삭제 가능</li>
     </ul>
 
     <hr />
 
-    <h2>3. 역할별 권한 매트릭스</h2>
+    <h2>3. 기본 할당 규칙</h2>
+    <p>T-CAFE는 자동으로 사용자에게 역할을 할당합니다:</p>
+    <ul>
+      <li><strong>프로젝트 첫 사용자</strong>: <strong>Admin</strong> 자동 할당</li>
+      <li><strong>이후 신규 사용자</strong>: <strong>Tester</strong> 자동 할당</li>
+      <li><strong>역할 변경</strong>: Configuration → User Permissions → <strong>Users 탭</strong>에서 역할 드롭다운으로 변경 (시스템 역할 + 커스텀 역할 모두 표시)</li>
+    </ul>
+
+    <h3>사용자 활성/비활성</h3>
+    <ul>
+      <li>Users 탭에서 <strong>Activate</strong> 토글로 사용자를 활성/비활성화</li>
+      <li>비활성화된 사용자는 모든 권한이 차단되어 프로젝트에 접근할 수 없습니다</li>
+      <li>Admin이 토글을 다시 ON하면 즉시 복원됩니다</li>
+      <li>Status 필터(Active / Inactive / All)로 비활성 사용자를 확인할 수 있습니다</li>
+    </ul>
+
+    <hr />
+
+    <h2>4. 시스템 역할별 기본 권한 매트릭스</h2>
+    <p>아래는 시스템 역할의 기본 권한입니다. Admin이 Roles 탭에서 각 역할의 권한을 변경할 수 있으며, 커스텀 역할은 자유롭게 설정할 수 있습니다.</p>
 
     <h3>3-1. 테스트 케이스 (Test Cases)</h3>
     <table>
@@ -201,15 +222,24 @@ const Permissions = () => (
 
     <hr />
 
-    <h2>4. 사용자 권한 변경 (Admin / Team Admin)</h2>
+    <h2>5. 사용자 권한 변경</h2>
 
-    <h3>변경 절차</h3>
+    <h3>역할 변경 절차</h3>
     <ol>
-      <li>상단 탭에서 <strong>Configuration</strong> 클릭 (Admin / Team Admin만 보임)</li>
+      <li>상단 탭에서 <strong>Configuration</strong> 클릭 (Configuration 접근 권한이 있는 역할만 보임)</li>
       <li>좌측 메뉴에서 <strong>User Permissions</strong> 선택</li>
-      <li>변경할 사용자를 찾기</li>
-      <li>역할 드롭다운에서 새 역할 선택</li>
+      <li><strong>Users 탭</strong>에서 변경할 사용자를 찾기</li>
+      <li>역할 드롭다운에서 새 역할 선택 (시스템 역할 + 커스텀 역할 모두 표시)</li>
       <li>자동 저장됨</li>
+    </ol>
+
+    <h3>커스텀 역할 생성 절차</h3>
+    <ol>
+      <li><strong>Roles 탭</strong> 클릭</li>
+      <li><strong>Add Role</strong> 버튼 클릭</li>
+      <li>역할 이름 입력</li>
+      <li>각 기능 영역별 권한 토글 설정</li>
+      <li><strong>Create</strong> 클릭</li>
     </ol>
 
     <ScreenshotSlot label="User Permissions 화면" />
@@ -223,7 +253,7 @@ const Permissions = () => (
 
     <hr />
 
-    <h2>5. 권한 흐름 (시스템 동작)</h2>
+    <h2>6. 권한 흐름 (시스템 동작)</h2>
     <pre><code>{`1. 사용자가 Jira에서 T-CAFE 접근
  ↓
 2. T-CAFE: 현재 Jira 사용자 정보 조회
@@ -240,7 +270,7 @@ const Permissions = () => (
 
     <hr />
 
-    <h2>6. 일반적인 사용 시나리오</h2>
+    <h2>7. 일반적인 사용 시나리오</h2>
 
     <h3>시나리오 A: QA 팀</h3>
     <ul>
@@ -266,7 +296,7 @@ const Permissions = () => (
 
     <hr />
 
-    <h2>7. 자주 발생하는 문제</h2>
+    <h2>8. 자주 발생하는 문제</h2>
     <table>
       <thead>
         <tr>

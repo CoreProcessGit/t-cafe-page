@@ -23,7 +23,7 @@ const FAQ = () => (
     <p><strong>A.</strong> 한국어, English, 日本語 3개 언어를 지원합니다. 우상단 언어 선택 메뉴에서 변경할 수 있습니다.</p>
 
     <h3>Q. T-CAFE의 데이터는 어디에 저장되나요?</h3>
-    <p><strong>A.</strong> 테스트 데이터는 COREPROCESS 사내 서버(대한민국)에 저장됩니다. 첨부파일은 Atlassian Forge Storage에 저장됩니다. 자세한 내용은 <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>를 참고하세요.</p>
+    <p><strong>A.</strong> 테스트 데이터와 첨부파일 모두 COREPROCESS 사내 서버(대한민국, 동일 인프라)에 저장됩니다. 자세한 내용은 <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>를 참고하세요.</p>
 
     <hr />
 
@@ -46,7 +46,7 @@ const FAQ = () => (
     <h2>권한</h2>
 
     <h3>Q. 권한 종류는?</h3>
-    <p><strong>A.</strong> 4가지 — <strong>Admin</strong> / <strong>Team Admin</strong> / <strong>Tester</strong> / <strong>Developer</strong>. 자세한 매트릭스는 <Link to="/support/guide/permissions">02. 사용자 권한</Link> 참고.</p>
+    <p><strong>A.</strong> 기본 4가지 시스템 역할 — <strong>Admin</strong> / <strong>Team Admin</strong> / <strong>Tester</strong> / <strong>Developer</strong>. 프로젝트 필요에 따라 커스텀 역할을 추가로 생성할 수 있습니다. 자세한 매트릭스는 <Link to="/support/guide/permissions">02. 사용자 권한</Link> 참고.</p>
 
     <h3>Q. 본인 권한을 변경할 수 있나요?</h3>
     <p><strong>A.</strong> 아니요. 본인 권한은 변경할 수 없습니다. 다른 Admin이 변경해야 합니다.</p>
@@ -59,6 +59,12 @@ const FAQ = () => (
 
     <h3>Q. Tester 권한으로 TC를 만들 수 없나요?</h3>
     <p><strong>A.</strong> 네. Tester는 TC 실행만 가능하고 생성/수정/삭제는 불가합니다. 작성이 필요하면 Team Admin 이상 권한이 필요합니다.</p>
+
+    <h3>Q. 커스텀 역할을 만들 수 있나요?</h3>
+    <p><strong>A.</strong> Configuration → User Permissions → Roles 탭에서 커스텀 역할을 생성하고 9개 기능 영역별 권한을 세밀하게 설정할 수 있습니다. 시스템 역할(Admin, Team Admin, Tester, Developer)은 삭제할 수 없지만 권한 변경은 가능합니다.</p>
+
+    <h3>Q. 사용자를 비활성화할 수 있나요?</h3>
+    <p><strong>A.</strong> Users 탭에서 Activate 토글을 OFF하면 해당 사용자의 모든 권한이 차단됩니다. 다시 ON하면 즉시 복원됩니다. 비활성 사용자는 Status 필터를 Inactive로 변경하면 볼 수 있습니다.</p>
 
     <hr />
 
@@ -149,10 +155,10 @@ const FAQ = () => (
     <h2>첨부파일</h2>
 
     <h3>Q. 첨부파일은 어디에 저장되나요?</h3>
-    <p><strong>A.</strong> <strong>Atlassian Forge Storage</strong>에 저장됩니다 (테스트 데이터의 사내 서버와는 다른 위치). 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
+    <p><strong>A.</strong> <strong>COREPROCESS 사내 서버</strong>(대한민국)에 저장됩니다. 테스트 데이터와 동일한 인프라를 사용합니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
 
     <h3>Q. 파일 크기 제한은?</h3>
-    <p><strong>A.</strong> 첨부파일은 <strong>프로젝트 단위 50 MB</strong>가 전체 한도입니다 (단일 파일이 아니라 프로젝트 전체 누적 기준). 큰 파일은 안정적인 전송을 위해 자동으로 분할 업로드됩니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
+    <p><strong>A.</strong> <strong>단일 파일 20 MB / 프로젝트 합계 200 MB</strong>가 한도입니다. 큰 파일은 안정적인 전송을 위해 자동으로 분할 업로드됩니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
 
     <h3>Q. 어떤 파일 형식을 지원하나요?</h3>
     <p><strong>A.</strong> 이미지(PNG/JPG/GIF), 문서(PDF/DOC/XLS), 텍스트, 압축 등 일반적인 형식을 모두 지원합니다. 자세한 목록은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>

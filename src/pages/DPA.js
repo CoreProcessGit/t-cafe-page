@@ -306,7 +306,7 @@ const DPA = () => {
             <tbody>
               <tr>
                 <td><strong>Atlassian Pty Ltd</strong></td>
-                <td>App hosting via Forge platform, user authentication, attachment storage</td>
+                <td>App hosting via Forge platform, user authentication</td>
                 <td>Global (Atlassian Cloud regions)</td>
               </tr>
               <tr>

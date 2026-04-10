@@ -37,28 +37,39 @@ const Configuration = () => (
     <hr />
 
     <h2>2. User Permissions (사용자 권한 관리)</h2>
+    <p>User Permissions는 <strong>Users 탭</strong>과 <strong>Roles 탭</strong> 두 개의 탭으로 구성됩니다.</p>
 
-    <h3>2-1. 화면 구성</h3>
+    <h3>2-1. Users 탭</h3>
     <ul>
       <li>프로젝트 사용자 목록</li>
-      <li>각 사용자의 현재 역할</li>
-      <li>역할 변경 드롭다운</li>
+      <li>각 사용자의 역할 드롭다운 (시스템 역할 + 커스텀 역할 모두 선택 가능)</li>
+      <li><strong>Activate 토글</strong>: 사용자를 활성/비활성화하여 권한을 즉시 부여하거나 차단</li>
+      <li><strong>Status 필터</strong>: Active / Inactive / All 필터로 사용자 목록을 필터링</li>
+      <li>이메일은 보안상 UI에 표시하지 않음</li>
     </ul>
 
-    <h3>2-2. 사용자 추가</h3>
+    <h3>2-2. Roles 탭</h3>
+    <ul>
+      <li>역할 목록: 각 역할에 시스템 뱃지(시스템 역할 여부)와 배정된 사용자 수 표시</li>
+      <li><strong>Permission Matrix</strong>: 토글 테이블 형태로 각 역할의 기능별 권한을 확인/변경</li>
+      <li><strong>Add Role</strong>: 커스텀 역할을 새로 생성하고 권한을 세밀하게 설정</li>
+      <li><strong>Edit / Delete</strong>: 기존 역할 수정 또는 삭제 (시스템 역할은 삭제 불가, 권한 변경은 가능)</li>
+    </ul>
+
+    <h3>2-3. 사용자 추가</h3>
     <ul>
       <li><strong>자동 추가</strong>: Jira 프로젝트의 모든 사용자가 자동으로 표시됨</li>
       <li><strong>수동 추가</strong>: 별도 추가 작업 불필요</li>
     </ul>
 
-    <h3>2-3. 역할 변경</h3>
+    <h3>2-4. 역할 변경</h3>
     <ol>
-      <li>변경할 사용자 행에서 역할 드롭다운 클릭</li>
-      <li>새 역할 선택 (Admin / Team Admin / Tester / Developer)</li>
+      <li>Users 탭에서 변경할 사용자 행의 역할 드롭다운 클릭</li>
+      <li>새 역할 선택 (시스템 역할: Admin / Team Admin / Tester / Developer, 또는 커스텀 역할)</li>
       <li>자동 저장됨</li>
     </ol>
 
-    <h3>2-4. 마지막 Admin 보호</h3>
+    <h3>2-5. 마지막 Admin 보호</h3>
     <ul>
       <li>프로젝트의 마지막 Admin은 <strong>삭제하거나 다른 역할로 변경할 수 없습니다</strong></li>
       <li>시스템이 자동으로 차단합니다</li>
@@ -298,7 +309,7 @@ const Configuration = () => (
 
     <h3>9-3. 첨부파일 한도</h3>
     <ul>
-      <li>프로젝트별 첨부파일 저장 한도 (Forge Storage 기준)</li>
+      <li>단일 파일 20 MB / 프로젝트 합계 200 MB (COREPROCESS 사내 서버 저장)</li>
     </ul>
 
     <hr />

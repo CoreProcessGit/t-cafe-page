@@ -14,7 +14,7 @@ const features = [
   { icon: 'bug', color: 'rose', title: 'Defect Integration', desc: 'Create Jira issues directly from test execution with rich text editor and image markup tool.',
     list: ['Rich text editor (ReactQuill)', 'Image editor with annotations', 'Auto-link issues to test cases'] },
   { icon: 'attachment', color: 'teal', title: 'Attachment Management', desc: 'Upload and manage test artifacts with chunked file transfer and drag-and-drop support.',
-    list: ['Drag & drop file upload', 'Progress tracking', 'Stored in Atlassian Forge Storage'] },
+    list: ['Drag & drop file upload', 'Progress tracking', 'Stored on COREPROCESS internal servers (Republic of Korea)'] },
   { icon: 'settings', color: 'blue', title: 'Configuration', desc: 'Customize priorities, case types, components, plan statuses, and user-defined fields.',
     list: ['Custom priorities & case types', 'User-defined fields (10+ types)', 'Component & label management'] },
   { icon: 'users', color: 'amber', title: 'User Permissions', desc: 'Role-based access control to manage who can create, edit, execute, and configure tests.',

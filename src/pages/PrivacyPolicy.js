@@ -36,7 +36,7 @@ const PrivacyPolicy = () => {
           <li><strong>Test Plans</strong>: Name, description, schedule, and test case assignments</li>
           <li><strong>Test Reports</strong>: Execution results, pass/fail status, and related metrics</li>
           <li><strong>Factor Combinations</strong>: Factor definitions, constraints, simulation results</li>
-          <li><strong>Attachments</strong>: Files uploaded by users (stored in Atlassian Forge Storage)</li>
+          <li><strong>Attachments</strong>: Files uploaded by users (stored on COREPROCESS internal servers in the Republic of Korea, same infrastructure as test data)</li>
           <li><strong>Board Posts</strong>: Announcements created by administrators</li>
         </ul>
 
@@ -88,8 +88,8 @@ const PrivacyPolicy = () => {
         <ul>
           <li><strong>Test data</strong>: Stored in a relational database operated directly by COREPROCESS on its own internal servers located in the Republic of Korea. No third-party cloud hosting provider is used for the storage of Customer Data.</li>
           <li><strong>Network access</strong>: The backend API endpoint (taa-api.t-cafe.com) is exposed to authorized clients via Cloudflare, which provides DNS, reverse proxy, network tunnel, and TLS termination services. Cloudflare may temporarily process traffic at its edge locations but does not store Customer Data.</li>
-          <li><strong>Attachments</strong>: Stored in each user's Atlassian Forge Storage (managed by Atlassian)</li>
-          <li><strong>Temporary upload data</strong>: Processed through Forge Storage and deleted after processing</li>
+          <li><strong>Attachments</strong>: File contents are stored on COREPROCESS internal servers located in the Republic of Korea (same infrastructure as test data); attachment metadata is stored in the same MySQL database as test data. Per-file size limit: 20 MB. Per-project total limit: 200 MB.</li>
+          <li><strong>Temporary upload data</strong>: Chunked upload buffers are stored on COREPROCESS internal servers and deleted immediately after the file is finalized. Incomplete uploads older than 6 hours are automatically purged.</li>
           <li><strong>Backups</strong>: Encrypted backups are stored on COREPROCESS-controlled infrastructure and retained for a maximum of ninety (90) days</li>
         </ul>
 

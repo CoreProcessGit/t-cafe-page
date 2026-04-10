@@ -6,7 +6,7 @@ const Attachments = () => (
   <article className="guide-article">
     <h1>12. 첨부파일</h1>
     <p className="guide-lead">
-      T-CAFE는 <strong>프로젝트 단위 첨부파일 페이지</strong>를 통해 외부 자료를 업로드·다운로드·관리할 수 있습니다. 첨부파일은 Atlassian Forge Storage에 저장되며, 업로드한 파일은 테스트 케이스 설명·사전 조건·기대 결과 등의 텍스트 안에 자동 인식되는 링크 형태로 참조할 수 있습니다.
+      T-CAFE는 <strong>프로젝트 단위 첨부파일 페이지</strong>를 통해 외부 자료를 업로드·다운로드·관리할 수 있습니다. 첨부파일은 COREPROCESS 사내 서버(테스트 데이터와 동일 인프라)에 저장되며, 업로드한 파일은 테스트 케이스 설명·사전 조건·기대 결과 등의 텍스트 안에 자동 인식되는 링크 형태로 참조할 수 있습니다.
     </p>
 
     <hr />
@@ -39,12 +39,12 @@ const Attachments = () => (
     <hr />
 
     <h2>3. 저장 위치 및 보안</h2>
-    <p>T-CAFE는 첨부파일을 <strong>Atlassian Forge Storage</strong>에 저장합니다.</p>
+    <p>T-CAFE는 첨부파일을 <strong>COREPROCESS 사내 서버</strong>(대한민국)에 저장합니다.</p>
     <ul>
-      <li>Atlassian이 직접 관리하는 클라우드 저장소</li>
-      <li>각 Jira 인스턴스별로 격리</li>
-      <li>Atlassian의 보안 표준 (암호화, 접근 통제)</li>
-      <li>테스트 데이터(상용 DB)와는 <strong>다른 위치</strong>에 저장됨</li>
+      <li>테스트 데이터와 <strong>동일한 인프라</strong>에 보관</li>
+      <li>파일 본체는 사내 서버 파일시스템에, 메타데이터는 같은 MySQL DB에 저장</li>
+      <li>cloudId / projectKey 단위로 격리되어 다른 프로젝트의 첨부는 접근 불가</li>
+      <li>COREPROCESS의 자체 보안 기준 (저장 암호화, 접근 통제)</li>
     </ul>
 
     <hr />
@@ -53,13 +53,13 @@ const Attachments = () => (
 
     <h3>프로젝트 전체</h3>
     <ul>
-      <li><strong>최대: 50 MB</strong></li>
+      <li><strong>최대: 200 MB</strong> (모든 첨부파일 합계)</li>
       <li>한도 초과 시 새 업로드는 거부됨 → 기존 파일을 일부 삭제 후 재시도</li>
     </ul>
 
     <h3>단일 파일</h3>
     <ul>
-      <li>단일 파일의 명시적 상한은 코드에 별도로 정의되어 있지 않으며, 프로젝트 전체 50 MB 한도 안에서 처리됩니다.</li>
+      <li><strong>최대: 20 MB</strong> (한 파일당)</li>
       <li>큰 파일은 안정적인 전송을 위해 자동으로 작은 청크 단위로 분할 업로드됩니다.</li>
     </ul>
 
@@ -135,7 +135,7 @@ const Attachments = () => (
     <h3>주의 사항</h3>
     <ul>
       <li>삭제된 파일은 <strong>복구할 수 없습니다</strong></li>
-      <li>Forge Storage에서도 즉시 삭제됨</li>
+      <li>사내 서버 파일시스템에서도 즉시 삭제됨</li>
       <li>삭제 후 해당 파일을 참조하던 TC 본문의 링크는 작동하지 않게 됩니다</li>
     </ul>
 
@@ -178,13 +178,13 @@ const Attachments = () => (
       <li><strong>압축</strong>: 가능하면 이미지/동영상을 압축한 후 업로드</li>
       <li><strong>명확한 파일명</strong>: <code>error-screenshot-2026-04-08.png</code> 형식</li>
       <li><strong>버전 표시</strong>: 같은 자료의 여러 버전은 파일명 끝에 v1, v2 등 표시</li>
-      <li><strong>정기 정리</strong>: 오래된 첨부파일은 삭제하여 50 MB 한도 확보</li>
+      <li><strong>정기 정리</strong>: 오래된 첨부파일은 삭제하여 200 MB 한도 확보</li>
       <li><strong>링크로 재사용</strong>: 같은 자료를 여러 TC에서 쓸 때는 한 번만 업로드하고 링크로 참조</li>
     </ul>
 
     <h3>DON'T</h3>
     <ul>
-      <li>거대한 동영상 파일 (50 MB 한도 안에서만 가능)</li>
+      <li>거대한 동영상 파일 (단일 파일 20 MB / 프로젝트 합계 200 MB 한도 안에서만 가능)</li>
       <li>의미 없는 파일명 (<code>스크린샷.png</code>, <code>image1.jpg</code>)</li>
       <li>같은 파일 여러 번 업로드</li>
       <li>민감 정보가 담긴 파일 (실제 고객 데이터, 개인정보, 카드 정보)</li>
@@ -223,7 +223,8 @@ const Attachments = () => (
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>
       </thead>
       <tbody>
-        <tr><td>업로드 실패 (Storage 한도 초과)</td><td>프로젝트 50 MB 한도 초과</td><td>기존 파일 일부 삭제 후 재시도</td></tr>
+        <tr><td>업로드 실패 (단일 파일 한도 초과)</td><td>파일이 20 MB 초과</td><td>파일 분할 또는 압축 후 재시도</td></tr>
+        <tr><td>업로드 실패 (프로젝트 합계 한도 초과)</td><td>프로젝트 200 MB 한도 초과</td><td>기존 파일 일부 삭제 후 재시도</td></tr>
         <tr><td>한글 파일명 깨짐</td><td>인코딩 문제</td><td>영문 파일명으로 변경</td></tr>
         <tr><td>미리보기 안 됨</td><td>지원 안 되는 형식</td><td>Download 후 로컬에서 확인</td></tr>
         <tr><td>다운로드 느림</td><td>청크 단위 전송 진행 중</td><td>네트워크 안정 상태에서 다시 시도</td></tr>

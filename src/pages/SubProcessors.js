@@ -31,7 +31,7 @@ const SubProcessors = () => {
             <tbody>
               <tr>
                 <td><strong>Atlassian Pty Ltd</strong></td>
-                <td>App hosting via Forge platform, user authentication, attachment storage</td>
+                <td>App hosting via Forge platform, user authentication</td>
                 <td>Global (Atlassian Cloud regions)</td>
                 <td><a href="https://www.atlassian.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></td>
               </tr>

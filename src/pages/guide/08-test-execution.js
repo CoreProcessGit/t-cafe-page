@@ -89,6 +89,7 @@ const TestExecution = () => (
       <li>TP 상세 페이지의 좌측에서 실행할 TPTC 클릭</li>
       <li>우측에 TPTC 상세가 표시됨</li>
     </ol>
+    <p>TC 상세 화면은 기본적으로 View 모드로 열리며, Admin/Team Admin은 Edit 버튼을 클릭해야 편집이 가능합니다. View 모드에서는 Description, Precondition, Test Step에 첨부파일 링크가 클릭 가능한 다운로드 링크로 표시됩니다.</p>
 
     <h3>Step 2: 사전 조건 확인</h3>
     <ul>
@@ -227,8 +228,8 @@ const TestExecution = () => (
 
     <h3>첨부파일 저장 위치</h3>
     <ul>
-      <li>Atlassian Forge Storage (Atlassian이 직접 관리)</li>
-      <li>프로젝트 전체 한도: <strong>50 MB</strong></li>
+      <li>COREPROCESS 사내 서버(테스트 데이터와 동일 인프라)</li>
+      <li>프로젝트 전체 한도: <strong>200 MB</strong> / 단일 파일 한도: <strong>20 MB</strong></li>
       <li>자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link> 참고</li>
     </ul>
 
@@ -330,7 +331,18 @@ const TestExecution = () => (
 
     <hr />
 
-    <h2>13. 자주 발생하는 문제</h2>
+    <h2>13. TC 재추가 시 자동 갱신</h2>
+    <h3>TC 재추가 시 자동 갱신</h3>
+    <p>이미 Test Plan에 포함된 TC를 다시 추가하면, 기존 TPTC가 최신 TC 데이터로 자동 갱신됩니다.</p>
+    <ul>
+      <li><strong>갱신되는 항목</strong>: TC 이름, 설명, 사전조건, 테스트 스텝, 우선순위, 케이스타입, 컴포넌트, 라벨, 사용자 정의 필드</li>
+      <li><strong>보존되는 항목</strong>: 실행 상태(Pass/Fail 등), 마지막 실행 일시, 실행자, 코멘트, 연결 이슈, Retestable 표시</li>
+    </ul>
+    <aside className="guide-callout">TC 본문을 수정한 후 같은 Test Plan에 다시 추가하면, 실행 이력을 잃지 않고 최신 내용으로 갱신할 수 있습니다.</aside>
+
+    <hr />
+
+    <h2>14. 자주 발생하는 문제</h2>
     <table>
       <thead>
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>
@@ -339,14 +351,14 @@ const TestExecution = () => (
         <tr><td>Issue 생성 버튼이 안 보임</td><td>Developer 권한</td><td>Tester 이상 필요 (상태 변경·코멘트는 Developer도 가능)</td></tr>
         <tr><td>Issue 생성 실패</td><td>Jira 권한 부족</td><td>Jira에서 Create Issue 권한 확인</td></tr>
         <tr><td>Issue가 검색되지 않음</td><td>다른 프로젝트의 Issue</td><td>같은 프로젝트만 검색 가능</td></tr>
-        <tr><td>첨부파일 업로드 실패</td><td>파일 크기 초과</td><td>Forge Storage 한도 확인</td></tr>
+        <tr><td>첨부파일 업로드 실패</td><td>단일 20 MB 또는 프로젝트 합계 200 MB 초과</td><td>파일 분할/압축 또는 기존 첨부 정리 후 재시도</td></tr>
         <tr><td>통계가 갱신 안 됨</td><td>페이지 캐시</td><td>새로고침</td></tr>
       </tbody>
     </table>
 
     <hr />
 
-    <h2>14. 일반적인 실행 흐름 (스프린트 관점)</h2>
+    <h2>15. 일반적인 실행 흐름 (스프린트 관점)</h2>
     <pre><code>{`[월요일] TP 생성, TC 추가
  ↓
 [화요일] 실행 시작 → 50% 완료

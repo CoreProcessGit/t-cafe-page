@@ -276,7 +276,7 @@ QA 팀에서 정리한 Factor Combination 활용 팁입니다.
       </thead>
       <tbody>
         <tr><td>글쓰기 버튼이 안 보임</td><td>Admin 권한 없음</td><td>Admin에게 요청</td></tr>
-        <tr><td>첨부파일 업로드 실패</td><td>프로젝트 50 MB 한도 초과</td><td>기존 Attachments 일부 삭제 후 재시도 (<Link to="/support/guide/attachments">12. 첨부파일</Link> 참고)</td></tr>
+        <tr><td>첨부파일 업로드 실패</td><td>단일 20 MB 또는 프로젝트 합계 200 MB 초과</td><td>파일 분할/압축 또는 기존 Attachments 일부 삭제 후 재시도 (<Link to="/support/guide/attachments">12. 첨부파일</Link> 참고)</td></tr>
         <tr><td>본문에 코드가 깨짐</td><td>코드 블록 형식 사용 안 함</td><td>코드 블록 버튼 사용</td></tr>
         <tr><td>조회수가 안 늘어남</td><td>같은 세션에서 재조회</td><td>다른 사용자가 조회해야 함</td></tr>
         <tr><td>게시글이 보이지 않음</td><td>페이지네이션 문제</td><td>다음 페이지 확인</td></tr>

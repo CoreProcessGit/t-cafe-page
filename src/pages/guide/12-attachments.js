@@ -6,7 +6,7 @@ const Attachments = () => (
   <article className="guide-article">
     <h1>12. 첨부파일</h1>
     <p className="guide-lead">
-      T-CAFE는 <strong>프로젝트 단위 첨부파일 페이지</strong>를 통해 외부 자료를 업로드·다운로드·관리할 수 있습니다. 첨부파일은 COREPROCESS 사내 서버(테스트 데이터와 동일 인프라)에 저장되며, 업로드한 파일은 테스트 케이스 설명·사전 조건·기대 결과 등의 텍스트 안에 자동 인식되는 링크 형태로 참조할 수 있습니다.
+      T-CAFE는 <strong>프로젝트 단위 첨부파일 페이지</strong>를 통해 외부 자료를 업로드·다운로드·관리할 수 있습니다. 첨부파일은 안전한 데이터센터에 저장되며, 업로드한 파일은 테스트 케이스 설명·사전 조건·기대 결과 등의 텍스트 안에 자동 인식되는 링크 형태로 참조할 수 있습니다.
     </p>
 
     <hr />
@@ -39,12 +39,10 @@ const Attachments = () => (
     <hr />
 
     <h2>3. 저장 위치 및 보안</h2>
-    <p>T-CAFE는 첨부파일을 <strong>COREPROCESS 사내 서버</strong>(대한민국)에 저장합니다.</p>
+    <p>T-CAFE는 첨부파일을 <strong>안전한 데이터센터</strong>에 저장합니다.</p>
     <ul>
-      <li>테스트 데이터와 <strong>동일한 인프라</strong>에 보관</li>
-      <li>파일 본체는 사내 서버 파일시스템에, 메타데이터는 같은 MySQL DB에 저장</li>
-      <li>cloudId / projectKey 단위로 격리되어 다른 프로젝트의 첨부는 접근 불가</li>
-      <li>COREPROCESS의 자체 보안 기준 (저장 암호화, 접근 통제)</li>
+      <li>프로젝트 단위로 격리되어 다른 프로젝트의 첨부는 접근 불가</li>
+      <li>데이터는 암호화되어 안전하게 보호됩니다</li>
     </ul>
 
     <hr />
@@ -60,7 +58,7 @@ const Attachments = () => (
     <h3>단일 파일</h3>
     <ul>
       <li><strong>최대: 20 MB</strong> (한 파일당)</li>
-      <li>큰 파일은 안정적인 전송을 위해 자동으로 작은 청크 단위로 분할 업로드됩니다.</li>
+      <li>20 MB 이내의 파일은 안정적으로 업로드됩니다.</li>
     </ul>
 
     <h3>사용량 확인</h3>
@@ -86,14 +84,14 @@ const Attachments = () => (
           <li>파일을 영역 위로 <strong>드래그 앤 드롭</strong></li>
         </ul>
       </li>
-      <li>청크 업로드 진행률 표시</li>
+      <li>분할 업로드 진행률 표시</li>
       <li>완료 후 첨부 목록에 추가됨</li>
     </ol>
 
     <h3>다중 업로드</h3>
     <ul>
       <li>여러 파일을 한 번에 선택하거나 드래그 앤 드롭으로 업로드 가능</li>
-      <li>파일별로 순차적으로 청크 업로드</li>
+      <li>파일별로 순차적으로 분할 업로드</li>
     </ul>
 
     <aside className="guide-callout">클립보드 붙여넣기는 Attachments 페이지에서 지원하지 않습니다. 업로드 다이얼로그 또는 드래그 앤 드롭을 사용하세요.</aside>
@@ -105,7 +103,7 @@ const Attachments = () => (
     <h3>다운로드</h3>
     <ol>
       <li>첨부파일 행의 <strong>Download</strong> 버튼</li>
-      <li>청크 단위로 내려받은 후 브라우저가 저장 다이얼로그 표시</li>
+      <li>분할 단위로 내려받은 후 브라우저가 저장 다이얼로그 표시</li>
     </ol>
 
     <h3>미리보기</h3>
@@ -113,7 +111,7 @@ const Attachments = () => (
       <li>첨부파일 행의 <strong>Preview</strong> 버튼</li>
       <li>모달에서 다음 형식이 직접 표시됨
         <ul>
-          <li><strong>이미지</strong>: JPG / JPEG / PNG / GIF / SVG</li>
+          <li><strong>이미지</strong>: JPG / JPEG / PNG / GIF / SVG / WebP</li>
           <li><strong>PDF</strong></li>
         </ul>
       </li>
@@ -135,7 +133,7 @@ const Attachments = () => (
     <h3>주의 사항</h3>
     <ul>
       <li>삭제된 파일은 <strong>복구할 수 없습니다</strong></li>
-      <li>사내 서버 파일시스템에서도 즉시 삭제됨</li>
+      <li>데이터센터에서도 즉시 삭제됨</li>
       <li>삭제 후 해당 파일을 참조하던 TC 본문의 링크는 작동하지 않게 됩니다</li>
     </ul>
 
@@ -227,7 +225,7 @@ const Attachments = () => (
         <tr><td>업로드 실패 (프로젝트 합계 한도 초과)</td><td>프로젝트 200 MB 한도 초과</td><td>기존 파일 일부 삭제 후 재시도</td></tr>
         <tr><td>한글 파일명 깨짐</td><td>인코딩 문제</td><td>영문 파일명으로 변경</td></tr>
         <tr><td>미리보기 안 됨</td><td>지원 안 되는 형식</td><td>Download 후 로컬에서 확인</td></tr>
-        <tr><td>다운로드 느림</td><td>청크 단위 전송 진행 중</td><td>네트워크 안정 상태에서 다시 시도</td></tr>
+        <tr><td>다운로드 느림</td><td>분할 단위 전송 진행 중</td><td>네트워크 안정 상태에서 다시 시도</td></tr>
         <tr><td>삭제했는데 복구하고 싶음</td><td>영구 삭제됨</td><td>복구 불가, 재업로드 필요</td></tr>
         <tr><td>TC 본문 링크가 깨짐</td><td>참조하던 첨부파일이 삭제됨</td><td>파일을 다시 업로드하고 링크 재생성</td></tr>
       </tbody>

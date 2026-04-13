@@ -33,7 +33,7 @@ const Permissions = () => (
           <td><strong>팀 관리자</strong></td>
           <td>Team Admin</td>
           <td>두 번째</td>
-          <td>TC/TP 생성·편집·삭제, Import, 실행, <strong>Configuration 전체 접근</strong></td>
+          <td>TC/TP 생성·편집·삭제, Import, 실행, <strong>Configuration 접근/편집</strong> (사용자·역할 관리 제외)</td>
         </tr>
         <tr>
           <td><strong>테스터</strong></td>
@@ -56,7 +56,7 @@ const Permissions = () => (
     <p>기본 4가지 역할 외에 프로젝트에 맞는 커스텀 역할을 생성할 수 있습니다.</p>
     <ul>
       <li>Configuration → User Permissions → <strong>Roles 탭</strong>에서 생성/수정/삭제</li>
-      <li>9개 기능 영역(Configuration, Test Cases, Test Plans, Factor Combination, Overview, Reports, Attachments, User Management)별로 세부 액션 권한을 토글로 설정</li>
+      <li>8개 기능 영역(Overview, Test Cases, Factor Combination, Test Plans, Reports, Configuration, User Management, Attachments)별로 세부 액션 권한을 토글로 설정</li>
       <li>시스템 역할은 이름 변경 불가, 권한 변경 가능, 삭제 불가</li>
       <li>커스텀 역할은 이름과 권한 모두 변경 가능. 배정된 사용자가 없을 때만 삭제 가능</li>
     </ul>
@@ -168,12 +168,9 @@ const Permissions = () => (
       </thead>
       <tbody>
         <tr><td>Configuration 페이지 접근</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>사용자 권한 관리</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>우선순위 (Priorities) 관리</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>케이스타입 (Case Types) 관리</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>컴포넌트 (Components) 관리</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>플랜 상태 (Plan Status) 관리</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>UDF (User Defined Fields) 관리</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Configuration 편집 (Priorities, Case Types 등)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td><strong>사용자 관리 (Users 탭)</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td><strong>역할 관리 (Roles 탭)</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>이슈 타입 조회</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
       </tbody>
     </table>
@@ -254,19 +251,12 @@ const Permissions = () => (
     <hr />
 
     <h2>6. 권한 흐름 (시스템 동작)</h2>
-    <pre><code>{`1. 사용자가 Jira에서 T-CAFE 접근
- ↓
-2. T-CAFE: 현재 Jira 사용자 정보 조회
- ↓
-3. T-CAFE: DB에서 역할/권한 조회
- ↓
-4. 역할이 없으면 (신규 사용자):
- - 프로젝트 첫 사용자 → Admin 자동 할당
- - 이후 사용자 → Tester 자동 할당
- ↓
-5. 역할 정보를 브라우저에 캐시 (주기적으로 자동 갱신)
- ↓
-6. 각 페이지에서 권한 확인 후 버튼 표시/숨기기, 비활성화`}</code></pre>
+    <ul>
+      <li>사용자가 Jira에서 T-CAFE에 접근하면 자동으로 역할이 확인됩니다</li>
+      <li>신규 사용자는 자동으로 역할이 할당됩니다 (첫 사용자 → Admin, 이후 → Tester)</li>
+      <li>권한 변경은 실시간으로 반영됩니다</li>
+      <li>각 페이지에서 역할에 따라 버튼이 표시되거나 숨겨집니다</li>
+    </ul>
 
     <hr />
 

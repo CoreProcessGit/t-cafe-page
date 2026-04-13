@@ -46,6 +46,13 @@
   letter-spacing: -1.5px;
 }
 .hero h1 em { font-style: normal; color: #34D399; }
+.hero-logo {
+  margin-bottom: 16px;
+}
+.hero-logo img {
+  height: 80px;
+  width: auto;
+}
 .hero-tagline {
   font-size: 22px;
   font-weight: 600;

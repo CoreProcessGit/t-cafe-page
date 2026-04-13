@@ -115,7 +115,7 @@ const OverviewDashboard = () => (
         <tr><td><strong>Total Test Plans</strong></td><td>프로젝트의 전체 TP 개수</td></tr>
         <tr><td><strong>Active TP</strong></td><td>현재 진행 중인 TP 개수</td></tr>
         <tr><td><strong>Completed TP</strong></td><td>완료된 TP 개수</td></tr>
-        <tr><td><strong>Pass Rate</strong></td><td>전체 TPTC의 Pass 비율</td></tr>
+        <tr><td><strong>Pass Rate</strong></td><td>전체 실행 항목의 Pass 비율</td></tr>
       </tbody>
     </table>
 

@@ -23,7 +23,7 @@ const FAQ = () => (
     <p><strong>A.</strong> 한국어, English, 日本語 3개 언어를 지원합니다. 우상단 언어 선택 메뉴에서 변경할 수 있습니다.</p>
 
     <h3>Q. T-CAFE의 데이터는 어디에 저장되나요?</h3>
-    <p><strong>A.</strong> 테스트 데이터와 첨부파일 모두 COREPROCESS 사내 서버(대한민국, 동일 인프라)에 저장됩니다. 자세한 내용은 <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>를 참고하세요.</p>
+    <p><strong>A.</strong> 테스트 데이터와 첨부파일 모두 안전한 데이터센터에 저장됩니다. 자세한 내용은 <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>를 참고하세요.</p>
 
     <hr />
 
@@ -61,7 +61,7 @@ const FAQ = () => (
     <p><strong>A.</strong> 네. Tester는 TC 실행만 가능하고 생성/수정/삭제는 불가합니다. 작성이 필요하면 Team Admin 이상 권한이 필요합니다.</p>
 
     <h3>Q. 커스텀 역할을 만들 수 있나요?</h3>
-    <p><strong>A.</strong> Configuration → User Permissions → Roles 탭에서 커스텀 역할을 생성하고 9개 기능 영역별 권한을 세밀하게 설정할 수 있습니다. 시스템 역할(Admin, Team Admin, Tester, Developer)은 삭제할 수 없지만 권한 변경은 가능합니다.</p>
+    <p><strong>A.</strong> Configuration → User Permissions → Roles 탭에서 커스텀 역할을 생성하고 8개 기능 영역별 권한을 세밀하게 설정할 수 있습니다. 시스템 역할(Admin, Team Admin, Tester, Developer)은 삭제할 수 없지만 권한 변경은 가능합니다.</p>
 
     <h3>Q. 사용자를 비활성화할 수 있나요?</h3>
     <p><strong>A.</strong> Users 탭에서 Activate 토글을 OFF하면 해당 사용자의 모든 권한이 차단됩니다. 다시 ON하면 즉시 복원됩니다. 비활성 사용자는 Status 필터를 Inactive로 변경하면 볼 수 있습니다.</p>
@@ -111,8 +111,8 @@ const FAQ = () => (
     <h3>Q. TC와 TP의 차이는?</h3>
     <p><strong>A.</strong> TC는 "무엇을 테스트할지" 정의하는 영구 자료이고, TP는 "이번에 실행할 TC들의 묶음"입니다. 한 TC가 여러 TP에 포함될 수 있습니다.</p>
 
-    <h3>Q. TP에 추가한 후 원본 TC를 수정하면 TPTC도 바뀌나요?</h3>
-    <p><strong>A.</strong> <strong>아니요</strong>. TPTC는 추가된 시점의 스냅샷으로 저장됩니다. 원본 TC가 수정되어도 TPTC는 변경되지 않습니다. 동기화하려면 TPTC를 제거 후 다시 추가해야 합니다.</p>
+    <h3>Q. TP에 추가한 후 원본 TC를 수정하면 실행 항목도 바뀌나요?</h3>
+    <p><strong>A.</strong> <strong>아니요</strong>. 실행 항목은 추가된 시점의 데이터가 보존됩니다. 원본 TC가 수정되어도 실행 항목은 변경되지 않습니다. 동기화하려면 실행 항목을 제거 후 다시 추가해야 합니다.</p>
 
     <h3>Q. 한 TP에 같은 TC를 여러 번 추가할 수 있나요?</h3>
     <p><strong>A.</strong> 가능하지만 권장하지 않습니다. 같은 TC가 여러 번 실행되어 통계가 왜곡될 수 있습니다.</p>
@@ -142,9 +142,9 @@ const FAQ = () => (
     </ul>
 
     <h3>Q. Fail 시 Jira Issue를 자동으로 만들 수 있나요?</h3>
-    <p><strong>A.</strong> 자동은 아니지만, TPTC 우측 패널에서 "<strong>+ Create Issue</strong>" 버튼으로 한 번에 만들 수 있습니다. TPTC 정보가 자동으로 채워집니다.</p>
+    <p><strong>A.</strong> 자동은 아니지만, 실행 항목 우측 패널에서 "<strong>+ Create Issue</strong>" 버튼으로 한 번에 만들 수 있습니다. 실행 항목 정보가 자동으로 채워집니다.</p>
 
-    <h3>Q. 한 번에 여러 TPTC의 상태를 변경할 수 있나요?</h3>
+    <h3>Q. 한 번에 여러 실행 항목의 상태를 변경할 수 있나요?</h3>
     <p><strong>A.</strong> 네. 체크박스로 다중 선택 후 <strong>Bulk Update</strong> 기능을 사용하세요.</p>
 
     <h3>Q. 실행 결과를 자동화 도구에서 import할 수 있나요?</h3>
@@ -155,10 +155,10 @@ const FAQ = () => (
     <h2>첨부파일</h2>
 
     <h3>Q. 첨부파일은 어디에 저장되나요?</h3>
-    <p><strong>A.</strong> <strong>COREPROCESS 사내 서버</strong>(대한민국)에 저장됩니다. 테스트 데이터와 동일한 인프라를 사용합니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
+    <p><strong>A.</strong> 안전한 데이터센터에 저장됩니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
 
     <h3>Q. 파일 크기 제한은?</h3>
-    <p><strong>A.</strong> <strong>단일 파일 20 MB / 프로젝트 합계 200 MB</strong>가 한도입니다. 큰 파일은 안정적인 전송을 위해 자동으로 분할 업로드됩니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
+    <p><strong>A.</strong> <strong>단일 파일 20 MB / 프로젝트 합계 200 MB</strong>가 한도입니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
 
     <h3>Q. 어떤 파일 형식을 지원하나요?</h3>
     <p><strong>A.</strong> 이미지(PNG/JPG/GIF), 문서(PDF/DOC/XLS), 텍스트, 압축 등 일반적인 형식을 모두 지원합니다. 자세한 목록은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
@@ -202,10 +202,10 @@ const FAQ = () => (
     <h3>Q. T-CAFE는 데이터를 어떻게 보호하나요?</h3>
     <p><strong>A.</strong></p>
     <ul>
-      <li><strong>저장 암호화</strong>: 민감한 테스트 데이터는 산업 표준 암호화로 저장</li>
+      <li><strong>데이터 보호</strong>: 민감한 테스트 데이터는 안전하게 보호되어 저장</li>
       <li><strong>권한 제어</strong>: 역할 기반 접근 제어 (Admin / Team Admin / Tester / Developer)</li>
       <li><strong>데이터 격리</strong>: 각 Jira 인스턴스 및 프로젝트별로 데이터 분리</li>
-      <li><strong>웹 보안</strong>: XSS / SQL Injection / CSRF 등 OWASP Top 10 대응</li>
+      <li><strong>웹 보안</strong>: 웹 표준 보안 기준을 준수합니다</li>
     </ul>
     <p>자세한 내용은 <a href="https://t-cafe.com/security-policy" target="_blank" rel="noopener noreferrer">Security Policy</a>.</p>
 
@@ -213,7 +213,7 @@ const FAQ = () => (
     <p><strong>A.</strong> <strong>아니요</strong>. T-CAFE는 고객 데이터를 어떠한 AI 또는 머신러닝 모델 학습에도 사용하지 않습니다.</p>
 
     <h3>Q. 데이터를 우리 회사 서버로 옮길 수 있나요?</h3>
-    <p><strong>A.</strong> 현재는 COREPROCESS 사내 서버에 저장됩니다. Self-hosting 옵션은 향후 검토 중입니다.</p>
+    <p><strong>A.</strong> 현재는 안전한 데이터센터에 저장됩니다. Self-hosting 옵션은 향후 검토 중입니다.</p>
 
     <h3>Q. GDPR을 준수하나요?</h3>
     <p><strong>A.</strong> 네. T-CAFE는 GDPR, CCPA, LGPD를 모두 준수합니다. 자세한 내용은 <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>와 <a href="https://t-cafe.com/dpa" target="_blank" rel="noopener noreferrer">Data Processing Addendum</a>.</p>
@@ -300,7 +300,7 @@ const FAQ = () => (
     </ul>
 
     <h3>Q. T-CAFE 개발사는 누구인가요?</h3>
-    <p><strong>A.</strong> <strong>COREPROCESS</strong> (한국)에서 개발하고 운영합니다.</p>
+    <p><strong>A.</strong> COREPROCESS에서 개발하고 운영합니다.</p>
 
     <h3>Q. 본 가이드는 얼마나 자주 업데이트되나요?</h3>
     <p><strong>A.</strong> 새 기능 출시 또는 정책 변경 시 업데이트됩니다. 큰 변경이 있을 경우 게시판으로 공지합니다.</p>

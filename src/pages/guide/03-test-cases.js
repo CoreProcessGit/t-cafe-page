@@ -19,7 +19,7 @@ const TestCases = () => (
       <li><strong>사전 조건 (Precondition)</strong>: 테스트 실행 전 갖춰져야 할 조건</li>
       <li><strong>테스트 스텝 (Test Steps)</strong>: 실제 수행할 단계와 기대 결과</li>
       <li><strong>우선순위 (Priority)</strong>: Configuration → Priorities에서 자유롭게 정의 (기본 샘플: Critical / High / Medium / Low)</li>
-      <li><strong>케이스 타입 (Case Type)</strong>: Configuration → Case Types에서 자유롭게 정의 (기본 샘플: Function / Performance / Security / UI/UX / API / Regression)</li>
+      <li><strong>케이스 타입 (Case Type)</strong>: Configuration → Case Type에서 자유롭게 정의 (기본 샘플: Function / Performance / Regression / Security)</li>
       <li><strong>컴포넌트 (Components)</strong>: Configuration → Components에서 자유롭게 정의 (기본 샘플: Frontend / Backend API / Database / Authentication / Payment), 다중 선택 가능</li>
       <li><strong>라벨 (Labels)</strong>: 자유 태그</li>
       <li><strong>소유자 (Owner)</strong>: TC 작성자</li>
@@ -30,14 +30,14 @@ const TestCases = () => (
     <h2>2. TC 종류</h2>
     <p>T-CAFE는 두 가지 TC 타입을 지원합니다:</p>
 
-    <h3>Single Test Case (<code>type: 'S'</code>)</h3>
+    <h3>Single Test Case</h3>
     <ul>
       <li>일반적인 단일 테스트 케이스</li>
       <li>하나의 시나리오를 검증</li>
       <li>가장 많이 사용되는 형식</li>
     </ul>
 
-    <h3>Factor Combination Test Case (<code>type: 'F'</code>)</h3>
+    <h3>Factor Combination Test Case</h3>
     <ul>
       <li>Factor Combination 기능으로 자동 생성된 TC</li>
       <li>여러 변수의 조합을 검증</li>
@@ -225,13 +225,8 @@ const TestCases = () => (
 
     <hr />
 
-    <h2>9. TC 데이터 암호화</h2>
-    <p>T-CAFE는 사용자의 민감한 테스트 데이터를 보호하기 위해 다음 정보를 <strong>암호화</strong>하여 저장합니다:</p>
-    <ul>
-      <li>테스트 스텝 (Step / Test Data / Expected Result)</li>
-      <li>사전 조건 (Precondition)</li>
-    </ul>
-    <p>암호화는 자동으로 처리되며 사용자가 별도로 설정할 필요는 없습니다.</p>
+    <h2>9. TC 데이터 보호</h2>
+    <p>T-CAFE는 사용자의 민감한 테스트 데이터(테스트 스텝, 사전 조건)를 <strong>안전하게 보호</strong>하여 저장합니다. 별도 설정 없이 자동으로 처리됩니다.</p>
 
     <hr />
 

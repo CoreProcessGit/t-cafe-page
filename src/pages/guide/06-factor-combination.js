@@ -83,12 +83,7 @@ const FactorCombination = () => (
     </aside>
     <p>즉 임의의 두 Factor만 떼서 봐도 그 두 Factor의 모든 값 쌍이 적어도 한 번은 함께 나타납니다. 3개 이상의 동시 조합은 보장하지 않습니다.</p>
 
-    <p><strong>구현 방식</strong>: greedy 알고리즘</p>
-    <ol>
-      <li>가능한 모든 2-Factor 값 쌍을 미리 생성</li>
-      <li>매 반복마다 아직 커버되지 않은 쌍을 가장 많이 새로 커버하는 테스트 케이스를 추가</li>
-      <li>모든 쌍이 커버될 때까지 반복</li>
-    </ol>
+    <p>Pairwise는 모든 2-Factor 값 쌍이 포함되도록 <strong>자동으로 최적의 조합을 선택</strong>합니다.</p>
 
     <p><strong>예시</strong>: Browser(3) × OS(3) × Language(2) → Full은 18개, <strong>Pairwise(t=2)는 약 9개</strong>로 축소</p>
     <p><strong>장점</strong>: TC 수가 크게 줄어듦 (변수가 많을수록 효과 큼)<br /><strong>단점</strong>: 3개 Factor가 동시에 만들어내는 특정 조합은 누락 가능</p>
@@ -97,7 +92,7 @@ const FactorCombination = () => (
     <ul>
       <li>Factor가 1개면 → 그 Factor의 값을 그대로 나열</li>
       <li>Factor가 2개면 → Full Combination과 동일 (Pairwise의 정의상 동치)</li>
-      <li>Factor가 3개 이상이면 → greedy pairwise 적용</li>
+      <li>Factor가 3개 이상이면 → Pairwise 자동 최적화 적용</li>
     </ul>
 
     <p><strong>생성 한도</strong> (모든 알고리즘 공통):</p>
@@ -106,7 +101,6 @@ const FactorCombination = () => (
       <li>Full / Pairwise / Mixed 알고리즘 종류와 무관하게 동일하게 적용</li>
       <li>5000개를 초과하면 시뮬레이션 단계에서 경고가 표시되고 앞에서부터 5000개만 미리보기로 노출</li>
       <li>5000개에 근접할 정도면 Constraint를 추가하거나 Factor를 분할 권장</li>
-      <li>한도가 존재하는 이유: 브라우저 메모리·DB 일괄 INSERT·시뮬레이션 렌더링 안정성 보호</li>
     </ul>
 
     <p><strong>언제 쓰는가</strong>:</p>
@@ -195,7 +189,7 @@ const FactorCombination = () => (
       <li><strong>Create Test Cases</strong> 버튼 클릭</li>
       <li>각 조합에 대해 TC가 자동 생성됨</li>
       <li>TC 이름은 자동 부여 (예: "Cross Browser-Chrome-Windows-Korean")</li>
-      <li>모두 <code>type: 'F'</code> (Factor) 로 표시됨</li>
+      <li>모두 Factor 타입으로 표시됨</li>
     </ol>
 
     <hr />
@@ -348,7 +342,7 @@ const FactorCombination = () => (
     <h2>11. Factor TC와 일반 TC의 차이</h2>
     <table>
       <thead>
-        <tr><th>항목</th><th>Single TC (<code>type: 'S'</code>)</th><th>Factor TC (<code>type: 'F'</code>)</th></tr>
+        <tr><th>항목</th><th>Single TC</th><th>Factor TC</th></tr>
       </thead>
       <tbody>
         <tr><td>생성 방식</td><td>수동</td><td>자동 (Factor Combination)</td></tr>

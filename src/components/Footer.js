@@ -7,8 +7,8 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <span className="logo-text">T-CAFE</span>
-          <p>Test Case Archive for Jira</p>
+          <span className="logo-text">T-CAFE <em>archive</em></span>
+          <p>Test Design & Management</p>
         </div>
         <div className="footer-links">
           <Link to="/privacy-policy">Privacy Policy</Link>

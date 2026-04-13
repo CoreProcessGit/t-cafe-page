@@ -6,7 +6,7 @@ const TestExecution = () => (
   <article className="guide-article">
     <h1>08. 테스트 실행</h1>
     <p className="guide-lead">
-      테스트 플랜 안의 테스트 케이스(TPTC)를 실제로 실행하고 결과를 기록하는 과정입니다. T-CAFE의 핵심 사용 흐름입니다.
+      테스트 플랜 안의 테스트 케이스(실행 항목)를 실제로 실행하고 결과를 기록하는 과정입니다. T-CAFE의 핵심 사용 흐름입니다.
     </p>
 
     <hr />
@@ -19,14 +19,14 @@ const TestExecution = () => (
     <h3>사전 확인</h3>
     <ul>
       <li>TP의 상태가 <strong>Open</strong> (또는 사용자 정의된 진행 중 상태)인지 확인 (Draft는 실행 시작 전)</li>
-      <li>TPTC 상태 변경과 코멘트 입력은 모든 역할(Admin / Team Admin / Tester / Developer)이 수행 가능</li>
+      <li>실행 항목 상태 변경과 코멘트 입력은 모든 역할(Admin / Team Admin / Tester / Developer)이 수행 가능</li>
     </ul>
 
     <h3>화면 구성</h3>
     <ul>
       <li><strong>상단</strong>: TP 정보 (이름, 진행률, 통계)</li>
-      <li><strong>좌측</strong>: TP 폴더 + TPTC 목록</li>
-      <li><strong>중앙/우측</strong>: 선택한 TPTC 상세 (스텝 미리보기 + 실행 패널)</li>
+      <li><strong>좌측</strong>: TP 폴더 + 실행 항목 목록</li>
+      <li><strong>중앙/우측</strong>: 선택한 실행 항목 상세 (스텝 미리보기 + 실행 패널)</li>
     </ul>
 
     <ScreenshotSlot label="테스트 실행 화면" />
@@ -45,12 +45,12 @@ const TestExecution = () => (
         </tr>
       </thead>
       <tbody>
-        <tr><td>TPTC 실행 (상태 변경)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
+        <tr><td>실행 항목 실행 (상태 변경)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
         <tr><td>코멘트 입력</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
         <tr><td>Issue 생성</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>Issue 연결</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>첨부파일 추가 (Attachments 페이지 통해)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td>TPTC 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>실행 항목 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
     </table>
     <aside className="guide-callout"><strong>모든 역할이 테스트를 직접 실행하고 코멘트를 남길 수 있습니다.</strong> Developer만 Jira Issue 생성·연결이 제한됩니다.</aside>
@@ -58,7 +58,7 @@ const TestExecution = () => (
     <hr />
 
     <h2>3. 실행 상태 (Execution Status)</h2>
-    <p>각 TPTC는 다음 5가지 상태 중 하나를 가집니다:</p>
+    <p>각 실행 항목은 다음 5가지 상태 중 하나를 가집니다:</p>
     <table>
       <thead>
         <tr><th>상태</th><th>영문</th><th>색상</th><th>의미</th></tr>
@@ -84,10 +84,10 @@ const TestExecution = () => (
 
     <h2>4. 실행 절차</h2>
 
-    <h3>Step 1: TPTC 선택</h3>
+    <h3>Step 1: 실행 항목 선택</h3>
     <ol>
-      <li>TP 상세 페이지의 좌측에서 실행할 TPTC 클릭</li>
-      <li>우측에 TPTC 상세가 표시됨</li>
+      <li>TP 상세 페이지의 좌측에서 실행할 실행 항목 클릭</li>
+      <li>우측에 실행 항목 상세가 표시됨</li>
     </ol>
     <p>TC 상세 화면은 기본적으로 View 모드로 열리며, Admin/Team Admin은 Edit 버튼을 클릭해야 편집이 가능합니다. View 모드에서는 Description, Precondition, Test Step에 첨부파일 링크가 클릭 가능한 다운로드 링크로 표시됩니다.</p>
 
@@ -109,7 +109,7 @@ const TestExecution = () => (
     <h3>Step 4: 결과 기록</h3>
     <ul>
       <li>스텝마다 개별 상태 기록 가능 (Pass/Fail)</li>
-      <li>또는 전체 TPTC 단위로 한 번에 기록</li>
+      <li>또는 전체 실행 항목 단위로 한 번에 기록</li>
     </ul>
 
     <h3>Step 5: 최종 상태 선택</h3>
@@ -121,16 +121,16 @@ const TestExecution = () => (
 
     <ScreenshotSlot label="Status 변경 드롭다운" />
 
-    <h3>Step 6: 다음 TPTC로 이동</h3>
+    <h3>Step 6: 다음 실행 항목으로 이동</h3>
     <ul>
-      <li>좌측에서 다음 TPTC 클릭</li>
+      <li>좌측에서 다음 실행 항목 클릭</li>
       <li>또는 Next 버튼 (제공되는 경우)</li>
     </ul>
 
     <hr />
 
     <h2>5. 코멘트 입력</h2>
-    <p>각 TPTC에 코멘트를 남길 수 있습니다.</p>
+    <p>각 실행 항목에 코멘트를 남길 수 있습니다.</p>
 
     <h3>사용 사례</h3>
     <ul>
@@ -142,7 +142,7 @@ const TestExecution = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>TPTC 우측의 <strong>Comments</strong> 섹션</li>
+      <li>실행 항목 우측의 <strong>Comments</strong> 섹션</li>
       <li><strong>+ Add Comment</strong> 클릭</li>
       <li>리치 텍스트 에디터에 내용 작성</li>
       <li><strong>Submit</strong></li>
@@ -166,14 +166,14 @@ const TestExecution = () => (
 
     <h4>절차</h4>
     <ol>
-      <li>TPTC 우측의 <strong>Linked Issues</strong> 섹션</li>
+      <li>실행 항목 우측의 <strong>Linked Issues</strong> 섹션</li>
       <li><strong>+ Create Issue</strong> 버튼</li>
       <li>Issue 작성 화면이 열림 (Jira 표준 폼)</li>
       <li>입력 항목:
         <ul>
           <li>프로젝트 (기본값: 현재 T-CAFE 프로젝트)</li>
           <li>이슈 타입 (Bug, Task 등)</li>
-          <li>요약 (Summary) — TPTC 이름이 자동 입력됨</li>
+          <li>요약 (Summary) — 실행 항목 이름이 자동 입력됨</li>
           <li>설명 (Description) — 실패 스텝과 코멘트가 자동 채워짐</li>
           <li>우선순위</li>
           <li>담당자</li>
@@ -184,13 +184,13 @@ const TestExecution = () => (
 
     <h4>자동 생성 정보</h4>
     <ul>
-      <li><strong>요약</strong>: <code>{`[Failed] {TPTC 이름}`}</code></li>
+      <li><strong>요약</strong>: <code>{`[Failed] {실행 항목 이름}`}</code></li>
       <li><strong>설명</strong>:
         <ul>
-          <li>TPTC 키와 이름</li>
+          <li>실행 항목 키와 이름</li>
           <li>실패한 스텝 정보</li>
           <li>TP 정보</li>
-          <li>T-CAFE 링크 (TPTC로 다시 돌아가는 링크)</li>
+          <li>T-CAFE 링크 (실행 항목으로 다시 돌아가는 링크)</li>
         </ul>
       </li>
     </ul>
@@ -216,55 +216,54 @@ const TestExecution = () => (
     <hr />
 
     <h2>7. 첨부파일 활용</h2>
-    <p>T-CAFE는 TPTC 실행 패널 안에 별도의 첨부파일 업로드 UI를 제공하지 않습니다. 실행 중 캡처한 스크린샷이나 로그는 다음과 같이 사용하세요:</p>
+    <p>T-CAFE는 실행 항목 실행 패널 안에 별도의 첨부파일 업로드 UI를 제공하지 않습니다. 실행 중 캡처한 스크린샷이나 로그는 다음과 같이 사용하세요:</p>
 
     <h3>절차</h3>
     <ol>
       <li>상단 탭 → <strong>Attachments</strong>에서 파일 업로드</li>
       <li>업로드된 파일의 다운로드 URL 복사</li>
-      <li>TPTC의 <strong>Comments</strong> 입력란에 URL 붙여넣기 → 자동으로 클릭 가능한 링크로 변환</li>
+      <li>실행 항목의 <strong>Comments</strong> 입력란에 URL 붙여넣기 → 자동으로 클릭 가능한 링크로 변환</li>
       <li>또는 실패 시 <strong>+ Create Issue</strong>로 Jira 이슈를 생성하면, 그 이슈 작성 모달에서 직접 파일 첨부 가능</li>
     </ol>
 
     <h3>첨부파일 저장 위치</h3>
     <ul>
-      <li>COREPROCESS 사내 서버(테스트 데이터와 동일 인프라)</li>
+      <li>안전한 데이터센터에 저장</li>
       <li>프로젝트 전체 한도: <strong>200 MB</strong> / 단일 파일 한도: <strong>20 MB</strong></li>
       <li>자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link> 참고</li>
     </ul>
 
     <hr />
 
-    <h2>8. Retestable 표시 (재테스트 필요)</h2>
-    <p>특정 TPTC를 "재테스트 필요"로 표시할 수 있습니다.</p>
+    <h2>8. Retestable (재테스트 필요)</h2>
+    <p>연결된 Jira Issue가 완료 상태에 도달하면 해당 실행 항목이 자동으로 <strong>Retestable</strong>로 표시됩니다.</p>
 
-    <h3>사용 사례</h3>
+    <h3>동작 방식</h3>
     <ul>
-      <li>버그 수정 후 다시 검증해야 할 TPTC</li>
-      <li>Block 상태였다가 환경이 복구되어 다시 실행할 TPTC</li>
+      <li>실행 항목에 Jira Issue를 연결한 상태에서</li>
+      <li>해당 Issue가 Configuration → Issue Type에서 설정한 <strong>완료 상태</strong>로 변경되면</li>
+      <li>T-CAFE가 자동으로 Retestable을 <strong>Yes</strong>로 전환합니다</li>
+      <li>실행 항목 상세에서 Retestable 상태가 "Yes" 또는 "No"로 표시됩니다 (읽기 전용)</li>
     </ul>
 
-    <h3>절차</h3>
-    <ol>
-      <li>TPTC 선택</li>
-      <li><strong>Mark as Retestable</strong> 체크박스 클릭</li>
-      <li>다음 실행 시 우선순위로 표시됨</li>
-    </ol>
-
-    <h3>효과</h3>
+    <h3>활용</h3>
     <ul>
-      <li>별도 필터로 retestable TPTC만 모아 볼 수 있음</li>
+      <li>별도 필터로 Retestable 실행 항목만 모아 볼 수 있음</li>
+      <li>버그 수정 후 재검증이 필요한 항목을 빠르게 파악</li>
       <li>재테스트 누락 방지</li>
     </ul>
+
+    <h3>설정</h3>
+    <p>어떤 워크플로 상태를 "완료"로 간주할지는 <Link to="/support/guide/configuration">10. Configuration</Link>의 <strong>Issue Type (Retestable)</strong> 섹션에서 설정합니다.</p>
 
     <hr />
 
     <h2>9. 일괄 실행 (Bulk Execution)</h2>
-    <p>여러 TPTC의 상태를 한 번에 변경할 수 있습니다.</p>
+    <p>여러 실행 항목의 상태를 한 번에 변경할 수 있습니다.</p>
 
     <h3>절차</h3>
     <ol>
-      <li>좌측 TPTC 목록에서 체크박스로 다중 선택</li>
+      <li>좌측 실행 항목 목록에서 체크박스로 다중 선택</li>
       <li><strong>Bulk Update</strong> 버튼 클릭</li>
       <li>일괄 변경할 상태 선택</li>
       <li><strong>Apply</strong></li>
@@ -272,8 +271,8 @@ const TestExecution = () => (
 
     <h3>사용 사례</h3>
     <ul>
-      <li>"모바일 미지원 기능"이라 50개 TPTC를 한 번에 Skip 처리</li>
-      <li>환경 복구 후 Block 상태였던 TPTC들을 다시 Not Yet으로 초기화</li>
+      <li>"모바일 미지원 기능"이라 50개 실행 항목을 한 번에 Skip 처리</li>
+      <li>환경 복구 후 Block 상태였던 실행 항목들을 다시 Not Yet으로 초기화</li>
     </ul>
 
     <hr />
@@ -283,7 +282,7 @@ const TestExecution = () => (
     <h3>TP 단위 통계</h3>
     <p>TP 상세 페이지 상단에 다음이 표시됩니다:</p>
     <ul>
-      <li>전체 TPTC 개수</li>
+      <li>전체 실행 항목 개수</li>
       <li>Pass / Fail / Block / Skip / Not Yet 카운트</li>
       <li>진행률 %</li>
     </ul>
@@ -312,7 +311,7 @@ const TestExecution = () => (
 
     <h3>DO</h3>
     <ul>
-      <li><strong>순서대로 실행</strong>: 의존성이 있는 TPTC는 순서대로</li>
+      <li><strong>순서대로 실행</strong>: 의존성이 있는 실행 항목은 순서대로</li>
       <li><strong>즉시 결과 기록</strong>: 실행 후 바로 상태 변경</li>
       <li><strong>상세한 코멘트</strong>: Fail 시 재현 가능한 정보 남기기</li>
       <li><strong>스크린샷 첨부</strong>: 시각적 증거 보관</li>
@@ -326,14 +325,14 @@ const TestExecution = () => (
       <li>모호한 코멘트 ("안 됨", "에러")</li>
       <li>Fail인데 그냥 Skip으로 넘기기</li>
       <li>같은 환경에서 5번 실패해도 계속 재시도</li>
-      <li>다른 사람의 TPTC 결과를 임의로 변경</li>
+      <li>다른 사람의 실행 항목 결과를 임의로 변경</li>
     </ul>
 
     <hr />
 
     <h2>13. TC 재추가 시 자동 갱신</h2>
     <h3>TC 재추가 시 자동 갱신</h3>
-    <p>이미 Test Plan에 포함된 TC를 다시 추가하면, 기존 TPTC가 최신 TC 데이터로 자동 갱신됩니다.</p>
+    <p>이미 Test Plan에 포함된 TC를 다시 추가하면, 기존 실행 항목이 최신 TC 데이터로 자동 갱신됩니다.</p>
     <ul>
       <li><strong>갱신되는 항목</strong>: TC 이름, 설명, 사전조건, 테스트 스텝, 우선순위, 케이스타입, 컴포넌트, 라벨, 사용자 정의 필드</li>
       <li><strong>보존되는 항목</strong>: 실행 상태(Pass/Fail 등), 마지막 실행 일시, 실행자, 코멘트, 연결 이슈, Retestable 표시</li>
@@ -373,7 +372,7 @@ const TestExecution = () => (
  ├─ 다시 실행 → 4개 Pass, 1개 Fail
  └─ Block 2개 환경 복구 후 재실행 → 2개 Pass
  ↓
-[금요일] 모든 TPTC 완료
+[금요일] 모든 실행 항목 완료
  ├─ Pass: 47개
  ├─ Fail: 1개 (다음 스프린트로 연기)
  ├─ Skip: 2개

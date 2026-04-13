@@ -110,7 +110,7 @@ const TestPlans = () => (
     <ul>
       <li><strong>TP 키</strong>: <code>{'<프로젝트키>-TP-<순번>'}</code> (예: <code>TCAFE-TP-1</code>)</li>
       <li><strong>생성일</strong>: 자동</li>
-      <li><strong>최초 통계</strong>: notYet 100%</li>
+      <li><strong>최초 통계</strong>: Not Yet 100%</li>
     </ul>
 
     <hr />
@@ -138,16 +138,16 @@ const TestPlans = () => (
 
     <h3>추가 시 자동 처리</h3>
     <ul>
-      <li>각 TC가 <strong>TPTC</strong> (Test Plan Test Case) 단위로 변환됨</li>
-      <li>TPTC 키 자동 부여 (예: <code>TPTC-1</code>, <code>TPTC-2</code>)</li>
-      <li>각 TPTC의 초기 실행 상태: <code>notYet</code></li>
-      <li>TC의 현재 상태(이름, 스텝 등)가 <strong>스냅샷</strong>으로 저장됨</li>
+      <li>각 TC가 TP의 <strong>실행 항목</strong> 단위로 변환됨</li>
+      <li>실행 항목 키가 자동 부여됨</li>
+      <li>각 실행 항목의 초기 상태: Not Yet</li>
+      <li>TC의 현재 상태(이름, 스텝 등)가 <strong>추가 시점 기준으로 보존</strong>됨</li>
     </ul>
 
-    <h3>스냅샷이란?</h3>
+    <h3>추가 시점 보존이란?</h3>
     <ul>
-      <li>TP에 추가된 시점의 TC 상태를 그대로 복사</li>
-      <li>TC 원본이 나중에 수정되어도 TP의 TPTC는 변경되지 않음</li>
+      <li>TP에 추가된 시점의 TC 상태를 그대로 복사하여 보존</li>
+      <li>TC 원본이 나중에 수정되어도 TP의 실행 항목은 변경되지 않음</li>
       <li>실행 시점의 데이터가 보존됨 (감사 추적용)</li>
       <li>원본 TC와 다시 동기화하려면 수동으로 다시 추가해야 함</li>
     </ul>
@@ -167,7 +167,7 @@ const TestPlans = () => (
     <ol>
       <li>TP 상세 페이지에서 <strong>+ Add Folder</strong> 클릭</li>
       <li>폴더 이름 입력</li>
-      <li>TPTC를 폴더로 드래그 앤 드롭</li>
+      <li>실행 항목을 폴더로 드래그 앤 드롭</li>
     </ol>
 
     <ScreenshotSlot label="TP 폴더 구조" />
@@ -179,15 +179,15 @@ const TestPlans = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>TP 상세 페이지에서 제거할 TPTC 선택</li>
+      <li>TP 상세 페이지에서 제거할 실행 항목 선택</li>
       <li><strong>Remove</strong> 버튼 클릭</li>
       <li>확인 다이얼로그에서 <strong>Confirm</strong></li>
     </ol>
 
     <h3>주의 사항</h3>
     <ul>
-      <li>TPTC를 제거해도 <strong>원본 TC는 삭제되지 않습니다</strong></li>
-      <li>TPTC만 제거되며 다시 추가 가능합니다</li>
+      <li>실행 항목을 제거해도 <strong>원본 TC는 삭제되지 않습니다</strong></li>
+      <li>실행 항목만 제거되며 다시 추가 가능합니다</li>
       <li>실행 결과도 함께 사라집니다</li>
     </ul>
 
@@ -212,14 +212,14 @@ const TestPlans = () => (
 
     <h3>복제되는 항목</h3>
     <ul>
-      <li>모든 TPTC (실행 결과는 초기화됨)</li>
+      <li>모든 실행 항목 (실행 결과는 초기화됨)</li>
       <li>TP 폴더 구조</li>
       <li>메타데이터 (설명 등)</li>
     </ul>
 
     <h3>복제되지 않는 항목</h3>
     <ul>
-      <li>실행 상태 (모두 <code>notYet</code>으로 초기화)</li>
+      <li>실행 상태 (모두 Not Yet으로 초기화)</li>
       <li>코멘트</li>
       <li>연결된 Issue</li>
     </ul>
@@ -257,8 +257,8 @@ const TestPlans = () => (
     <p>TP의 진행률은 자동으로 계산됩니다.</p>
 
     <h3>계산 공식</h3>
-    <pre><code>{`진행률 = (Pass + Fail + Block + Skip) / 전체 TPTC × 100`}</code></pre>
-    <p><code>notYet</code> 상태인 TPTC는 미진행으로 간주됩니다.</p>
+    <pre><code>{`진행률 = (Pass + Fail + Block + Skip) / 전체 실행 항목 × 100`}</code></pre>
+    <p>Not Yet 상태인 실행 항목은 미진행으로 간주됩니다.</p>
 
     <h3>화면 표시</h3>
     <ul>
@@ -279,7 +279,7 @@ const TestPlans = () => (
 
     <h3>주의 사항</h3>
     <ul>
-      <li>TP 삭제 시 <strong>모든 TPTC와 실행 결과가 함께 삭제됩니다</strong></li>
+      <li>TP 삭제 시 <strong>모든 실행 항목과 실행 결과가 함께 삭제됩니다</strong></li>
       <li>원본 TC는 영향받지 않습니다</li>
       <li>삭제된 데이터는 <strong>복구할 수 없습니다</strong></li>
     </ul>
@@ -311,7 +311,7 @@ const TestPlans = () => (
  └─ 실행 시작
 
 4. 실행 중 (수요일~목요일)
- ├─ Tester들이 각 TPTC를 실행
+ ├─ Tester들이 각 실행 항목을 실행
  ├─ Pass/Fail/Block/Skip 기록
  ├─ Fail 시 Jira Issue 생성
  └─ 진행률 모니터링
@@ -332,8 +332,8 @@ const TestPlans = () => (
         <tr><td>TP 생성 버튼이 안 보임</td><td>권한 없음</td><td>Admin/Team Admin 필요</td></tr>
         <tr><td>TC를 추가했는데 안 보임</td><td>폴더가 닫혀 있음</td><td>폴더 펼치기</td></tr>
         <tr><td>진행률이 갱신 안 됨</td><td>페이지 캐시</td><td>새로고침</td></tr>
-        <tr><td>TPTC 키가 중복</td><td>시스템 오류</td><td>새로고침 후 재시도</td></tr>
-        <tr><td>원본 TC를 수정했는데 TPTC가 안 바뀜</td><td>스냅샷 동작</td><td>TPTC 제거 후 재추가</td></tr>
+        <tr><td>실행 항목 키가 중복</td><td>시스템 오류</td><td>새로고침 후 재시도</td></tr>
+        <tr><td>원본 TC를 수정했는데 실행 항목이 안 바뀜</td><td>추가 시점 보존 동작</td><td>실행 항목 제거 후 재추가</td></tr>
         <tr><td>폴더 구조가 깨짐</td><td>드래그 도중 취소</td><td>폴더 다시 정리</td></tr>
       </tbody>
     </table>
@@ -346,7 +346,7 @@ const TestPlans = () => (
     <ul>
       <li><strong>명확한 이름</strong>: "Sprint 1", "v2.5 Regression"처럼 식별 가능</li>
       <li><strong>시작/종료일 설정</strong>: 일정 추적에 필수</li>
-      <li><strong>소규모 TP</strong>: 50~200개 TPTC가 관리하기 좋음</li>
+      <li><strong>소규모 TP</strong>: 50~200개 실행 항목이 관리하기 좋음</li>
       <li><strong>폴더로 정리</strong>: 큰 TP는 폴더로 그룹화</li>
       <li><strong>상태 관리</strong>: Draft → Open → Completed 흐름 유지 (또는 사용자 정의 상태 활용)</li>
     </ul>
@@ -356,7 +356,7 @@ const TestPlans = () => (
       <li>한 TP에 1000+ TC 몰아넣기</li>
       <li>이름 없는 TP ("Test Plan 1")</li>
       <li>끝나도 Closed 처리 안 하기</li>
-      <li>TPTC 중복 추가 (같은 TC를 여러 번)</li>
+      <li>실행 항목 중복 추가 (같은 TC를 여러 번)</li>
       <li>TP를 영구 보관용으로 쓰기 (TP는 일회성)</li>
     </ul>
 
@@ -364,7 +364,7 @@ const TestPlans = () => (
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-execution">08. 테스트 실행</Link> — TPTC 실행과 결과 기록</li>
+      <li><Link to="/support/guide/test-execution">08. 테스트 실행</Link> — 실행 항목 실행과 결과 기록</li>
       <li><Link to="/support/guide/test-reports">09. 테스트 리포트</Link> — TP 결과 리포트 생성</li>
       <li><Link to="/support/guide/configuration">10. Configuration</Link> → Plan Status 사용자 정의</li>
     </ul>

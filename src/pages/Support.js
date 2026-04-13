@@ -36,10 +36,12 @@ const docSections = [
 
 const faqs = [
   { q: 'The app is not loading or showing a blank screen', a: 'Try hard refreshing your browser (Ctrl+Shift+R), clear browser cache, check if Jira Cloud is accessible, and verify the app is installed in site settings.' },
-  { q: "I can't create or edit test cases", a: 'This is likely a permissions issue. Only Admin or Team Admin roles can create and edit. Contact your project administrator.' },
-  { q: 'Import is failing or showing errors', a: 'Check: file format (CSV/JSON/XLSX), max 5,000 test cases, UTF-8 encoding recommended, "Name" column is required.' },
-  { q: 'How do I change the language?', a: 'T-CAFE supports English, Korean, and Japanese. Language is auto-detected from Jira settings, or manually change via the language selector in the header.' },
-  { q: 'How is my data stored and secured?', a: 'All data, including attachments, is stored on COREPROCESS internal servers in the Republic of Korea (same infrastructure as test data). Test data is encrypted with AES-256. See our Privacy Policy for details.' },
+  { q: "I can't create or edit test cases", a: 'This is likely a permissions issue. Only Admin or Team Admin roles (or custom roles with the appropriate permissions) can create and edit. Contact your project administrator.' },
+  { q: 'Import is failing or showing errors', a: 'Check: file format (CSV/JSON/XLSX), UTF-8 encoding recommended, and "Name" column is required. See the Import/Export guide for details.' },
+  { q: 'How do I change the language?', a: 'T-CAFE supports English, Korean, and Japanese. Language is auto-detected from Jira settings. You can also set a per-project language in Configuration.' },
+  { q: 'How is my data stored and secured?', a: 'All data is stored in a secure data center and encrypted for protection. Role-based access control ensures only authorized users can access your data. See our Privacy Policy for details.' },
+  { q: 'What file types can I upload?', a: 'Most common file types are supported (images, documents, archives, etc.). Executable files (.exe, .bat, .dll, etc.) are blocked for security. Click "Supported Formats" on the Attachments page to see the full list.' },
+  { q: 'Can I create custom roles?', a: 'Yes. Go to Configuration → User Permissions → Roles tab. You can create custom roles and configure permissions across 8 functional areas.' },
 ];
 
 const Support = () => {

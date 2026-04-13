@@ -3,24 +3,24 @@ import { Link } from 'react-router-dom';
 import '../styles/home.css';
 
 const features = [
-  { icon: 'document', color: 'indigo', title: 'Test Case Management', desc: 'Create and manage test cases with comprehensive details including steps, preconditions, and custom fields.',
+  { icon: 'document', color: 'indigo', title: 'Test Case Management', desc: 'Create and manage test cases with folders, steps, preconditions, and user-defined fields.',
     list: ['Single & Factor Combination types', 'Test steps with expected results', 'Import/Export (CSV, JSON, Excel)'] },
   { icon: 'clipboard', color: 'emerald', title: 'Test Plan & Execution', desc: 'Organize test cases into plans and track execution with real-time progress monitoring.',
-    list: ['Pass / Fail / Block / Skip tracking', 'Timeline & milestone view', 'Execution history & comments'] },
+    list: ['Pass / Fail / Block / Skip tracking', 'Milestone timeline view', 'Comments & Jira issue linking'] },
   { icon: 'chart', color: 'purple', title: 'Reports & Analytics', desc: 'Generate detailed test reports with execution statistics and exportable data.',
-    list: ['Execution rate & pass/fail charts', 'Export reports (CSV, Excel)', 'Per-user execution analytics'] },
-  { icon: 'grid', color: 'sky', title: 'Factor Combination', desc: 'Generate optimized test combinations using advanced algorithms to maximize coverage.',
-    list: ['Full Combination & Pairwise', 'Constraint rules (If-Then)', 'Steps matrix with TC mapping'] },
-  { icon: 'bug', color: 'rose', title: 'Defect Integration', desc: 'Create Jira issues directly from test execution with rich text editor and image markup tool.',
-    list: ['Rich text editor (ReactQuill)', 'Image editor with annotations', 'Auto-link issues to test cases'] },
-  { icon: 'attachment', color: 'teal', title: 'Attachment Management', desc: 'Upload and manage test artifacts with chunked file transfer and drag-and-drop support.',
-    list: ['Drag & drop file upload', 'Progress tracking', 'Stored on COREPROCESS internal servers (Republic of Korea)'] },
+    list: ['Execution rate & pass/fail charts', 'Export reports (CSV, Excel)', 'Daily progress tracking'] },
+  { icon: 'grid', color: 'sky', title: 'Factor Combination', desc: 'Generate optimized test combinations to maximize coverage with minimal test cases.',
+    list: ['Full / Pairwise / Mixed algorithms', 'Constraint rules (If-Then, Mutual Exclusion)', 'Steps matrix with TC mapping'] },
+  { icon: 'bug', color: 'rose', title: 'Jira Issue Integration', desc: 'Create and search Jira issues directly from test execution and link them to test cases.',
+    list: ['Create issues with auto-filled details', 'Search and link existing issues', 'Retestable tracking on issue completion'] },
+  { icon: 'attachment', color: 'teal', title: 'Attachment Management', desc: 'Upload and manage test artifacts with drag-and-drop support and secure storage.',
+    list: ['Drag & drop file upload', 'Supported formats guide', 'Data encrypted & secured'] },
   { icon: 'settings', color: 'blue', title: 'Configuration', desc: 'Customize priorities, case types, components, plan statuses, and user-defined fields.',
-    list: ['Custom priorities & case types', 'User-defined fields (10+ types)', 'Component & label management'] },
-  { icon: 'users', color: 'amber', title: 'User Permissions', desc: 'Role-based access control to manage who can create, edit, execute, and configure tests.',
-    list: ['4 roles: Admin, Team Admin, Tester, Developer', 'Per-project permission control', 'Jira user integration'] },
+    list: ['Custom priorities & case types', 'User-defined fields (9 types)', 'Plan status & component management'] },
+  { icon: 'users', color: 'amber', title: 'User Permissions', desc: 'Flexible role-based access control with system roles and custom roles.',
+    list: ['4 system roles + custom roles', 'Per-project permission control', 'User activate / deactivate'] },
   { icon: 'globe', color: 'cyan', title: 'Multi-Language', desc: 'Full internationalization support with automatic language detection from Jira settings.',
-    list: ['English, Korean, Japanese', 'Auto-detect from Jira locale', 'Manual language selector'] },
+    list: ['English, Korean, Japanese', 'Auto-detect from Jira locale', 'Per-project language setting'] },
 ];
 
 const iconMap = {
@@ -79,9 +79,10 @@ const Home = () => {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
               Jira Cloud Plugin
             </div>
-            <h1 className="animate">T-<em>CAFE</em></h1>
+            <div className="animate hero-logo">
+              <img src={require('../assets/logo-archive-white.svg').default || require('../assets/logo-archive-white.svg')} alt="T-CAFE archive" height={56} />
+            </div>
             <p className="hero-tagline animate">Smarter Testing. Better Quality.</p>
-            <p className="hero-subtitle animate">Test Case Archive for Jira</p>
             <p className="hero-description animate">
               Manage your entire testing lifecycle within Jira.
               From test case creation to execution reports,
@@ -96,9 +97,10 @@ const Home = () => {
               </a>
             </div>
             <div className="hero-trust animate">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Factor Combination</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Data Encrypted &amp; Secured</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Custom Roles &amp; Permissions</span>
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Multi-Language (EN/KO/JA)</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> AES-256 Encrypted</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Role-Based Access</span>
             </div>
           </div>
           <div className="hero-image animate">

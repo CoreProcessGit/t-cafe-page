@@ -27,7 +27,7 @@
 .guide-sidebar-header h2 {
   font-size: 18px;
   font-weight: 700;
-  color: #0f172a;
+  color: #0b1929;
   margin: 0 0 4px;
 }
 
@@ -60,16 +60,20 @@
   text-decoration: none;
   border-radius: 6px;
   margin-bottom: 2px;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .guide-sidebar-link:hover {
-  background: #e2e8f0;
-  color: #0f172a;
+  background: #e6f0f8;
+  color: #1a4e87;
+  text-decoration: none;
+}
+a.guide-sidebar-link, a.guide-sidebar-link:visited {
+  text-decoration: none;
 }
 
 .guide-sidebar-link.active {
-  background: #4F46E5;
+  background: #1a4e87;
   color: #ffffff;
   font-weight: 600;
 }
@@ -91,7 +95,7 @@
 .guide-article h1 {
   font-size: 32px;
   font-weight: 800;
-  color: #0f172a;
+  color: #0b1929;
   margin: 0 0 8px;
   letter-spacing: -0.5px;
 }
@@ -106,7 +110,7 @@
 .guide-article h2 {
   font-size: 22px;
   font-weight: 700;
-  color: #0f172a;
+  color: #0b1929;
   margin-top: 48px;
   margin-bottom: 16px;
   padding-bottom: 8px;
@@ -149,16 +153,17 @@
 }
 
 .guide-article a {
-  color: #4F46E5;
+  color: #1a4e87;
   text-decoration: none;
 }
 
 .guide-article a:hover {
-  text-decoration: underline;
+  color: #1a4e87;
+  text-decoration: none;
 }
 
 .guide-article strong {
-  color: #0f172a;
+  color: #0b1929;
   font-weight: 600;
 }
 
@@ -187,7 +192,7 @@
 .guide-article th {
   background: #f8fafc;
   font-weight: 600;
-  color: #0f172a;
+  color: #0b1929;
 }
 
 .guide-article td.center,
@@ -197,7 +202,7 @@
 
 /* Code */
 .guide-article pre {
-  background: #0f172a;
+  background: #0b1929;
   color: #e2e8f0;
   padding: 16px;
   border-radius: 8px;
@@ -314,7 +319,7 @@
 
 .guide-not-found h2 {
   font-size: 22px;
-  color: #0f172a;
+  color: #0b1929;
   margin-bottom: 12px;
 }
 
@@ -328,7 +333,7 @@
   border-bottom: 1px solid #e2e8f0;
   font-size: 14px;
   font-weight: 600;
-  color: #0f172a;
+  color: #0b1929;
   text-align: left;
   cursor: pointer;
 }

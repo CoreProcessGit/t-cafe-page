@@ -1,14 +1,14 @@
 .header { position: fixed; top: 0; left: 0; right: 0; background: #fff; border-bottom: 1px solid #DFE1E6; z-index: 100; }
 .nav { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
 .nav-logo .logo-link { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-.logo-text { font-size: 20px; font-weight: 700; color: #0052CC; letter-spacing: -0.5px; }
-.logo-placeholder { width: 32px; height: 32px; background: #DEEBFF; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.logo-text { font-size: 20px; font-weight: 700; color: #2563a0; letter-spacing: -0.5px; }
+.logo-placeholder { width: 32px; height: 32px; background: #e6f0f8; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
 .logo-placeholder img { width: 32px; height: 32px; border-radius: 6px; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a { font-size: 14px; font-weight: 500; color: #42526E; text-decoration: none; }
-.nav-links a:hover, .nav-links a.active { color: #0052CC; text-decoration: none; }
-.btn-nav { padding: 8px 16px; background: #0052CC; color: #fff !important; border-radius: 3px; font-weight: 500; }
-.btn-nav:hover { background: #0747A6; text-decoration: none !important; }
+.nav-links a { font-size: 14px; font-weight: 500; color: #42526E; text-decoration: none; transition: color 0.2s ease; }
+.nav-links a:hover, .nav-links a.active { color: #1a4e87; text-decoration: none; }
+.btn-nav { padding: 8px 16px; background: #1a4e87; color: #fff !important; border-radius: 3px; font-weight: 500; transition: all 0.2s ease; }
+.btn-nav:hover { background: #163d6b; text-decoration: none !important; }
 
 .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; flex-direction: column; gap: 5px; z-index: 102; }
 .hamburger span { display: block; width: 22px; height: 2px; background: #42526E; border-radius: 2px; transition: all 0.3s ease; }

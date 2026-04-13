@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import archiveLogoWhite from '../assets/logo-archive-white.svg';
 import '../styles/footer.css';
 
 const Footer = () => {
@@ -7,8 +8,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-logo">
-          <span className="logo-text">T-CAFE <em>archive</em></span>
-          <p>Test Design & Management</p>
+          <img src={archiveLogoWhite} alt="T-CAFE archive" height={36} />
         </div>
         <div className="footer-links">
           <Link to="/privacy-policy">Privacy Policy</Link>

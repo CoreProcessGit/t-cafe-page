@@ -24,6 +24,7 @@ const features = [
 ];
 
 const iconMap = {
+  dashboard: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>,
   document: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>,
   clipboard: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>,
   chart: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>,
@@ -38,14 +39,268 @@ const iconMap = {
 const checkIcon = <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="20,6 9,17 4,12"/></svg>;
 
 const screenshotTabs = [
+  { key: 'overview', label: 'Overview', icon: 'dashboard', title: 'Project Overview Dashboard', desc: 'Monitor project status at a glance with announcements board, test milestones timeline, and execution summary.' },
   { key: 'testcases', label: 'Test Cases', icon: 'document', title: 'Test Case Management', desc: 'Create, organize, and manage test cases with folders, filters, and bulk operations.' },
   { key: 'testplans', label: 'Test Plans', icon: 'clipboard', title: 'Test Plan Execution', desc: 'Track test execution progress with status updates, comments, and defect linking.' },
   { key: 'reports', label: 'Reports', icon: 'chart', title: 'Test Reports & Analytics', desc: 'Visualize test execution results with detailed pass/fail statistics and exportable reports.' },
   { key: 'config', label: 'Configuration', icon: 'settings', title: 'Configuration & Settings', desc: 'Customize priorities, case types, components, and user-defined fields to fit your workflow.' },
 ];
 
+const folderIcon = <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>;
+const chevronIcon = <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6,9 12,15 18,9"/></svg>;
+
+const OverviewMock = () => (
+  <div className="ss-mock ov-mock">
+    <div className="ss-tabs">
+      <span className="ss-tab active">Overview</span>
+      <span className="ss-tab">Test Cases</span>
+      <span className="ss-tab">Test Plans</span>
+      <span className="ss-tab">Test Reports</span>
+      <span className="ss-tab">Configuration</span>
+    </div>
+    <div className="ov-board">
+      <div className="ov-board-head"><span>#</span><span>Category</span><span>Title</span><span>Author</span><span>Posted</span></div>
+      <div className="ov-board-row"><span>3</span><span className="tag">Notice</span><span>Release v2.8 QA Kickoff – Regression Scope</span><span className="muted">Sarah Kim</span><span className="muted">2026. 4. 12.</span></div>
+      <div className="ov-board-row"><span>2</span><span className="tag">Notice</span><span>Sprint 23 Test Plan Ready for Review</span><span className="muted">John Park</span><span className="muted">2026. 4. 10.</span></div>
+    </div>
+    <div className="ov-body">
+      <div className="ov-counts">
+        <div className="ov-card"><div className="ov-card-num">2,847</div><div className="ov-card-label">Test Case</div></div>
+        <div className="ov-card"><div className="ov-card-num">42</div><div className="ov-card-label">Test Plan</div></div>
+        <div className="ov-card"><div className="ov-card-num">18</div><div className="ov-card-label">Total Users</div></div>
+      </div>
+      <div className="ov-milestone">
+        <div className="ov-milestone-head">
+          <strong>Test Milestone</strong>
+          <span className="ov-pill">15 / 16 Plans</span>
+          <div className="ov-ms-actions">
+            <span className="ov-btn ov-btn-today">Today</span>
+            <div className="ov-seg">
+              <span className="ov-seg-item active">Month</span>
+              <span className="ov-seg-item">Week</span>
+            </div>
+          </div>
+        </div>
+        <div className="ov-gantt">
+          <div className="ov-gantt-months"><span>Dec</span><span>Jan</span><span>Feb</span><span className="cur">Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span></div>
+          <div className="ov-gantt-grid">
+            <div className="ov-gantt-line" style={{ left: '48%' }} />
+            <div className="ov-gantt-bar skeleton" style={{ left: '4%', width: '14%', top: '8px' }} />
+            <div className="ov-gantt-bar skeleton" style={{ left: '20%', width: '12%', top: '8px' }} />
+            <div className="ov-gantt-bar skeleton blue" style={{ left: '34%', width: '42%', top: '8px' }} />
+            <div className="ov-gantt-bar skeleton blue" style={{ left: '36%', width: '48%', top: '30px' }} />
+            <div className="ov-gantt-bar skeleton blue" style={{ left: '38%', width: '44%', top: '52px' }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const TestCasesMock = () => (
+  <div className="ss-mock tc-mock">
+    <div className="ss-tabs"><span className="ss-tab">Overview</span><span className="ss-tab active">Test Cases</span><span className="ss-tab">Test Plans</span><span className="ss-tab">Test Reports</span><span className="ss-tab">Configuration</span></div>
+    <div className="tc-body">
+      <div className="tc-side">
+        <div className="tc-new">+ New Folder</div>
+        <div className="tc-folder active">{chevronIcon} All Test Cases <span className="tc-cnt">2847</span></div>
+        <div className="tc-folder sub">{folderIcon} Authentication <span className="tc-cnt">184</span></div>
+        <div className="tc-folder sub">{folderIcon} User Management <span className="tc-cnt">312</span></div>
+        <div className="tc-folder sub">{folderIcon} Payment Gateway <span className="tc-cnt">226</span></div>
+        <div className="tc-folder sub">{folderIcon} Dashboard <span className="tc-cnt">148</span></div>
+        <div className="tc-folder sub">{folderIcon} API Tests <span className="tc-cnt">487</span></div>
+        <div className="tc-folder sub">{folderIcon} Mobile App <span className="tc-cnt">592</span></div>
+        <div className="tc-folder sub">{folderIcon} Notifications <span className="tc-cnt">94</span></div>
+        <div className="tc-folder sub">{folderIcon} Reporting <span className="tc-cnt">178</span></div>
+      </div>
+      <div className="tc-main">
+        <div className="tc-toolbar">
+          <span className="tc-btn primary">+ Create Test Case</span>
+          <span className="tc-btn">Clone</span>
+          <span className="tc-btn">Move</span>
+          <span className="tc-btn">Delete</span>
+          <span className="tc-sep" />
+          <span className="tc-btn outline">Import</span>
+          <span className="tc-btn outline">Export</span>
+          <div className="tc-search">Search test cases...</div>
+        </div>
+        <div className="tc-count">1 – 50 of 2847</div>
+        <div className="tc-table">
+          <div className="tc-row tc-head"><span className="c-chk" /><span className="c-key">Key</span><span className="c-name">Name</span><span className="c-type">Type</span><span className="c-comp">Components</span><span className="c-label">Labels</span><span className="c-own">Owner</span><span className="c-prio">Priority</span></div>
+          {[
+            { k: 'QA-2847', n: 'Login with valid credentials', c: 'Auth', l: 'smoke', p: 'High', pc: 'chip-high', av: 'ava-1', ai: 'S' },
+            { k: 'QA-2846', n: 'OAuth2 token refresh on expiration', c: 'Auth', l: 'critical', p: 'Critical', pc: 'chip-highest', av: 'ava-2', ai: 'J' },
+            { k: 'QA-2845', n: 'Password reset email delivery', c: 'Auth', l: 'email', p: 'Medium', pc: 'chip-med', av: 'ava-3', ai: 'M' },
+            { k: 'QA-2844', n: 'Credit card payment processing', c: 'Payment', l: 'critical', p: 'Critical', pc: 'chip-highest', av: 'ava-4', ai: 'E' },
+            { k: 'QA-2843', n: 'Two-factor authentication setup', c: 'Auth', l: 'security', p: 'High', pc: 'chip-high', av: 'ava-1', ai: 'S' },
+            { k: 'QA-2842', n: 'Dashboard widget drag & drop', c: 'Dashboard', l: 'ui', p: 'Low', pc: 'chip-low', av: 'ava-2', ai: 'J' },
+            { k: 'QA-2841', n: 'GET /api/users – pagination', c: 'API', l: 'regression', p: 'Medium', pc: 'chip-med', av: 'ava-3', ai: 'M' },
+          ].map((r, i) => (
+            <div className="tc-row" key={i}>
+              <span className="c-chk"><span className="chk" /></span>
+              <span className="c-key">{r.k}</span>
+              <span className="c-name">{r.n}</span>
+              <span className="c-type"><span className="type-badge">S</span></span>
+              <span className="c-comp"><span className="mini-tag">{r.c}</span></span>
+              <span className="c-label"><span className="mini-tag gray">{r.l}</span></span>
+              <span className="c-own"><span className={`avatar ${r.av}`}>{r.ai}</span></span>
+              <span className="c-prio"><span className={`chip ${r.pc}`}>{r.p}</span></span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const TestPlansMock = () => (
+  <div className="ss-mock tp-mock">
+    <div className="ss-tabs"><span className="ss-tab">Overview</span><span className="ss-tab">Test Cases</span><span className="ss-tab active">Test Plans</span><span className="ss-tab">Test Reports</span><span className="ss-tab">Configuration</span></div>
+    <div className="tp-exec-head">
+      <div>
+        <strong>Test Plans - Sprint 23 – Payment Module Release</strong>
+        <div className="tp-subtabs"><span className="sub">Details</span><span className="sub active">Test Cases</span></div>
+      </div>
+      <div><span className="tc-btn primary">TC Add</span><span className="tc-btn">Back</span></div>
+    </div>
+    <div className="tp-exec-body">
+      <div className="tp-exec-side">
+        <div className="tp-exec-search">Key, Name, TPTC ID…</div>
+        <div className="tp-folder">{chevronIcon} {folderIcon} Authentication <span className="tc-cnt">3</span></div>
+        <div className="tp-tc active"><span className="st-icon pass" />Login with valid credentials</div>
+        <div className="tp-tc"><span className="st-icon fail" />OAuth2 token refresh</div>
+        <div className="tp-tc"><span className="st-icon notyet" />Two-factor authentication</div>
+        <div className="tp-folder">{chevronIcon} {folderIcon} Payment Gateway <span className="tc-cnt">2</span></div>
+        <div className="tp-tc"><span className="st-icon notyet" />Credit card payment</div>
+        <div className="tp-tc"><span className="st-icon notyet" />Refund processing</div>
+      </div>
+      <div className="tp-exec-main">
+        <div className="tp-tctitle"><span className="tag tag-key">TPTC-8201</span><strong>Login with valid credentials</strong></div>
+        <div className="tp-section"><div className="tp-label">▾ Description</div><div className="tp-text">Verify that registered users can log in successfully with correct credentials and are redirected to the dashboard.</div></div>
+        <div className="tp-section"><div className="tp-label">▾ Precondition</div><div className="tp-text">A valid user account must exist and be in active status.</div></div>
+        <div className="tp-section">
+          <div className="tp-label">▾ Test Step</div>
+          <div className="tp-steps">
+            <div className="tp-step-head"><span>#</span><span>Step Summary</span><span>Test Data</span><span>Expected Result</span></div>
+            <div className="tp-step"><span>1</span><span>Navigate to login page</span><span>-</span><span>Login page is displayed</span></div>
+            <div className="tp-step"><span>2</span><span>Enter registered email</span><span>user@company.com</span><span>Email field accepts input</span></div>
+            <div className="tp-step"><span>3</span><span>Enter valid password</span><span>********</span><span>Password field is populated</span></div>
+            <div className="tp-step"><span>4</span><span>Click "Sign In" button</span><span>-</span><span>Redirected to dashboard</span></div>
+          </div>
+        </div>
+        <div className="tp-exec-bar">
+          <strong>Execution Status:</strong>
+          <span className="exec-btn">Not yet</span>
+          <span className="exec-btn pass active">Pass</span>
+          <span className="exec-btn fail">Fail</span>
+          <span className="exec-btn block">Block</span>
+          <span className="exec-btn skip">Skip</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const ReportsMock = () => (
+  <div className="ss-mock rp-mock">
+    <div className="ss-tabs"><span className="ss-tab">Overview</span><span className="ss-tab">Test Cases</span><span className="ss-tab">Test Plans</span><span className="ss-tab active">Test Reports</span><span className="ss-tab">Configuration</span></div>
+    <div className="rp-head">
+      <div><strong>Test Reports - Sprint 23 – Payment Module Release</strong>
+      <div className="rp-desc">End-to-end regression testing for the new payment gateway and authentication flow</div></div>
+      <span className="tc-btn">Back</span>
+    </div>
+    <div className="rp-subtabs"><span className="sub active">Test Reports</span><span className="sub">Retestable TestCases</span></div>
+    <div className="rp-view">
+      <div className="rp-view-label">Select View Type</div>
+      <div className="rp-radios">
+        <label className="rp-radio active"><span className="dot" />Folder View <span className="rp-select">All Levels ▾</span></label>
+        <label className="rp-radio"><span className="dot" />Component View</label>
+        <label className="rp-radio"><span className="dot" />Tester View</label>
+      </div>
+    </div>
+    <div className="rp-metrics-head">
+      <strong>Test Execution Metrics – Folder View</strong>
+      <span className="tc-btn export">Export to Excel</span>
+    </div>
+    <div className="rp-table">
+      <div className="rp-row rp-head-row">
+        <span className="rp-folder" rowSpan={2}>Folder Name</span>
+        <span className="rp-total">TOTAL<small>(A)</small></span>
+        <span className="rp-exec" style={{ gridColumn: 'span 4' }}>EXECUTION RESULTS</span>
+        <span className="rp-weekly">WEEKLY PLANNED<small>(F)</small></span>
+        <span className="rp-notexec">NOT EXECUTED<small>A-B-C-D</small></span>
+        <span className="rp-rate">TOTAL EXECUTION RATE<small>(B+C+D)/(A-E)×100</small></span>
+        <span className="rp-rate">PLANNED EXECUTION RATE<small>(B+C+D)/F×100</small></span>
+      </div>
+      <div className="rp-row rp-subhead">
+        <span /><span />
+        <span className="rp-pass">PASS<small>(B)</small></span>
+        <span className="rp-fail">FAIL<small>(C)</small></span>
+        <span className="rp-block">BLOCKED<small>(D)</small></span>
+        <span className="rp-skip">SKIPPED<small>(E)</small></span>
+        <span /><span /><span /><span />
+      </div>
+      <div className="rp-row total"><span>Total</span><span className="b">184</span><span className="b">142</span><span className="b">12</span><span className="b">6</span><span className="b">4</span><span className="b">160</span><span className="b">20</span><span className="b"><span className="bar"><span className="fill" style={{ width: '87%' }} /></span>87.0%</span><span className="b"><span className="bar"><span className="fill" style={{ width: '100%' }} /></span>100%</span></div>
+      <div className="rp-row"><span>Authentication</span><span>68</span><span>60</span><span>3</span><span>2</span><span>1</span><span>60</span><span>2</span><span><span className="bar"><span className="fill" style={{ width: '97%' }} /></span>97.0%</span><span><span className="bar"><span className="fill" style={{ width: '100%' }} /></span>108%</span></div>
+      <div className="rp-row"><span>Payment Gateway</span><span>52</span><span>40</span><span>5</span><span>3</span><span>2</span><span>44</span><span>2</span><span><span className="bar"><span className="fill red" style={{ width: '92%' }} /></span>92.0%</span><span><span className="bar"><span className="fill" style={{ width: '100%' }} /></span>109%</span></div>
+      <div className="rp-row"><span>User Management</span><span>64</span><span>42</span><span>4</span><span>1</span><span>1</span><span>56</span><span>16</span><span><span className="bar"><span className="fill red" style={{ width: '74%' }} /></span>74.6%</span><span><span className="bar"><span className="fill" style={{ width: '83%' }} /></span>83.9%</span></div>
+    </div>
+  </div>
+);
+
+const ConfigMock = () => (
+  <div className="ss-mock cf-mock">
+    <div className="ss-tabs"><span className="ss-tab">Overview</span><span className="ss-tab">Test Cases</span><span className="ss-tab">Test Plans</span><span className="ss-tab">Test Reports</span><span className="ss-tab active">Configuration</span></div>
+    <div className="cf-body">
+      <div className="cf-side">
+        <div className="cf-group">TEST CASE</div>
+        <div className="cf-item active">User Defined</div>
+        <div className="cf-item">Case Type</div>
+        <div className="cf-item">Component</div>
+        <div className="cf-item">Priorities</div>
+        <div className="cf-group">TEST PLAN</div>
+        <div className="cf-item">Plan Status</div>
+        <div className="cf-group">RETESTABLE</div>
+        <div className="cf-item">Issue Type</div>
+        <div className="cf-group">ADMINISTRATOR SETTINGS</div>
+        <div className="cf-item">User Permissions</div>
+      </div>
+      <div className="cf-main">
+        <h4>User Defined Field</h4>
+        <div className="cf-form">
+          <div className="cf-input">Enter field name</div>
+          <div className="cf-input">Enter field description</div>
+          <div className="cf-input short">Text ▾</div>
+          <div className="cf-check">☐ Required</div>
+          <span className="tc-btn primary">Add</span>
+        </div>
+        <div className="cf-table">
+          <div className="cf-row cf-head"><span /><span>Name</span><span>Description</span><span>Type</span><span>Required</span><span>Actions</span></div>
+          {[
+            { n: 'Requirement ID', d: 'Linked business requirement identifier', t: 'Text', r: true },
+            { n: 'Release Version', d: 'Target release version number', t: 'Dropdown', r: true },
+            { n: 'Test Environment', d: 'Dev / Staging / Production', t: 'Dropdown', r: true },
+            { n: 'Automation Status', d: 'Manual, Automated, or Partial', t: 'Labels', r: false },
+            { n: 'Est. Duration (min)', d: 'Expected execution time', t: 'Number', r: false },
+            { n: 'Last Reviewed', d: 'Date of last peer review', t: 'Date', r: false },
+          ].map((r, i) => (
+            <div className="cf-row" key={i}>
+              <span className="cf-drag">⋮⋮</span>
+              <span>{r.n}</span>
+              <span>{r.d}</span>
+              <span className="cf-select">{r.t} ▾</span>
+              <span><span className={`toggle ${r.r ? 'on' : ''}`} /></span>
+              <span className="cf-act">✎ 🗑</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 const Home = () => {
-  const [activeTab, setActiveTab] = useState('testcases');
+  const [activeTab, setActiveTab] = useState('overview');
   const observerRef = useRef(null);
 
   useEffect(() => {
@@ -111,9 +366,113 @@ const Home = () => {
                 <span className="dot green"></span>
                 <span className="browser-url">your-site.atlassian.net/jira/apps/t-cafe</span>
               </div>
-              <div className="browser-body">
-                {/* Replace with: <img src="/images/hero-screenshot.png" alt="T-CAFE" /> */}
-                <span>App Screenshot</span>
+              <div className="mini-dashboard">
+                <div className="mini-sidebar">
+                  <div className="mini-sidebar-title">Folders</div>
+                  <div className="mini-folder active">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+                    All Tests <span className="mini-count">247</span>
+                  </div>
+                  <div className="mini-folder">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+                    Authentication <span className="mini-count">42</span>
+                  </div>
+                  <div className="mini-folder indent">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+                    Login <span className="mini-count">18</span>
+                  </div>
+                  <div className="mini-folder indent">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+                    OAuth <span className="mini-count">24</span>
+                  </div>
+                  <div className="mini-folder">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+                    Payment <span className="mini-count">67</span>
+                  </div>
+                  <div className="mini-folder">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
+                    API <span className="mini-count">96</span>
+                  </div>
+                </div>
+                <div className="mini-main">
+                  <div className="mini-toolbar">
+                    <div className="mini-btn primary">+ Create</div>
+                    <div className="mini-search">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                      Search...
+                    </div>
+                  </div>
+                  <div className="mini-table">
+                    <div className="mini-row mini-head">
+                      <span className="col-key">KEY</span>
+                      <span className="col-name">NAME</span>
+                      <span className="col-prio">PRIORITY</span>
+                      <span className="col-owner">OWNER</span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-001</span>
+                      <span className="col-name">Login with valid credentials</span>
+                      <span className="col-prio"><span className="chip chip-high">High</span></span>
+                      <span className="col-owner"><span className="avatar ava-1">J</span></span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-002</span>
+                      <span className="col-name">OAuth2 token refresh flow</span>
+                      <span className="col-prio"><span className="chip chip-highest">Highest</span></span>
+                      <span className="col-owner"><span className="avatar ava-2">S</span></span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-003</span>
+                      <span className="col-name">Password reset email delivery</span>
+                      <span className="col-prio"><span className="chip chip-med">Medium</span></span>
+                      <span className="col-owner"><span className="avatar ava-3">M</span></span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-004</span>
+                      <span className="col-name">Session timeout handling</span>
+                      <span className="col-prio"><span className="chip chip-high">High</span></span>
+                      <span className="col-owner"><span className="avatar ava-1">J</span></span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-005</span>
+                      <span className="col-name">Rate limiting on login attempts</span>
+                      <span className="col-prio"><span className="chip chip-low">Low</span></span>
+                      <span className="col-owner"><span className="avatar ava-4">E</span></span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-006</span>
+                      <span className="col-name">Multi-factor authentication setup</span>
+                      <span className="col-prio"><span className="chip chip-highest">Highest</span></span>
+                      <span className="col-owner"><span className="avatar ava-2">S</span></span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-007</span>
+                      <span className="col-name">Remember me token persistence</span>
+                      <span className="col-prio"><span className="chip chip-med">Medium</span></span>
+                      <span className="col-owner"><span className="avatar ava-3">M</span></span>
+                    </div>
+                    <div className="mini-row">
+                      <span className="col-key">TC-008</span>
+                      <span className="col-name">Logout clears all sessions</span>
+                      <span className="col-prio"><span className="chip chip-high">High</span></span>
+                      <span className="col-owner"><span className="avatar ava-1">J</span></span>
+                    </div>
+                  </div>
+                  <div className="mini-footer">
+                    <div className="mini-filters">
+                      <span className="filter-chip">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                        Type: Functional
+                      </span>
+                      <span className="filter-chip">Priority: High +1</span>
+                      <span className="filter-chip clear">Clear all</span>
+                    </div>
+                    <div className="mini-scroll-info">
+                      <span className="scroll-dot" />
+                      Showing 8 of <strong>247</strong>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -168,10 +527,11 @@ const Home = () => {
               <p>{activeScreenshot?.desc}</p>
             </div>
             <div className="screenshot-frame">
-              {/* Replace with: <img src={`/images/screenshot-${activeTab}.png`} alt={activeScreenshot?.title} /> */}
-              <div className="screenshot-placeholder">
-                <span>{activeScreenshot?.title} Screenshot</span>
-              </div>
+              {activeTab === 'overview' && <OverviewMock />}
+              {activeTab === 'testcases' && <TestCasesMock />}
+              {activeTab === 'testplans' && <TestPlansMock />}
+              {activeTab === 'reports' && <ReportsMock />}
+              {activeTab === 'config' && <ConfigMock />}
             </div>
           </div>
         </div>

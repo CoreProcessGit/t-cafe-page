@@ -1,15 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.cc27b04c.css",
-    "main.js": "/static/js/main.ac658bb4.js",
-    "static/media/logo-archive.svg": "/static/media/logo-archive.aaaaab4249663f81420a447f9c0b14c8.svg",
-    "static/media/logo-archive-white.svg": "/static/media/logo-archive-white.1a00fb03d177d48156eb2305314d87d1.svg",
+    "main.css": "/static/css/main.745f12a7.css",
+    "main.js": "/static/js/main.7c3a9ebc.js",
+    "static/media/1. welcome banner.png": "/static/media/1. welcome banner.a634204b1182cf2cc367.png",
+    "static/media/1. 사용자 권한 변경.png": "/static/media/1. 사용자 권한 변경.45a04a643ac742578c31.png",
+    "static/media/2. Test Milestone.png": "/static/media/2. Test Milestone.f2b87f0bfd82e9e054ce.png",
+    "static/media/4. Test Plans.png": "/static/media/4. Test Plans.5423a46c2ae6bf73aefd.png",
+    "static/media/1. board.png": "/static/media/1. board.6d881d33e62853d216d2.png",
+    "static/media/2. write board.png": "/static/media/2. write board.cf76fe1174c3275733dc.png",
+    "static/media/2. T-CAFE 메인 메뉴 구조.png": "/static/media/2. T-CAFE 메인 메뉴 구조.33e58ea39f61de56f68d.png",
+    "static/media/3. Count.png": "/static/media/3. Count.a3471ce3018c8eb21bf0.png",
+    "static/media/logo-archive.svg": "/static/media/logo-archive.1870bbb1d5ddd9050d5f7ca2f82daba9.svg",
+    "static/media/logo-archive-white.svg": "/static/media/logo-archive-white.91c0fae365a75b6ef314c3f070efc95a.svg",
     "index.html": "/index.html",
-    "main.cc27b04c.css.map": "/static/css/main.cc27b04c.css.map",
-    "main.ac658bb4.js.map": "/static/js/main.ac658bb4.js.map"
+    "main.745f12a7.css.map": "/static/css/main.745f12a7.css.map",
+    "main.7c3a9ebc.js.map": "/static/js/main.7c3a9ebc.js.map"
   },
   "entrypoints": [
-    "static/css/main.cc27b04c.css",
-    "static/js/main.ac658bb4.js"
+    "static/css/main.745f12a7.css",
+    "static/js/main.7c3a9ebc.js"
   ]
 }

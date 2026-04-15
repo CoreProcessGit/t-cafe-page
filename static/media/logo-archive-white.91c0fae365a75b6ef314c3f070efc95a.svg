@@ -24,8 +24,8 @@
   <!-- T-CAFE -->
   <text x="40" y="24" font-family="'Segoe UI', Arial, sans-serif" font-weight="900" font-size="22" fill="#ffffff" letter-spacing="-0.5">T-CAFE</text>
 
-  <!-- archive -->
-  <text x="120" y="24" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="16" fill="#4ce0b3" font-style="italic" letter-spacing="0">archive</text>
+  <!-- jira -->
+  <text x="120" y="24" font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-size="16" fill="#4ce0b3" font-style="italic" letter-spacing="0">jira</text>
 
   <!-- 서브 카피 -->
   <text x="41" y="38" font-family="'Segoe UI', Arial, sans-serif" font-weight="700" font-size="10" fill="rgba(255,255,255,0.6)" letter-spacing="0.2">Test Design &amp; Management</text>

@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(ls *.js)",
+      "Bash(grep -rn \">03\\\\. 테스트 케이스\\\\|>04\\\\. 폴더 관리\\\\|>05\\\\. 테스트 스텝\\\\|>06\\\\. Factor Combination\\\\|>07\\\\. 테스트 플랜\\\\|>08\\\\. 테스트 실행\\\\|>09\\\\. 테스트 리포트\\\\|>10\\\\. Configuration\\\\|>11\\\\. Import / Export\\\\|>12\\\\. 첨부파일\\\\|>13\\\\. 게시판\\\\|>14\\\\. Overview\" src/pages/guide/*.js)"
     ]
   }
 }

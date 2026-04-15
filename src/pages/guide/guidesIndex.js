@@ -1,17 +1,17 @@
 import GettingStarted from './01-getting-started';
 import Permissions from './02-permissions';
-import TestCases from './03-test-cases';
-import Folders from './04-test-cases-folders';
-import Steps from './05-test-cases-steps';
-import FactorCombination from './06-factor-combination';
-import TestPlans from './07-test-plans';
-import TestExecution from './08-test-execution';
-import TestReports from './09-test-reports';
-import Configuration from './10-configuration';
-import ImportExport from './11-import-export';
-import Attachments from './12-attachments';
-import Board from './13-board';
-import OverviewDashboard from './14-overview-dashboard';
+import OverviewDashboard from './03-overview-dashboard';
+import Board from './04-board';
+import TestCases from './05-test-cases';
+import Folders from './06-test-cases-folders';
+import Steps from './07-test-cases-steps';
+import FactorCombination from './08-factor-combination';
+import ImportExport from './09-import-export';
+import TestPlans from './10-test-plans';
+import TestExecution from './11-test-execution';
+import TestReports from './12-test-reports';
+import Configuration from './13-configuration';
+import Attachments from './14-attachments';
 import FAQ from './15-faq';
 
 export const guideCategories = [
@@ -23,35 +23,45 @@ export const guideCategories = [
     ],
   },
   {
-    title: '테스트 케이스',
+    title: 'Overview',
     items: [
-      { slug: 'test-cases', title: '03. 테스트 케이스 기본 사용법', component: TestCases },
-      { slug: 'test-cases-folders', title: '04. 폴더 관리', component: Folders },
-      { slug: 'test-cases-steps', title: '05. 테스트 스텝 작성', component: Steps },
+      { slug: 'overview-dashboard', title: '03. Overview 대시보드', component: OverviewDashboard },
+      { slug: 'board', title: '04. 게시판 (Board)', component: Board },
     ],
   },
   {
-    title: 'Factor Combination',
+    title: 'Test Cases',
     items: [
-      { slug: 'factor-combination', title: '06. Factor Combination', component: FactorCombination },
+      { slug: 'test-cases', title: '05. 테스트 케이스 기본 사용법', component: TestCases },
+      { slug: 'test-cases-folders', title: '06. 폴더 관리', component: Folders },
+      { slug: 'test-cases-steps', title: '07. 테스트 스텝 작성', component: Steps },
+      { slug: 'factor-combination', title: '08. Factor Combination', component: FactorCombination },
+      { slug: 'import-export', title: '09. Import / Export', component: ImportExport },
     ],
   },
   {
-    title: '테스트 플랜과 실행',
+    title: 'Test Plans',
     items: [
-      { slug: 'test-plans', title: '07. 테스트 플랜 관리', component: TestPlans },
-      { slug: 'test-execution', title: '08. 테스트 실행', component: TestExecution },
-      { slug: 'test-reports', title: '09. 테스트 리포트', component: TestReports },
+      { slug: 'test-plans', title: '10. 테스트 플랜 관리', component: TestPlans },
+      { slug: 'test-execution', title: '11. 테스트 실행', component: TestExecution },
     ],
   },
   {
-    title: '관리자',
+    title: 'Test Reports',
     items: [
-      { slug: 'configuration', title: '10. Configuration (설정)', component: Configuration },
-      { slug: 'import-export', title: '11. Import / Export', component: ImportExport },
-      { slug: 'attachments', title: '12. 첨부파일', component: Attachments },
-      { slug: 'board', title: '13. 게시판 (Board)', component: Board },
-      { slug: 'overview-dashboard', title: '14. Overview 대시보드', component: OverviewDashboard },
+      { slug: 'test-reports', title: '12. 테스트 리포트', component: TestReports },
+    ],
+  },
+  {
+    title: 'Configuration',
+    items: [
+      { slug: 'configuration', title: '13. Configuration (설정)', component: Configuration },
+    ],
+  },
+  {
+    title: 'Attachments',
+    items: [
+      { slug: 'attachments', title: '14. 첨부파일', component: Attachments },
     ],
   },
   {

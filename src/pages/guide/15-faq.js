@@ -20,7 +20,7 @@ const FAQ = () => (
     <p><strong>A.</strong> Atlassian Marketplace 정책에 따라 일정 사용자 수 이하는 무료입니다. 자세한 가격은 Marketplace 리스팅 페이지를 참고하세요.</p>
 
     <h3>Q. 어떤 언어를 지원하나요?</h3>
-    <p><strong>A.</strong> 한국어, English, 日本語 3개 언어를 지원합니다. 우상단 언어 선택 메뉴에서 변경할 수 있습니다.</p>
+    <p><strong>A.</strong> <strong>English / 한국어 / 日本語</strong> 3개 옵션을 제공합니다. 우상단 언어 선택 메뉴에서 변경할 수 있습니다.</p>
 
     <h3>Q. T-CAFE의 데이터는 어디에 저장되나요?</h3>
     <p><strong>A.</strong> 테스트 데이터와 첨부파일 모두 안전한 데이터센터에 저장됩니다. 자세한 내용은 <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>를 참고하세요.</p>
@@ -39,7 +39,7 @@ const FAQ = () => (
     <p><strong>A.</strong> Overview 페이지의 Welcome Banner에서 "<strong>샘플 데이터 생성</strong>" 버튼을 클릭하세요. <strong>Admin 권한</strong>이 필요합니다. 자세한 내용은 <Link to="/support/guide/getting-started">01. 시작하기</Link>.</p>
 
     <h3>Q. 샘플 데이터를 다시 만들 수 있나요?</h3>
-    <p><strong>A.</strong> 같은 프로젝트에서는 한 번만 생성됩니다. 다시 만들려면 기존 [Sample] 데이터를 모두 삭제 후 시도하세요.</p>
+    <p><strong>A.</strong> 프로젝트에서 이미 한 번 생성을 한 적이 있다면 Welcome Banner 및 Create Sample Data 버튼은 영구 숨김됩니다. 재생성이 필요하면 관리자에게 문의해주세요.</p>
 
     <hr />
 
@@ -49,22 +49,22 @@ const FAQ = () => (
     <p><strong>A.</strong> 기본 4가지 시스템 역할 — <strong>Admin</strong> / <strong>Team Admin</strong> / <strong>Tester</strong> / <strong>Developer</strong>. 프로젝트 필요에 따라 커스텀 역할을 추가로 생성할 수 있습니다. 자세한 매트릭스는 <Link to="/support/guide/permissions">02. 사용자 권한</Link> 참고.</p>
 
     <h3>Q. 본인 권한을 변경할 수 있나요?</h3>
-    <p><strong>A.</strong> 아니요. 본인 권한은 변경할 수 없습니다. 다른 Admin이 변경해야 합니다.</p>
+    <p><strong>A.</strong> 권한을 가진 Admin이라면 자기 자신의 권한/역할도 편집 페이지에서 조작할 수 있습니다. 다만 "프로젝트의 마지막 활성 Admin"을 자기 자신이 강등하거나 비활성화하려 하면 시스템이 자동으로 차단합니다.</p>
 
     <h3>Q. 마지막 Admin을 삭제할 수 있나요?</h3>
-    <p><strong>A.</strong> 아니요. 프로젝트의 마지막 Admin은 시스템이 자동으로 삭제/변경을 차단합니다.</p>
+    <p><strong>A.</strong> 아니요. 프로젝트의 마지막 활성 Admin은 삭제·비활성화·강등이 모두 차단됩니다.</p>
 
     <h3>Q. Configuration 탭이 보이지 않습니다</h3>
     <p><strong>A.</strong> Configuration 탭은 <strong>Admin 또는 Team Admin</strong> 권한일 때만 표시됩니다. Tester / Developer는 접근할 수 없습니다. 권한 변경이 필요하면 Admin에게 요청하세요.</p>
 
     <h3>Q. Tester 권한으로 TC를 만들 수 없나요?</h3>
-    <p><strong>A.</strong> 네. Tester는 TC 실행만 가능하고 생성/수정/삭제는 불가합니다. 작성이 필요하면 Team Admin 이상 권한이 필요합니다.</p>
+    <p><strong>A.</strong> 네. Tester의 <code>testCases</code> 권한은 <code>view: true, execute: true, export: true</code>만 활성되어 있으며 create/edit/delete/import/manageFolder는 모두 false입니다.</p>
 
     <h3>Q. 커스텀 역할을 만들 수 있나요?</h3>
-    <p><strong>A.</strong> Configuration → User Permissions → Roles 탭에서 커스텀 역할을 생성하고 8개 기능 영역별 권한을 세밀하게 설정할 수 있습니다. 시스템 역할(Admin, Team Admin, Tester, Developer)은 삭제할 수 없지만 권한 변경은 가능합니다.</p>
+    <p><strong>A.</strong> Configuration → User Permissions → Roles 탭에서 커스텀 역할을 생성하고 <strong>8개 기능 영역</strong>(overview / testCases / factorCombination / testPlans / reports / configuration / userManagement / attachments)의 권한을 세밀하게 설정할 수 있습니다. 시스템 역할(Admin, Team Admin, Tester, Developer)은 삭제할 수 없지만(권한 변경은 가능).</p>
 
     <h3>Q. 사용자를 비활성화할 수 있나요?</h3>
-    <p><strong>A.</strong> Users 탭에서 Activate 토글을 OFF하면 해당 사용자의 모든 권한이 차단됩니다. 다시 ON하면 즉시 복원됩니다. 비활성 사용자는 Status 필터를 Inactive로 변경하면 볼 수 있습니다.</p>
+    <p><strong>A.</strong> Users 탭에서 Activate 토글을 OFF하면 해당 사용자의 permissions가 전부 false로 반환되어 실질적으로 모든 접근이 차단됩니다. 다시 ON하면 역할의 기본 권한이 즉시 복원됩니다. 비활성 사용자는 Status 필터를 Inactive로 변경하면 목록에 표시됩니다.</p>
 
     <hr />
 
@@ -86,23 +86,23 @@ const FAQ = () => (
     <p><strong>A.</strong> 현재 버전에서는 직접 이동 기능이 없습니다. Export 후 대상 프로젝트에서 Import해야 합니다.</p>
 
     <h3>Q. Test Steps에 이미지를 넣을 수 있나요?</h3>
-    <p><strong>A.</strong> Test Steps 셀 자체는 plain text 입력만 지원합니다 (인라인 이미지 미지원). 시각적 자료가 필요하면 <Link to="/support/guide/attachments">Attachments</Link> 페이지에 파일을 업로드하고, 그 다운로드 링크를 TC의 <strong>Description</strong> 또는 <strong>Precondition</strong>에 붙여넣으면 자동으로 클릭 가능한 링크로 변환됩니다.</p>
+    <p><strong>A.</strong> Test Steps 셀은 텍스트 입력 필드라 이미지를 인라인으로 삽입할 수는 없습니다. 다만 <Link to="/support/guide/attachments">Attachments</Link>에 업로드한 파일의 <code>[ATTACHMENT:id:filename]</code> 태그를 Test Steps(Step / Test Data / Expected Result)뿐 아니라 Description / Precondition / UDF에 붙여넣으면, 보기 모드에서 자동으로 클릭 가능한 다운로드 링크로 변환됩니다.</p>
 
     <hr />
 
     <h2>Factor Combination</h2>
 
     <h3>Q. Factor Combination이란?</h3>
-    <p><strong>A.</strong> 여러 변수의 조합을 자동으로 생성해 TC를 대량 생성하는 기능입니다. 8개 경쟁 앱 중 <strong>T-CAFE만 가지고 있는 차별화 기능</strong>입니다. 자세한 내용은 <Link to="/support/guide/factor-combination">06. Factor Combination</Link>.</p>
+    <p><strong>A.</strong> 여러 변수의 조합을 자동으로 생성해 TC를 대량 생성하는 기능입니다. 8개 경쟁 앱 중 <strong>T-CAFE만 가지고 있는 차별화 기능</strong>입니다. 자세한 내용은 <Link to="/support/guide/factor-combination">08. Factor Combination</Link>.</p>
 
     <h3>Q. Pairwise는 무엇인가요?</h3>
     <p><strong>A.</strong> 모든 두 변수의 쌍이 한 번씩 등장하도록 최소 조합만 만드는 알고리즘입니다. Full Combination 대비 50~80% TC 수가 줄어들지만, 통계적으로 약 75%의 결함을 발견할 수 있습니다.</p>
 
     <h3>Q. Factor를 몇 개까지 만들 수 있나요?</h3>
-    <p><strong>A.</strong> 기술적으로는 제한이 없지만, <strong>5~7개 이내</strong>가 관리하기 좋습니다. 변수가 많아지면 조합 수가 폭발적으로 증가합니다.</p>
+    <p><strong>A.</strong> Factor 자체의 개수 제한은 없지만, <strong>시뮬레이션 결과 조합 수는 최대 5,000개로 안전망이 걸려 있어</strong> 초과 시 생성이 중단됩니다. 실무상 <strong>5~7개 이내</strong>의 Factor로 구성하고, 필요하면 Constraint로 불필요한 조합을 제거하는 것을 권장합니다.</p>
 
     <h3>Q. Factor Combination을 수정하면 기존 TC는 어떻게 되나요?</h3>
-    <p><strong>A.</strong> <strong>Update Test Cases</strong> 버튼을 사용하면, 추가된 조합은 새 TC가 생성되고, 삭제된 조합은 TC가 삭제됩니다. 변경된 조합은 갱신됩니다.</p>
+    <p><strong>A.</strong> 초기 TC 생성은 Factor Combination 상세 화면의 <strong>Create Test Case</strong>(테스트 케이스 생성) 버튼을 사용하고, 이후 Details 탭에서 조합별 속성(이름·설명 등)을 바꾼 뒤 <strong>Apply</strong>(적용) 버튼으로 해당 TC들에 변경 사항을 반영합니다. 자세한 동작은 <Link to="/support/guide/factor-combination">08. Factor Combination</Link>.</p>
 
     <hr />
 
@@ -118,7 +118,7 @@ const FAQ = () => (
     <p><strong>A.</strong> 가능하지만 권장하지 않습니다. 같은 TC가 여러 번 실행되어 통계가 왜곡될 수 있습니다.</p>
 
     <h3>Q. TP를 끝내면 어떻게 처리해야 하나요?</h3>
-    <p><strong>A.</strong> 상태를 <strong>Completed</strong> 또는 <strong>Closed</strong>로 변경하세요. 삭제는 권장하지 않습니다 (감사 추적용으로 보관).</p>
+    <p><strong>A.</strong> 기본 제공 Plan Status는 <strong>Draft / Open / Completed</strong> 3종이며, 완료된 TP는 <strong>Completed</strong>로 변경하는 것을 권장합니다. 팀 내 절차가 별도로 필요하면 Configuration → Plan Status에서 커스텀 상태(예: Closed, Archived 등)를 추가해 사용하세요. 삭제는 감사 추적을 위해 권장하지 않습니다.</p>
 
     <hr />
 
@@ -141,11 +141,11 @@ const FAQ = () => (
       <li><strong>Skip</strong>: 의도적으로 실행 안 함</li>
     </ul>
 
-    <h3>Q. Fail 시 Jira Issue를 자동으로 만들 수 있나요?</h3>
-    <p><strong>A.</strong> 자동은 아니지만, 실행 항목 우측 패널에서 "<strong>+ Create Issue</strong>" 버튼으로 한 번에 만들 수 있습니다. 실행 항목 정보가 자동으로 채워집니다.</p>
+    <h3>Q. Fail 시 Jira Issue를 만들 수 있나요?</h3>
+    <p><strong>A.</strong> 실행 항목 화면에서 <strong>Create Issue</strong> 버튼으로 Jira 이슈 생성 모달을 열 수 있습니다. Summary는 비어 있어 직접 입력해야 하며, Description에는 기본 템플릿이 채워진 상태로 표시됩니다. 완전 자동 생성은 아닙니다.</p>
 
     <h3>Q. 한 번에 여러 실행 항목의 상태를 변경할 수 있나요?</h3>
-    <p><strong>A.</strong> 네. 체크박스로 다중 선택 후 <strong>Bulk Update</strong> 기능을 사용하세요.</p>
+    <p><strong>A.</strong> 아니요. 현재 버전의 bulk 작업은 <strong>이동(Move)</strong>과 <strong>삭제(Delete)</strong>만 제공하며, 여러 실행 항목의 Pass/Fail/Block/Skip 상태를 한 번에 바꾸는 Bulk Update는 제공하지 않습니다. 상태는 각 항목별로 개별 변경해야 합니다.</p>
 
     <h3>Q. 실행 결과를 자동화 도구에서 import할 수 있나요?</h3>
     <p><strong>A.</strong> 현재 버전에서는 수동 입력만 지원합니다. CI/CD 자동화 결과 import는 향후 로드맵에 있습니다.</p>
@@ -155,13 +155,13 @@ const FAQ = () => (
     <h2>첨부파일</h2>
 
     <h3>Q. 첨부파일은 어디에 저장되나요?</h3>
-    <p><strong>A.</strong> 안전한 데이터센터에 저장됩니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
+    <p><strong>A.</strong> 안전한 데이터센터에 저장됩니다. 자세한 내용은 <Link to="/support/guide/attachments">14. 첨부파일</Link>.</p>
 
     <h3>Q. 파일 크기 제한은?</h3>
-    <p><strong>A.</strong> <strong>단일 파일 20 MB / 프로젝트 합계 200 MB</strong>가 한도입니다. 자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
+    <p><strong>A.</strong> 프로젝트 합계 <strong>200 MB</strong>가 한도입니다 (프론트엔드 <code>MAX_STORAGE_SIZE</code>). 단일 파일 한도는 서버 정책에 따라 변동되며, 한도를 초과하면 업로드 시 "단일 파일 한도 초과" 에러가 표시됩니다. 자세한 내용은 <Link to="/support/guide/attachments">14. 첨부파일</Link>.</p>
 
     <h3>Q. 어떤 파일 형식을 지원하나요?</h3>
-    <p><strong>A.</strong> 이미지(PNG/JPG/GIF), 문서(PDF/DOC/XLS), 텍스트, 압축 등 일반적인 형식을 모두 지원합니다. 자세한 목록은 <Link to="/support/guide/attachments">12. 첨부파일</Link>.</p>
+    <p><strong>A.</strong> 이미지(PNG/JPG/GIF), 문서(PDF/DOC/XLS), 텍스트, 압축 등 일반적인 형식을 모두 지원합니다. 자세한 목록은 <Link to="/support/guide/attachments">14. 첨부파일</Link>.</p>
 
     <h3>Q. 첨부파일을 삭제하면 복구할 수 있나요?</h3>
     <p><strong>A.</strong> <strong>불가능</strong>합니다. 삭제 전에 다운로드하여 백업하세요.</p>
@@ -171,7 +171,7 @@ const FAQ = () => (
     <h2>Import / Export</h2>
 
     <h3>Q. 다른 도구(Xray, Zephyr 등)에서 마이그레이션할 수 있나요?</h3>
-    <p><strong>A.</strong> 네. CSV 또는 Excel로 Export 후 T-CAFE에서 Import 가능합니다. 컬럼 매핑이 필요할 수 있습니다. 자세한 내용은 <Link to="/support/guide/import-export">11. Import / Export</Link>.</p>
+    <p><strong>A.</strong> Import는 T-CAFE의 고정된 컬럼명(Key, Name, Description, Objective, Precondition, Type, Case Type, Priority, Owner, Components, Labels, Folder, Folder Path, UDF, Test Steps)을 기준으로 자동 인식합니다. <strong>별도의 컬럼 매핑 UI는 제공하지 않으므로</strong>, 타 도구에서 Export한 파일의 컬럼 헤더를 직접 편집해 T-CAFE 양식에 맞춘 뒤 Import해야 합니다. 자세한 내용은 <Link to="/support/guide/import-export">09. Import / Export</Link>.</p>
 
     <h3>Q. Export 형식은?</h3>
     <p><strong>A.</strong> CSV, JSON, Excel(XLSX) 3가지를 지원합니다.</p>
@@ -179,21 +179,21 @@ const FAQ = () => (
     <h3>Q. Import 시 한글이 깨집니다</h3>
     <p><strong>A.</strong> 파일을 <strong>UTF-8 BOM</strong> 인코딩으로 저장하세요. Excel의 경우 "다른 이름으로 저장" → "CSV UTF-8 (쉼표로 구분)" 선택.</p>
 
-    <h3>Q. 1000개 이상의 TC를 한 번에 Import할 수 있나요?</h3>
-    <p><strong>A.</strong> 가능하지만 권장하지 않습니다. 실패 시 복구가 어려우므로 <strong>소량(100~200개)으로 분할</strong>하여 진행하세요.</p>
+    <h3>Q. 한 번에 몇 개의 TC를 Import할 수 있나요?</h3>
+    <p><strong>A.</strong> 한 번의 Import에서 <strong>최대 5,000개</strong>까지 처리됩니다(<code>MAX_IMPORT_SIZE</code> 한도). 그 이상이면 파일을 나누어 Import해야 하며, 대용량일수록 실패 시 부분 복구가 어려우니 수백 개 단위로 분할을 권장합니다.</p>
 
     <hr />
 
     <h2>게시판</h2>
 
     <h3>Q. 게시판에 글을 쓸 수 있는 사람은?</h3>
-    <p><strong>A.</strong> <strong>Admin 전용</strong>입니다. Team Admin / Tester / Developer는 조회만 가능합니다.</p>
+    <p><strong>A.</strong> <strong>Admin 전용</strong>입니다 (<code>overview.boardPost</code> 권한). Team Admin / Tester / Developer는 조회만 가능합니다.</p>
 
     <h3>Q. 게시글을 수정/삭제할 수 있나요?</h3>
-    <p><strong>A.</strong> Admin만 가능합니다. 본인이 작성한 글이라도 Admin이 아니면 수정/삭제할 수 없습니다.</p>
+    <p><strong>A.</strong> Admin만 가능합니다. 본인이 작성한 글이라도 Admin 권한이 없으면 수정/삭제 버튼이 보이지 않습니다.</p>
 
-    <h3>Q. 공지(Notice)와 일반(General)의 차이는?</h3>
-    <p><strong>A.</strong> 공지는 게시판 상단에 고정 표시되고, 일반 게시글보다 시각적으로 강조됩니다. 자세한 내용은 <Link to="/support/guide/board">13. 게시판</Link>.</p>
+    <h3>Q. 카테고리가 있나요?</h3>
+    <p><strong>A.</strong> 현재 버전에서는 작성 화면에 카테고리 선택 필드가 없으며 모든 게시글이 <code>Notice</code> 카테고리로 저장됩니다. 별도의 "상단 고정(pin)" 기능도 없고 게시글은 작성일 기준 최신순으로만 정렬됩니다. 자세한 내용은 <Link to="/support/guide/board">04. 게시판</Link>.</p>
 
     <hr />
 
@@ -226,7 +226,7 @@ const FAQ = () => (
     <p><strong>A.</strong> Atlassian Marketplace 리스팅 페이지에서 사용자 수에 따른 가격을 확인할 수 있습니다. T-CAFE는 Standard와 Advanced 두 가지 에디션을 제공합니다.</p>
 
     <h3>Q. 환불이 가능한가요?</h3>
-    <p><strong>A.</strong> Atlassian Marketplace의 환불 정책을 따릅니다. 일반적으로 구매 후 30일 이내에 환불 가능합니다.</p>
+    <p><strong>A.</strong> Atlassian Marketplace의 환불 정책을 따릅니다.</p>
 
     <h3>Q. 결제는 어떻게 이루어지나요?</h3>
     <p><strong>A.</strong> Atlassian Marketplace에서 처리됩니다. T-CAFE는 직접 결제를 받지 않습니다.</p>

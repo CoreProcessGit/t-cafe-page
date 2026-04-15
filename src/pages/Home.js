@@ -225,19 +225,19 @@ const ReportsMock = () => (
     <div className="rp-table">
       <div className="rp-row rp-head-row">
         <span className="rp-folder" rowSpan={2}>Folder Name</span>
-        <span className="rp-total">TOTAL<small>(A)</small></span>
+        <span className="rp-total">TOTAL</span>
         <span className="rp-exec" style={{ gridColumn: 'span 4' }}>EXECUTION RESULTS</span>
-        <span className="rp-weekly">WEEKLY PLANNED<small>(F)</small></span>
-        <span className="rp-notexec">NOT EXECUTED<small>A-B-C-D</small></span>
-        <span className="rp-rate">TOTAL EXECUTION RATE<small>(B+C+D)/(A-E)×100</small></span>
-        <span className="rp-rate">PLANNED EXECUTION RATE<small>(B+C+D)/F×100</small></span>
+        <span className="rp-weekly">WEEKLY PLANNED</span>
+        <span className="rp-notexec">NOT EXECUTED</span>
+        <span className="rp-rate">TOTAL EXECUTION RATE</span>
+        <span className="rp-rate">PLANNED EXECUTION RATE</span>
       </div>
       <div className="rp-row rp-subhead">
         <span /><span />
-        <span className="rp-pass">PASS<small>(B)</small></span>
-        <span className="rp-fail">FAIL<small>(C)</small></span>
-        <span className="rp-block">BLOCKED<small>(D)</small></span>
-        <span className="rp-skip">SKIPPED<small>(E)</small></span>
+        <span className="rp-pass">PASS</span>
+        <span className="rp-fail">FAIL</span>
+        <span className="rp-block">BLOCKED</span>
+        <span className="rp-skip">SKIPPED</span>
         <span /><span /><span /><span />
       </div>
       <div className="rp-row total"><span>Total</span><span className="b">184</span><span className="b">142</span><span className="b">12</span><span className="b">6</span><span className="b">4</span><span className="b">160</span><span className="b">20</span><span className="b"><span className="bar"><span className="fill" style={{ width: '87%' }} /></span>87.0%</span><span className="b"><span className="bar"><span className="fill" style={{ width: '100%' }} /></span>100%</span></div>

@@ -4,7 +4,7 @@ import ScreenshotSlot from './ScreenshotSlot';
 
 const Configuration = () => (
   <article className="guide-article">
-    <h1>10. Configuration (설정)</h1>
+    <h1>13. Configuration (설정)</h1>
     <p className="guide-lead">
       Configuration은 T-CAFE의 마스터 데이터를 관리하는 페이지입니다. <strong>Admin / Team Admin</strong>이 접근할 수 있으며, 프로젝트 전체의 동작 방식을 결정합니다.
     </p>
@@ -87,25 +87,29 @@ const Configuration = () => (
 
     <h3>2-2. UDF 추가</h3>
     <ol>
-      <li>Configuration → <strong>Case Field</strong></li>
-      <li><strong>+ Add Field</strong> 클릭</li>
-      <li>입력 항목:
+      <li>Configuration 좌측 메뉴 → <strong>User Defined</strong> (Case Field)</li>
+      <li>상단 입력 영역에서 필드 정보 입력:
         <ul>
           <li><strong>Name</strong> (필수)</li>
+          <li><strong>Description</strong> (선택)</li>
           <li><strong>Type</strong> (필수) — 위 9종 중 선택</li>
-          <li><strong>Default Value</strong> (선택)</li>
-          <li><strong>Required</strong> 여부</li>
+          <li><strong>Required</strong> 토글 (필수 입력 여부)</li>
         </ul>
       </li>
-      <li><strong>Save</strong></li>
+      <li>우측의 <strong>Add</strong> 버튼 클릭</li>
     </ol>
+    <p>타입에 따라 모달에서 추가 설정이 필요합니다 (예: Dropdown/Checkbox의 옵션 목록, Number의 포맷/통화, Time stamp의 기본 시각 등).</p>
 
     <ScreenshotSlot label="UDF 추가" />
 
-    <h3>2-3. Dropdown / Checkbox 타입</h3>
+    <h3>2-3. 타입별 추가 설정</h3>
     <ul>
-      <li>Dropdown 또는 Checkbox를 선택하면 <strong>옵션 목록</strong>을 추가로 설정합니다</li>
-      <li>옵션을 추가/삭제하여 선택지를 정의합니다</li>
+      <li><strong>Dropdown / Checkbox</strong>: 옵션 목록 입력 (이름 + 색상). 하나를 Default로 지정 가능</li>
+      <li><strong>Number</strong>: Format(Number / Percentage / Currency)과 통화(USD/EUR/JPY/KRW/GBP/CNY), 기본 숫자 설정</li>
+      <li><strong>Time stamp</strong>: "Set to current time by default" 옵션 제공</li>
+      <li><strong>Labels</strong>: 기본 라벨 목록 선택 (프로젝트의 Jira 라벨과 기존 UDF 라벨에서 불러옴)</li>
+      <li><strong>People</strong>: 기본 사용자 선택, "Restrict to a single user" 옵션 제공</li>
+      <li><strong>URL</strong>: 일반 웹 주소를 입력하거나 Attachments 페이지의 Copy Link를 붙여넣어 첨부 링크로 활용 가능</li>
     </ul>
 
     <h3>2-4. UDF 활용</h3>
@@ -120,22 +124,23 @@ const Configuration = () => (
     <h2>3. Case Type (케이스 타입)</h2>
     <p>테스트 케이스의 종류를 정의합니다.</p>
 
-    <h3>3-1. 기본 제공 케이스 타입</h3>
+    <h3>3-1. 기본 제공 케이스 타입 (6종)</h3>
     <ul>
       <li><strong>Function</strong> (기본값) — 기능 테스트</li>
       <li><strong>Performance</strong> — 성능 테스트</li>
       <li><strong>Security</strong> — 보안 테스트</li>
+      <li><strong>UI/UX</strong> — UI/UX 테스트</li>
+      <li><strong>API</strong> — API 테스트</li>
       <li><strong>Regression</strong> — 회귀 테스트</li>
     </ul>
 
     <h3>3-2. 케이스 타입 추가</h3>
     <ol>
-      <li>Configuration → <strong>Case Type</strong></li>
-      <li><strong>+ Add Case Type</strong> 클릭</li>
-      <li><strong>Name</strong> 입력 (예: "Usability", "Compatibility")</li>
-      <li><strong>Is Default</strong> 설정 (선택)</li>
-      <li><strong>Save</strong></li>
+      <li>Configuration 좌측 메뉴 → <strong>Case Type</strong></li>
+      <li>상단 입력 영역에서 <strong>Name</strong>과 <strong>Description</strong> 입력</li>
+      <li>우측의 <strong>Add</strong> 버튼 클릭</li>
     </ol>
+    <p>사용 중인 케이스 타입은 삭제할 수 없으며, 관련 TC의 타입을 먼저 변경해야 합니다.</p>
 
     <h3>3-3. 케이스 타입 활용</h3>
     <ul>
@@ -159,16 +164,11 @@ const Configuration = () => (
 
     <h3>4-2. 컴포넌트 추가</h3>
     <ol>
-      <li>Configuration → <strong>Component</strong></li>
-      <li><strong>+ Add Component</strong> 클릭</li>
-      <li>입력 항목:
-        <ul>
-          <li><strong>Name</strong> (필수)</li>
-          <li><strong>Description</strong> (선택)</li>
-        </ul>
-      </li>
-      <li><strong>Save</strong></li>
+      <li>Configuration 좌측 메뉴 → <strong>Component</strong></li>
+      <li>상단 입력 영역에서 <strong>Name</strong>과 <strong>Description</strong> 입력</li>
+      <li>우측의 <strong>Add</strong> 버튼 클릭</li>
     </ol>
+    <p>사용 중인 컴포넌트는 삭제할 수 없으며, 먼저 해당 컴포넌트를 참조하는 TC에서 제거해야 합니다.</p>
 
     <h3>4-3. 컴포넌트 활용</h3>
     <ul>
@@ -181,36 +181,36 @@ const Configuration = () => (
     <h2>5. Priorities (우선순위)</h2>
     <p>테스트 케이스의 우선순위를 정의합니다.</p>
 
-    <h3>5-1. 기본 제공 우선순위</h3>
+    <h3>5-1. 기본 제공 우선순위 (4종)</h3>
     <ul>
-      <li><strong>Critical</strong> (빨강)</li>
-      <li><strong>High</strong> (주황)</li>
-      <li><strong>Medium</strong> (노랑) — 기본값</li>
-      <li><strong>Low</strong> (녹색)</li>
+      <li><strong>Critical</strong> — 색상 <code>#FF5630</code> (빨강 계열), Bar Level 3</li>
+      <li><strong>High</strong> — 색상 <code>#FF7452</code> (주황 계열), Bar Level 3</li>
+      <li><strong>Medium</strong> — 색상 <code>#FFAB00</code> (황색 계열), Bar Level 2, <strong>기본값</strong></li>
+      <li><strong>Low</strong> — 색상 <code>#36B37E</code> (녹색 계열), Bar Level 1</li>
     </ul>
 
     <h3>5-2. 우선순위 추가</h3>
     <ol>
-      <li>Configuration → <strong>Priorities</strong></li>
-      <li><strong>+ Add Priority</strong> 클릭</li>
-      <li>입력 항목:
+      <li>Configuration 좌측 메뉴 → <strong>Priorities</strong></li>
+      <li>상단 입력 영역에서 다음 값 설정:
         <ul>
-          <li><strong>Name</strong> (필수): 예 "긴급", "차단", "Trivial"</li>
-          <li><strong>Color</strong>: 색상 코드 (HEX)</li>
-          <li><strong>Bar Level</strong>: 막대 레벨 (1-3)</li>
-          <li><strong>Order</strong>: 정렬 순서</li>
-          <li><strong>Is Default</strong>: 기본값 여부 (한 개만 가능)</li>
+          <li><strong>Name</strong> (최대 20자)</li>
+          <li><strong>Description</strong></li>
+          <li><strong>Bar Level</strong> — 미리보기 드롭다운에서 0~3 중 선택 (0 = 막대 없음, 3 = 가장 높음)</li>
+          <li><strong>Color</strong> — 컬러 피커로 선택 (HEX 직접 입력 UI는 없음)</li>
         </ul>
       </li>
-      <li><strong>Save</strong></li>
+      <li>우측의 <strong>Add</strong> 버튼 클릭</li>
     </ol>
 
     <ScreenshotSlot label="Priority 추가" />
 
     <h3>5-3. 우선순위 수정 / 삭제</h3>
     <ul>
-      <li>행을 클릭하여 인라인 편집, 또는 Edit 버튼</li>
-      <li>Delete 버튼으로 삭제 (사용 중인 우선순위는 해당 TC에 영향)</li>
+      <li>테이블 행을 더블 클릭하여 인라인 편집, 또는 Edit 버튼 사용</li>
+      <li>Default 토글로 기본값 변경 (기본값은 한 개만 존재)</li>
+      <li>Move Up / Move Down으로 정렬 순서 변경</li>
+      <li>사용 중인 우선순위는 <strong>삭제 불가</strong> — TC의 우선순위를 먼저 변경해야 함</li>
     </ul>
 
     <hr />
@@ -218,28 +218,19 @@ const Configuration = () => (
     <h2>6. Plan Status (플랜 상태)</h2>
     <p>테스트 플랜의 상태를 정의합니다.</p>
 
-    <h3>6-1. 기본 제공 상태</h3>
+    <h3>6-1. 기본 제공 상태 (3종)</h3>
     <ul>
-      <li><strong>Draft</strong> — 초안 (기본값)</li>
-      <li><strong>Open</strong> — 실행 가능</li>
-      <li><strong>Completed</strong> — 완료</li>
+      <li><strong>Draft</strong> — 색상 <code>#6B778C</code> (회색), <strong>기본값</strong></li>
+      <li><strong>Open</strong> — 색상 <code>#0052CC</code> (파랑)</li>
+      <li><strong>Completed</strong> — 색상 <code>#36B37E</code> (녹색)</li>
     </ul>
     <aside className="guide-callout">필요 시 "In Progress", "Closed" 등 사용자 정의 상태를 직접 추가할 수 있습니다.</aside>
 
     <h3>6-2. 상태 추가</h3>
     <ol>
-      <li>Configuration → <strong>Plan Status</strong></li>
-      <li><strong>+ Add Status</strong> 클릭</li>
-      <li>입력 항목:
-        <ul>
-          <li><strong>Name</strong> (필수)</li>
-          <li><strong>Description</strong></li>
-          <li><strong>Color</strong></li>
-          <li><strong>Order</strong></li>
-          <li><strong>Is Default</strong>: 새 TP의 기본 상태</li>
-        </ul>
-      </li>
-      <li><strong>Save</strong></li>
+      <li>Configuration 좌측 메뉴 → <strong>Plan Status</strong></li>
+      <li>상단 입력 영역에서 <strong>Name</strong>, <strong>Description</strong>, <strong>Color</strong> 입력</li>
+      <li>우측의 <strong>Add</strong> 버튼 클릭</li>
     </ol>
 
     <ScreenshotSlot label="Plan Status 관리" />
@@ -375,8 +366,8 @@ const Configuration = () => (
     <h2>다음 단계</h2>
     <ul>
       <li><Link to="/support/guide/permissions">02. 사용자 권한</Link></li>
-      <li><Link to="/support/guide/test-cases">03. 테스트 케이스</Link></li>
-      <li><Link to="/support/guide/import-export">11. Import / Export</Link></li>
+      <li><Link to="/support/guide/test-cases">05. 테스트 케이스</Link></li>
+      <li><Link to="/support/guide/import-export">09. Import / Export</Link></li>
     </ul>
   </article>
 );

@@ -4,7 +4,7 @@ import ScreenshotSlot from './ScreenshotSlot';
 
 const Steps = () => (
   <article className="guide-article">
-    <h1>05. 테스트 스텝 작성</h1>
+    <h1>07. 테스트 스텝 작성</h1>
     <p className="guide-lead">
       테스트 스텝(Test Steps)은 테스터가 실제로 수행해야 할 단계와 기대 결과를 정의하는 가장 중요한 부분입니다.
     </p>
@@ -175,7 +175,7 @@ const Steps = () => (
       <li>구체적이고 실행 가능한 동작 작성</li>
       <li>한 스텝 = 한 동작</li>
       <li>일관된 형식 유지</li>
-      <li>시각적 보조가 필요하면 <Link to="/support/guide/attachments">12. 첨부파일</Link>을 사용해 별도 첨부</li>
+      <li>시각적 보조가 필요하면 <Link to="/support/guide/attachments">14. 첨부파일</Link>을 사용해 별도 첨부</li>
     </ul>
 
     <h3>DON'T</h3>
@@ -190,9 +190,9 @@ const Steps = () => (
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-cases">03. 테스트 케이스 기본 사용법</Link></li>
-      <li><Link to="/support/guide/factor-combination">06. Factor Combination</Link> — 여러 조합을 자동으로 만들기</li>
-      <li><Link to="/support/guide/attachments">12. 첨부파일</Link> — 시각적 자료가 필요할 때</li>
+      <li><Link to="/support/guide/test-cases">05. 테스트 케이스 기본 사용법</Link></li>
+      <li><Link to="/support/guide/factor-combination">08. Factor Combination</Link> — 여러 조합을 자동으로 만들기</li>
+      <li><Link to="/support/guide/attachments">14. 첨부파일</Link> — 시각적 자료가 필요할 때</li>
     </ul>
   </article>
 );

@@ -1,4 +1,3 @@
-/* ===== Guide Page Layout ===== */
 .guide-page {
   display: flex;
   min-height: calc(100vh - 64px);
@@ -78,7 +77,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   font-weight: 600;
 }
 
-/* ===== Guide Content ===== */
 .guide-content-wrap {
   flex: 1;
   display: flex;
@@ -173,7 +171,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   margin: 32px 0;
 }
 
-/* Tables */
 .guide-article table {
   width: 100%;
   border-collapse: collapse;
@@ -200,7 +197,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   text-align: center;
 }
 
-/* Code */
 .guide-article pre {
   background: #0b1929;
   color: #e2e8f0;
@@ -230,7 +226,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   font-family: 'SFMono-Regular', Consolas, 'Courier New', monospace;
 }
 
-/* Callouts */
 .guide-callout {
   background: #fffbeb;
   border-left: 4px solid #f59e0b;
@@ -260,7 +255,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   color: #7f1d1d;
 }
 
-/* DO / DON'T blocks */
 .guide-do,
 .guide-dont {
   margin: 12px 0;
@@ -279,7 +273,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   border-left: 4px solid #ef4444;
 }
 
-/* Screenshot placeholder */
 .guide-screenshot-slot {
   border: 2px dashed #cbd5e1;
   background: #f8fafc;
@@ -310,7 +303,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   color: #94a3b8;
 }
 
-/* Not found */
 .guide-not-found {
   text-align: center;
   padding: 80px 24px;
@@ -323,7 +315,6 @@ a.guide-sidebar-link, a.guide-sidebar-link:visited {
   margin-bottom: 12px;
 }
 
-/* Mobile sidebar toggle */
 .guide-sidebar-toggle {
   display: none;
   width: 100%;

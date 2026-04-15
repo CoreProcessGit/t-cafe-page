@@ -24,28 +24,28 @@ const Permissions = () => (
       </thead>
       <tbody>
         <tr>
-          <td><strong>관리자</strong></td>
+          <td>관리자</td>
           <td>Admin</td>
           <td>최상위</td>
           <td>모든 기능 사용 가능. Configuration, 사용자 권한 관리 포함</td>
         </tr>
         <tr>
-          <td><strong>팀 관리자</strong></td>
+          <td>팀 관리자</td>
           <td>Team Admin</td>
           <td>두 번째</td>
-          <td>TC/TP 생성·편집·삭제, Import, 실행, <strong>Configuration 접근/편집</strong> (사용자·역할 관리 제외)</td>
+          <td>TC/TP 생성·편집·삭제, Import, 실행, Configuration 접근/편집 (사용자·역할 관리 제외)</td>
         </tr>
         <tr>
-          <td><strong>테스터</strong></td>
+          <td>테스터</td>
           <td>Tester</td>
           <td>세 번째</td>
           <td>테스트 실행, 코멘트, Issue 생성/연결, 조회, Export. TC/TP 생성/편집/삭제 불가</td>
         </tr>
         <tr>
-          <td><strong>개발자</strong></td>
+          <td>개발자</td>
           <td>Developer</td>
           <td>최하위</td>
-          <td>조회, Export, <strong>테스트 실행(상태 변경)·코멘트 입력</strong>. TC/TP 생성/편집/삭제 불가, Issue 생성 불가</td>
+          <td>조회, Export, 테스트 실행(상태 변경)·코멘트 입력. TC/TP 생성/편집/삭제 불가, Issue 생성 불가</td>
         </tr>
       </tbody>
     </table>
@@ -55,7 +55,7 @@ const Permissions = () => (
     <h2>2. 커스텀 역할</h2>
     <p>기본 4가지 역할 외에 프로젝트에 맞는 커스텀 역할을 생성할 수 있습니다.</p>
     <ul>
-      <li>Configuration → User Permissions → <strong>Roles 탭</strong>에서 생성/수정/삭제</li>
+      <li>Configuration → User Permissions → Roles 탭에서 생성/수정/삭제</li>
       <li>8개 기능 영역(Overview, Test Cases, Factor Combination, Test Plans, Reports, Configuration, User Management, Attachments)별로 세부 액션 권한을 토글로 설정</li>
       <li>시스템 역할은 이름 변경 불가, 권한 변경 가능, 삭제 불가</li>
       <li>커스텀 역할은 이름과 권한 모두 변경 가능. 배정된 사용자가 없을 때만 삭제 가능</li>
@@ -66,14 +66,14 @@ const Permissions = () => (
     <h2>3. 기본 할당 규칙</h2>
     <p>T-CAFE는 자동으로 사용자에게 역할을 할당합니다:</p>
     <ul>
-      <li><strong>프로젝트 첫 사용자</strong>: <strong>Admin</strong> 자동 할당</li>
-      <li><strong>이후 신규 사용자</strong>: <strong>Tester</strong> 자동 할당</li>
-      <li><strong>역할 변경</strong>: Configuration → User Permissions → <strong>Users 탭</strong>에서 역할 드롭다운으로 변경 (시스템 역할 + 커스텀 역할 모두 표시)</li>
+      <li>프로젝트 첫 사용자: Admin 자동 할당</li>
+      <li>이후 신규 사용자: Tester 자동 할당</li>
+      <li>역할 변경: Configuration → User Permissions → Users 탭에서 역할 드롭다운으로 변경 (시스템 역할 + 커스텀 역할 모두 표시)</li>
     </ul>
 
     <h3>사용자 활성/비활성</h3>
     <ul>
-      <li>Users 탭에서 <strong>Activate</strong> 토글로 사용자를 활성/비활성화</li>
+      <li>Users 탭에서 Activate 토글로 사용자를 활성/비활성화</li>
       <li>비활성화된 사용자는 모든 권한이 차단되어 프로젝트에 접근할 수 없습니다</li>
       <li>Admin이 토글을 다시 ON하면 즉시 복원됩니다</li>
       <li>Status 필터(Active / Inactive / All)로 비활성 사용자를 확인할 수 있습니다</li>
@@ -84,7 +84,29 @@ const Permissions = () => (
     <h2>4. 시스템 역할별 기본 권한 매트릭스</h2>
     <p>아래는 시스템 역할의 기본 권한입니다. Admin이 Roles 탭에서 각 역할의 권한을 변경할 수 있으며, 커스텀 역할은 자유롭게 설정할 수 있습니다.</p>
 
-    <h3>3-1. 테스트 케이스 (Test Cases)</h3>
+    <h3>4-1. Overview (대시보드)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>기능</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Overview 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>통계/차트 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>프로젝트 설명 편집</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>샘플 데이터 생성</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>게시판 글 작성</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>게시판 글 삭제</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>마일스톤 타임라인 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-2. 테스트 케이스 (Test Cases)</h3>
     <table>
       <thead>
         <tr>
@@ -109,7 +131,7 @@ const Permissions = () => (
       </tbody>
     </table>
 
-    <h3>3-2. 폴더 (Folders)</h3>
+    <h3>4-3. 폴더 (Folders)</h3>
     <table>
       <thead>
         <tr>
@@ -130,7 +152,7 @@ const Permissions = () => (
       </tbody>
     </table>
 
-    <h3>3-3. 테스트 플랜 (Test Plans)</h3>
+    <h3>4-4. 테스트 플랜 (Test Plans)</h3>
     <table>
       <thead>
         <tr>
@@ -148,14 +170,31 @@ const Permissions = () => (
         <tr><td>TP 복제 (Clone)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>TP에 TC 추가</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>TP에서 TC 제거</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>테스트 실행 (상태 변경)</strong></td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
-        <tr><td>코멘트 입력</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
+        <tr><td>테스트 실행 (상태 변경)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>코멘트 입력</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Issue 생성/연결</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>TP 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
     </table>
 
-    <h3>3-4. Configuration (설정)</h3>
+    <h3>4-5. Test Reports (리포트)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>기능</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>리포트 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>리포트 Export</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-6. Configuration (설정)</h3>
     <table>
       <thead>
         <tr>
@@ -169,35 +208,13 @@ const Permissions = () => (
       <tbody>
         <tr><td>Configuration 페이지 접근</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>Configuration 편집 (Priorities, Case Types 등)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>사용자 관리 (Users 탭)</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>역할 관리 (Roles 탭)</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>사용자 관리 (Users 탭)</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>역할 관리 (Roles 탭)</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>이슈 타입 조회</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
       </tbody>
     </table>
 
-    <h3>3-5. Overview (대시보드)</h3>
-    <table>
-      <thead>
-        <tr>
-          <th>기능</th>
-          <th className="center">Admin</th>
-          <th className="center">Team Admin</th>
-          <th className="center">Tester</th>
-          <th className="center">Developer</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Overview 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td>통계/차트 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td>프로젝트 설명 편집</td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>샘플 데이터 생성</td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>게시판 글 작성</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>게시판 글 삭제</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>마일스톤 타임라인 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-      </tbody>
-    </table>
-
-    <h3>3-6. 첨부파일 / 리포트</h3>
+    <h3>4-7. Attachments (첨부파일)</h3>
     <table>
       <thead>
         <tr>
@@ -212,8 +229,6 @@ const Permissions = () => (
         <tr><td>첨부파일 업로드</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>첨부파일 다운로드</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>첨부파일 삭제</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td>리포트 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td>리포트 Export</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
     </table>
 
@@ -223,20 +238,20 @@ const Permissions = () => (
 
     <h3>역할 변경 절차</h3>
     <ol>
-      <li>상단 탭에서 <strong>Configuration</strong> 클릭 (Configuration 접근 권한이 있는 역할만 보임)</li>
-      <li>좌측 메뉴에서 <strong>User Permissions</strong> 선택</li>
-      <li><strong>Users 탭</strong>에서 변경할 사용자를 찾기</li>
+      <li>상단 탭에서 Configuration 클릭 (Configuration 접근 권한이 있는 역할만 보임)</li>
+      <li>좌측 메뉴에서 User Permissions 선택</li>
+      <li>Users 탭에서 변경할 사용자를 찾기</li>
       <li>역할 드롭다운에서 새 역할 선택 (시스템 역할 + 커스텀 역할 모두 표시)</li>
       <li>자동 저장됨</li>
     </ol>
 
     <h3>커스텀 역할 생성 절차</h3>
     <ol>
-      <li><strong>Roles 탭</strong> 클릭</li>
-      <li><strong>Add Role</strong> 버튼 클릭</li>
+      <li>Roles 탭 클릭</li>
+      <li>Add Role 버튼 클릭</li>
       <li>역할 이름 입력</li>
       <li>각 기능 영역별 권한 토글 설정</li>
-      <li><strong>Create</strong> 클릭</li>
+      <li>Create 클릭</li>
     </ol>
 
     <ScreenshotSlot label="User Permissions 화면" />
@@ -244,7 +259,7 @@ const Permissions = () => (
     <h3>주의 사항</h3>
     <ul>
       <li>자기 자신의 역할은 변경할 수 없습니다 (다른 Admin이 변경해야 함)</li>
-      <li><strong>마지막 Admin 보호</strong>: 프로젝트의 마지막 Admin은 삭제하거나 다른 역할로 변경할 수 없습니다</li>
+      <li>마지막 Admin 보호: 프로젝트의 마지막 Admin은 삭제하거나 다른 역할로 변경할 수 없습니다</li>
       <li>역할 변경은 즉시 적용됩니다 (사용자가 페이지를 새로고침하면 반영)</li>
     </ul>
 
@@ -264,24 +279,24 @@ const Permissions = () => (
 
     <h3>시나리오 A: QA 팀</h3>
     <ul>
-      <li><strong>QA 매니저</strong>: Admin</li>
-      <li><strong>QA 엔지니어</strong>: Team Admin (TC 작성/관리)</li>
-      <li><strong>테스터</strong>: Tester (실행 전담)</li>
-      <li><strong>개발자</strong>: Developer (조회만)</li>
+      <li>QA 매니저: Admin</li>
+      <li>QA 엔지니어: Team Admin (TC 작성/관리)</li>
+      <li>테스터: Tester (실행 전담)</li>
+      <li>개발자: Developer (조회만)</li>
     </ul>
 
     <h3>시나리오 B: 작은 팀</h3>
     <ul>
-      <li><strong>개발 리드</strong>: Admin</li>
-      <li><strong>모든 팀원</strong>: Team Admin (자유롭게 작성/수정)</li>
+      <li>개발 리드: Admin</li>
+      <li>모든 팀원: Team Admin (자유롭게 작성/수정)</li>
       <li>별도 분리 없음</li>
     </ul>
 
     <h3>시나리오 C: 개발자 직접 작성</h3>
     <ul>
-      <li><strong>개발 리드</strong>: Admin</li>
-      <li><strong>개발자</strong>: Team Admin (자기 코드의 TC 직접 작성)</li>
-      <li><strong>별도 QA 인력 없음</strong></li>
+      <li>개발 리드: Admin</li>
+      <li>개발자: Team Admin (자기 코드의 TC 직접 작성)</li>
+      <li>별도 QA 인력 없음</li>
     </ul>
 
     <hr />
@@ -333,8 +348,8 @@ const Permissions = () => (
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-cases">03. 테스트 케이스 기본 사용법</Link></li>
-      <li><Link to="/support/guide/configuration">10. Configuration (설정)</Link></li>
+      <li><Link to="/support/guide/test-cases">05. 테스트 케이스 기본 사용법</Link></li>
+      <li><Link to="/support/guide/configuration">13. Configuration (설정)</Link></li>
     </ul>
   </article>
 );

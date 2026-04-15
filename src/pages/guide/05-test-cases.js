@@ -4,7 +4,7 @@ import ScreenshotSlot from './ScreenshotSlot';
 
 const TestCases = () => (
   <article className="guide-article">
-    <h1>03. 테스트 케이스 기본 사용법</h1>
+    <h1>05. 테스트 케이스 기본 사용법</h1>
     <p className="guide-lead">
       테스트 케이스(Test Case, 이하 TC)는 T-CAFE의 가장 기본 단위입니다. 본 페이지에서는 TC의 생성, 조회, 수정, 삭제 방법을 안내합니다.
     </p>
@@ -41,7 +41,7 @@ const TestCases = () => (
     <ul>
       <li>Factor Combination 기능으로 자동 생성된 TC</li>
       <li>여러 변수의 조합을 검증</li>
-      <li>상세 내용은 <Link to="/support/guide/factor-combination">06. Factor Combination</Link> 참고</li>
+      <li>상세 내용은 <Link to="/support/guide/factor-combination">08. Factor Combination</Link> 참고</li>
     </ul>
 
     <hr />
@@ -53,30 +53,45 @@ const TestCases = () => (
 
     <h3>화면 구성</h3>
     <ul>
-      <li><strong>좌측</strong>: 폴더 트리 (TC가 폴더별로 정리됨)</li>
-      <li><strong>중앙</strong>: TC 목록 (테이블 형식)</li>
-      <li><strong>우측 또는 하단</strong>: 선택한 TC 상세 정보</li>
+      <li><strong>좌측</strong>: 폴더 트리 (TC가 폴더별로 정리됨, 좌측 메뉴 폭 조절 가능)</li>
+      <li><strong>우측</strong>: TC 목록 (테이블 형식, 선택한 폴더의 TC 표시)</li>
     </ul>
 
     <ScreenshotSlot label="Test Cases 메인 화면" />
 
-    <h3>표시 컬럼</h3>
-    <p>기본적으로 다음 정보가 표시됩니다:</p>
+    <h3>TC 상세 보기 / 편집</h3>
     <ul>
-      <li>TC Key (예: PROJ-1, PROJ-2)</li>
-      <li>이름</li>
-      <li>우선순위</li>
-      <li>케이스 타입</li>
-      <li>컴포넌트</li>
-      <li>라벨</li>
-      <li>소유자</li>
-      <li>마지막 수정일</li>
+      <li>목록에서 TC의 <strong>Key</strong> 또는 <strong>이름</strong>을 클릭하면 별도의 <strong>TC 상세/편집 페이지</strong>로 이동합니다</li>
+      <li>TC 타입에 따라 화면이 다릅니다: <strong>Single TC는 편집 페이지</strong>, <strong>Factor TC는 Factor Combination 상세 페이지</strong>로 이동</li>
+      <li>목록으로 돌아오면 이전 스크롤 위치와 표시 개수가 유지됩니다</li>
+    </ul>
+
+    <h3>표시 컬럼</h3>
+    <p>기본적으로 다음 10개 컬럼이 표시됩니다:</p>
+    <ul>
+      <li>TC Key (예: <code>PROJ-1</code>, <code>PROJ-2</code>)</li>
+      <li>이름 (Name)</li>
+      <li>타입 (Type) — Single(S) / Factor(F) 배지</li>
+      <li>컴포넌트 (Components)</li>
+      <li>라벨 (Labels)</li>
+      <li>소유자 (Owner)</li>
+      <li>케이스 타입 (Case Type)</li>
+      <li>우선순위 (Priority)</li>
+      <li>생성일 (Created)</li>
+      <li>수정일 (Updated)</li>
+    </ul>
+
+    <h3>생성일 / 수정일 표시 방식</h3>
+    <ul>
+      <li>셀에는 날짜만 표시됩니다</li>
+      <li>마우스를 올리면 날짜 + 시간이 툴팁으로 표시됩니다</li>
     </ul>
 
     <h3>컬럼 표시/숨기기</h3>
     <ul>
       <li>우상단 컬럼 설정 버튼으로 표시할 컬럼을 선택할 수 있습니다</li>
-      <li>설정은 사용자별로 저장됩니다</li>
+      <li>사용자 정의 필드(UDF)도 동일한 메뉴에서 토글 가능합니다</li>
+      <li>설정은 프로젝트별, 사용자별로 저장됩니다</li>
     </ul>
 
     <h3>검색과 필터</h3>
@@ -93,24 +108,50 @@ const TestCases = () => (
     <h3>절차</h3>
     <ol>
       <li>Test Cases 페이지에서 TC를 생성할 폴더 선택</li>
-      <li><strong>+ Create Test Case</strong> 버튼 클릭</li>
-      <li>또는 폴더 우클릭 → <strong>Add Test Case</strong></li>
-      <li>TC 작성 화면이 열림</li>
+      <li>상단의 <strong>+ Create Test Case</strong> 버튼 클릭</li>
+      <li>드롭다운 메뉴에서 <strong>Single</strong> 또는 <strong>Factor Combination</strong> 선택</li>
+      <li>선택한 유형의 TC 작성 화면이 열림</li>
     </ol>
+    <aside className="guide-callout info">
+      본 페이지(05)에서는 <strong>Single</strong> 생성을 다룹니다. Factor Combination 생성은 <Link to="/support/guide/factor-combination">08. Factor Combination</Link>에서 설명합니다.
+    </aside>
 
     <ScreenshotSlot label="TC 생성 버튼" />
 
     <h3>입력 항목</h3>
+    <p>TC 작성 화면은 상단 고정 입력과 3개의 접이식 섹션(Detail / User Defined Field / Test Steps)으로 구성됩니다. 실제 화면 순서대로 안내합니다.</p>
+
+    <h4>상단 고정 입력</h4>
     <ol>
-      <li><strong>이름</strong> (필수)</li>
-      <li><strong>설명</strong> — TC가 무엇을 검증하는지</li>
-      <li><strong>우선순위</strong> — Configuration → Priorities에서 정의된 항목 중 선택</li>
-      <li><strong>케이스 타입</strong> — Configuration → Case Types에서 정의된 항목 중 선택</li>
-      <li><strong>컴포넌트</strong> — Configuration → Components에서 정의된 항목 중 다중 선택 가능</li>
-      <li><strong>라벨</strong> — 자유 입력 (Jira 라벨과 별개)</li>
-      <li><strong>사전 조건 (Precondition)</strong> — 리치 텍스트 에디터</li>
-      <li><strong>테스트 스텝 (Test Steps)</strong> — 자세한 작성법은 <Link to="/support/guide/test-cases-steps">05. 테스트 스텝 작성</Link></li>
+      <li><strong>Folder</strong> — TC를 배치할 폴더 선택 (목록에서 선택한 폴더가 기본값)</li>
+      <li><strong>Name</strong> (필수) — TC 제목</li>
+      <li><strong>Description</strong> — TC가 무엇을 검증하는지 설명</li>
+      <li><strong>Precondition (사전 조건)</strong> — 테스트 실행 전 갖춰져야 할 조건</li>
     </ol>
+
+    <h4>"Detail" 섹션 (펼쳐서 입력)</h4>
+    <ol>
+      <li><strong>Priority</strong> — Configuration → Priorities에서 정의된 항목 중 선택</li>
+      <li><strong>Case Type</strong> — Configuration → Case Types에서 정의된 항목 중 선택</li>
+      <li><strong>Owner</strong> — 프로젝트 멤버 중에서 소유자 선택 (드롭다운)</li>
+      <li><strong>Components</strong> — Configuration → Components에서 정의된 항목 중 선택</li>
+      <li><strong>Labels</strong> — 자유 입력 (Jira 라벨과 별개). 기존 입력된 라벨은 자동완성 제안됨</li>
+    </ol>
+
+    <h4>"User Defined Field" 섹션 (펼쳐서 입력)</h4>
+    <ul>
+      <li>Configuration → User Defined Fields에서 정의된 필드가 모두 표시됨</li>
+      <li>필드 타입(텍스트, 숫자, 드롭다운, 체크박스, 날짜, URL 등)에 맞는 입력 UI가 표시됨</li>
+      <li>Configuration에서 <strong>필수 (*)</strong>로 지정된 필드는 반드시 입력해야 저장 가능</li>
+      <li>정의된 UDF가 없으면 "No user defined fields" 메시지 표시</li>
+    </ul>
+
+    <h4>"Test Steps" 섹션 (펼쳐서 입력)</h4>
+    <ul>
+      <li>Step / Test Data / Expected Result 3개 컬럼의 테이블 형식</li>
+      <li>행 추가/삭제, 드래그 앤 드롭으로 순서 변경 가능</li>
+      <li>자세한 작성법은 <Link to="/support/guide/test-cases-steps">07. 테스트 스텝 작성</Link></li>
+    </ul>
 
     <h3>저장</h3>
     <ul>
@@ -144,7 +185,8 @@ const TestCases = () => (
 
     <h3>수정 이력</h3>
     <ul>
-      <li>수정 시 마지막 수정자와 수정일이 자동 기록됨</li>
+      <li>수정 시 <strong>수정일(updated_at)</strong>이 자동 갱신되며, 목록의 "수정일" 컬럼에 반영됩니다</li>
+      <li>생성일(created_at)은 TC 최초 생성 시점으로 고정되며 변경되지 않습니다</li>
     </ul>
 
     <hr />
@@ -167,7 +209,10 @@ const TestCases = () => (
     <h3>주의 사항</h3>
     <ul>
       <li>삭제된 TC는 <strong>복구할 수 없습니다</strong></li>
-      <li>TP에 포함된 TC는 삭제 시 해당 TP에서도 자동 제거됩니다</li>
+      <li>
+        <strong>TP(Test Plan)에 이미 추가된 TC는 TP에서 그대로 유지됩니다.</strong>
+        TP에 추가되는 시점에 TC의 스냅샷(이름, 스텝, Precondition 등)이 TP 내부에 <strong>복사</strong>되어 저장되므로, 원본 TC를 삭제해도 TP 내 실행 기록과 데이터는 영향을 받지 않습니다.
+      </li>
       <li>Factor Combination으로 생성된 TC를 삭제하면 해당 Factor 정의는 유지됩니다</li>
     </ul>
 
@@ -185,26 +230,14 @@ const TestCases = () => (
     <h3>절차</h3>
     <ol>
       <li>복제할 TC 선택</li>
-      <li><strong>Clone</strong> 또는 <strong>Copy</strong> 버튼 클릭</li>
-      <li>복사본의 새 이름 입력</li>
-      <li>복사 위치(폴더) 선택</li>
-      <li>자동으로 새 키 부여됨</li>
+      <li><strong>Clone</strong> 버튼 클릭</li>
+      <li>원본과 동일한 폴더에 자동으로 복제됨 (원본 이름 뒤에 <code> (Copy)</code> 접미사 추가, 새 키 자동 부여)</li>
     </ol>
 
-    <h3>복제 시 복사되는 항목</h3>
+    <h3>복제되는 항목</h3>
     <ul>
-      <li>이름, 설명, 우선순위, 케이스 타입, 컴포넌트, 라벨, 사전조건, 테스트 스텝</li>
+      <li>해당 TC의 모든 내용 (이름·설명·우선순위·케이스 타입·소유자·컴포넌트·라벨·사전조건·테스트 스텝·사용자 정의 필드 등)</li>
     </ul>
-
-    <h3>복제 시 복사되지 않는 항목</h3>
-    <ul>
-      <li>실행 결과 (TP에서의 실행 이력)</li>
-      <li>코멘트</li>
-    </ul>
-
-    <aside className="guide-callout info">
-      첨부파일은 TC 자체에 직접 첨부되는 형태가 아니라 <Link to="/support/guide/attachments">Attachments 페이지</Link>에 업로드된 파일을 본문/사전조건의 링크로 참조하는 방식이라서, TC를 복제하면 본문에 들어 있던 링크 텍스트가 그대로 복사됩니다. 별도의 파일 복제 동작은 없습니다.
-    </aside>
 
     <hr />
 
@@ -213,15 +246,10 @@ const TestCases = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>이동할 TC 선택 (드래그 앤 드롭 또는 우클릭)</li>
-      <li>드래그 → 대상 폴더에 드롭</li>
-      <li>또는 우클릭 → <strong>Move to</strong> → 대상 폴더 선택</li>
+      <li>이동할 TC 선택 (단일 또는 다중)</li>
+      <li>상단의 <strong>Move</strong> 버튼 클릭</li>
+      <li>폴더 선택 창에서 원하는 폴더를 선택하여 이동</li>
     </ol>
-
-    <h3>다중 이동</h3>
-    <ul>
-      <li>여러 TC를 한 번에 다른 폴더로 이동 가능</li>
-    </ul>
 
     <hr />
 
@@ -252,9 +280,9 @@ const TestCases = () => (
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-cases-folders">04. 폴더 관리</Link> — TC를 폴더로 정리하는 방법</li>
-      <li><Link to="/support/guide/test-cases-steps">05. 테스트 스텝 작성</Link> — 자세한 스텝 작성 가이드</li>
-      <li><Link to="/support/guide/factor-combination">06. Factor Combination</Link> — 자동 조합 생성</li>
+      <li><Link to="/support/guide/test-cases-folders">06. 폴더 관리</Link> — TC를 폴더로 정리하는 방법</li>
+      <li><Link to="/support/guide/test-cases-steps">07. 테스트 스텝 작성</Link> — 자세한 스텝 작성 가이드</li>
+      <li><Link to="/support/guide/factor-combination">08. Factor Combination</Link> — 자동 조합 생성</li>
     </ul>
   </article>
 );

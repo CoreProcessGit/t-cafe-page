@@ -10,7 +10,6 @@ const GuideLayout = () => {
   const guide = guideMap[slug];
   const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
 
-  // 라우트 변경 시 사이드바 접기 (모바일)
   useEffect(() => {
     setSidebarCollapsed(true);
   }, [location.pathname]);

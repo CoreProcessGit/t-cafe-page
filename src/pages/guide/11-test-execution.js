@@ -4,7 +4,7 @@ import ScreenshotSlot from './ScreenshotSlot';
 
 const TestExecution = () => (
   <article className="guide-article">
-    <h1>08. 테스트 실행</h1>
+    <h1>11. 테스트 실행</h1>
     <p className="guide-lead">
       테스트 플랜 안의 테스트 케이스(실행 항목)를 실제로 실행하고 결과를 기록하는 과정입니다. T-CAFE의 핵심 사용 흐름입니다.
     </p>
@@ -86,10 +86,11 @@ const TestExecution = () => (
 
     <h3>Step 1: 실행 항목 선택</h3>
     <ol>
-      <li>TP 상세 페이지의 좌측에서 실행할 실행 항목 클릭</li>
-      <li>우측에 실행 항목 상세가 표시됨</li>
+      <li>Test Plans 목록에서 실행할 TP 클릭 → TP 상세 페이지 진입</li>
+      <li>상단의 <strong>Test Cases</strong> 탭 클릭 → 실행 화면으로 이동</li>
+      <li>좌측 폴더 트리·목록에서 실행할 실행 항목(TC) 클릭</li>
+      <li>우측 패널에 해당 실행 항목의 상세 정보가 표시됩니다 (이름, Precondition, Test Step, 연결된 Issue 등)</li>
     </ol>
-    <p>TC 상세 화면은 기본적으로 View 모드로 열리며, Admin/Team Admin은 Edit 버튼을 클릭해야 편집이 가능합니다. View 모드에서는 Description, Precondition, Test Step에 첨부파일 링크가 클릭 가능한 다운로드 링크로 표시됩니다.</p>
 
     <h3>Step 2: 사전 조건 확인</h3>
     <ul>
@@ -106,25 +107,19 @@ const TestExecution = () => (
 
     <ScreenshotSlot label="스텝 수행 화면" />
 
-    <h3>Step 4: 결과 기록</h3>
-    <ul>
-      <li>스텝마다 개별 상태 기록 가능 (Pass/Fail)</li>
-      <li>또는 전체 실행 항목 단위로 한 번에 기록</li>
-    </ul>
-
-    <h3>Step 5: 최종 상태 선택</h3>
+    <h3>Step 4: 상태 선택</h3>
     <ol>
-      <li>우측 패널의 <strong>Status</strong> 드롭다운 클릭</li>
-      <li>Pass / Fail / Block / Skip 중 선택</li>
-      <li>자동 저장됨</li>
+      <li>우측 패널에서 <strong>Pass / Fail / Block / Skip / Not Yet</strong> 중 해당 상태 선택</li>
+      <li>클릭 즉시 자동 저장됨</li>
+      <li><strong>Block</strong> 또는 <strong>Skip</strong> 선택 시 사유 입력 창이 표시되므로 간단한 사유 입력 후 확정</li>
     </ol>
+    <p>상태는 실행 항목 단위로 기록되며, T-CAFE는 스텝 단위 개별 Pass/Fail 기록 기능을 제공하지 않습니다.</p>
 
-    <ScreenshotSlot label="Status 변경 드롭다운" />
+    <ScreenshotSlot label="Status 변경" />
 
-    <h3>Step 6: 다음 실행 항목으로 이동</h3>
+    <h3>Step 5: 다음 실행 항목으로 이동</h3>
     <ul>
-      <li>좌측에서 다음 실행 항목 클릭</li>
-      <li>또는 Next 버튼 (제공되는 경우)</li>
+      <li>좌측 목록에서 다음 실행 항목을 직접 클릭하여 이동</li>
     </ul>
 
     <hr />
@@ -142,17 +137,15 @@ const TestExecution = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>실행 항목 우측의 <strong>Comments</strong> 섹션</li>
-      <li><strong>+ Add Comment</strong> 클릭</li>
-      <li>리치 텍스트 에디터에 내용 작성</li>
-      <li><strong>Submit</strong></li>
+      <li>실행 항목 우측 패널의 <strong>Comments</strong> 섹션을 펼침</li>
+      <li>입력란(텍스트 영역)에 내용 작성 — 리치 텍스트 에디터가 아닌 단순 텍스트 입력</li>
+      <li><strong>Commit</strong> 버튼 클릭 (또는 Ctrl+Enter)으로 저장</li>
     </ol>
 
     <h3>코멘트 특징</h3>
     <ul>
-      <li>자동으로 작성자, 작성일이 기록됨</li>
-      <li>여러 코멘트 누적 가능 (시간순 정렬)</li>
-      <li>수정/삭제는 작성자 본인 또는 Admin</li>
+      <li>저장된 코멘트는 실행 이력(history)으로 누적되며, 현재 상태/작성자/작성 시각과 함께 기록됨</li>
+      <li>코멘트 자체에 대한 인라인 수정·삭제 UI는 제공되지 않음 (이력에 누적됨)</li>
     </ul>
 
     <ScreenshotSlot label="코멘트 화면" />
@@ -166,34 +159,25 @@ const TestExecution = () => (
 
     <h4>절차</h4>
     <ol>
-      <li>실행 항목 우측의 <strong>Linked Issues</strong> 섹션</li>
-      <li><strong>+ Create Issue</strong> 버튼</li>
-      <li>Issue 작성 화면이 열림 (Jira 표준 폼)</li>
-      <li>입력 항목:
+      <li>실행 항목 우측 패널의 <strong>Issues</strong> 섹션 열기</li>
+      <li>Issue 생성 버튼 클릭 → CreateIssueModal이 열림</li>
+      <li>모달에서 입력:
         <ul>
-          <li>프로젝트 (기본값: 현재 T-CAFE 프로젝트)</li>
-          <li>이슈 타입 (Bug, Task 등)</li>
-          <li>요약 (Summary) — 실행 항목 이름이 자동 입력됨</li>
-          <li>설명 (Description) — 실패 스텝과 코멘트가 자동 채워짐</li>
-          <li>우선순위</li>
-          <li>담당자</li>
+          <li>프로젝트: 현재 Jira 프로젝트 자동 사용</li>
+          <li>Issue Type: Bug가 있으면 자동 선택 (없으면 첫 번째 타입)</li>
+          <li>Reporter: 현재 사용자 자동 설정</li>
+          <li>Summary: 사용자가 직접 입력</li>
+          <li>Description: 기본 템플릿(재현 / 테스트 데이터 / 결함 설명 빈칸)이 제공되며, 사용자가 리치 텍스트 에디터로 채워 넣음</li>
+          <li>Assignee / 커스텀 필드 등 프로젝트별 필드</li>
+          <li>필요 시 파일/이미지 첨부 (이미지 에디터 제공)</li>
         </ul>
       </li>
-      <li><strong>Create</strong></li>
+      <li><strong>Create</strong> 버튼으로 Jira에 Issue 생성 → 실행 항목에 자동 연결</li>
     </ol>
 
-    <h4>자동 생성 정보</h4>
-    <ul>
-      <li><strong>요약</strong>: <code>{`[Failed] {실행 항목 이름}`}</code></li>
-      <li><strong>설명</strong>:
-        <ul>
-          <li>실행 항목 키와 이름</li>
-          <li>실패한 스텝 정보</li>
-          <li>TP 정보</li>
-          <li>T-CAFE 링크 (실행 항목으로 다시 돌아가는 링크)</li>
-        </ul>
-      </li>
-    </ul>
+    <aside className="guide-callout info">
+      T-CAFE는 Summary나 Description 본문을 실행 항목 정보로 자동으로 미리 채우지 않습니다. 기본 Description 템플릿의 빈칸(재현 / 테스트 데이터 / 결함 설명)을 테스터가 직접 채우는 방식입니다.
+    </aside>
 
     <h3>6-2. 기존 Issue 연결</h3>
 
@@ -226,11 +210,10 @@ const TestExecution = () => (
       <li>또는 실패 시 <strong>+ Create Issue</strong>로 Jira 이슈를 생성하면, 그 이슈 작성 모달에서 직접 파일 첨부 가능</li>
     </ol>
 
-    <h3>첨부파일 저장 위치</h3>
+    <h3>첨부파일 저장 용량</h3>
     <ul>
-      <li>안전한 데이터센터에 저장</li>
-      <li>프로젝트 전체 한도: <strong>200 MB</strong> / 단일 파일 한도: <strong>20 MB</strong></li>
-      <li>자세한 내용은 <Link to="/support/guide/attachments">12. 첨부파일</Link> 참고</li>
+      <li>프로젝트 전체 저장 한도: <strong>200 MB</strong> (Attachments 페이지 기준)</li>
+      <li>자세한 내용은 <Link to="/support/guide/attachments">14. 첨부파일</Link> 참고</li>
     </ul>
 
     <hr />
@@ -254,60 +237,36 @@ const TestExecution = () => (
     </ul>
 
     <h3>설정</h3>
-    <p>어떤 워크플로 상태를 "완료"로 간주할지는 <Link to="/support/guide/configuration">10. Configuration</Link>의 <strong>Issue Type (Retestable)</strong> 섹션에서 설정합니다.</p>
+    <p>어떤 워크플로 상태를 "완료"로 간주할지는 <Link to="/support/guide/configuration">13. Configuration</Link>의 <strong>Issue Type (Retestable)</strong> 섹션에서 설정합니다.</p>
 
     <hr />
 
-    <h2>9. 일괄 실행 (Bulk Execution)</h2>
-    <p>여러 실행 항목의 상태를 한 번에 변경할 수 있습니다.</p>
-
-    <h3>절차</h3>
-    <ol>
-      <li>좌측 실행 항목 목록에서 체크박스로 다중 선택</li>
-      <li><strong>Bulk Update</strong> 버튼 클릭</li>
-      <li>일괄 변경할 상태 선택</li>
-      <li><strong>Apply</strong></li>
-    </ol>
-
-    <h3>사용 사례</h3>
-    <ul>
-      <li>"모바일 미지원 기능"이라 50개 실행 항목을 한 번에 Skip 처리</li>
-      <li>환경 복구 후 Block 상태였던 실행 항목들을 다시 Not Yet으로 초기화</li>
-    </ul>
-
-    <hr />
-
-    <h2>10. 실행 진행률 확인</h2>
+    <h2>9. 실행 진행률 확인</h2>
 
     <h3>TP 단위 통계</h3>
     <p>TP 상세 페이지 상단에 다음이 표시됩니다:</p>
     <ul>
       <li>전체 실행 항목 개수</li>
       <li>Pass / Fail / Block / Skip / Not Yet 카운트</li>
-      <li>진행률 %</li>
+      <li>진행률 % — <code>(Pass + Fail + Block) / (전체 - Skip) × 100</code></li>
     </ul>
 
-    <h3>폴더 단위 통계</h3>
+    <h3>색상 기준</h3>
     <ul>
-      <li>각 TP 폴더 옆에 해당 폴더의 통계 표시</li>
-    </ul>
-
-    <h3>색상 막대</h3>
-    <ul>
-      <li>녹색 (Pass), 빨강 (Fail), 주황 (Block), 노랑 (Skip), 회색 (Not Yet)</li>
+      <li>Pass / Fail / Block / Skip / Not Yet 각각에 고유 색상이 지정되어 목록과 통계 바에 일관되게 표시됩니다</li>
     </ul>
 
     <ScreenshotSlot label="통계 막대" />
 
     <hr />
 
-    <h2>11. 자동화 결과 Import (향후 기능)</h2>
+    <h2>10. 자동화 결과 Import (향후 기능)</h2>
     <aside className="guide-callout">본 기능은 현재 <strong>로드맵 단계</strong>입니다. T-CAFE의 향후 버전에서 지원 예정.</aside>
     <p>CI/CD 파이프라인에서 실행한 자동화 테스트(JUnit XML, Cucumber JSON 등)의 결과를 T-CAFE로 가져오는 기능입니다.</p>
 
     <hr />
 
-    <h2>12. 실행 베스트 프랙티스</h2>
+    <h2>11. 실행 베스트 프랙티스</h2>
 
     <h3>DO</h3>
     <ul>
@@ -330,7 +289,7 @@ const TestExecution = () => (
 
     <hr />
 
-    <h2>13. TC 재추가 시 자동 갱신</h2>
+    <h2>12. TC 재추가 시 자동 갱신</h2>
     <h3>TC 재추가 시 자동 갱신</h3>
     <p>이미 Test Plan에 포함된 TC를 다시 추가하면, 기존 실행 항목이 최신 TC 데이터로 자동 갱신됩니다.</p>
     <ul>
@@ -341,7 +300,7 @@ const TestExecution = () => (
 
     <hr />
 
-    <h2>14. 자주 발생하는 문제</h2>
+    <h2>13. 자주 발생하는 문제</h2>
     <table>
       <thead>
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>
@@ -350,14 +309,14 @@ const TestExecution = () => (
         <tr><td>Issue 생성 버튼이 안 보임</td><td>Developer 권한</td><td>Tester 이상 필요 (상태 변경·코멘트는 Developer도 가능)</td></tr>
         <tr><td>Issue 생성 실패</td><td>Jira 권한 부족</td><td>Jira에서 Create Issue 권한 확인</td></tr>
         <tr><td>Issue가 검색되지 않음</td><td>다른 프로젝트의 Issue</td><td>같은 프로젝트만 검색 가능</td></tr>
-        <tr><td>첨부파일 업로드 실패</td><td>단일 20 MB 또는 프로젝트 합계 200 MB 초과</td><td>파일 분할/압축 또는 기존 첨부 정리 후 재시도</td></tr>
+        <tr><td>첨부파일 업로드 실패</td><td>프로젝트 저장 한도(200 MB) 초과</td><td>Attachments에서 기존 첨부 정리 후 재시도</td></tr>
         <tr><td>통계가 갱신 안 됨</td><td>페이지 캐시</td><td>새로고침</td></tr>
       </tbody>
     </table>
 
     <hr />
 
-    <h2>15. 일반적인 실행 흐름 (스프린트 관점)</h2>
+    <h2>14. 일반적인 실행 흐름 (스프린트 관점)</h2>
     <pre><code>{`[월요일] TP 생성, TC 추가
  ↓
 [화요일] 실행 시작 → 50% 완료
@@ -384,8 +343,8 @@ const TestExecution = () => (
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-reports">09. 테스트 리포트</Link> — 실행 결과 리포트</li>
-      <li><Link to="/support/guide/attachments">12. 첨부파일</Link> — 첨부파일 자세한 사용법</li>
+      <li><Link to="/support/guide/test-reports">12. 테스트 리포트</Link> — 실행 결과 리포트</li>
+      <li><Link to="/support/guide/attachments">14. 첨부파일</Link> — 첨부파일 자세한 사용법</li>
     </ul>
   </article>
 );

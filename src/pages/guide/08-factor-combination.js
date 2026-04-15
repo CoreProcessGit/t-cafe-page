@@ -4,7 +4,7 @@ import ScreenshotSlot from './ScreenshotSlot';
 
 const FactorCombination = () => (
   <article className="guide-article">
-    <h1>06. Factor Combination</h1>
+    <h1>08. Factor Combination</h1>
     <p className="guide-lead">
       <strong>Factor Combination</strong>은 T-CAFE만의 차별화 기능입니다. 여러 변수(Factor)의 조합을 자동으로 생성해 테스트 케이스를 대량 작성할 수 있습니다.
     </p>
@@ -42,7 +42,7 @@ const FactorCombination = () => (
         <tr><td><strong>Value</strong></td><td>Value</td><td>변수의 값 (예: Chrome, Firefox, Safari)</td></tr>
         <tr><td><strong>Combination</strong></td><td>Combination</td><td>모든 Factor의 값 조합 (예: Chrome+Windows+Korean)</td></tr>
         <tr><td><strong>Constraint</strong></td><td>Constraint</td><td>조합 제약 (예: "Safari는 Windows에서 제외")</td></tr>
-        <tr><td><strong>Combination Type</strong></td><td>Type</td><td>조합 알고리즘 (Full / Pairwise / Mixed)</td></tr>
+        <tr><td><strong>Factor Type</strong></td><td>Type</td><td>각 Factor별로 선택하는 조합 방식 (<strong>Full Combination</strong> 또는 <strong>Pairwise</strong>). Factor마다 다른 타입을 섞으면 자동으로 Mixed 방식으로 처리됩니다.</td></tr>
         <tr><td><strong>Simulated TC</strong></td><td>Simulated Test Case</td><td>생성될 TC의 미리보기</td></tr>
       </tbody>
     </table>
@@ -76,17 +76,16 @@ const FactorCombination = () => (
     </table>
     <p><strong>장점</strong>: 100% 커버리지<br /><strong>단점</strong>: 변수가 많으면 폭발적으로 증가</p>
 
-    <h3>3-2. Pairwise Combination (페어와이즈, t=2)</h3>
-    <p>T-CAFE는 <strong>t=2 (2-way) pairwise</strong> 알고리즘을 사용합니다. 정의는 다음과 같습니다:</p>
+    <h3>3-2. Pairwise Combination (페어와이즈)</h3>
     <aside className="guide-callout info">
-      테스트 대상 Factor들 중 <strong>아무 2개를 골랐을 때</strong>, 그 두 Factor의 <strong>각 값들의 모든 조합(pair)이 최소 한 번 이상 등장</strong>하도록 테스트 케이스를 구성
+      테스트 대상 Factor들 중 <strong>아무 2개를 골랐을 때</strong>, 그 두 Factor의 <strong>각 값들의 모든 조합(pair)이 최소 한 번 이상 등장</strong>하도록 테스트 케이스를 구성합니다.
     </aside>
-    <p>즉 임의의 두 Factor만 떼서 봐도 그 두 Factor의 모든 값 쌍이 적어도 한 번은 함께 나타납니다. 3개 이상의 동시 조합은 보장하지 않습니다.</p>
+    <p>즉 임의의 두 Factor만 떼서 봐도 그 두 Factor의 모든 값 쌍이 적어도 한 번은 함께 나타납니다. 3개 이상의 Factor가 동시에 만들어내는 특정 조합은 보장하지 않습니다.</p>
 
     <p>Pairwise는 모든 2-Factor 값 쌍이 포함되도록 <strong>자동으로 최적의 조합을 선택</strong>합니다.</p>
 
-    <p><strong>예시</strong>: Browser(3) × OS(3) × Language(2) → Full은 18개, <strong>Pairwise(t=2)는 약 9개</strong>로 축소</p>
-    <p><strong>장점</strong>: TC 수가 크게 줄어듦 (변수가 많을수록 효과 큼)<br /><strong>단점</strong>: 3개 Factor가 동시에 만들어내는 특정 조합은 누락 가능</p>
+    <p><strong>예시</strong>: Browser(3) × OS(3) × Language(2) → Full은 18개, <strong>Pairwise는 약 9개</strong>로 축소</p>
+    <p><strong>장점</strong>: TC 수가 크게 줄어듦 (변수가 많을수록 효과 큼)<br /><strong>단점</strong>: 3개 이상의 Factor가 동시에 만들어내는 특정 조합은 누락 가능</p>
 
     <p><strong>자동 fallback</strong>:</p>
     <ul>
@@ -110,86 +109,116 @@ const FactorCombination = () => (
       <li>실증 연구상 단일/페어 조합에서 발견되는 결함의 비중이 큼</li>
     </ul>
 
-    <h3>3-3. Mixed Combination (혼합)</h3>
-    <p>일부 변수는 Full, 일부는 Pairwise로 처리합니다.</p>
-    <p><strong>예시</strong>: Browser/OS는 Full + 나머지는 Pairwise</p>
+    <h3>3-3. Mixed Combination (자동 처리)</h3>
+    <aside className="guide-callout info">
+      Mixed는 사용자가 직접 선택하는 옵션이 아니라, Factor별로 서로 다른 타입을 지정했을 때 <strong>시뮬레이션 시 자동으로 적용되는 방식</strong>입니다.
+    </aside>
+    <p>여러 Factor 중 일부는 <strong>Full Combination</strong>, 일부는 <strong>Pairwise</strong>로 타입을 지정하면, T-CAFE는 Full 타입 Factor들의 모든 조합을 기준으로 Pairwise 타입 Factor의 값을 골고루 배분합니다.</p>
+    <p><strong>예시</strong>: Browser / OS를 Full로, Language를 Pairwise로 지정 → Browser × OS 모든 조합이 유지되면서 Language 값이 순환 배분</p>
 
     <hr />
 
     <h2>4. Constraint (조합 제약)</h2>
     <p>현실에서는 모든 조합이 의미 있지 않습니다. <strong>Constraint</strong>로 불가능하거나 불필요한 조합을 제외할 수 있습니다.</p>
 
-    <h3>Constraint 종류</h3>
+    <h3>Constraint 종류 (3가지)</h3>
     <table>
       <thead>
-        <tr><th>종류</th><th>영문</th><th>의미</th><th>예시</th></tr>
+        <tr><th>UI 라벨</th><th>의미</th><th>사용 예시</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>If-Then</strong></td><td>if-then</td><td>A이면 B여야 함</td><td>"OS=Mac → Browser=Safari 또는 Chrome"</td></tr>
-        <tr><td><strong>Mutual Exclusion</strong></td><td>mutual-exclusion</td><td>같이 등장 불가</td><td>"OS=Windows AND Browser=Safari" 제외</td></tr>
+        <tr><td><strong>If-Then</strong></td><td>특정 조건이 충족되면 다른 Factor가 특정 값이어야 함</td><td>"Browser=Safari일 때 OS는 Mac"</td></tr>
+        <tr><td><strong>One-Way Exclude</strong></td><td>한 쪽 조건이 참일 때 특정 조합을 제외 (단방향)</td><td>"OS=Windows일 때 Browser=Safari 제외"</td></tr>
+        <tr><td><strong>Two-Way Exclude</strong></td><td>지정한 두 값이 절대 함께 등장하지 못하도록 양방향으로 제외</td><td>"Browser=Safari와 OS=Windows 조합 제외"</td></tr>
       </tbody>
     </table>
 
-    <h3>예시</h3>
-    <p><strong>문제</strong>: Safari는 Windows에서 동작하지 않음</p>
-    <p><strong>Constraint</strong>:</p>
-    <pre><code>{`IF Browser = Safari THEN OS != Windows`}</code></pre>
-    <p>→ 이 제약을 추가하면 "Safari + Windows" 조합이 자동으로 제외됨</p>
+    <h3>예시 — "Safari는 Windows에서 동작하지 않음"</h3>
+    <ul>
+      <li><strong>One-Way Exclude</strong>: OS=Windows ➜ Browser=Safari 제외</li>
+      <li><strong>Two-Way Exclude</strong>: Browser=Safari 와 OS=Windows 를 함께 등장 불가로 지정</li>
+    </ul>
+    <p>→ 두 방식 모두 "Safari + Windows" 조합이 시뮬레이션 결과에서 제외됩니다.</p>
 
     <hr />
 
     <h2>5. Factor Combination 생성 절차</h2>
     <aside className="guide-callout"><strong>권한 필요</strong>: Admin 또는 Team Admin</aside>
 
+    <h3>화면 구조 안내</h3>
+    <p>Factor Combination 화면은 상단에 <strong>3개의 탭</strong>이 있으며 순서대로 작업을 진행합니다:</p>
+    <ol>
+      <li><strong>Simulation</strong> 탭 — Factor / Constraint 정의 및 시뮬레이션</li>
+      <li><strong>Details</strong> 탭 — 모든 조합 TC에 공통 적용할 속성 입력 (Priority, Case Type, Owner 등)</li>
+      <li><strong>Steps &amp; Test Data</strong> 탭 — 각 조합별로 수행할 스텝 매트릭스 정의</li>
+    </ol>
+
     <h3>Step 1: 폴더 선택</h3>
     <ol>
-      <li>Test Cases 페이지에서 Factor Combination을 만들 폴더 선택</li>
-      <li>또는 새 폴더 생성</li>
+      <li>Test Cases 페이지에서 Factor Combination을 만들 폴더 선택 (없으면 먼저 <strong>New Folder</strong>로 생성)</li>
     </ol>
 
     <h3>Step 2: Factor Combination 생성 시작</h3>
     <ol>
-      <li><strong>+ Create Factor Combination</strong> 버튼 클릭</li>
-      <li>또는 폴더 우클릭 → <strong>Add Factor Combination</strong></li>
+      <li>상단의 <strong>+ Create Test Case</strong> 버튼 클릭</li>
+      <li>드롭다운 메뉴에서 <strong>Factor Combination</strong> 선택</li>
+      <li>Factor Combination 작성 화면(Simulation 탭)이 열립니다</li>
     </ol>
 
     <ScreenshotSlot label="Factor Combination 시작 화면" />
 
-    <h3>Step 3: Factor 정의</h3>
+    <h3>Step 3: Factor 정의 (Simulation 탭)</h3>
     <ol>
       <li><strong>+ Add Factor</strong> 클릭</li>
       <li>Factor 이름 입력 (예: "Browser")</li>
-      <li>Factor 타입 선택 (Full Combination / Pairwise)</li>
+      <li>Factor 타입 선택 — <strong>Full Combination</strong> 또는 <strong>Pairwise</strong></li>
       <li><strong>Values 추가</strong>: 각 값을 입력 (예: Chrome, Firefox, Safari)</li>
-      <li>다음 Factor 추가 (예: "OS" → Windows, Mac, Linux)</li>
-      <li>필요한 만큼 반복</li>
+      <li>필요한 만큼 Factor 추가 반복</li>
     </ol>
 
     <ScreenshotSlot label="Factor 정의 화면" />
 
-    <h3>Step 4: Constraint 추가 (선택)</h3>
+    <h3>Step 4: Constraint 추가 (선택, Simulation 탭)</h3>
     <ol>
       <li><strong>+ Add Constraint</strong> 클릭</li>
-      <li>제약 종류 선택 (If-Then / Mutual Exclusion)</li>
-      <li>조건 입력</li>
-      <li><strong>Save</strong></li>
+      <li>Constraint Type 선택: <strong>If-Then</strong> / <strong>One-Way Exclude</strong> / <strong>Two-Way Exclude</strong></li>
+      <li>관련 Factor와 값 선택</li>
+      <li><strong>Add Constraint</strong> 버튼으로 저장</li>
     </ol>
 
-    <h3>Step 5: 시뮬레이션 (Simulation)</h3>
+    <h3>Step 5: 시뮬레이션 (Simulation 탭)</h3>
     <ol>
       <li><strong>Simulate</strong> 버튼 클릭</li>
-      <li>생성될 조합의 개수와 내용을 미리 확인</li>
+      <li>생성될 조합 목록이 미리보기로 표시됨 (최대 5,000개까지, 초과 시 경고)</li>
       <li>결과가 마음에 들지 않으면 Factor 또는 Constraint 조정 후 다시 Simulate</li>
     </ol>
 
     <ScreenshotSlot label="Simulation 결과" />
 
-    <h3>Step 6: TC 생성</h3>
+    <h3>Step 6: 공통 속성 입력 (Details 탭)</h3>
     <ol>
-      <li><strong>Create Test Cases</strong> 버튼 클릭</li>
-      <li>각 조합에 대해 TC가 자동 생성됨</li>
-      <li>TC 이름은 자동 부여 (예: "Cross Browser-Chrome-Windows-Korean")</li>
-      <li>모두 Factor 타입으로 표시됨</li>
+      <li>상단의 <strong>Details</strong> 탭 클릭</li>
+      <li>모든 조합 TC에 공통 적용할 항목 입력 (Description, Priority, Owner, Components, Labels, Case Type, UDF 등)</li>
+      <li><strong>Apply</strong> 버튼 클릭 — 공통 정보가 저장되고 이후 TC 생성에 반영됩니다</li>
+    </ol>
+
+    <aside className="guide-callout info">
+      Details 정보를 저장하지 않으면 TC 생성 시 "Please save Details information first" 경고가 표시되어 진행할 수 없습니다.
+    </aside>
+
+    <h3>Step 7: 스텝 매트릭스 정의 (Steps &amp; Test Data 탭, 선택)</h3>
+    <ol>
+      <li>상단의 <strong>Steps &amp; Test Data</strong> 탭 클릭</li>
+      <li>테스트 스텝(행)과 각 조합(열)로 이루어진 매트릭스에서 조합별 적용 여부와 Test Data 입력</li>
+      <li>자세한 사용법은 아래 §8 Steps Matrix 참고</li>
+    </ol>
+
+    <h3>Step 8: TC 생성</h3>
+    <ol>
+      <li>화면 우상단의 <strong>Create Test Case</strong> 버튼 클릭</li>
+      <li>시뮬레이션된 각 조합에 대해 TC가 자동 생성됩니다</li>
+      <li>TC 이름은 자동으로 "<code>폴더명-Factor값1-Factor값2-…</code>" 형식 부여 (예: "Cross Browser-Chrome-Desktop-Login")</li>
+      <li>생성된 TC는 목록에서 <strong>F</strong> 배지(Factor 타입)로 표시됨</li>
     </ol>
 
     <hr />
@@ -219,25 +248,24 @@ const FactorCombination = () => (
 
     <hr />
 
-    <h2>7. Factor Combination 수정</h2>
+    <h2>7. Factor TC / Factor Combination 수정</h2>
     <aside className="guide-callout"><strong>권한 필요</strong>: Admin 또는 Team Admin</aside>
 
-    <h3>절차</h3>
+    <h3>개별 Factor TC 속성 수정</h3>
+    <p>생성된 각 Factor TC는 Single TC처럼 개별적으로 열어서 속성을 수정할 수 있습니다.</p>
     <ol>
-      <li>Factor Combination이 있는 폴더 선택</li>
-      <li><strong>Edit Factor Combination</strong> 버튼 클릭</li>
-      <li>Factor / Values / Constraint 수정</li>
-      <li>다시 Simulate</li>
-      <li><strong>Update Test Cases</strong> 클릭</li>
+      <li>TC 목록에서 편집할 Factor TC의 Key 또는 이름 클릭</li>
+      <li>편집 페이지에서 이름 · Description · Precondition · 테스트 스텝 · UDF 등을 직접 수정</li>
+      <li>저장</li>
     </ol>
+    <p>편집 페이지는 Single TC의 편집 화면과 동일한 UI를 사용합니다. Factor 메타데이터(어떤 조합인지)는 읽기 전용으로 표시됩니다.</p>
 
-    <h3>수정 후 동작</h3>
-    <ul>
-      <li><strong>추가된 조합</strong>: 새 TC가 자동 생성됨</li>
-      <li><strong>삭제된 조합</strong>: 기존 TC가 자동 삭제됨</li>
-      <li><strong>변경된 조합</strong>: TC가 갱신됨</li>
-      <li><strong>변경 없는 조합</strong>: 기존 TC 유지</li>
-    </ul>
+    <h3>Factor Combination 구조(Factor/Value/Constraint) 재편집</h3>
+    <p>Factor Combination의 <strong>구조 자체(Factor 추가·삭제, Value 변경, Constraint 수정)</strong>를 바꾸는 경우 해당 폴더의 Factor Combination 작업 화면을 다시 열어 Simulation 탭에서 조정합니다. Details/Steps &amp; Test Data 탭도 순차적으로 갱신하여 <strong>Apply</strong> / <strong>Create Test Case</strong>로 재생성합니다.</p>
+
+    <aside className="guide-callout info">
+      Factor Combination 구조를 크게 변경하면 이미 생성된 TC가 예상과 달라질 수 있으므로, 기존 TC 삭제 후 새로 생성하는 것을 권장합니다. 실행 이력이 있는 TP에 추가된 TC는 스냅샷으로 복사되어 있어 구조 변경의 영향을 받지 않습니다.
+    </aside>
 
     <hr />
 
@@ -345,12 +373,13 @@ const FactorCombination = () => (
         <tr><th>항목</th><th>Single TC</th><th>Factor TC</th></tr>
       </thead>
       <tbody>
-        <tr><td>생성 방식</td><td>수동</td><td>자동 (Factor Combination)</td></tr>
-        <tr><td>키</td><td>자동 부여</td><td>자동 부여</td></tr>
-        <tr><td>이름</td><td>사용자 입력</td><td>Factor Values 조합</td></tr>
-        <tr><td>수정 가능 항목</td><td>모든 항목</td><td>일반 항목 + Factor 메타데이터</td></tr>
-        <tr><td>폴더 이동</td><td>자유</td><td>Factor Combination 전체와 함께 이동</td></tr>
-        <tr><td>삭제</td><td>개별 삭제</td><td>개별 삭제 가능 (단, Factor 정의는 유지)</td></tr>
+        <tr><td>생성 방식</td><td>수동 입력</td><td>Factor Combination 시뮬레이션으로 일괄 자동 생성</td></tr>
+        <tr><td>TC 키</td><td>자동 부여</td><td>자동 부여</td></tr>
+        <tr><td>이름</td><td>사용자 입력</td><td>폴더명 + 각 Factor 값을 "-"로 연결한 형식 자동 부여</td></tr>
+        <tr><td>수정 가능 항목</td><td>모든 일반 속성</td><td>이름·Description·스텝·UDF 등 일반 속성 수정 가능. Factor 메타데이터(조합 값)는 읽기 전용</td></tr>
+        <tr><td>폴더 이동</td><td>자유롭게 이동</td><td>개별 TC 단위로 자유 이동 (folder_id만 변경). Factor Combination 정의는 원래 폴더에 남음</td></tr>
+        <tr><td>목록 표시</td><td><strong>S</strong> 배지</td><td><strong>F</strong> 배지</td></tr>
+        <tr><td>삭제</td><td>개별 삭제</td><td>개별 삭제 가능. 원본 Factor Combination 정의(factor_combinations 레코드)는 폴더가 삭제되기 전까지 유지</td></tr>
       </tbody>
     </table>
 
@@ -362,10 +391,10 @@ const FactorCombination = () => (
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>
       </thead>
       <tbody>
-        <tr><td>Factor Combination 버튼이 안 보임</td><td>권한 없음</td><td>Admin/Team Admin 필요</td></tr>
-        <tr><td>Simulation 결과가 너무 많음</td><td>Full Combination 사용 중</td><td>Pairwise로 변경 또는 Constraint 추가</td></tr>
-        <tr><td>생성 후 일부 TC가 누락됨</td><td>Constraint가 너무 많음</td><td>Constraint 재검토</td></tr>
-        <tr><td>수정 후 TC가 중복 생성됨</td><td>Update 대신 Create 사용</td><td>Edit Factor Combination → Update 사용</td></tr>
+        <tr><td>+ Create Test Case 드롭다운에 Factor Combination이 안 보임</td><td>권한 없음 (canEditTC 필요)</td><td>Admin/Team Admin 권한 확인</td></tr>
+        <tr><td>Simulation 결과가 너무 많음 / 5,000개 초과</td><td>Factor 수·값이 지나치게 많거나 Constraint 부족</td><td>Pairwise로 전환 또는 Constraint 추가, Factor 분할</td></tr>
+        <tr><td>생성 후 일부 조합이 누락됨</td><td>Constraint가 과하게 제약</td><td>Constraint 재검토</td></tr>
+        <tr><td>"Please save Details information first" 경고</td><td>Details 탭의 Apply 버튼을 누르지 않음</td><td>Details 탭 → 필수 항목 입력 → <strong>Apply</strong> 클릭 후 재시도</td></tr>
         <tr><td>Factor 이름 중복 에러</td><td>같은 이름의 Factor 두 개</td><td>Factor 이름 변경</td></tr>
         <tr><td>한글 Factor가 깨짐</td><td>인코딩 문제</td><td>UTF-8 확인</td></tr>
       </tbody>
@@ -381,16 +410,16 @@ const FactorCombination = () => (
       <li><strong>세 변수 조합</strong>에서 발생하는 버그: 약 15%</li>
       <li><strong>네 변수 이상</strong>: 약 10%</li>
     </ul>
-    <p>→ <strong>Pairwise (2-way)는 약 75%의 버그를 발견</strong>할 수 있고, TC 수는 Full Combination 대비 50~80% 감소</p>
-    <p>(출처: NIST 공동 연구, 다양한 산업의 결함 데이터 분석)</p>
+    <p>→ <strong>Pairwise는 약 75%의 버그를 발견</strong>할 수 있고, TC 수는 Full Combination 대비 50~80% 감소</p>
+    <p>(출처: NIST의 결합형 테스트(Combinatorial Testing) 연구 및 여러 산업 결함 데이터 분석 — NIST SP 500-267 등 참조)</p>
 
     <hr />
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-cases">03. 테스트 케이스 기본 사용법</Link></li>
-      <li><Link to="/support/guide/test-plans">07. 테스트 플랜 관리</Link> — 생성된 Factor TC를 TP에 추가하기</li>
-      <li><Link to="/support/guide/configuration">10. Configuration</Link> — Components, Case Types 미리 설정</li>
+      <li><Link to="/support/guide/test-cases">05. 테스트 케이스 기본 사용법</Link></li>
+      <li><Link to="/support/guide/test-plans">10. 테스트 플랜 관리</Link> — 생성된 Factor TC를 TP에 추가하기</li>
+      <li><Link to="/support/guide/configuration">13. Configuration</Link> — Components, Case Types 미리 설정</li>
     </ul>
   </article>
 );

@@ -4,7 +4,7 @@ import ScreenshotSlot from './ScreenshotSlot';
 
 const Folders = () => (
   <article className="guide-article">
-    <h1>04. 폴더 관리</h1>
+    <h1>06. 폴더 관리</h1>
     <p className="guide-lead">
       T-CAFE는 폴더 트리 구조로 테스트 케이스를 정리할 수 있습니다. 폴더는 무제한 깊이로 중첩 가능하며, 직관적인 드래그 앤 드롭으로 관리할 수 있습니다.
     </p>
@@ -59,26 +59,17 @@ const Folders = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>폴더 트리에서 부모 폴더 선택 (루트에 만들려면 빈 영역 클릭)</li>
-      <li><strong>+ Add Folder</strong> 버튼 또는 우클릭 → <strong>Add Folder</strong></li>
-      <li>폴더 이름 입력</li>
-      <li><strong>Create</strong> 클릭</li>
+      <li>좌측 상단의 <strong>New Folder</strong> 버튼 클릭 (또는 폴더 트리 빈 영역 우클릭 → <strong>New Folder</strong>)</li>
+      <li>클릭 즉시 <code>New Folder 1</code>, <code>New Folder 2</code> ... 형식으로 자동 이름이 부여된 폴더가 생성됩니다</li>
+      <li>이름을 바꾸려면 아래 "4. 폴더 이름 변경" 참고</li>
     </ol>
 
-    <h3>입력 항목</h3>
+    <h3>특징</h3>
     <ul>
-      <li><strong>이름</strong> (필수)</li>
-      <li><strong>설명</strong> (선택)</li>
-      <li><strong>부모 폴더</strong> (선택, 자동 설정됨)</li>
+      <li>폴더는 루트 레벨에만 생성됩니다</li>
     </ul>
 
-    <ScreenshotSlot label="폴더 생성 다이얼로그" />
-
-    <h3>정렬 순서</h3>
-    <ul>
-      <li>새 폴더는 부모 폴더 안에서 가장 마지막에 추가됩니다</li>
-      <li>정렬 순서는 자동으로 부여되며 드래그로 변경 가능합니다</li>
-    </ul>
+    <ScreenshotSlot label="폴더 생성" />
 
     <hr />
 
@@ -87,7 +78,7 @@ const Folders = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>폴더를 더블클릭 또는 우클릭 → <strong>Rename</strong></li>
+      <li>폴더 우클릭 → <strong>Rename Folder</strong></li>
       <li>새 이름 입력</li>
       <li>Enter로 저장</li>
     </ol>
@@ -97,23 +88,12 @@ const Folders = () => (
     <h2>5. 폴더 이동</h2>
     <aside className="guide-callout"><strong>권한 필요</strong>: Admin 또는 Team Admin</aside>
 
-    <h3>드래그 앤 드롭</h3>
+    <h3>절차</h3>
     <ol>
-      <li>이동할 폴더를 마우스로 드래그</li>
-      <li>새 부모 폴더 위에 드롭</li>
+      <li>이동할 폴더 우클릭 → <strong>Move Folder</strong></li>
+      <li>열린 Move 창에서 폴더를 <strong>드래그 앤 드롭</strong>하여 원하는 위치로 이동</li>
+      <li>변경 내용을 <strong>Save Changes</strong>로 저장</li>
     </ol>
-
-    <h3>우클릭 메뉴</h3>
-    <ol>
-      <li>폴더 우클릭 → <strong>Move to</strong></li>
-      <li>대상 위치 선택</li>
-    </ol>
-
-    <h3>주의 사항</h3>
-    <ul>
-      <li>폴더를 이동하면 그 폴더 안의 모든 TC와 하위 폴더도 함께 이동합니다</li>
-      <li>폴더를 자기 자신의 하위로 이동할 수 없습니다 (순환 참조 방지)</li>
-    </ul>
 
     <hr />
 
@@ -123,21 +103,18 @@ const Folders = () => (
     <h3>사용 사례</h3>
     <ul>
       <li>비슷한 폴더 구조를 빠르게 만들 때</li>
-      <li>템플릿 폴더를 기반으로 새 모듈 만들기</li>
     </ul>
 
     <h3>절차</h3>
     <ol>
-      <li>복제할 폴더 우클릭 → <strong>Copy</strong></li>
-      <li>복사본의 이름 입력</li>
-      <li>복사 위치 선택</li>
-      <li><strong>Confirm</strong></li>
+      <li>복제할 폴더 우클릭 → <strong>Copy Folder</strong></li>
+      <li>클릭 즉시 복제가 완료됩니다 (이름 입력이나 위치 선택 단계 없음)</li>
     </ol>
 
     <h3>복제 범위</h3>
     <ul>
-      <li>폴더 자체 + 모든 하위 폴더 + 모든 TC가 함께 복사됩니다</li>
-      <li>TC는 새 키를 자동으로 부여받습니다</li>
+      <li>폴더 자체와 <strong>하위 폴더 구조까지만</strong> 복사됩니다</li>
+      <li>폴더 안의 <strong>Test Case는 복사되지 않습니다</strong></li>
     </ul>
 
     <hr />
@@ -147,24 +124,33 @@ const Folders = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>삭제할 폴더 선택</li>
-      <li>우클릭 → <strong>Delete</strong> 또는 Delete 키</li>
-      <li>확인 다이얼로그에서 <strong>Confirm</strong></li>
+      <li>삭제할 폴더 우클릭</li>
+      <li><strong>Delete Folder</strong> 선택</li>
+      <li>확인 모달에서 삭제될 항목 내역을 확인 후 <strong>Confirm</strong> 클릭</li>
     </ol>
 
-    <h3>주의 사항</h3>
+    <h3>확인 모달 안내</h3>
+    <p>삭제 전 폴더에 포함된 항목을 집계하여 영향 범위를 안내합니다. 실제로 삭제될 내역이 다음과 같이 줄별로 표시됩니다:</p>
     <ul>
-      <li>폴더 삭제 시 안에 있는 <strong>모든 TC와 하위 폴더가 함께 삭제됩니다</strong></li>
-      <li>삭제된 데이터는 <strong>복구할 수 없습니다</strong></li>
-      <li>빈 폴더만 삭제하려면 먼저 안의 TC를 다른 폴더로 이동하세요</li>
+      <li><strong>하위 폴더</strong>가 있으면 "N sub-folder(s) will also be permanently deleted."</li>
+      <li><strong>테스트 케이스</strong>가 있으면 "N test case(s) in this folder will be permanently deleted."</li>
+      <li><strong>Factor Combination 설정 또는 Factor TC</strong>가 있으면 "Factor Combination configuration and assignments in this folder will also be permanently deleted." 경고 표시</li>
+      <li>비어 있는 폴더는 추가 안내 없이 확인 메시지만 표시</li>
+      <li><strong>Cancel</strong> 버튼으로 언제든지 취소 가능</li>
     </ul>
 
-    <h3>안전한 삭제 절차</h3>
-    <ol>
-      <li>폴더 안의 TC 개수 확인</li>
-      <li>중요한 TC가 있다면 먼저 다른 폴더로 이동</li>
-      <li>그 후 빈 폴더 삭제</li>
-    </ol>
+    <h3>삭제 시 실제 동작</h3>
+    <ul>
+      <li>해당 폴더와 그에 속한 <strong>모든 하위 폴더가 영구 삭제</strong>됩니다</li>
+      <li>해당 폴더 및 하위 폴더에 속한 <strong>모든 테스트 케이스(TC)가 영구 삭제</strong>됩니다</li>
+      <li>해당 폴더 및 하위 폴더에 연결된 <strong>Factor Combination 설정과 Factor TC 배정 정보도 영구 삭제</strong>됩니다</li>
+      <li>모든 삭제 작업은 단일 트랜잭션으로 처리되어 <strong>일부만 삭제되는 일은 없습니다</strong> (전부 삭제되거나 전부 취소)</li>
+      <li>삭제된 데이터는 <strong>복구할 수 없습니다</strong></li>
+    </ul>
+
+    <aside className="guide-callout info">
+      <strong>참고</strong>: 이미 Test Plan에 추가되어 있던 TC는 TP에 스냅샷으로 복사되어 있으므로 폴더 삭제로 인해 TP 내 실행 기록이나 데이터가 영향을 받지 않습니다.
+    </aside>
 
     <hr />
 
@@ -188,12 +174,10 @@ const Folders = () => (
     <ul>
       <li><strong>간결하게</strong>: 25자 이내 권장</li>
       <li><strong>일관성 있게</strong>: 모든 폴더가 같은 명명 규칙 사용</li>
-      <li><strong>영문 또는 한글</strong>: 혼용은 피하기</li>
     </ul>
 
     <h3>안티 패턴 (피해야 할 구조)</h3>
     <ul>
-      <li>한 폴더에 100개+ TC 몰아넣기</li>
       <li>너무 많은 빈 폴더</li>
       <li>의미 없는 이름 ("Folder 1", "New Folder")</li>
       <li>중복 폴더 ("Login"이 여러 곳에 존재)</li>
@@ -203,17 +187,12 @@ const Folders = () => (
 
     <h2>9. TC를 폴더 간 이동</h2>
 
-    <h3>단일 TC 이동</h3>
-    <ul>
-      <li>TC 목록에서 TC를 드래그하여 다른 폴더에 드롭</li>
-    </ul>
-
-    <h3>다중 TC 이동</h3>
+    <h3>절차 (단일 · 다중 공통)</h3>
     <ol>
-      <li>체크박스로 여러 TC 선택</li>
-      <li><strong>Move</strong> 버튼 클릭</li>
-      <li>대상 폴더 선택</li>
-      <li><strong>Confirm</strong></li>
+      <li>TC 목록에서 이동할 TC 선택 (단일 또는 체크박스로 다중 선택)</li>
+      <li>상단의 <strong>Move</strong> 버튼 클릭</li>
+      <li>열린 폴더 선택 창에서 대상 폴더 선택</li>
+      <li><strong>Move</strong> 클릭</li>
     </ol>
 
     <hr />
@@ -240,8 +219,8 @@ const Folders = () => (
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-cases">03. 테스트 케이스 기본 사용법</Link></li>
-      <li><Link to="/support/guide/test-cases-steps">05. 테스트 스텝 작성</Link></li>
+      <li><Link to="/support/guide/test-cases">05. 테스트 케이스 기본 사용법</Link></li>
+      <li><Link to="/support/guide/test-cases-steps">07. 테스트 스텝 작성</Link></li>
     </ul>
   </article>
 );

@@ -4,7 +4,7 @@ import ScreenshotSlot from './ScreenshotSlot';
 
 const Attachments = () => (
   <article className="guide-article">
-    <h1>12. 첨부파일</h1>
+    <h1>14. 첨부파일</h1>
     <p className="guide-lead">
       T-CAFE는 <strong>프로젝트 단위 첨부파일 페이지</strong>를 통해 외부 자료를 업로드·다운로드·관리할 수 있습니다. 첨부파일은 안전한 데이터센터에 저장되며, 업로드한 파일은 테스트 케이스 설명·사전 조건·기대 결과 등의 텍스트 안에 자동 인식되는 링크 형태로 참조할 수 있습니다.
     </p>
@@ -235,9 +235,9 @@ const Attachments = () => (
 
     <h2>다음 단계</h2>
     <ul>
-      <li><Link to="/support/guide/test-cases">03. 테스트 케이스 기본 사용법</Link> — TC 본문에서 첨부파일 링크 사용</li>
-      <li><Link to="/support/guide/test-cases-steps">05. 테스트 스텝 작성</Link> — 텍스트 입력 원칙</li>
-      <li><Link to="/support/guide/test-execution">08. 테스트 실행</Link> — 실패 시 첨부파일 활용</li>
+      <li><Link to="/support/guide/test-cases">05. 테스트 케이스 기본 사용법</Link> — TC 본문에서 첨부파일 링크 사용</li>
+      <li><Link to="/support/guide/test-cases-steps">07. 테스트 스텝 작성</Link> — 텍스트 입력 원칙</li>
+      <li><Link to="/support/guide/test-execution">11. 테스트 실행</Link> — 실패 시 첨부파일 활용</li>
     </ul>
   </article>
 );

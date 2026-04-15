@@ -6,39 +6,12 @@ const GettingStarted = () => (
   <article className="guide-article">
     <h1>01. 시작하기</h1>
     <p className="guide-lead">
-      T-CAFE를 처음 사용하시는 분들을 위한 안내입니다. 설치부터 첫 테스트 케이스 생성까지 단계별로 따라할 수 있습니다.
+      T-CAFE를 처음 사용하시는 분들을 위한 안내입니다. 첫 진입부터 첫 테스트 케이스 생성까지 단계별로 따라할 수 있습니다.
     </p>
 
     <hr />
 
-    <h2>1. T-CAFE 설치</h2>
-
-    <h3>필수 조건</h3>
-    <ul>
-      <li>Atlassian Jira Cloud 활성 구독</li>
-      <li>Jira 관리자 권한 (앱 설치 시 필요)</li>
-    </ul>
-
-    <h3>설치 절차</h3>
-    <ol>
-      <li>Jira Cloud → 설정 → <strong>Apps</strong> (앱) → <strong>Find new apps</strong> (새 앱 찾기)</li>
-      <li>검색창에 "<strong>T-CAFE</strong>" 입력</li>
-      <li>검색 결과에서 T-CAFE 선택 → <strong>Get it now</strong> 클릭</li>
-      <li>권한 요청 화면에서 <strong>Get it now</strong> 다시 클릭</li>
-      <li>설치 완료</li>
-    </ol>
-
-    <ScreenshotSlot label="Marketplace 설치 화면" />
-
-    <h3>설치 후 첫 진입</h3>
-    <ul>
-      <li>Jira 상단 메뉴에 <strong>T-CAFE</strong> 탭이 추가됩니다</li>
-      <li>클릭하여 T-CAFE 메인 화면으로 이동</li>
-    </ul>
-
-    <hr />
-
-    <h2>2. 첫 화면 — Welcome Banner</h2>
+    <h2>1. 첫 화면 — Welcome Banner</h2>
     <p>T-CAFE에 처음 접속하면 Overview 페이지에 환영 배너(Welcome Banner)가 표시됩니다.</p>
 
     <h3>Welcome Banner 구성 요소</h3>
@@ -52,7 +25,7 @@ const GettingStarted = () => (
 
     <hr />
 
-    <h2>3. 샘플 데이터 생성 (관리자용, 권장)</h2>
+    <h2>2. 샘플 데이터 생성 (관리자용, 권장)</h2>
     <p>처음 사용하시는 경우 <strong>샘플 데이터를 생성</strong>하여 T-CAFE의 기능을 빠르게 파악할 수 있습니다.</p>
 
     <h3>권한</h3>
@@ -92,7 +65,7 @@ const GettingStarted = () => (
 
     <hr />
 
-    <h2>4. T-CAFE 메인 메뉴 구조</h2>
+    <h2>3. T-CAFE 메인 메뉴 구조</h2>
     <p>T-CAFE는 상단 탭으로 다음 페이지를 제공합니다:</p>
 
     <table>
@@ -141,7 +114,7 @@ const GettingStarted = () => (
 
     <hr />
 
-    <h2>5. 프로젝트 선택과 언어 변경</h2>
+    <h2>4. 프로젝트 선택과 언어 변경</h2>
 
     <h3>프로젝트 선택</h3>
     <ul>
@@ -160,13 +133,13 @@ const GettingStarted = () => (
 
     <hr />
 
-    <h2>6. 다음 단계</h2>
+    <h2>5. 다음 단계</h2>
     <p>T-CAFE를 처음 사용하신다면 다음 순서로 진행하시는 것을 권장합니다:</p>
     <ol>
-      <li><strong>샘플 데이터 생성</strong> (위 3번)</li>
+      <li><strong>샘플 데이터 생성</strong> (위 2번)</li>
       <li><strong>사용자 권한 설정</strong> (<Link to="/support/guide/permissions">02. 사용자 권한</Link>)</li>
-      <li><strong>테스트 케이스 살펴보기</strong> (<Link to="/support/guide/test-cases">03. 테스트 케이스 기본 사용법</Link>)</li>
-      <li><strong>테스트 플랜 살펴보기</strong> (<Link to="/support/guide/test-plans">07. 테스트 플랜 관리</Link>)</li>
+      <li><strong>테스트 케이스 살펴보기</strong> (<Link to="/support/guide/test-cases">05. 테스트 케이스 기본 사용법</Link>)</li>
+      <li><strong>테스트 플랜 살펴보기</strong> (<Link to="/support/guide/test-plans">10. 테스트 플랜 관리</Link>)</li>
       <li><strong>실제 테스트 케이스 작성하기</strong></li>
     </ol>
 

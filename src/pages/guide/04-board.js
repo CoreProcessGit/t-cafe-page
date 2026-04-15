@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import shotBoard from '../../assets/user_guide/04-board/1. board.png';
+import shotWriteBoard from '../../assets/user_guide/04-board/2. write board.png';
 
 const Board = () => (
   <article className="guide-article">
@@ -27,7 +29,7 @@ const Board = () => (
 
     <h2>2. 진입 경로</h2>
     <p>상단 탭 → <strong>Overview</strong> → 게시판 섹션</p>
-    <ScreenshotSlot label="Overview 안의 게시판 영역" />
+    <ScreenshotSlot src={shotBoard} label="Overview 안의 게시판 영역" />
 
     <hr />
 
@@ -80,8 +82,6 @@ const Board = () => (
       <li>페이지 번호 버튼과 이전/다음 화살표로 이동</li>
     </ul>
 
-    <ScreenshotSlot label="게시글 목록" />
-
     <h3>게시글 상세 조회</h3>
     <ol>
       <li>목록에서 게시글 행을 클릭</li>
@@ -111,7 +111,7 @@ const Board = () => (
 
     <aside className="guide-callout">작성 화면에는 카테고리 선택, 파일 첨부, <strong>이미지 삽입</strong> 기능이 없습니다. 이미지·파일이 필요하면 T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 업로드한 뒤 링크를 본문에 붙여주세요.</aside>
 
-    <ScreenshotSlot label="게시글 작성 폼" />
+    <ScreenshotSlot src={shotWriteBoard} label="게시글 작성 폼" />
 
     <h3>본문 에디터 기능 (Quill 툴바)</h3>
     <ul>

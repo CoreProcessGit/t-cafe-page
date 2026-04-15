@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import shotPermissionChange from '../../assets/user_guide/02-permissions/1. 사용자 권한 변경.png';
 
 const Permissions = () => (
   <article className="guide-article">
@@ -254,7 +255,7 @@ const Permissions = () => (
       <li>Create 클릭</li>
     </ol>
 
-    <ScreenshotSlot label="User Permissions 화면" />
+    <ScreenshotSlot src={shotPermissionChange} label="사용자 권한 변경" />
 
     <h3>주의 사항</h3>
     <ul>

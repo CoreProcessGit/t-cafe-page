@@ -4,54 +4,55 @@ import '../styles/support.css';
 
 const docSections = [
   {
-    title: 'Getting Started',
+    title: 'Getting Started & Overview',
     color: 'blue',
     items: [
-      { title: 'Installation Guide', desc: 'How to install and set up T-CAFE on your Jira Cloud instance.', search: 'installation setup install', slug: 'getting-started' },
-      { title: 'Quick Start', desc: 'Create your first test case and test plan in minutes.', search: 'quick start first steps beginner', slug: 'getting-started' },
-      { title: 'User Roles & Permissions', desc: 'Understand Admin, Team Admin, Tester, and Developer roles.', search: 'user roles permissions admin', slug: 'permissions' },
+      { num: '01', title: 'Installation & First Steps', desc: 'Install T-CAFE on Jira Cloud, sign in, and create your first project. Includes Welcome Banner & Sample Data.', search: 'installation setup install quick start first steps beginner sample data welcome banner', slug: 'getting-started' },
+      { num: '02', title: 'User Roles & Permissions', desc: 'Admin / Team Admin / Tester / Developer system roles, custom roles across 8 permission areas, and self-demotion guards.', search: 'user roles permissions admin tester developer custom', slug: 'permissions' },
+      { num: '03', title: 'Overview Dashboard', desc: 'Welcome Banner, Board, Count cards (Test Cases / Test Plans / Total Users), Test Milestone Gantt, and Status Kanban.', search: 'overview dashboard welcome banner count milestone status kanban', slug: 'overview-dashboard' },
+      { num: '04', title: 'Board (Announcements)', desc: 'Embedded project board with rich-text post creation (Admin only), pagination, and view counts.', search: 'board announcement post notice', slug: 'board' },
     ]
   },
   {
-    title: 'Features',
+    title: 'Test Cases',
     color: 'green',
     items: [
-      { title: 'Test Case Management', desc: 'Create, edit, import, export, and organize test cases with folders.', search: 'test case create edit', slug: 'test-cases' },
-      { title: 'Test Plans & Execution', desc: 'Create test plans, assign test cases, and track execution results.', search: 'test plan execution run', slug: 'test-plans' },
-      { title: 'Factor Combination Testing', desc: 'Generate test combinations with Full, Pairwise, or Mixed algorithms.', search: 'factor combination pairwise', slug: 'factor-combination' },
-      { title: 'Test Reports & Analytics', desc: 'View execution statistics, export reports in CSV, JSON, or Excel.', search: 'test report analytics', slug: 'test-reports' },
-      { title: 'Defect Tracking', desc: 'Create Jira issues directly from failed test cases.', search: 'defect bug issue create', slug: 'test-execution' },
-      { title: 'Configuration', desc: 'Customize priorities, case types, components, plan statuses, and UDFs.', search: 'configuration settings priority', slug: 'configuration' },
+      { num: '05', title: 'Test Case Management', desc: 'Create, edit, view, clone, move, and delete test cases. Created/Updated columns, filters, and bulk actions.', search: 'test case create edit clone move delete', slug: 'test-cases' },
+      { num: '06', title: 'Folder Management', desc: 'Organize test cases into folders with rename, move, copy, and impact-aware delete (TCs deleted with folder).', search: 'folder rename move copy delete impact', slug: 'test-cases-folders' },
+      { num: '07', title: 'Test Steps', desc: 'Write detailed test steps with Step / Test Data / Expected Result. Embed [ATTACHMENT:…] tags for clickable downloads.', search: 'test steps step data expected result attachment', slug: 'test-cases-steps' },
+      { num: '08', title: 'Factor Combination', desc: 'Auto-generate test combinations with Pairwise (greedy + random sampling), Full Combination, or Mixed mode. Constraints supported.', search: 'factor combination pairwise full mixed constraint', slug: 'factor-combination' },
+      { num: '09', title: 'Import / Export', desc: 'Import CSV / JSON / Excel up to 5,000 cases (auto-merge). Export to CSV / JSON / Excel with full column set.', search: 'import export csv json excel xlsx merge migration', slug: 'import-export' },
     ]
   },
   {
-    title: 'Import & Export',
+    title: 'Test Plans & Reports',
+    color: 'green',
+    items: [
+      { num: '10', title: 'Test Plan Management', desc: 'Create test plans, add/remove TCs, clone (without TPTCs), folder organization, and status workflow.', search: 'test plan create assign clone folder status', slug: 'test-plans' },
+      { num: '11', title: 'Test Execution', desc: 'Execute TPTCs (Pass / Fail / Block / Skip), log comments, and create Jira issues from failures.', search: 'test execution run pass fail block skip jira issue defect', slug: 'test-execution' },
+      { num: '12', title: 'Test Reports & Analytics', desc: 'View execution stats by Folder / Component / Tester. Filter by Status / Owner / Progress. Export to Excel.', search: 'test report analytics excel folder component tester', slug: 'test-reports' },
+    ]
+  },
+  {
+    title: 'Configuration & Resources',
     color: 'purple',
     items: [
-      { title: 'Importing Test Cases', desc: 'Import from CSV, JSON, or Excel with validation and encoding support.', search: 'import csv json excel', slug: 'import-export' },
-      { title: 'Exporting Test Cases', desc: 'Export test cases and reports in CSV, JSON, or Excel format.', search: 'export csv json excel', slug: 'import-export' },
+      { num: '13', title: 'Configuration', desc: 'Customize Priorities (4 default), Case Types (6 default), Components, Plan Statuses (Draft/Open/Completed), and User-Defined Fields.', search: 'configuration settings priority case type component plan status udf', slug: 'configuration' },
+      { num: '14', title: 'Attachments', desc: 'Upload, manage, and link files. Project storage cap 200 MB. Use [ATTACHMENT:id:filename] tags inside TCs/TPs for clickable downloads.', search: 'attachment file upload download storage', slug: 'attachments' },
+      { num: '15', title: 'Frequently Asked Questions', desc: 'Common questions on installation, permissions, test cases, factor combination, attachments, security, billing, and compatibility.', search: 'faq question troubleshoot help language data security billing roadmap', slug: 'faq' },
     ]
-  }
-];
-
-const faqs = [
-  { q: 'The app is not loading or showing a blank screen', a: 'Try hard refreshing your browser (Ctrl+Shift+R), clear browser cache, check if Jira Cloud is accessible, and verify the app is installed in site settings.' },
-  { q: "I can't create or edit test cases", a: 'This is likely a permissions issue. Only Admin or Team Admin roles (or custom roles with the appropriate permissions) can create and edit. Contact your project administrator.' },
-  { q: 'Import is failing or showing errors', a: 'Check: file format (CSV/JSON/XLSX), UTF-8 encoding recommended, and "Name" column is required. See the Import/Export guide for details.' },
-  { q: 'How do I change the language?', a: 'T-CAFE supports English, Korean, and Japanese. Language is auto-detected from Jira settings. You can also set a per-project language in Configuration.' },
-  { q: 'How is my data stored and secured?', a: 'All data is stored in a secure data center and encrypted for protection. Role-based access control ensures only authorized users can access your data. See our Privacy Policy for details.' },
-  { q: 'What file types can I upload?', a: 'Most common file types are supported (images, documents, archives, etc.). Executable files (.exe, .bat, .dll, etc.) are blocked for security. Click "Supported Formats" on the Attachments page to see the full list.' },
-  { q: 'Can I create custom roles?', a: 'Yes. Go to Configuration → User Permissions → Roles tab. You can create custom roles and configure permissions across 8 functional areas.' },
+  },
 ];
 
 const Support = () => {
   const [search, setSearch] = useState('');
-  const [openFaq, setOpenFaq] = useState(null);
 
   const filterMatch = (item) => {
     if (!search) return true;
     const q = search.toLowerCase();
-    return (item.title + ' ' + item.desc + ' ' + (item.search || '')).toLowerCase().includes(q);
+    return (item.num + ' ' + item.title + ' ' + item.desc + ' ' + (item.search || ''))
+      .toLowerCase()
+      .includes(q);
   };
 
   return (
@@ -82,7 +83,10 @@ const Support = () => {
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>
                       </div>
                       <div className="doc-card-content">
-                        <h3>{item.title}</h3>
+                        <h3>
+                          <span className="doc-card-num">{item.num}</span>
+                          {item.title}
+                        </h3>
                         <p>{item.desc}</p>
                       </div>
                     </Link>
@@ -91,19 +95,6 @@ const Support = () => {
               </div>
             );
           })}
-
-          <h2 className="docs-section-title">Troubleshooting & FAQ</h2>
-          <div className="faq-list">
-            {faqs.filter(f => !search || (f.q + ' ' + f.a).toLowerCase().includes(search.toLowerCase())).map((faq, i) => (
-              <div key={i} className={`faq-item ${openFaq === i ? 'open' : ''}`}>
-                <div className="faq-question" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-                  <span>{faq.q}</span>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="6,9 12,15 18,9"/></svg>
-                </div>
-                <div className="faq-answer"><p>{faq.a}</p></div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

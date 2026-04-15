@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import shotWelcome from '../../assets/user_guide/01-getting-started/1. welcome banner.png';
+import shotMainMenu from '../../assets/user_guide/01-getting-started/2. T-CAFE 메인 메뉴 구조.png';
+import shotProjectLang from '../../assets/user_guide/01-getting-started/3. 프로젝트 선택과 언어 변경.png';
 
 const GettingStarted = () => (
   <article className="guide-article">
@@ -21,7 +24,7 @@ const GettingStarted = () => (
       <li><strong>닫기 버튼</strong> (×): 배너 숨기기</li>
     </ul>
 
-    <ScreenshotSlot label="Welcome Banner 화면" />
+    <ScreenshotSlot src={shotWelcome} label="Welcome Banner 화면" />
 
     <hr />
 
@@ -110,7 +113,7 @@ const GettingStarted = () => (
       </tbody>
     </table>
 
-    <ScreenshotSlot label="상단 탭 메뉴" />
+    <ScreenshotSlot src={shotMainMenu} label="상단 탭 메뉴" />
 
     <hr />
 
@@ -129,7 +132,7 @@ const GettingStarted = () => (
       <li>언어 설정은 <strong>사용자별 + 프로젝트별</strong>로 저장됩니다</li>
     </ul>
 
-    <ScreenshotSlot label="프로젝트/언어 선택 메뉴" />
+    <ScreenshotSlot src={shotProjectLang} label="프로젝트/언어 선택 메뉴" />
 
     <hr />
 

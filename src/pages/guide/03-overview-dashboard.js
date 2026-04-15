@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import shotWelcome from '../../assets/user_guide/03-overview-dashboard/1. welcome banner.png';
+import shotMilestone from '../../assets/user_guide/03-overview-dashboard/2. Test Milestone.png';
+import shotCount from '../../assets/user_guide/03-overview-dashboard/3. Count.png';
+import shotStatus from '../../assets/user_guide/03-overview-dashboard/4. Test Plans.png';
 
 const OverviewDashboard = () => (
   <article className="guide-article">
@@ -30,7 +34,7 @@ const OverviewDashboard = () => (
       </tbody>
     </table>
 
-    <ScreenshotSlot label="Overview 메인 화면" />
+    {/* <ScreenshotSlot label="Overview 메인 화면" /> */}
 
     <hr />
 
@@ -73,7 +77,7 @@ const OverviewDashboard = () => (
       <li>닫기 버튼 (×) — 클릭 시 프로젝트 단위로 6시간 동안 숨김</li>
     </ul>
 
-    <ScreenshotSlot label="Welcome Banner" />
+    <ScreenshotSlot src={shotWelcome} label="Welcome Banner" />
 
     <p>샘플 데이터 생성 동작은 <Link to="/support/guide/getting-started">01. 시작하기</Link> 참고</p>
 
@@ -99,7 +103,36 @@ const OverviewDashboard = () => (
 
     <hr />
 
-    <h2>6. Count Section (개수 통계)</h2>
+    <h2>6. Test Milestone (테스트 마일스톤 타임라인)</h2>
+    <p>TP들을 <strong>간트 차트 형식의 타임라인 막대</strong>로 표시합니다.</p>
+
+    <h3>표시 정보</h3>
+    <ul>
+      <li>TP 이름</li>
+      <li>시작일 ~ 종료일 (막대)</li>
+      <li>진행률 (막대 내부 채워진 정도)</li>
+      <li>상태 (Plan Status의 색상 적용)</li>
+    </ul>
+
+    <ScreenshotSlot src={shotMilestone} label="Test Milestone Timeline" />
+
+    <h3>인터랙션</h3>
+    <ul>
+      <li>막대 클릭 → 해당 TP의 Test Cases 탭으로 이동</li>
+      <li>호버 시 Total / Passed / Failed TC 개수 등 요약 표시</li>
+      <li>섹션 헤더의 Refresh 버튼으로 수동 갱신</li>
+    </ul>
+
+    <h3>필터 및 정렬</h3>
+    <ul>
+      <li>상태별 표시/숨기기 체크박스</li>
+      <li>기간 필터: 전체 / 7일 / 30일 / 90일 / 사용자 지정(시작일·종료일 입력)</li>
+      <li>정렬 토글: 최신순(newest) / 오래된순(oldest) — 기본 시작일 기준</li>
+    </ul>
+
+    <hr />
+
+    <h2>7. Count Section (개수 통계)</h2>
     <p>프로젝트의 기본 수치를 3장의 카드로 표시합니다.</p>
 
     <h3>표시 카드 (총 3개)</h3>
@@ -114,38 +147,9 @@ const OverviewDashboard = () => (
       </tbody>
     </table>
 
-    <ScreenshotSlot label="Count Section" />
+    <ScreenshotSlot src={shotCount} label="Count Section" />
 
     <aside className="guide-callout">카드 자체에는 클릭 네비게이션이 연결되어 있지 않습니다. 페이지 이동은 상단 탭을 사용합니다.</aside>
-
-    <hr />
-
-    <h2>7. Test Milestone (테스트 마일스톤 타임라인)</h2>
-    <p>TP들을 <strong>간트 차트 형식의 타임라인 막대</strong>로 표시합니다.</p>
-
-    <h3>표시 정보</h3>
-    <ul>
-      <li>TP 이름</li>
-      <li>시작일 ~ 종료일 (막대)</li>
-      <li>진행률 (막대 내부 채워진 정도)</li>
-      <li>상태 (Plan Status의 색상 적용)</li>
-    </ul>
-
-    <ScreenshotSlot label="Test Milestone Timeline" />
-
-    <h3>인터랙션</h3>
-    <ul>
-      <li>막대 클릭 → 해당 TP의 Test Cases 탭(<code>/test-plans/:key/add-test-cases</code>)으로 이동</li>
-      <li>호버 시 Total / Passed / Failed TC 개수 등 요약 표시</li>
-      <li>섹션 헤더의 Refresh 버튼으로 수동 갱신</li>
-    </ul>
-
-    <h3>필터 및 정렬</h3>
-    <ul>
-      <li>상태별 표시/숨기기 체크박스</li>
-      <li>기간 필터: 전체 / 7일 / 30일 / 90일 / 사용자 지정(시작일·종료일 입력)</li>
-      <li>정렬 토글: 최신순(newest) / 오래된순(oldest) — 기본 시작일 기준</li>
-    </ul>
 
     <hr />
 
@@ -168,7 +172,7 @@ const OverviewDashboard = () => (
       <li>컬럼이 3개를 초과하면 좌/우 스크롤 버튼 노출</li>
     </ul>
 
-    <ScreenshotSlot label="Status Section Kanban" />
+    <ScreenshotSlot src={shotStatus} label="Status Section Kanban" />
 
     <hr />
 

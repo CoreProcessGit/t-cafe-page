@@ -318,6 +318,48 @@ const Home = () => {
     return () => observerRef.current?.disconnect();
   }, []);
 
+  useEffect(() => {
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      const el = document.querySelector('.fc-animated');
+      if (el) el.classList.add('fc-playing');
+      return;
+    }
+    const ENTER_MS = 3000;
+    const HOLD_MS = 5000;
+    const FADE_MS = 500;
+    const CYCLE_MS = ENTER_MS + HOLD_MS + FADE_MS;
+
+    let mounted = true;
+    let restartTimer;
+    let fadeTimer;
+
+    const cycle = () => {
+      if (!mounted) return;
+      const el = document.querySelector('.fc-animated');
+      if (!el) {
+        restartTimer = setTimeout(cycle, 500);
+        return;
+      }
+      el.classList.remove('fc-playing');
+      void el.offsetWidth;
+      el.classList.add('fc-playing');
+      fadeTimer = setTimeout(() => {
+        if (!mounted) return;
+        const el2 = document.querySelector('.fc-animated');
+        if (el2) el2.classList.remove('fc-playing');
+      }, ENTER_MS + HOLD_MS);
+      restartTimer = setTimeout(cycle, CYCLE_MS);
+    };
+    cycle();
+
+    return () => {
+      mounted = false;
+      clearTimeout(restartTimer);
+      clearTimeout(fadeTimer);
+    };
+  }, []);
+
   const activeScreenshot = screenshotTabs.find(t => t.key === activeTab);
 
   return (
@@ -335,7 +377,7 @@ const Home = () => {
               Jira Cloud Plugin
             </div>
             <div className="animate hero-logo">
-              <img src={require('../assets/logo-archive-white.svg').default || require('../assets/logo-archive-white.svg')} alt="T-CAFE archive" height={56} />
+              <img src={require('../assets/logo-archive-white.svg').default || require('../assets/logo-archive-white.svg')} alt="T-CAFE jira" height={56} />
             </div>
             <p className="hero-tagline animate">Smarter Testing. Better Quality.</p>
             <p className="hero-description animate">
@@ -364,114 +406,108 @@ const Home = () => {
                 <span className="dot red"></span>
                 <span className="dot yellow"></span>
                 <span className="dot green"></span>
-                <span className="browser-url">your-site.atlassian.net/jira/apps/t-cafe</span>
+                <span className="browser-url">your-site.atlassian.net/jira/apps/t-cafe/factor-combination</span>
               </div>
-              <div className="mini-dashboard">
-                <div className="mini-sidebar">
-                  <div className="mini-sidebar-title">Folders</div>
-                  <div className="mini-folder active">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
-                    All Tests <span className="mini-count">247</span>
+              <div className="fc-mockup fc-animated">
+                <div className="fc-header">
+                  <div className="fc-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                    Factor Combination
                   </div>
-                  <div className="mini-folder">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
-                    Authentication <span className="mini-count">42</span>
+                  <span className="fc-mode-chip">Pairwise</span>
+                </div>
+
+                <div className="fc-body">
+                  <div className="fc-factors">
+                    <div className="fc-factor-row">
+                      <span className="fc-factor-label">Browser</span>
+                      <span className="fc-value-chip" style={{'--d': '0.10s'}}>Chrome</span>
+                      <span className="fc-value-chip" style={{'--d': '0.18s'}}>Safari</span>
+                      <span className="fc-value-chip" style={{'--d': '0.26s'}}>Firefox</span>
+                    </div>
+                    <div className="fc-factor-row">
+                      <span className="fc-factor-label">Device</span>
+                      <span className="fc-value-chip" style={{'--d': '0.34s'}}>Desktop</span>
+                      <span className="fc-value-chip" style={{'--d': '0.42s'}}>Mobile</span>
+                      <span className="fc-value-chip" style={{'--d': '0.50s'}}>Tablet</span>
+                    </div>
+                    <div className="fc-factor-row">
+                      <span className="fc-factor-label">Locale</span>
+                      <span className="fc-value-chip" style={{'--d': '0.58s'}}>EN</span>
+                      <span className="fc-value-chip" style={{'--d': '0.66s'}}>KO</span>
+                      <span className="fc-value-chip" style={{'--d': '0.74s'}}>JA</span>
+                    </div>
+                    <div className="fc-factor-row">
+                      <span className="fc-factor-label">Plan</span>
+                      <span className="fc-value-chip" style={{'--d': '0.82s'}}>Free</span>
+                      <span className="fc-value-chip" style={{'--d': '0.90s'}}>Pro</span>
+                      <span className="fc-value-chip" style={{'--d': '0.98s'}}>Enterprise</span>
+                    </div>
                   </div>
-                  <div className="mini-folder indent">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
-                    Login <span className="mini-count">18</span>
-                  </div>
-                  <div className="mini-folder indent">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
-                    OAuth <span className="mini-count">24</span>
-                  </div>
-                  <div className="mini-folder">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
-                    Payment <span className="mini-count">67</span>
-                  </div>
-                  <div className="mini-folder">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/></svg>
-                    API <span className="mini-count">96</span>
+
+                  <div className="fc-math">
+                    <div className="fc-math-row fc-anim-formula">
+                      <span className="fc-math-formula">3<sup>4</sup></span>
+                      <span className="fc-math-eq">=</span>
+                      <span className="fc-math-num-faded">81</span>
+                    </div>
+                    <div className="fc-math-label fc-anim-formula">Full Combination</div>
+                    <div className="fc-math-arrow fc-anim-arrow">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                      <span>Pairwise</span>
+                    </div>
+                    <div className="fc-math-num fc-anim-hero">9</div>
+                    <div className="fc-math-coverage fc-anim-coverage">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      Every 2-factor pair covered
+                    </div>
+                    <div className="fc-math-savings fc-anim-savings">−89% effort · same coverage</div>
                   </div>
                 </div>
-                <div className="mini-main">
-                  <div className="mini-toolbar">
-                    <div className="mini-btn primary">+ Create</div>
-                    <div className="mini-search">
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                      Search...
-                    </div>
+
+                <div className="fc-output">
+                  <div className="fc-output-header fc-anim-output-header">
+                    Generated Test Cases
+                    <span className="fc-output-count">9</span>
                   </div>
-                  <div className="mini-table">
-                    <div className="mini-row mini-head">
-                      <span className="col-key">KEY</span>
-                      <span className="col-name">NAME</span>
-                      <span className="col-prio">PRIORITY</span>
-                      <span className="col-owner">OWNER</span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-001</span>
-                      <span className="col-name">Login with valid credentials</span>
-                      <span className="col-prio"><span className="chip chip-high">High</span></span>
-                      <span className="col-owner"><span className="avatar ava-1">J</span></span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-002</span>
-                      <span className="col-name">OAuth2 token refresh flow</span>
-                      <span className="col-prio"><span className="chip chip-highest">Highest</span></span>
-                      <span className="col-owner"><span className="avatar ava-2">S</span></span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-003</span>
-                      <span className="col-name">Password reset email delivery</span>
-                      <span className="col-prio"><span className="chip chip-med">Medium</span></span>
-                      <span className="col-owner"><span className="avatar ava-3">M</span></span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-004</span>
-                      <span className="col-name">Session timeout handling</span>
-                      <span className="col-prio"><span className="chip chip-high">High</span></span>
-                      <span className="col-owner"><span className="avatar ava-1">J</span></span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-005</span>
-                      <span className="col-name">Rate limiting on login attempts</span>
-                      <span className="col-prio"><span className="chip chip-low">Low</span></span>
-                      <span className="col-owner"><span className="avatar ava-4">E</span></span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-006</span>
-                      <span className="col-name">Multi-factor authentication setup</span>
-                      <span className="col-prio"><span className="chip chip-highest">Highest</span></span>
-                      <span className="col-owner"><span className="avatar ava-2">S</span></span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-007</span>
-                      <span className="col-name">Remember me token persistence</span>
-                      <span className="col-prio"><span className="chip chip-med">Medium</span></span>
-                      <span className="col-owner"><span className="avatar ava-3">M</span></span>
-                    </div>
-                    <div className="mini-row">
-                      <span className="col-key">TC-008</span>
-                      <span className="col-name">Logout clears all sessions</span>
-                      <span className="col-prio"><span className="chip chip-high">High</span></span>
-                      <span className="col-owner"><span className="avatar ava-1">J</span></span>
-                    </div>
-                  </div>
-                  <div className="mini-footer">
-                    <div className="mini-filters">
-                      <span className="filter-chip">
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-                        Type: Functional
+                  <div className="fc-output-table">
+                    <div className="fc-output-row" style={{'--d': '2.0s'}}>
+                      <span className="fc-output-key">TC-001</span>
+                      <span className="fc-output-combo">
+                        <span className="fc-combo-tag">Chrome</span>
+                        <span className="fc-combo-tag">Desktop</span>
+                        <span className="fc-combo-tag">EN</span>
+                        <span className="fc-combo-tag">Pro</span>
                       </span>
-                      <span className="filter-chip">Priority: High +1</span>
-                      <span className="filter-chip clear">Clear all</span>
+                      <span className="fc-output-check">✓</span>
                     </div>
-                    <div className="mini-scroll-info">
-                      <span className="scroll-dot" />
-                      Showing 8 of <strong>247</strong>
+                    <div className="fc-output-row" style={{'--d': '2.2s'}}>
+                      <span className="fc-output-key">TC-002</span>
+                      <span className="fc-output-combo">
+                        <span className="fc-combo-tag">Safari</span>
+                        <span className="fc-combo-tag">Mobile</span>
+                        <span className="fc-combo-tag">KO</span>
+                        <span className="fc-combo-tag">Free</span>
+                      </span>
+                      <span className="fc-output-check">✓</span>
+                    </div>
+                    <div className="fc-output-row" style={{'--d': '2.5s'}}>
+                      <span className="fc-output-key">TC-003</span>
+                      <span className="fc-output-combo">
+                        <span className="fc-combo-tag">Firefox</span>
+                        <span className="fc-combo-tag">Tablet</span>
+                        <span className="fc-combo-tag">JA</span>
+                        <span className="fc-combo-tag">Enterprise</span>
+                      </span>
+                      <span className="fc-output-check">✓</span>
                     </div>
                   </div>
+                </div>
+
+                <div className="fc-captions">
+                  <span className="fc-cap fc-cap-1">① Define your factors and values</span>
+                  <span className="fc-cap fc-cap-2">② Pairwise covers every 2-factor value pair</span>
+                  <span className="fc-cap fc-cap-3">③ 9 cases instead of 81 — same defect detection</span>
                 </div>
               </div>
             </div>

@@ -1,9 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.745f12a7.css",
-    "main.js": "/static/js/main.7c3a9ebc.js",
+    "main.js": "/static/js/main.60c5db4d.js",
+    "static/media/01.png": "/static/media/01.ccd0e65f55439d84addd.png",
     "static/media/1. welcome banner.png": "/static/media/1. welcome banner.a634204b1182cf2cc367.png",
+    "static/media/02.png": "/static/media/02.db367fee5c55695a9bbd.png",
+    "static/media/03.png": "/static/media/03.0931478f8a45cb09c591.png",
+    "static/media/05.png": "/static/media/05.1d39a44b30fbed9ad0fe.png",
     "static/media/1. 사용자 권한 변경.png": "/static/media/1. 사용자 권한 변경.45a04a643ac742578c31.png",
+    "static/media/04.png": "/static/media/04.a220e301eb9ab9433ea6.png",
     "static/media/2. Test Milestone.png": "/static/media/2. Test Milestone.f2b87f0bfd82e9e054ce.png",
     "static/media/4. Test Plans.png": "/static/media/4. Test Plans.5423a46c2ae6bf73aefd.png",
     "static/media/1. board.png": "/static/media/1. board.6d881d33e62853d216d2.png",
@@ -14,10 +19,10 @@
     "static/media/logo-archive-white.svg": "/static/media/logo-archive-white.91c0fae365a75b6ef314c3f070efc95a.svg",
     "index.html": "/index.html",
     "main.745f12a7.css.map": "/static/css/main.745f12a7.css.map",
-    "main.7c3a9ebc.js.map": "/static/js/main.7c3a9ebc.js.map"
+    "main.60c5db4d.js.map": "/static/js/main.60c5db4d.js.map"
   },
   "entrypoints": [
     "static/css/main.745f12a7.css",
-    "static/js/main.7c3a9ebc.js"
+    "static/js/main.60c5db4d.js"
   ]
 }

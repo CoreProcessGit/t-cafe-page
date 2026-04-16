@@ -161,6 +161,9 @@ const FactorCombination = () => (
     <ol>
       <li>Test Cases 페이지에서 Factor Combination을 만들 폴더 선택 (없으면 먼저 <strong>New Folder</strong>로 생성)</li>
     </ol>
+    <aside className="guide-callout info">
+      <strong>Factor Combination 설정 표시</strong>: Factor Combination을 한 번이라도 저장한 폴더는 좌측 폴더 트리에서 폴더명 옆에 주황색 <strong>⚡ 아이콘</strong>이 표시됩니다. 어느 폴더에 설계 내역이 있는지 한눈에 확인할 수 있어, 같은 폴더에 다시 들어가서 수정하거나 새 폴더에 새 설계를 만들지 빠르게 판단할 수 있습니다. 부모 폴더에는 전파되지 않으며 그 폴더 자체에 설정이 있을 때만 표시됩니다.
+    </aside>
 
     <h3>Step 2: Factor Combination 생성 시작</h3>
     <ol>

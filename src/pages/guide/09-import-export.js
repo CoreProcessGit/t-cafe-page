@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
 import img01 from '../../assets/user_guide/09-importexport/01.png';
+import img02 from '../../assets/user_guide/09-importexport/02.png'
 
 const ImportExport = () => (
   <article className="guide-article">
@@ -49,7 +50,7 @@ const ImportExport = () => (
     <h2>3. Export (내보내기)</h2>
 
     <h3>3-1. 진입 경로</h3>
-    <p>Test Cases 페이지 상단 액션 바의 <strong>Export</strong> 버튼 (canExport 권한 보유자에게만 표시)</p>
+    <p>Test Cases 페이지 상단 액션 바의 <strong>Export</strong> 버튼</p>
 
     <h3>3-2. 절차</h3>
     <ol>
@@ -68,10 +69,12 @@ const ImportExport = () => (
 
     <ScreenshotSlot label="Export 메뉴" src={img01} />
 
-    <h3>3-3. Export 항목 (실제 출력 필드)</h3>
-    <ul>
+    <h3>3-3. Export 항목 (실제 출력 필드 — 컬럼 순서 그대로)</h3>
+    <ol>
+      <li><strong>Folder</strong> — TC가 속한 폴더의 leaf 이름 (예: <code>OAuth</code>)</li>
+      <li><strong>Folder Path</strong> — 루트부터의 전체 경로, <code>/</code> 구분자 (예: <code>Authentication/Login/OAuth</code>)</li>
       <li><strong>Key</strong> (예: PROJ-1)</li>
-      <li><strong>Name</strong></li>
+      <li><strong>Name</strong> (필수, 헤더에 <code>*</code> 표시)</li>
       <li><strong>Description</strong></li>
       <li><strong>Objective</strong></li>
       <li><strong>Precondition</strong></li>
@@ -80,23 +83,23 @@ const ImportExport = () => (
       <li><strong>Priority</strong></li>
       <li><strong>Owner</strong></li>
       <li><strong>Components</strong>, <strong>Labels</strong></li>
-      <li><strong>Folder</strong>, <strong>Folder Path</strong></li>
       <li><strong>User Defined Fields (UDF)</strong> — 정의된 필드 각각이 별도 컬럼으로 추가 (필수 필드는 헤더에 <code>*</code> 표시)</li>
       <li><strong>Test Steps</strong> — Step No / Step / Test Data / Expected Result</li>
-    </ul>
-    <aside className="guide-callout info">
-      현재 Export에는 <strong>Linked Issues</strong>, <strong>Created Date</strong>, <strong>Updated Date</strong> 필드가 포함되지 않습니다. 필요 시 별도 화면(목록 컬럼 노출)에서 확인하세요.
-    </aside>
+    </ol>
 
     <h3>3-4. CSV 형식 예시</h3>
-    <pre><code>{`TC Key,Name,Priority,Case Type,Folder,Components,Labels,Steps
-PROJ-1,Login with valid credentials,High,Function,Login,"Frontend,Authentication","smoke,critical","Step 1: Open page | Expected: Page loads"
-PROJ-2,Login with invalid password,Medium,Function,Login,"Frontend,Authentication",negative,"Step 1: Open page | Step 2: Enter wrong password"`}</code></pre>
+    <pre><code>{`Folder,Folder Path,Key,Name *,Description,Type,Case Type,Priority,Owner,Components,Labels,Step No,Step,Test Data,Expected Result
+OAuth,Authentication/Login/OAuth,PROJ-1,Login with valid credentials,Verify user can login,single,Function,High,John Doe,"Frontend,Authentication","smoke,critical",1,Navigate to login page,URL: /login,Login page displayed
+,,,,,,,,,,,2,Enter credentials,user/pass,Logged in
+Login,Authentication/Login,PROJ-2,Login with invalid password,,single,Function,Medium,John Doe,"Frontend,Authentication",negative,1,Open page,-,Page loads`}</code></pre>
+    <aside className="guide-callout info">
+      <strong>다단계 스텝 표기</strong>: 같은 TC에 여러 스텝이 있으면 두 번째 스텝부터 같은 TC의 메타데이터(Folder/Key/Name 등)를 비워둡니다. 같은 TC에 이어지는 스텝으로 인식됩니다.
+    </aside>
 
     <h3>3-5. JSON 형식 예시 (실제 구조)</h3>
     <pre><code>{`{
   "exportInfo": {
-    "timestamp": "2026-04-15T10:00:00.000Z",
+    "timestamp": "2026-04-16T10:00:00.000Z",
     "version": "1.0",
     "source": "Jira Test Archive - production",
     "totalTestCases": 2,
@@ -115,7 +118,8 @@ PROJ-2,Login with invalid password,Medium,Function,Login,"Frontend,Authenticatio
       "owner": "John Doe",
       "components": ["Frontend", "Authentication"],
       "labels": ["smoke", "critical"],
-      "folder": "Login",
+      "folder": "OAuth",
+      "folderPath": "Authentication/Login/OAuth",
       "testSteps": [
         {
           "step": "Navigate to login page",
@@ -130,9 +134,9 @@ PROJ-2,Login with invalid password,Medium,Function,Login,"Frontend,Authenticatio
     <h3>3-6. Excel 형식 특징</h3>
     <ul>
       <li>워크시트 이름: <code>Test Cases</code> 단일 시트</li>
-      <li>컬럼: §3-3에 나열된 모든 필드 + UDF + Test Steps (Step No / Step / Test Data / Expected Result는 같은 행에 인라인 4열로 표시)</li>
+      <li>컬럼 순서: 3-3 그대로 (Folder, Folder Path가 맨 앞)</li>
+      <li>UDF + Test Steps (Step No / Step / Test Data / Expected Result는 같은 행에 인라인 4열로 표시)</li>
       <li>첫 행은 헤더(굵게 표시), 필수 필드는 <code>*</code> 표시</li>
-      <li>차트는 포함되지 않음</li>
     </ul>
 
     <hr />
@@ -140,19 +144,25 @@ PROJ-2,Login with invalid password,Medium,Function,Login,"Frontend,Authenticatio
     <h2>4. Import (가져오기)</h2>
 
     <h3>4-1. 진입 경로</h3>
-    <p>Test Cases 페이지 상단 액션 바의 <strong>Import</strong> 버튼 (canImport 권한 보유자에게만 표시)</p>
+    <p>Test Cases 페이지 상단 액션 바의 <strong>Import</strong> 버튼</p>
     <aside className="guide-callout">Admin / Team Admin만 표시됩니다 (Tester / Developer는 Import 불가).</aside>
 
     <h3>4-2. 절차</h3>
     <ol>
       <li>상단의 <strong>Import</strong> 버튼 클릭</li>
-      <li>OS 파일 선택 다이얼로그가 열리며 <code>.csv</code> / <code>.json</code> / <code>.xlsx</code> 파일을 선택</li>
-      <li>업로드된 파일이 즉시 파싱·검증·import됩니다 (별도 매핑 화면, 미리보기 화면, 옵션 선택 화면은 없습니다)</li>
-      <li>진행률 다이얼로그가 표시되며 배치 단위로 처리됩니다 (한 번에 최대 <strong>5,000개</strong>)</li>
-      <li>완료 후 결과 요약과 경고 목록이 표시됩니다</li>
+      <li><strong>Import Template Modal</strong>이 열립니다. 다음 두 가지 작업이 가능합니다:
+        <ul>
+          <li><strong>템플릿 다운로드</strong> — CSV / Excel / JSON 3가지 형식 중 선택. 템플릿에는 현재 프로젝트의 Priorities, Case Types, Components, User-Defined Fields가 미리 채워져 있어 다운로드 → 데이터 입력 → 그대로 Import 가능합니다</li>
+          <li><strong>파일 선택하여 Import</strong> — 이미 준비된 파일이 있으면 바로 업로드</li>
+        </ul>
+      </li>
+      <li>"Select File to Import" 버튼 → OS 파일 선택 다이얼로그 → <code>.csv</code> / <code>.json</code> / <code>.xlsx</code> 선택</li>
+      <li>업로드된 파일이 파싱·검증·import됩니다 (별도 매핑 화면, 미리보기 화면, 옵션 선택 화면은 없습니다)</li>
+      <li>진행률 다이얼로그가 표시됩니다 (한 번에 최대 <strong>5,000개</strong>)</li>
+      <li>완료 후 결과 요약 모달(Added / Updated / Skipped / Failed 카운트)과 경고/실패 목록이 표시됩니다</li>
     </ol>
 
-    {/* <ScreenshotSlot label="Import 진행 화면" /> */}
+    <ScreenshotSlot label="Import 메뉴" src={img02} />
 
     <h3>4-3. Import 동작 방식 (자동 merge 모드)</h3>
     <p>T-CAFE는 항상 <strong>merge 모드</strong>로 import하며, Skip / Overwrite / Create Duplicate 같은 사용자 선택 옵션을 제공하지 않습니다. 동작은 다음과 같이 자동 결정됩니다:</p>
@@ -162,85 +172,61 @@ PROJ-2,Login with invalid password,Medium,Function,Login,"Frontend,Authenticatio
       <li>유효하지 않은 행(필수 항목 누락 등)은 <strong>Skipped</strong>로 카운트되며 경고에 사유가 기록됩니다</li>
     </ul>
 
+    <h3>4-3-1. 폴더 자동 생성 (folderPath 기반)</h3>
+    <p>Import 시 <code>folder path</code> 컬럼 값에 따라 폴더가 자동 처리됩니다:</p>
+    <ul>
+      <li><code>folder path</code>가 <strong>지정된 경로 형식</strong>(예: <code>Authentication/Login/OAuth</code>)이면 → 경로의 각 레벨이 <strong>자동 생성</strong>되고 TC가 leaf 폴더에 배정됩니다. 이미 존재하는 폴더는 재사용되어 중복 생성되지 않습니다.</li>
+      <li><code>folder path</code>가 <strong>비어 있으면</strong> → 업로드한 파일명에서 확장자를 제거한 이름으로 root-level 폴더가 자동 생성되고 TC가 그 폴더에 배정됩니다 (기존 동작 유지).</li>
+      <li>구분자는 <code>/</code> (권장) 또는 <code>{' > '}</code>(legacy 호환) 둘 다 인식됩니다.</li>
+    </ul>
+    <aside className="guide-callout info">
+      <strong>동일 레벨 폴더명 중복 방지</strong>: 같은 부모 폴더 아래에 같은 이름의 폴더는 단 1개만 존재합니다. Import가 같은 경로에 대해 중복 폴더를 만들지 않으므로, 같은 파일을 여러 번 import해도 폴더는 그대로 유지됩니다.
+    </aside>
+
+    <h3>4-3-2. 멱등성 (같은 파일 재 import)</h3>
+    <p>같은 Export 파일을 다시 import하면:</p>
+    <ul>
+      <li>Key가 일치하는 모든 TC는 <strong>UPDATE</strong>만 발생, 새 INSERT는 일어나지 않습니다.</li>
+      <li>folderPath가 같으면 <strong>같은 폴더가 재사용</strong>되어 새 폴더가 생기지 않습니다.</li>
+      <li>결과적으로 <strong>데이터 중복 없이 정합성이 회복</strong>됩니다 — 부분 실패 시 같은 파일을 다시 import하면 안전하게 회복됩니다.</li>
+    </ul>
+
+    <h3>4-3-3. 동시 Import 차단 (세션 lock)</h3>
+    <p>같은 프로젝트에 대해 Import는 <strong>동시에 1명만</strong> 실행할 수 있습니다:</p>
+    <ul>
+      <li>다른 사용자가 이미 Import 진행 중이면 → "<strong>Another import is currently in progress for this project. Please try again in a few minutes.</strong>" 메시지가 표시되고 차단됩니다.</li>
+      <li>비정상 종료(브라우저 닫기, 네트워크 단절)로 세션이 멈춰도 <strong>5분 이내 자동 회복</strong>되어 다른 사용자가 Import 가능합니다.</li>
+    </ul>
+
     <h3>4-4. 인식되는 컬럼명 (대소문자 무시, 끝의 <code>*</code> 자동 제거)</h3>
     <ul>
       <li><strong>필수</strong>: <code>name</code></li>
       <li><strong>식별</strong>: <code>key</code> — 매칭 시 업데이트, 비어 있으면 신규 생성</li>
       <li><strong>일반 필드</strong>: <code>description</code>, <code>objective</code>, <code>precondition</code>, <code>type</code>(single/factor), <code>case type</code>, <code>priority</code>, <code>owner</code></li>
-      <li><strong>폴더</strong>: <code>folder</code>, <code>folderid</code>, <code>folder path</code> — 비어 있으면 <strong>업로드한 파일명에서 확장자를 제거한 이름으로 폴더가 자동 생성</strong>됩니다 (Folder 컬럼은 필수가 아님)</li>
+      <li><strong>폴더</strong>: <code>folder</code>, <code>folder path</code> — <code>folder path</code>가 우선 적용. 경로 형식(<code>A/B/C</code>)이면 중첩 폴더가 자동 생성됨. 둘 다 비어 있으면 파일명으로 폴더 자동 생성</li>
       <li><strong>다중값</strong>: <code>components</code>, <code>labels</code> — 콤마 또는 세미콜론으로 구분</li>
       <li><strong>스텝</strong>: <code>step no</code>, <code>step</code>(또는 <code>step description</code>), <code>test data</code>, <code>expected result</code></li>
-      <li><strong>UDF</strong>: Configuration에 정의된 사용자 정의 필드 이름과 일치하면 자동 매핑 (체크박스/숫자/선택형은 적절히 변환)</li>
+      <li><strong>UDF</strong>: Configuration에 정의된 사용자 정의 필드 이름과 일치하면 자동 매핑 (체크박스/숫자/선택형은 적절히 변환). <strong>required UDF가 비어 있으면 해당 행 SKIP</strong></li>
     </ul>
 
     <h3>4-5. Import 결과 응답</h3>
-    <p>완료 후 다음 값이 반환됩니다:</p>
+    <p>완료 후 결과 모달에 다음 값이 표시됩니다:</p>
     <ul>
-      <li><strong>addedCount</strong> — 새로 생성된 TC 개수</li>
-      <li><strong>updatedCount</strong> — 키 매칭으로 업데이트된 TC 개수</li>
-      <li><strong>skippedCount</strong> — 검증 실패로 건너뛴 행 개수</li>
-      <li><strong>warnings</strong> — 경고 메시지 목록 (어느 행에서 어떤 문제가 있었는지)</li>
+      <li><strong>Added</strong> — 새로 생성된 TC 개수 (녹색 배지)</li>
+      <li><strong>Updated</strong> — 키 매칭으로 업데이트된 TC 개수 (파란 배지)</li>
+      <li><strong>Skipped</strong> — 검증 실패로 건너뛴 행 개수 (주황 배지) — name 누락, required UDF 누락 등</li>
+      <li><strong>Failed</strong> — INSERT/UPDATE 도중 SQL 에러로 실패한 행 (빨간 배지, 신규)</li>
+      <li><strong>warnings</strong> 카테고리화: <strong>Replaced</strong>(invalid 값을 default로 대체), <strong>Excluded</strong>(unknown component/issue 제외), <strong>Skipped</strong>(SKIP 사유), <strong>Other</strong>(기타). 각 항목은 <strong>row 번호</strong>와 함께 표시됩니다.</li>
+      <li><strong>Download Log</strong> 버튼으로 텍스트 파일 다운로드 가능 — 외부 도구로 분석할 수 있도록 모든 카테고리(Failed/Replaced/Excluded/Skipped/Other)가 row 번호와 함께 기록됩니다.</li>
     </ul>
     <p>한 번의 Import에서 5,000개를 초과하면 전체가 거부되며 "Import size exceeds maximum limit of 5000 test cases" 에러가 표시됩니다.</p>
+    <aside className="guide-callout info">
+      <strong>5,000 TC 처리 시간</strong>: 평균 약 20~25초 (500개 batch × 10번 = 약 1.5~2초/batch). Bulk INSERT + 메모리 폴더 캐시로 N+1 쿼리 없이 처리됩니다.
+    </aside>
 
     <hr />
 
-    <h2>5. 다른 도구에서 마이그레이션</h2>
-
-    <h3>5-1. Excel/CSV에서 가져오기</h3>
-    <p><strong>시나리오</strong>: QA 팀이 Excel로 관리하던 TC를 T-CAFE로 옮기기</p>
-
-    <p><strong>준비</strong>:</p>
-    <ol>
-      <li>Excel 파일을 정리:
-        <ul>
-          <li>첫 행: 컬럼명 (Name, Description, Priority, Steps...)</li>
-          <li>한 행 = 한 TC</li>
-        </ul>
-      </li>
-      <li>UTF-8 또는 UTF-8 BOM 인코딩으로 저장 (한글 깨짐 방지)</li>
-      <li>빈 행 제거</li>
-    </ol>
-
-    <p><strong>Import</strong>:</p>
-    <ol>
-      <li>Configuration → Priorities, Case Types, Components가 미리 정의되어 있는지 확인</li>
-      <li>Import 실행</li>
-      <li>매핑 단계에서 컬럼 정확히 매핑</li>
-      <li>Skip 옵션으로 중복 방지</li>
-    </ol>
-
-    <h3>5-2. Xray에서 마이그레이션</h3>
-    <p><strong>Xray Export</strong>:</p>
-    <ol>
-      <li>Xray에서 Test Repository → Export → Excel</li>
-      <li>다운로드된 파일을 T-CAFE의 Import 형식에 맞게 정리</li>
-    </ol>
-
-    <p><strong>T-CAFE Import</strong>:</p>
-    <ol>
-      <li>Test Steps 형식이 다를 수 있으므로 정리 필요</li>
-      <li>Xray의 "Step / Data / Result" → T-CAFE의 "Step / Test Data / Expected Result"</li>
-    </ol>
-
-    <h3>5-3. Zephyr Scale에서 마이그레이션</h3>
-    <p><strong>Zephyr Scale Export</strong>:</p>
-    <ol>
-      <li>Zephyr Scale REST API 또는 Excel Export</li>
-      <li>컬럼 매핑 작업 필요</li>
-    </ol>
-
-    <h3>5-4. TestRail에서 마이그레이션</h3>
-    <p><strong>TestRail Export</strong>:</p>
-    <ol>
-      <li>TestRail에서 CSV 또는 XML Export</li>
-      <li>CSV를 T-CAFE 형식에 맞게 변환</li>
-      <li>T-CAFE Import</li>
-    </ol>
-
-    <hr />
-
-    <h2>6. Test Steps 형식 변환</h2>
+    <h2>5. Test Steps 형식 변환</h2>
     <p>가장 까다로운 부분은 Test Steps의 변환입니다.</p>
 
     <h3>지원 형식</h3>
@@ -268,68 +254,77 @@ PROJ-1 | 2 | Type | username | Field filled`}</code></pre>
 
     <hr />
 
-    <h2>7. Import/Export 베스트 프랙티스</h2>
+    <h2>6. Import/Export 베스트 프랙티스</h2>
 
     <h3>DO</h3>
     <ul>
+      <li><strong>Import Template Modal에서 템플릿 다운로드</strong>: 현재 프로젝트의 Priority/Case Type/Component/UDF가 미리 채워져 있어 검증 오류가 줄어듭니다</li>
       <li><strong>소량으로 먼저 테스트</strong>: 5~10개로 Import 테스트 후 전체 진행</li>
       <li><strong>백업 후 Import</strong>: 기존 데이터를 먼저 Export하여 보관</li>
       <li><strong>인코딩 확인</strong>: UTF-8 (한글 사용 시 BOM 권장)</li>
-      <li><strong>컬럼명 확인</strong>: 인식되는 컬럼명(§4-4)에 맞춰 헤더 작성</li>
+      <li><strong>컬럼명 확인</strong>: 인식되는 컬럼명(4-4)에 맞춰 헤더 작성</li>
+      <li><strong>folder path 활용</strong>: 중첩 폴더 구조를 유지하려면 <code>folder path</code> 컬럼에 <code>A/B/C</code> 형식으로 작성</li>
       <li><strong>5,000건 단위 분할</strong>: 한 번에 5,000건 초과 시 거부됨</li>
+      <li><strong>실패 시 같은 파일 재 import</strong>: 멱등성이 보장되므로 부분 실패 후 재 import해도 안전</li>
     </ul>
 
     <h3>DON'T</h3>
     <ul>
       <li>5,000건 초과 단일 파일 (자동 거부됨)</li>
-      <li>같은 <code>key</code>를 가진 행을 두 번 Import (merge 모드라 두 번째에 업데이트 발생)</li>
-      <li>Configuration(Priority / Case Type / Component) 미설정 상태로 Import</li>
-      <li>백업 없이 기존 키와 충돌 가능한 데이터 import (자동 업데이트됨)</li>
+      <li>같은 <code>key</code>를 가진 행을 두 번 Import (merge 모드라 두 번째에 업데이트 발생) — 단, <strong>의도적 멱등성 활용</strong>은 OK</li>
+      <li>Configuration(Priority / Case Type / Component) 미설정 상태로 Import — 검증 오류 다수 발생</li>
+      <li>같은 프로젝트에 두 사람이 동시 Import — 두 번째 사용자는 차단됨</li>
+      <li>Folder Path에 <code>/</code> 문자가 포함된 폴더명 사용 (구분자로 잘못 인식됨)</li>
     </ul>
 
     <hr />
 
-    <h2>8. 자주 발생하는 문제</h2>
+    <h2>7. 자주 발생하는 문제</h2>
     <table>
       <thead>
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>
       </thead>
       <tbody>
-        <tr><td>Import 버튼이 안 보임</td><td>권한 없음</td><td>Admin / Team Admin 권한 필요</td></tr>
+        <tr><td>Import 버튼이 안 보임</td><td>권한 없음</td><td>Admin / Team Admin 권한 필요 혹은 Role에서 수정 후 저장</td></tr>
+        <tr><td>"Another import is currently in progress" 메시지</td><td>다른 사용자가 같은 프로젝트에 Import 진행 중</td><td>해당 사용자가 끝날 때까지 대기. 비정상 종료라면 5분 후 자동 회복</td></tr>
+        <tr><td>"Import session has expired" 메시지</td><td>Import 도중 세션이 5분간 heartbeat 끊김 (네트워크 단절 등)</td><td>같은 파일로 재 Import (멱등성 보장)</td></tr>
         <tr><td>한글이 깨짐</td><td>인코딩 문제</td><td>UTF-8 또는 UTF-8 BOM으로 저장</td></tr>
-        <tr><td>일부 행이 Skipped 처리됨</td><td>name 누락 또는 잘못된 형식 (validateAndNormalizeTC 실패)</td><td>warnings에 표시된 사유 확인 후 해당 행 보완</td></tr>
-        <tr><td>Priority / Case Type / Component가 적용 안 됨</td><td>Configuration에 해당 항목이 없음</td><td>Configuration에서 먼저 항목 정의 후 재 Import</td></tr>
+        <tr><td>일부 행이 Skipped 처리됨</td><td>name 누락, required UDF 누락, 또는 validation 실패</td><td>결과 모달의 Skipped 카테고리에서 row 번호와 사유 확인 후 해당 행 보완</td></tr>
+        <tr><td>일부 행이 Failed 처리됨</td><td>SQL 에러 (key 충돌, 길이 초과 등)</td><td>결과 모달의 Failed 카테고리에서 row 번호와 에러 확인. Download Log로 세부 분석</td></tr>
+        <tr><td>Priority / Case Type / Component가 default로 변경됨</td><td>파일의 값이 Configuration에 없음</td><td>결과 모달의 Replaced 카테고리 확인. Configuration에서 항목 정의 후 재 Import</td></tr>
+        <tr><td>같은 폴더가 두 번 생기지 않음 (좋은 동작)</td><td>UNIQUE 제약으로 동일 레벨 중복 차단</td><td>의도된 동작 — 같은 파일을 여러 번 import해도 폴더는 그대로 유지됨</td></tr>
+        <tr><td>중첩 폴더가 자동 생성됨 (좋은 동작)</td><td>folder path 컬럼에 <code>A/B/C</code> 형식이 있음</td><td>의도된 동작 — 모든 중간 폴더가 부모→자식 순서로 자동 생성됨</td></tr>
         <tr><td>"Import size exceeds maximum limit of 5000" 에러</td><td>한 파일에 5,000개 초과</td><td>여러 파일로 분할해 순차 Import</td></tr>
-        <tr><td>Folder가 의도와 다르게 생성됨</td><td>Folder 컬럼이 비어 있어 파일명으로 자동 생성</td><td>의도한 폴더에 들어가도록 파일에 <code>folder</code> 컬럼 채우기</td></tr>
-        <tr><td>같은 키의 TC가 의도치 않게 수정됨</td><td>merge 모드 — key 일치 시 업데이트</td><td>새 TC로 만들고 싶다면 파일에서 <code>key</code> 컬럼을 비워 두기</td></tr>
+        <tr><td>Folder Path 컬럼은 있는데 폴더가 안 생김</td><td>구분자가 잘못됨 (지원: <code>/</code>, <code>{' > '}</code>)</td><td><code>/</code> 또는 <code>{' > '}</code> 사용. 다른 구분자(<code>\\</code>, <code>|</code> 등)는 인식 안 됨</td></tr>
+        <tr><td>같은 키의 TC가 의도치 않게 수정됨</td><td>merge 모드 — key 일치 시 업데이트 (멱등성 동작)</td><td>새 TC로 만들고 싶다면 파일에서 <code>key</code> 컬럼을 비워 두기</td></tr>
       </tbody>
     </table>
 
     <hr />
 
-    <h2>9. Export 활용 사례</h2>
+    <h2>8. Export 활용 사례</h2>
 
-    <h3>9-1. 주간 보고</h3>
+    <h3>8-1. 주간 보고</h3>
     <ul>
       <li>매주 금요일 Test Cases → Export → 진행 상황 보고서</li>
     </ul>
 
-    <h3>9-2. 외부 백업</h3>
+    <h3>8-2. 외부 백업</h3>
     <ul>
       <li>매월 1회 전체 TC를 JSON으로 Export → 외부 저장소 보관</li>
     </ul>
 
-    <h3>9-3. 다른 팀 공유</h3>
+    <h3>8-3. 다른 팀 공유</h3>
     <ul>
       <li>특정 폴더만 Export → 다른 팀에 Excel로 전달</li>
     </ul>
 
-    <h3>9-4. 감사 자료</h3>
+    <h3>8-4. 감사 자료</h3>
     <ul>
       <li>특정 시점의 TC 전체 Export → 감사 증빙</li>
     </ul>
 
-    <h3>9-5. 분석</h3>
+    <h3>8-5. 분석</h3>
     <ul>
       <li>CSV Export → 엑셀 피벗 테이블로 분석</li>
     </ul>

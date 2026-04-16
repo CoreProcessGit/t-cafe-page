@@ -49,6 +49,7 @@ const Folders = () => (
       <li><strong>하위 폴더</strong>: 트리 구조로 표시</li>
       <li><strong>TC 개수</strong>: 각 폴더 우측에 해당 폴더의 TC 개수 표시</li>
       <li><strong>확장/축소 화살표</strong>: 클릭으로 펼치기/접기</li>
+      <li><strong>⚡ 아이콘 (Factor Combination 표시)</strong>: 폴더에 Factor Combination 설정이 저장되어 있으면 폴더명 옆에 주황색 ⚡ 아이콘이 표시됩니다. 마우스를 올리면 "이 폴더에는 Factor Combination 설정이 있습니다" 툴팁이 나타납니다. 이 표시는 <strong>해당 폴더만</strong> 적용되며 부모 폴더에는 전파되지 않습니다 (예: <code>Auth/Login</code>에 설정이 있어도 <code>Auth</code>에는 표시되지 않음). 클릭 시 별도 동작은 없으며 폴더 선택 후 상단에서 Factor Combination 화면으로 이동할 수 있습니다.</li>
     </ul>
 
     <ScreenshotSlot label="폴더 트리" src={img01} />
@@ -67,7 +68,9 @@ const Folders = () => (
 
     <h3>특징</h3>
     <ul>
-      <li>폴더는 루트 레벨에만 생성됩니다</li>
+      <li>폴더는 루트 레벨에 생성됩니다 (드래그 또는 Move로 다른 위치로 이동 가능)</li>
+      <li><strong>같은 레벨에 같은 이름의 폴더는 만들 수 없습니다</strong> — 동일 부모 아래에 동일한 이름이 이미 존재하면 자동 번호가 증가합니다 (<code>New Folder 2</code>, <code>3</code>...). DB UNIQUE 제약으로 강제됩니다.</li>
+      <li>다른 부모 아래에는 같은 이름이 가능합니다 (예: <code>Auth/Login</code>과 <code>Payment/Login</code> 동시 존재 가능).</li>
     </ul>
 
     <hr />
@@ -81,6 +84,9 @@ const Folders = () => (
       <li>새 이름 입력</li>
       <li>Enter로 저장</li>
     </ol>
+    <aside className="guide-callout">
+      같은 레벨(같은 부모 폴더 안)에 이미 동일한 이름의 폴더가 있으면 변경이 거부됩니다. 다른 이름을 사용하거나 한쪽 폴더를 먼저 다른 위치로 이동해주세요.
+    </aside>
 
     <hr />
 
@@ -93,6 +99,9 @@ const Folders = () => (
       <li>열린 Move 창에서 폴더를 <strong>드래그 앤 드롭</strong>하여 원하는 위치로 이동</li>
       <li>변경 내용을 <strong>Save Changes</strong>로 저장</li>
     </ol>
+    <aside className="guide-callout">
+      이동하려는 위치(새 부모 폴더 아래)에 동일한 이름의 폴더가 이미 있으면 이동이 거부됩니다. 한쪽의 이름을 먼저 바꾸거나 다른 위치를 선택해주세요.
+    </aside>
 
     <hr />
 
@@ -179,7 +188,7 @@ const Folders = () => (
     <ul>
       <li>너무 많은 빈 폴더</li>
       <li>의미 없는 이름 ("Folder 1", "New Folder")</li>
-      <li>중복 폴더 ("Login"이 여러 곳에 존재)</li>
+      <li>같은 의미의 폴더가 여러 부모 아래 산재 (예: <code>Frontend/Login</code>과 <code>Mobile/Login</code> 동시 존재) — 같은 부모 아래는 UNIQUE로 자동 차단되지만, 다른 부모 아래는 허용되므로 의도적이지 않다면 통합 권장</li>
     </ul>
 
     <hr />
@@ -210,6 +219,8 @@ const Folders = () => (
         <tr><td>드래그가 안 됨</td><td>권한 없음 또는 브라우저 호환성</td><td>권한 확인, 브라우저 새로고침</td></tr>
         <tr><td>폴더가 안 보임</td><td>페이지 캐시</td><td>새로고침 (F5)</td></tr>
         <tr><td>폴더 이동 후 TC가 안 보임</td><td>필터가 적용되어 있음</td><td>필터 초기화</td></tr>
+        <tr><td>폴더 이름 변경/이동 시 거부됨</td><td>같은 부모 폴더 아래에 이미 동일 이름이 존재 (UNIQUE 제약)</td><td>다른 이름으로 변경하거나 한쪽 폴더를 먼저 다른 위치로 이동</td></tr>
+        <tr><td>Import 시 같은 폴더가 두 번 안 생김 (정상 동작)</td><td>UNIQUE 제약으로 동일 레벨 중복 차단</td><td>의도된 동작 — 같은 파일을 여러 번 import해도 폴더는 그대로 유지됨</td></tr>
         <tr><td>폴더 삭제 실패</td><td>시스템 오류</td><td>안의 TC를 먼저 다른 곳으로 이동 후 재시도</td></tr>
       </tbody>
     </table>

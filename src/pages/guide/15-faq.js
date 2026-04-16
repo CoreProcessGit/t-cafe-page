@@ -215,11 +215,11 @@ const faqData = [
     items: [
       {
         q: '다른 도구(Xray, Zephyr 등)에서 마이그레이션할 수 있나요?',
-        a: <p>Import는 T-CAFE의 고정된 컬럼명(Key, Name, Description, Objective, Precondition, Type, Case Type, Priority, Owner, Components, Labels, Folder, Folder Path, UDF, Test Steps)을 기준으로 자동 인식합니다. <strong>별도의 컬럼 매핑 UI는 제공하지 않으므로</strong>, 타 도구에서 Export한 파일의 컬럼 헤더를 직접 편집해 T-CAFE 양식에 맞춘 뒤 Import해야 합니다. 자세한 내용은 <Link to="/support/guide/import-export">09. Import / Export</Link>.</p>,
+        a: <p>Import는 T-CAFE의 고정된 컬럼명(Folder, Folder Path, Key, Name, Description, Objective, Precondition, Type, Case Type, Priority, Owner, Components, Labels, UDF, Test Steps)을 기준으로 자동 인식합니다. <strong>별도의 컬럼 매핑 UI는 제공하지 않으므로</strong>, 타 도구에서 Export한 파일의 컬럼 헤더를 직접 편집해 T-CAFE 양식에 맞춘 뒤 Import해야 합니다. Import 버튼 클릭 시 표시되는 <strong>Import Template Modal</strong>에서 현재 프로젝트에 맞는 빈 템플릿을 다운로드받아 시작하는 것이 가장 안전합니다. 자세한 내용은 <Link to="/support/guide/import-export">09. Import / Export</Link>.</p>,
       },
       {
         q: 'Export 형식은?',
-        a: <p>CSV, JSON, Excel(XLSX) 3가지를 지원합니다.</p>,
+        a: <p>CSV, JSON, Excel(XLSX) 3가지를 지원합니다. 컬럼 순서는 Folder, Folder Path가 맨 앞에 배치되어 폴더 기준으로 정렬·필터링하기 쉽도록 되어있습니다. Folder Path는 <code>/</code> 구분자(예: <code>Authentication/Login/OAuth</code>)를 사용합니다.</p>,
       },
       {
         q: 'Import 시 한글이 깨집니다',
@@ -227,7 +227,19 @@ const faqData = [
       },
       {
         q: '한 번에 몇 개의 TC를 Import할 수 있나요?',
-        a: <p>한 번의 Import에서 <strong>최대 5,000개</strong>까지 처리됩니다(<code>MAX_IMPORT_SIZE</code> 한도). 그 이상이면 파일을 나누어 Import해야 하며, 대용량일수록 실패 시 부분 복구가 어려우니 수백 개 단위로 분할을 권장합니다.</p>,
+        a: <p>한 번의 Import에서 <strong>최대 5,000개</strong>까지 처리됩니다(<code>MAX_IMPORT_SIZE</code> 한도). 5,000개 기준 약 20~25초 소요 (500개씩 batch 처리). 그 이상이면 파일을 나누어 Import해야 합니다. 부분 실패가 발생해도 <strong>같은 파일을 다시 Import하면 멱등성으로 안전하게 복구</strong>됩니다 (key 매칭으로 UPDATE만 발생).</p>,
+      },
+      {
+        q: '같은 파일을 두 번 Import하면 데이터가 중복되나요?',
+        a: <p>아니요. T-CAFE는 <strong>멱등성을 보장</strong>합니다. key가 일치하는 TC는 UPDATE만 발생하고 새 INSERT는 일어나지 않습니다. 폴더도 동일 경로(<code>folder path</code>)에 대해 재사용되어 중복 생성되지 않습니다 (DB UNIQUE 제약). 부분 실패 후 재 Import가 안전한 회복 방법입니다.</p>,
+      },
+      {
+        q: '동시에 여러 사용자가 Import할 수 있나요?',
+        a: <p>같은 프로젝트에 대해서는 <strong>한 번에 한 명만</strong> Import할 수 있습니다. 다른 사용자가 진행 중이면 "Another import is currently in progress for this project. Please try again in a few minutes." 메시지가 표시됩니다. 비정상 종료된 세션은 5분 이내 자동 회복되므로 잠시 후 재시도 가능합니다.</p>,
+      },
+      {
+        q: 'Folder Path 컬럼에 어떻게 작성하나요?',
+        a: <p><code>/</code> 구분자로 경로를 작성합니다 (예: <code>Authentication/Login/OAuth</code>). 모든 중간 폴더가 자동 생성되고 TC가 leaf 폴더에 배정됩니다. 기존 export 파일과의 호환을 위해 <code>{' > '}</code> 구분자도 인식됩니다. Folder Path가 비어 있으면 업로드한 파일명으로 폴더가 자동 생성됩니다.</p>,
       },
     ],
   },

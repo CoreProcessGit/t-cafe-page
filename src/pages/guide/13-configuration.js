@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/13-configuration/01.png';
+import img02 from '../../assets/user_guide/13-configuration/02.png';
+import img03 from '../../assets/user_guide/13-configuration/03.png';
+import img04 from '../../assets/user_guide/13-configuration/04.png';
+import img05 from '../../assets/user_guide/13-configuration/05.png';
 
 const Configuration = () => (
   <article className="guide-article">
@@ -60,7 +65,7 @@ const Configuration = () => (
       </tbody>
     </table>
 
-    <ScreenshotSlot label="Configuration 메인 화면" />
+    <ScreenshotSlot label="Configuration 메인 화면" src={img01} />
 
     <hr />
 
@@ -100,7 +105,7 @@ const Configuration = () => (
     </ol>
     <p>타입에 따라 모달에서 추가 설정이 필요합니다 (예: Dropdown/Checkbox의 옵션 목록, Number의 포맷/통화, Time stamp의 기본 시각 등).</p>
 
-    <ScreenshotSlot label="UDF 추가" />
+    <ScreenshotSlot label="UDF 추가" src={img02} />
 
     <h3>2-3. 타입별 추가 설정</h3>
     <ul>
@@ -203,7 +208,7 @@ const Configuration = () => (
       <li>우측의 <strong>Add</strong> 버튼 클릭</li>
     </ol>
 
-    <ScreenshotSlot label="Priority 추가" />
+    <ScreenshotSlot label="Priority 추가" src={img03} />
 
     <h3>5-3. 우선순위 수정 / 삭제</h3>
     <ul>
@@ -233,7 +238,7 @@ const Configuration = () => (
       <li>우측의 <strong>Add</strong> 버튼 클릭</li>
     </ol>
 
-    <ScreenshotSlot label="Plan Status 관리" />
+    <ScreenshotSlot label="Plan Status 관리" src={img04} />
 
     <hr />
 
@@ -270,7 +275,7 @@ const Configuration = () => (
       <li><strong>Task</strong> 이슈 타입: 비활성화 → Task 이슈의 상태 변경은 Retestable에 영향 없음</li>
     </ul>
 
-    <ScreenshotSlot label="Retestable Configuration" />
+    <ScreenshotSlot label="Retestable Configuration" src={img05} />
 
     <hr />
 

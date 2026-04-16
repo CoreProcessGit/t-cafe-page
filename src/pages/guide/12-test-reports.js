@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/12-testreports/01.png';
+import img02 from '../../assets/user_guide/12-testreports/02.png';
+import img03 from '../../assets/user_guide/12-testreports/03.png';
+import img04 from '../../assets/user_guide/12-testreports/04.png';
 
 const TestReports = () => (
   <article className="guide-article">
@@ -14,7 +18,7 @@ const TestReports = () => (
     <h2>1. 리포트 진입</h2>
     <p>상단 탭 → <strong>Test Reports</strong></p>
 
-    <ScreenshotSlot label="Test Reports 메인 화면" />
+    <ScreenshotSlot label="Test Reports 메인 화면" src={img01} />
 
     <hr />
 
@@ -73,7 +77,7 @@ const TestReports = () => (
     </ul>
     <p>실행 상태별 색상(Pass/Fail/Block/Skip/Not Yet)은 테이블 내 상태 셀·진행 바에 일관되게 적용됩니다.</p>
 
-    <ScreenshotSlot label="리포트 테이블" />
+    <ScreenshotSlot label="리포트 테이블" src={img02} />
 
     <hr />
 
@@ -102,7 +106,7 @@ const TestReports = () => (
       날짜 범위 · 우선순위 · 컴포넌트 · Pass/Fail 상태별 필터는 TP 목록 화면에서는 제공되지 않습니다. 실행 결과 분석은 TP 상세 리포트의 View Type(Folder / Component / Tester)으로 수행합니다.
     </aside>
 
-    <ScreenshotSlot label="리포트 필터" />
+    <ScreenshotSlot label="리포트 필터" src={img03} />
 
     <hr />
 
@@ -138,7 +142,7 @@ const TestReports = () => (
     <h3>Failed Test Cases Export (별도 옵션)</h3>
     <p>상세 페이지에서는 실패한 TC만 모아 Export하는 기능도 제공됩니다. Total Fail Test Case 섹션 주변의 Export 버튼으로 실패 TC 목록만 별도 XLSX로 내보낼 수 있습니다.</p>
 
-    <ScreenshotSlot label="Export 버튼" />
+    <ScreenshotSlot label="Export 버튼" src={img04} />
 
     <hr />
 

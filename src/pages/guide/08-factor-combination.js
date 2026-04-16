@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/08-factor/01.png';
+import img02 from '../../assets/user_guide/08-factor/02.png';
+import img03 from '../../assets/user_guide/08-factor/03.png';
+import img04 from '../../assets/user_guide/08-factor/04.png';
 
 const FactorCombination = () => (
   <article className="guide-article">
@@ -165,7 +169,7 @@ const FactorCombination = () => (
       <li>Factor Combination 작성 화면(Simulation 탭)이 열립니다</li>
     </ol>
 
-    <ScreenshotSlot label="Factor Combination 시작 화면" />
+    <ScreenshotSlot label="Factor Combination 시작 화면" src={img01} />
 
     <h3>Step 3: Factor 정의 (Simulation 탭)</h3>
     <ol>
@@ -176,7 +180,7 @@ const FactorCombination = () => (
       <li>필요한 만큼 Factor 추가 반복</li>
     </ol>
 
-    <ScreenshotSlot label="Factor 정의 화면" />
+    <ScreenshotSlot label="Factor 정의 화면" src={img02} />
 
     <h3>Step 4: Constraint 추가 (선택, Simulation 탭)</h3>
     <ol>
@@ -193,7 +197,7 @@ const FactorCombination = () => (
       <li>결과가 마음에 들지 않으면 Factor 또는 Constraint 조정 후 다시 Simulate</li>
     </ol>
 
-    <ScreenshotSlot label="Simulation 결과" />
+    <ScreenshotSlot label="Simulation 결과" src={img03} />
 
     <h3>Step 6: 공통 속성 입력 (Details 탭)</h3>
     <ol>
@@ -285,7 +289,7 @@ const FactorCombination = () => (
       <li>예: "Mac에서만 추가 권한 확인" 스텝은 Mac 조합에만 체크</li>
     </ol>
 
-    <ScreenshotSlot label="Steps Matrix" />
+    <ScreenshotSlot label="Steps Matrix" src={img04} />
 
     <hr />
 

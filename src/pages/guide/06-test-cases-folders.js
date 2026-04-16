@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/06-folders/01.png';
 
 const Folders = () => (
   <article className="guide-article">
@@ -50,7 +51,7 @@ const Folders = () => (
       <li><strong>확장/축소 화살표</strong>: 클릭으로 펼치기/접기</li>
     </ul>
 
-    <ScreenshotSlot label="폴더 트리" />
+    <ScreenshotSlot label="폴더 트리" src={img01} />
 
     <hr />
 
@@ -68,8 +69,6 @@ const Folders = () => (
     <ul>
       <li>폴더는 루트 레벨에만 생성됩니다</li>
     </ul>
-
-    <ScreenshotSlot label="폴더 생성" />
 
     <hr />
 

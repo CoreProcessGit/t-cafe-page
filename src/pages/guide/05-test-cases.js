@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/05-testcases/01.png';
+import img02 from '../../assets/user_guide/05-testcases/02.png';
 
 const TestCases = () => (
   <article className="guide-article">
@@ -57,7 +59,7 @@ const TestCases = () => (
       <li><strong>우측</strong>: TC 목록 (테이블 형식, 선택한 폴더의 TC 표시)</li>
     </ul>
 
-    <ScreenshotSlot label="Test Cases 메인 화면" />
+    <ScreenshotSlot label="Test Cases 메인 화면" src={img01} />
 
     <h3>TC 상세 보기 / 편집</h3>
     <ul>
@@ -116,7 +118,7 @@ const TestCases = () => (
       본 페이지(05)에서는 <strong>Single</strong> 생성을 다룹니다. Factor Combination 생성은 <Link to="/support/guide/factor-combination">08. Factor Combination</Link>에서 설명합니다.
     </aside>
 
-    <ScreenshotSlot label="TC 생성 버튼" />
+    <ScreenshotSlot label="TC 생성 버튼" src={img02} />
 
     <h3>입력 항목</h3>
     <p>TC 작성 화면은 상단 고정 입력과 3개의 접이식 섹션(Detail / User Defined Field / Test Steps)으로 구성됩니다. 실제 화면 순서대로 안내합니다.</p>

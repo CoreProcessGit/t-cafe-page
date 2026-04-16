@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/10-testplans/01.png';
+import img02 from '../../assets/user_guide/10-testplans/02.png';
+import img03 from '../../assets/user_guide/10-testplans/03.png';
+import img04 from '../../assets/user_guide/10-testplans/04.png';
 
 const TestPlans = () => (
   <article className="guide-article">
@@ -70,18 +74,12 @@ const TestPlans = () => (
       <li><strong>상세 페이지</strong>: TP 안의 TC 목록 + 실행 결과</li>
     </ul>
 
-    <ScreenshotSlot label="Test Plans 메인 화면" />
+    <ScreenshotSlot label="Test Plans 메인 화면" src={img01} />
 
     <h3>필터</h3>
     <ul>
       <li>상태별 (기본: Draft / Open / Completed, 사용자 정의 상태 포함)</li>
       <li>소유자별</li>
-      <li>날짜 범위</li>
-    </ul>
-
-    <h3>정렬</h3>
-    <ul>
-      <li>이름 / 시작일 / 종료일 / 진행률</li>
     </ul>
 
     <hr />
@@ -104,12 +102,11 @@ const TestPlans = () => (
       <li>모달 하단의 <strong>Create</strong> 버튼 클릭</li>
     </ol>
 
-    <ScreenshotSlot label="TP 생성 다이얼로그" />
+    <ScreenshotSlot label="TP 생성 다이얼로그" src={img02} />
 
     <h3>자동 부여 항목</h3>
     <ul>
       <li><strong>TP 키</strong>: <code>{'<프로젝트키>-TP-<순번>'}</code> (예: <code>TCAFE-TP-1</code>) — 프로젝트 내 기존 plan_key 중 최대 순번 + 1로 자동 부여</li>
-      <li><strong>생성일(created_at)</strong>: UTC 기준 자동 저장</li>
       <li><strong>총 TC 수</strong>: 0 (TC는 생성 후 별도 추가)</li>
       <li><strong>진행률</strong>: 0%</li>
     </ul>
@@ -136,7 +133,7 @@ const TestPlans = () => (
       <li><strong>Factor TC</strong>도 동일하게 선택 가능</li>
     </ul>
 
-    <ScreenshotSlot label="TC 추가 화면" />
+    <ScreenshotSlot label="TC 추가 화면" src={img03} />
 
     <h3>추가 시 자동 처리</h3>
     <ul>
@@ -172,7 +169,7 @@ const TestPlans = () => (
       <li>실행 항목(TC)을 해당 폴더로 <strong>드래그 앤 드롭</strong>하거나, 항목 선택 후 상단 <strong>Move</strong> 버튼으로 이동</li>
     </ol>
 
-    <ScreenshotSlot label="TP 폴더 구조" />
+    <ScreenshotSlot label="TP 폴더 구조" src={img04} />
 
     <hr />
 

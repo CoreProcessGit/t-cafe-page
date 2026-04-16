@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/09-importexport/01.png';
 
 const ImportExport = () => (
   <article className="guide-article">
@@ -65,7 +66,7 @@ const ImportExport = () => (
     </ol>
     <p>표시된 결과가 없으면 "No test cases to export" 경고가 표시됩니다.</p>
 
-    <ScreenshotSlot label="Export 메뉴" />
+    <ScreenshotSlot label="Export 메뉴" src={img01} />
 
     <h3>3-3. Export 항목 (실제 출력 필드)</h3>
     <ul>
@@ -151,7 +152,7 @@ PROJ-2,Login with invalid password,Medium,Function,Login,"Frontend,Authenticatio
       <li>완료 후 결과 요약과 경고 목록이 표시됩니다</li>
     </ol>
 
-    <ScreenshotSlot label="Import 진행 화면" />
+    {/* <ScreenshotSlot label="Import 진행 화면" /> */}
 
     <h3>4-3. Import 동작 방식 (자동 merge 모드)</h3>
     <p>T-CAFE는 항상 <strong>merge 모드</strong>로 import하며, Skip / Overwrite / Create Duplicate 같은 사용자 선택 옵션을 제공하지 않습니다. 동작은 다음과 같이 자동 결정됩니다:</p>
@@ -242,27 +243,27 @@ PROJ-2,Login with invalid password,Medium,Function,Login,"Frontend,Authenticatio
     <h2>6. Test Steps 형식 변환</h2>
     <p>가장 까다로운 부분은 Test Steps의 변환입니다.</p>
 
-    <h3>일반적인 표현 방식</h3>
+    <h3>지원 형식</h3>
+    <p>T-CAFE는 다음 두 가지 Test Steps 형식을 지원합니다.</p>
 
-    <h4>형식 A: 한 컬럼에 모든 스텝</h4>
-    <pre><code>{`Step 1: Open page | Step 2: Enter credentials | Step 3: Click login`}</code></pre>
-
-    <h4>형식 B: 스텝마다 별도 행</h4>
+    <h4>형식 A: 스텝마다 별도 행 (CSV / Excel)</h4>
     <pre><code>{`TC Key | Step # | Step | Test Data | Expected
 PROJ-1 | 1 | Open | - | Page loads
 PROJ-1 | 2 | Type | username | Field filled`}</code></pre>
+    <p>같은 TC에 속하는 스텝은 연속된 행으로 작성하되, 2번째 행부터는 TC Name/Key를 비워두면 앞 행의 TC에 이어지는 스텝으로 인식됩니다.</p>
 
-    <h4>형식 C: JSON 배열 (T-CAFE 권장)</h4>
+    <h4>형식 B: JSON 배열 (T-CAFE 권장)</h4>
     <pre><code>{`[
  {"step": "Open page", "testData": "-", "expectedResult": "Page loads"},
  {"step": "Type username", "testData": "user1", "expectedResult": "Field filled"}
 ]`}</code></pre>
+    <p>JSON Import 시 각 TC의 <code>testSteps</code> 필드에 배열로 넣으면 가장 명확하고 안전하게 전달됩니다.</p>
 
     <h3>변환 팁</h3>
     <ul>
-      <li>도구마다 구분자가 다름 (<code>|</code>, <code>;</code>, <code>\n</code> 등) → 미리 통일</li>
-      <li>줄바꿈은 <code>\n</code> 또는 <code>{'<br>'}</code>로 통일</li>
-      <li>빈 값은 <code>-</code> 또는 빈 문자열로 통일</li>
+      <li>한 셀에 모든 스텝을 구분자(<code>|</code>, <code>;</code>, <code>\n</code>)로 이어붙이는 방식은 지원하지 않습니다 → 행 단위로 분리</li>
+      <li>CSV 셀 내부에 줄바꿈을 넣으려면 반드시 따옴표로 감싸세요 (스텝 내부 설명에만 사용 권장)</li>
+      <li>빈 값은 셀을 비워두세요 — <code>-</code>나 <code>N/A</code> 같은 표시는 그대로 텍스트로 저장됩니다</li>
     </ul>
 
     <hr />

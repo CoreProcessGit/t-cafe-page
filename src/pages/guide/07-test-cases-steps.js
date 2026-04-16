@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/07-teststep/01.png';
 
 const Steps = () => (
   <article className="guide-article">
@@ -58,7 +59,7 @@ const Steps = () => (
       <li>각 컬럼에 내용 입력</li>
     </ol>
 
-    <ScreenshotSlot label="Test Steps 에디터" />
+    <ScreenshotSlot label="Test Steps 에디터" src={img01} />
 
     <hr />
 

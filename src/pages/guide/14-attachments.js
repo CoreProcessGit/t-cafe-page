@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/14-Attachment/01.png';
+import img02 from '../../assets/user_guide/14-Attachment/02.png';
 
 const Attachments = () => (
   <article className="guide-article">
@@ -69,7 +71,7 @@ const Attachments = () => (
       <li>남은 용량</li>
     </ul>
 
-    <ScreenshotSlot label="Storage Usage 표시" />
+    <ScreenshotSlot label="Storage Usage 표시" src={img01} />
 
     <hr />
 
@@ -118,7 +120,7 @@ const Attachments = () => (
       <li>그 외 형식은 미지원 안내 → Download 후 로컬에서 확인</li>
     </ol>
 
-    <ScreenshotSlot label="Preview 모달" />
+    <ScreenshotSlot label="Preview 모달" src={img02} />
 
     <hr />
 

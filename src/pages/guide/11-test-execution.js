@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ScreenshotSlot from './ScreenshotSlot';
+import img01 from '../../assets/user_guide/11-testplanstart/01.png';
+import img02 from '../../assets/user_guide/11-testplanstart/02.png';
+import img03 from '../../assets/user_guide/11-testplanstart/03.png';
+import img04 from '../../assets/user_guide/11-testplanstart/04.png';
+import img05 from '../../assets/user_guide/11-testplanstart/05.png';
 
 const TestExecution = () => (
   <article className="guide-article">
@@ -29,7 +34,7 @@ const TestExecution = () => (
       <li><strong>중앙/우측</strong>: 선택한 실행 항목 상세 (스텝 미리보기 + 실행 패널)</li>
     </ul>
 
-    <ScreenshotSlot label="테스트 실행 화면" />
+    <ScreenshotSlot label="테스트 실행 화면" src={img01} />
 
     <hr />
 
@@ -105,8 +110,6 @@ const TestExecution = () => (
       <li>실제 동작을 진행하고 결과 비교</li>
     </ol>
 
-    <ScreenshotSlot label="스텝 수행 화면" />
-
     <h3>Step 4: 상태 선택</h3>
     <ol>
       <li>우측 패널에서 <strong>Pass / Fail / Block / Skip / Not Yet</strong> 중 해당 상태 선택</li>
@@ -115,7 +118,7 @@ const TestExecution = () => (
     </ol>
     <p>상태는 실행 항목 단위로 기록되며, T-CAFE는 스텝 단위 개별 Pass/Fail 기록 기능을 제공하지 않습니다.</p>
 
-    <ScreenshotSlot label="Status 변경" />
+    <ScreenshotSlot label="Status 변경" src={img02} />
 
     <h3>Step 5: 다음 실행 항목으로 이동</h3>
     <ul>
@@ -148,7 +151,7 @@ const TestExecution = () => (
       <li>코멘트 자체에 대한 인라인 수정·삭제 UI는 제공되지 않음 (이력에 누적됨)</li>
     </ul>
 
-    <ScreenshotSlot label="코멘트 화면" />
+    <ScreenshotSlot label="코멘트 화면" src={img03} />
 
     <hr />
 
@@ -195,7 +198,7 @@ const TestExecution = () => (
       <li>확인 → 연결만 해제 (Issue 자체는 유지)</li>
     </ol>
 
-    <ScreenshotSlot label="Linked Issues" />
+    <ScreenshotSlot label="Linked Issues" src={img04} />
 
     <hr />
 
@@ -256,17 +259,17 @@ const TestExecution = () => (
       <li>Pass / Fail / Block / Skip / Not Yet 각각에 고유 색상이 지정되어 목록과 통계 바에 일관되게 표시됩니다</li>
     </ul>
 
-    <ScreenshotSlot label="통계 막대" />
+    <ScreenshotSlot label="통계 막대" src={img05} />
 
     <hr />
 
-    <h2>10. 자동화 결과 Import (향후 기능)</h2>
+    {/* <h2>10. 자동화 결과 Import (향후 기능)</h2>
     <aside className="guide-callout">본 기능은 현재 <strong>로드맵 단계</strong>입니다. T-CAFE의 향후 버전에서 지원 예정.</aside>
     <p>CI/CD 파이프라인에서 실행한 자동화 테스트(JUnit XML, Cucumber JSON 등)의 결과를 T-CAFE로 가져오는 기능입니다.</p>
 
-    <hr />
+    <hr /> */}
 
-    <h2>11. 실행 베스트 프랙티스</h2>
+    <h2>10. 실행 베스트 프랙티스</h2>
 
     <h3>DO</h3>
     <ul>
@@ -289,7 +292,7 @@ const TestExecution = () => (
 
     <hr />
 
-    <h2>12. TC 재추가 시 자동 갱신</h2>
+    <h2>11. TC 재추가 시 자동 갱신</h2>
     <h3>TC 재추가 시 자동 갱신</h3>
     <p>이미 Test Plan에 포함된 TC를 다시 추가하면, 기존 실행 항목이 최신 TC 데이터로 자동 갱신됩니다.</p>
     <ul>
@@ -300,7 +303,7 @@ const TestExecution = () => (
 
     <hr />
 
-    <h2>13. 자주 발생하는 문제</h2>
+    <h2>12. 자주 발생하는 문제</h2>
     <table>
       <thead>
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>

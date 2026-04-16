@@ -13,7 +13,9 @@
       "Bash(npm run *)",
       "Bash(node -e ' *)",
       "Bash(node tests/smoke/import-refactor-smoke.js)",
-      "Bash(grep -l -E \"import|Import|export|Export|folder.path|Folder.Path\" src/pages/guide/*.js)"
+      "Bash(grep -l -E \"import|Import|export|Export|folder.path|Folder.Path\" src/pages/guide/*.js)",
+      "Bash(wc *)",
+      "Bash(grep -l \"^export default \" *.js)"
     ]
   }
 }

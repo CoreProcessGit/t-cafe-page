@@ -352,4 +352,349 @@ const TestExecution = () => (
   </article>
 );
 
-export default TestExecution;
+const TestExecutionEn = () => (
+  <article className="guide-article">
+    <h1>11. Test Execution</h1>
+    <p className="guide-lead">
+      The process of actually running the test cases (execution items) inside a Test Plan and recording the results. This is the core usage flow of T-CAFE.
+    </p>
+
+    <hr />
+
+    <h2>1. Before Executing</h2>
+
+    <h3>Navigation</h3>
+    <p>Top tab → <strong>Test Plans</strong> → click the TP to execute</p>
+
+    <h3>Pre-check</h3>
+    <ul>
+      <li>Confirm the TP status is <strong>Open</strong> (or a custom in-progress status). Draft means execution has not started</li>
+      <li>Any role (Admin / Team Admin / Tester / Developer) can change execution-item status and add comments</li>
+    </ul>
+
+    <h3>Layout</h3>
+    <ul>
+      <li><strong>Top</strong>: TP info (name, progress, stats)</li>
+      <li><strong>Left</strong>: TP folders + execution-item list</li>
+      <li><strong>Center / right</strong>: details of the selected execution item (step preview + execution panel)</li>
+    </ul>
+
+    <ScreenshotSlot label="Test execution screen" src={img01} />
+
+    <hr />
+
+    <h2>2. Actions by Role</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Execute item (change status)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
+        <tr><td>Add comment</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
+        <tr><td>Create issue</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
+        <tr><td>Link issue</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
+        <tr><td>Add attachment (via the Attachments page)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>View execution item</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+    <aside className="guide-callout"><strong>All roles can execute tests and leave comments themselves.</strong> Only Developers are restricted from creating / linking Jira issues.</aside>
+
+    <hr />
+
+    <h2>3. Execution Status</h2>
+    <p>Each execution item has one of the following 5 statuses:</p>
+    <table>
+      <thead>
+        <tr><th>Status</th><th>Key</th><th>Color</th><th>Meaning</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Not Yet</strong></td><td>Not Yet</td><td>Gray</td><td>Not yet executed (initial state)</td></tr>
+        <tr><td><strong>Pass</strong></td><td>Pass</td><td>Green</td><td>All steps worked as expected</td></tr>
+        <tr><td><strong>Fail</strong></td><td>Fail</td><td>Red</td><td>At least one step differs from the expected result</td></tr>
+        <tr><td><strong>Block</strong></td><td>Block</td><td>Orange</td><td>Could not be executed due to other issues (unmet preconditions, etc.)</td></tr>
+        <tr><td><strong>Skip</strong></td><td>Skip</td><td>Yellow</td><td>Intentionally not executed</td></tr>
+      </tbody>
+    </table>
+
+    <h3>How to Decide Status</h3>
+    <ul>
+      <li><strong>Pass</strong>: every step matches the expected result</li>
+      <li><strong>Fail</strong>: even one mismatch makes it Fail</li>
+      <li><strong>Block</strong>: environment issues, unmet preconditions, a dependent TC is Fail, etc.</li>
+      <li><strong>Skip</strong>: intentional skip — time pressure, low priority, not applicable, etc.</li>
+    </ul>
+
+    <hr />
+
+    <h2>4. Execution Procedure</h2>
+
+    <h3>Step 1: Select an Execution Item</h3>
+    <ol>
+      <li>In the Test Plans list, click the TP to execute → open the TP detail page</li>
+      <li>Click the <strong>Test Cases</strong> tab at the top → go to the execution screen</li>
+      <li>Click the execution item (TC) to run in the left folder tree / list</li>
+      <li>The right panel shows that execution item's details (name, Precondition, Test Steps, linked issues, etc.)</li>
+    </ol>
+
+    <h3>Step 2: Check the Precondition</h3>
+    <ul>
+      <li>Review the <strong>Precondition</strong> on the right</li>
+      <li>Verify the environment is ready</li>
+    </ul>
+
+    <h3>Step 3: Perform the Steps</h3>
+    <ol>
+      <li>Work through the steps in order, starting with step 1</li>
+      <li>Check each step's <strong>Step</strong>, <strong>Test Data</strong>, and <strong>Expected Result</strong></li>
+      <li>Perform the actual action and compare the result</li>
+    </ol>
+
+    <h3>Step 4: Choose Status</h3>
+    <ol>
+      <li>In the right panel, choose <strong>Pass / Fail / Block / Skip / Not Yet</strong></li>
+      <li>The change is saved automatically on click</li>
+      <li>When <strong>Block</strong> or <strong>Skip</strong> is selected, a reason input appears — enter a short reason and confirm</li>
+    </ol>
+    <p>Status is recorded per execution item. T-CAFE does not offer per-step Pass / Fail recording.</p>
+
+    <ScreenshotSlot label="Changing status" src={img02} />
+
+    <h3>Step 5: Move to the Next Item</h3>
+    <ul>
+      <li>Click the next execution item in the left list to move to it</li>
+    </ul>
+
+    <hr />
+
+    <h2>5. Adding Comments</h2>
+    <p>You can leave comments on each execution item.</p>
+
+    <h3>Use Cases</h3>
+    <ul>
+      <li><strong>Pass</strong>: "Verified on v1.5. Performance is good"</li>
+      <li><strong>Fail</strong>: "Fails at Step 3. Error message: '500 Internal Server Error'. Screenshot attached"</li>
+      <li><strong>Block</strong>: "Cannot connect to the test DB. Waiting on DBA"</li>
+      <li><strong>Skip</strong>: "Skip this sprint — mobile environment not yet supported"</li>
+    </ul>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Expand the <strong>Comments</strong> section in the right panel of the execution item</li>
+      <li>Type into the input area (plain text — not a rich-text editor)</li>
+      <li>Save with the <strong>Commit</strong> button (or Ctrl+Enter)</li>
+    </ol>
+
+    <h3>Comment Characteristics</h3>
+    <ul>
+      <li>Saved comments accumulate in the execution history with the current status, author, and timestamp</li>
+      <li>No inline edit / delete UI is provided for individual comments (they remain in the history)</li>
+    </ul>
+
+    <ScreenshotSlot label="Comments" src={img03} />
+
+    <hr />
+
+    <h2>6. Creating / Linking Jira Issues</h2>
+    <p>When a test fails you can immediately create a Jira issue, or link an existing one.</p>
+
+    <h3>6-1. Creating a New Issue</h3>
+
+    <h4>Steps</h4>
+    <ol>
+      <li>Open the <strong>Issues</strong> section in the execution-item right panel</li>
+      <li>Click the Create Issue button → CreateIssueModal opens</li>
+      <li>Fill in the modal:
+        <ul>
+          <li>Project: the current Jira project is used automatically</li>
+          <li>Issue Type: Bug is selected automatically if present (otherwise the first type)</li>
+          <li>Reporter: current user is set automatically</li>
+          <li>Summary: entered by the user</li>
+          <li>Description: a default template is provided (blanks for reproduction / test data / defect description) for the user to fill in via the rich-text editor</li>
+          <li>Assignee / per-project custom fields</li>
+          <li>Optionally attach files / images (image editor provided)</li>
+        </ul>
+      </li>
+      <li>Click <strong>Create</strong> — the issue is created in Jira and auto-linked to the execution item</li>
+    </ol>
+
+    <aside className="guide-callout info">
+      T-CAFE does not auto-prefill Summary or Description from the execution item. The tester fills in the blanks in the default Description template (reproduction / test data / defect description).
+    </aside>
+
+    <h3>6-2. Linking an Existing Issue</h3>
+
+    <h4>Steps</h4>
+    <ol>
+      <li><strong>+ Link Issue</strong> button</li>
+      <li>Search for the issue (key or summary)</li>
+      <li>Select from the results</li>
+      <li>Click <strong>Link</strong></li>
+    </ol>
+
+    <h3>6-3. Unlinking an Issue</h3>
+    <ol>
+      <li>Click <strong>Unlink</strong> next to the linked issue</li>
+      <li>Confirm → only the link is removed (the issue itself remains)</li>
+    </ol>
+
+    <ScreenshotSlot label="Linked Issues" src={img04} />
+
+    <hr />
+
+    <h2>7. Using Attachments</h2>
+    <p>T-CAFE does not provide a separate attachment-upload UI inside the execution-item panel. Use screenshots or logs captured during execution like this:</p>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Top tab → upload the file on <strong>Attachments</strong></li>
+      <li>Copy the download URL of the uploaded file</li>
+      <li>Paste the URL into the execution item's <strong>Comments</strong> — it becomes a clickable link automatically</li>
+      <li>Or, when failing, open <strong>+ Create Issue</strong> and attach the file directly in the issue-creation modal</li>
+    </ol>
+
+    <h3>Attachment Storage</h3>
+    <ul>
+      <li>Project-wide storage limit: <strong>200 MB</strong> (based on the Attachments page)</li>
+      <li>See <Link to="/support/guide/attachments">14. Attachments</Link> for details</li>
+    </ul>
+
+    <hr />
+
+    <h2>8. Retestable</h2>
+    <p>When a linked Jira issue reaches a completion status, the execution item is marked <strong>Retestable</strong> automatically.</p>
+
+    <h3>How it Works</h3>
+    <ul>
+      <li>The execution item has a Jira issue linked</li>
+      <li>That issue changes to a <strong>completion status</strong> defined in Configuration → Issue Type</li>
+      <li>T-CAFE automatically flips Retestable to <strong>Yes</strong></li>
+      <li>The execution-item detail shows Retestable as "Yes" or "No" (read-only)</li>
+    </ul>
+
+    <h3>Usage</h3>
+    <ul>
+      <li>You can filter the list to Retestable items only</li>
+      <li>Quickly find items that need re-verification after bug fixes</li>
+      <li>Prevent missed retests</li>
+    </ul>
+
+    <h3>Configuration</h3>
+    <p>Choose which workflow states count as "complete" in the <strong>Issue Type (Retestable)</strong> section of <Link to="/support/guide/configuration">13. Configuration</Link>.</p>
+
+    <hr />
+
+    <h2>9. Checking Execution Progress</h2>
+
+    <h3>TP-level Stats</h3>
+    <p>The top of the TP detail page shows:</p>
+    <ul>
+      <li>Total execution-item count</li>
+      <li>Pass / Fail / Block / Skip / Not Yet counts</li>
+      <li>Progress % — <code>(Pass + Fail + Block) / (total − Skip) × 100</code></li>
+    </ul>
+
+    <h3>Color Scheme</h3>
+    <ul>
+      <li>Pass / Fail / Block / Skip / Not Yet each have dedicated colors, applied consistently in the list and stats bar</li>
+    </ul>
+
+    <ScreenshotSlot label="Stats bar" src={img05} />
+
+    <hr />
+
+    {/* <h2>10. Importing Automation Results (Future)</h2>
+    <aside className="guide-callout">This feature is currently on the <strong>roadmap</strong>. Planned for a future version of T-CAFE.</aside>
+    <p>A feature to import automated test results (JUnit XML, Cucumber JSON, etc.) from a CI/CD pipeline into T-CAFE.</p>
+
+    <hr /> */}
+
+    <h2>10. Execution Best Practices</h2>
+
+    <h3>DO</h3>
+    <ul>
+      <li><strong>Run in order</strong>: execute items with dependencies sequentially</li>
+      <li><strong>Record results immediately</strong>: update the status right after running</li>
+      <li><strong>Detailed comments</strong>: leave reproducible information on Fail</li>
+      <li><strong>Attach screenshots</strong>: keep visual evidence</li>
+      <li><strong>Create issues promptly</strong>: when a Fail is found, file it right away</li>
+      <li><strong>Explain Block reasons</strong>: note why it was blocked in a comment</li>
+    </ul>
+
+    <h3>DON'T</h3>
+    <ul>
+      <li>Record results all at once later (risk of mistakes)</li>
+      <li>Vague comments ("doesn't work", "error")</li>
+      <li>Marking Fails as Skip</li>
+      <li>Retrying 5 times in the same environment after failures</li>
+      <li>Changing others' execution results without reason</li>
+    </ul>
+
+    <hr />
+
+    <h2>11. Auto-Update on Re-adding a TC</h2>
+    <h3>Auto-Update on Re-adding a TC</h3>
+    <p>If you add a TC that is already in a Test Plan again, the existing execution item is automatically updated with the latest TC data.</p>
+    <ul>
+      <li><strong>Updated fields</strong>: TC name, description, precondition, test steps, priority, case type, components, labels, user-defined fields</li>
+      <li><strong>Preserved fields</strong>: execution status (Pass / Fail, etc.), last executed time, executor, comments, linked issues, Retestable flag</li>
+    </ul>
+    <aside className="guide-callout">After editing the TC body, re-adding it to the same Test Plan updates it to the latest content without losing execution history.</aside>
+
+    <hr />
+
+    <h2>12. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Create Issue button is not visible</td><td>Developer role</td><td>Tester or higher is required (Developers can still change status / add comments)</td></tr>
+        <tr><td>Issue creation fails</td><td>Insufficient Jira permission</td><td>Check Create Issue permission in Jira</td></tr>
+        <tr><td>Issue not found in search</td><td>Issue in a different project</td><td>Search is limited to the same project</td></tr>
+        <tr><td>Attachment upload fails</td><td>Project storage limit (200 MB) exceeded</td><td>Clean up existing attachments in Attachments and retry</td></tr>
+        <tr><td>Stats do not refresh</td><td>Page cache</td><td>Refresh</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>14. Typical Execution Flow (sprint view)</h2>
+    <pre><code>{`[Monday] Create TP, add TCs
+ ↓
+[Tuesday] Start execution → 50% done
+ ├─ Pass: 30
+ ├─ Fail: 5 → 5 issues created
+ ├─ Block: 2 → reason noted in comments
+ └─ Not Yet: 13
+ ↓
+[Wednesday] Developer fixes the 5 failing issues
+ ↓
+[Thursday] Re-run the 5 Retestable items
+ ├─ Re-run → 4 Pass, 1 Fail
+ └─ Environment restored, rerun the 2 Block items → 2 Pass
+ ↓
+[Friday] All execution items complete
+ ├─ Pass: 47
+ ├─ Fail: 1 (carried over to the next sprint)
+ ├─ Skip: 2
+ └─ TP status: Completed
+ ↓
+[Friday afternoon] Generate and share the report`}</code></pre>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-reports">12. Test Reports</Link> — execution result reports</li>
+      <li><Link to="/support/guide/attachments">14. Attachments</Link> — detailed attachment usage</li>
+    </ul>
+  </article>
+);
+
+export default { ko: <TestExecution />, en: <TestExecutionEn /> };

@@ -255,4 +255,253 @@ const TestReports = () => (
   </article>
 );
 
-export default TestReports;
+const TestReportsEn = () => (
+  <article className="guide-article">
+    <h1>12. Test Reports</h1>
+    <p className="guide-lead">
+      Test Reports visualize and let you analyze the execution results of a TP. They support decision-making and quality reporting.
+    </p>
+
+    <hr />
+
+    <h2>1. Opening Reports</h2>
+    <p>Top tab → <strong>Test Reports</strong></p>
+
+    <ScreenshotSlot label="Test Reports main screen" src={img01} />
+
+    <hr />
+
+    <h2>2. Permissions</h2>
+    <table>
+      <thead>
+        <tr><th>Role</th><th className="center">View</th><th className="center">Export</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Admin</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Team Admin</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td><strong>Tester</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
+        <tr><td><strong>Developer</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
+      </tbody>
+    </table>
+    <p>→ <strong>All roles can view and export reports</strong> (test results are shared transparently across the team).</p>
+
+    <hr />
+
+    <h2>3. Layout</h2>
+    <h3>3-1. Test Reports Main (TP list)</h3>
+    <p>When you enter the Test Reports tab, the project's TP list is shown. Each TP row shows Key / Name / Owner / Start Date / End Date / Progress / Status. Click a TP to navigate to its detailed report page.</p>
+
+    <h3>3-2. TP Detail Report — View Types (3)</h3>
+    <p>On the TP detail report, execution results are shown in a table format from three perspectives (View Types). Choose one via a radio button.</p>
+    <ul>
+      <li><strong>Folder View</strong> — aggregates by folders inside the TP. You can also restrict depth with <em>All Levels / Level 1 / Level 2 …</em></li>
+      <li><strong>Component View</strong> — aggregates by the Components value of each TC (e.g., Frontend / Backend API …)</li>
+      <li><strong>Tester View</strong> — aggregates by the last executor (the user who ran it)</li>
+    </ul>
+
+    <h3>3-3. Report Table Columns (common across Views)</h3>
+    <p>Depending on the selected View, the first column becomes Folder Name / Component Name / User Name. The remaining metric columns are identical:</p>
+    <ul>
+      <li><strong>Total (A)</strong> — number of executed items overall</li>
+      <li><strong>Execution Results</strong> — Pass / Fail / Block / Skip (labeled B / C / D / E)</li>
+      <li><strong>Weekly Planned (F)</strong> — weekly planned count</li>
+      <li><strong>Not Executed</strong> — <code>A - E - B - C - D</code></li>
+      <li><strong>Total Execution Rate</strong> — <code>(B+C+D)/(A-E)×100</code></li>
+      <li><strong>Planned Execution Rate</strong> — <code>(B+C+D)/F×100</code></li>
+      <li><strong>Total Success Rate</strong> — <code>B/(A-E)×100</code></li>
+      <li><strong>Execution Success Rate</strong> — <code>B/(B+C+D)×100</code></li>
+    </ul>
+
+    <h3>3-4. Retestable Test Cases Section</h3>
+    <p>The detail page has a dedicated section that collects TCs whose linked Jira issue has reached a completed status and therefore need retesting. The <strong>Check Retestable</strong> button is available only to users with Admin / Team Admin permission, and the last check time (Retestable checked time) is displayed.</p>
+
+    <hr />
+
+    <h2>4. Visualization</h2>
+    <p>Test Reports in T-CAFE provides information as a <strong>table-based metrics view</strong>. There are no separate chart UIs (pie / bar / line). Row background and text colors differ by Pass Rate threshold:</p>
+    <ul>
+      <li><strong>Pass Rate &gt; 80%</strong> — upper band (accent color)</li>
+      <li><strong>Pass Rate &gt; 60%</strong> — middle band</li>
+      <li><strong>Pass Rate &lt; 60%</strong> — warning band</li>
+    </ul>
+    <p>The per-state colors (Pass / Fail / Block / Skip / Not Yet) are applied consistently to status cells and progress bars in the table.</p>
+
+    <ScreenshotSlot label="Report table" src={img02} />
+
+    <hr />
+
+    <h2>5. Report Filters (TP list)</h2>
+    <p>The TP list on the Test Reports main screen has a search box and a filter panel. Multiple filters are combined with AND.</p>
+
+    <h3>Search</h3>
+    <ul>
+      <li>Use the top search box to search by TP name / key</li>
+    </ul>
+
+    <h3>Filter Options (3)</h3>
+    <ul>
+      <li><strong>Status</strong> — TP status (Draft / Open / Completed, etc., based on the Plan Statuses defined in Configuration)</li>
+      <li><strong>Owner</strong> — filter by TP owner</li>
+      <li><strong>Progress</strong> — Not Started / In Progress / Completed (progress-rate bands)</li>
+    </ul>
+    <p>Reset everything with <strong>Reset</strong> at the top of the filter panel or <strong>Clear</strong> in the header.</p>
+
+    <h3>Show / Hide Columns</h3>
+    <ul>
+      <li>Toggle Key / Name / Owner / Start Date / End Date / Progress / Status columns via the View Columns button</li>
+    </ul>
+
+    <aside className="guide-callout info">
+      Filters by date range, priority, component, or Pass / Fail status are not provided on the TP list screen. Use the View Types (Folder / Component / Tester) on the TP detail report for execution-result analysis.
+    </aside>
+
+    <ScreenshotSlot label="Report filters" src={img03} />
+
+    <hr />
+
+    <h2>6. Exporting Reports</h2>
+
+    <h3>Supported Format</h3>
+    <ul>
+      <li>Only <strong>Excel (XLSX)</strong> is supported. CSV / JSON export is not offered in Test Reports.</li>
+    </ul>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Open the TP detail report</li>
+      <li>Select the desired View Type (Folder / Component / Tester)</li>
+      <li>Click the <strong>Export to Excel</strong> button at the top-right of the table</li>
+      <li>The XLSX file downloads immediately (no extra format-select step)</li>
+    </ol>
+
+    <h3>Export Columns (based on TC metadata)</h3>
+    <p>The downloaded Excel contains TC metadata from that TP, sorted by created date (newest first):</p>
+    <ul>
+      <li>Key, Name *, Description, Objective, Precondition</li>
+      <li>Type (Single / Factor), Case Type, Priority, Owner</li>
+      <li>Components, Labels, Folder, Folder Path</li>
+      <li>Defined User Defined Fields (UDFs) — each field is added as a separate column (required fields are marked with <code>*</code> in the header)</li>
+      <li>Test steps — Step No / Step / Test Data / Expected Result</li>
+    </ul>
+
+    <aside className="guide-callout info">
+      The current Export focuses on TC composition information. Execution status (Pass / Fail, etc.), executor, execution time, comments, and linked issues are not included in the Excel. This may be expanded in future versions.
+    </aside>
+
+    <h3>Failed Test Cases Export (separate option)</h3>
+    <p>The detail page also offers a feature to export only the failed TCs. Use the Export button near the Total Fail Test Case section to export only failed TCs as a separate XLSX.</p>
+
+    <ScreenshotSlot label="Export button" src={img04} />
+
+    <hr />
+
+    <h2>7. Report Use Cases</h2>
+
+    <h3>7-1. Daily Progress Report</h3>
+    <ul>
+      <li>Check yesterday's progress in the morning → share on Slack / email</li>
+      <li>Report in the same format every day</li>
+    </ul>
+
+    <h3>7-2. Sprint Retrospective</h3>
+    <ul>
+      <li>Export the full report at the end of the sprint</li>
+      <li>"This sprint: Pass 92%, Fail 5%, Block 3%"</li>
+      <li>Track unresolved issues</li>
+    </ul>
+
+    <h3>7-3. QA Manager Dashboard</h3>
+    <ul>
+      <li>Aggregated stats across multiple TPs</li>
+      <li>Identify the components that fail most often</li>
+      <li>Balance per-member execution load</li>
+    </ul>
+
+    <h3>7-4. Release Decisions</h3>
+    <ul>
+      <li>"Release gate: Pass rate ≥ 95%"</li>
+      <li>Use the report to decide whether the gate is met</li>
+    </ul>
+
+    <h3>7-5. External Reporting</h3>
+    <ul>
+      <li>Submit quality evidence to customers</li>
+      <li>Provide audit evidence of testing performed</li>
+    </ul>
+
+    <hr />
+
+    <h2>8. Reading a Report</h2>
+
+    <h3>Positive Signals</h3>
+    <ul>
+      <li>Pass rate of 90% or higher</li>
+      <li>Fail found → issue created quickly → fixed quickly → retest passes</li>
+      <li>Block and Skip stay low (under 5%)</li>
+      <li>All executable items have been executed (Not Yet at 0%)</li>
+    </ul>
+
+    <h3>Warning Signals</h3>
+    <ul>
+      <li><strong>Pass rate dropped suddenly</strong>: a regression in a new build is likely</li>
+      <li><strong>Many Blocks</strong>: environment issues or unmet preconditions</li>
+      <li><strong>Many Skips</strong>: resource shortage or schedule pressure</li>
+      <li><strong>Not Yet over 50%</strong>: progress is too slow</li>
+      <li><strong>Fails concentrated in a single component</strong>: module quality issue</li>
+    </ul>
+
+    <h3>Anti-Patterns (avoid)</h3>
+    <ul>
+      <li>Changing Fail to Skip to distort statistics</li>
+      <li>Accumulating Fails without creating issues</li>
+      <li>Block entries without a reason comment</li>
+      <li>All execution items run by the same person (insufficient verification)</li>
+    </ul>
+
+    <hr />
+
+    <h2>9. FAQ</h2>
+
+    <h3>Q. Is report data real-time?</h3>
+    <p>A. Yes. Changes to execution-item status are reflected in the report table immediately. The latest values appear on the next view without a manual refresh.</p>
+
+    <h3>Q. Can I view historical reports for a past date?</h3>
+    <p>A. T-CAFE internally stores daily snapshots of TPs, but the current UI does not provide a way to browse reports for a specific past date. If you need this, export the file at that point in time and keep it.</p>
+
+    <h3>Q. Can I merge reports across projects?</h3>
+    <p>A. The current version is project-scoped. We recommend exporting from each project to Excel and consolidating in an external tool (Power BI, Excel, etc.).</p>
+
+    <h3>Q. Do reports include charts (pie / bar, etc.)?</h3>
+    <p>A. Test Reports currently provides only a <strong>table-based metrics view</strong>, with no graphical visualizations like pie / bar / line charts. The exported Excel file does not include charts either. If you need visual sharing, use screenshots or create charts in Excel after exporting.</p>
+
+    <h3>Q. Can reports be emailed automatically?</h3>
+    <p>A. Only manual export is supported in the current version. Automatic sending / scheduling is not provided.</p>
+
+    <hr />
+
+    <h2>10. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Report is empty</td><td>No TPs, or a filter is applied</td><td>Reset filters via Clear, or create / select a TP</td></tr>
+        <tr><td>Stats look inconsistent</td><td>Page cache, or browser left open too long</td><td>Refresh and re-view</td></tr>
+        <tr><td>Export to Excel button is not visible</td><td>No Reports Export permission</td><td>Ask an admin (by default, all roles have canViewReports)</td></tr>
+        <tr><td>Excel file has no execution results</td><td>Intended — export currently focuses on TC metadata</td><td>View execution status in the on-screen table (expansion planned)</td></tr>
+        <tr><td>Retestable Check button is disabled</td><td>No Configuration access permission (Admin / Team Admin required)</td><td>Check permissions</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-execution">11. Test Execution</Link></li>
+      <li><Link to="/support/guide/import-export">09. Import / Export</Link> — importing and exporting data</li>
+      <li><Link to="/support/guide/overview-dashboard">03. Overview Dashboard</Link></li>
+    </ul>
+  </article>
+);
+
+export default { ko: <TestReports />, en: <TestReportsEn /> };

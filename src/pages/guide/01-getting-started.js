@@ -179,4 +179,178 @@ const GettingStarted = () => (
   </article>
 );
 
-export default GettingStarted;
+const GettingStartedEn = () => (
+  <article className="guide-article">
+    <h1>01. Getting Started</h1>
+    <p className="guide-lead">
+      This guide is for users starting T-CAFE for the first time. Follow the steps below from initial access to creating your first test case.
+    </p>
+
+    <hr />
+
+    <h2>1. First Screen — Welcome Banner</h2>
+    <p>When you first access T-CAFE, the Welcome Banner is shown on the Overview page.</p>
+
+    <h3>Welcome Banner Components</h3>
+    <ul>
+      <li><strong>Welcome message</strong>: T-CAFE introduction</li>
+      <li><strong>Create Sample Data button</strong>: shown only to users with the Admin role</li>
+      <li><strong>Close button</strong> (×): hides the banner</li>
+    </ul>
+
+    <ScreenshotSlot src={shotWelcome} label="Welcome Banner" />
+
+    <hr />
+
+    <h2>2. Create Sample Data (Admin only, recommended)</h2>
+    <p>If you are a first-time user, generate <strong>sample data</strong> to quickly explore T-CAFE's features.</p>
+
+    <h3>Permission</h3>
+    <ul>
+      <li><strong>Admin only</strong> (not available for Team Admin / Tester / Developer)</li>
+    </ul>
+
+    <h3>Sample Data Created</h3>
+    <p>When you generate sample data, the following are created automatically:</p>
+    <ul>
+      <li><strong>6 folders</strong>: Login, Dashboard, User Management, Payment, API Tests, Cross Browser</li>
+      <li><strong>About 10 Test Cases</strong> (Single type)</li>
+      <li><strong>6 Factor Combination Test Cases</strong> (in the Cross Browser folder)</li>
+      <li><strong>2 Test Plans</strong> (Sprint 1 Integration Test, Sprint 2 Regression Test)</li>
+      <li><strong>2 board posts</strong> (Notice + General)</li>
+      <li>
+        <strong>Default sample Configuration</strong> (freely add/edit/delete in Configuration):
+        Priority (Critical/High/Medium/Low), Case Type (Function/Performance/Regression/Security),
+        Component (Frontend/Backend API/Database/Authentication/Payment), Plan Status (Draft/Open/Completed)
+      </li>
+    </ul>
+
+    <h3>Steps to Create</h3>
+    <ol>
+      <li>On the Overview page Welcome Banner, click the "<strong>Create Sample Data</strong>" button</li>
+      <li>Wait for creation to finish (about 30 seconds)</li>
+      <li>After the completion message, check the result on the Test Cases tab</li>
+    </ol>
+
+    <h3>Notes</h3>
+    <ul>
+      <li>Sample data can be generated <strong>only once per project</strong></li>
+      <li>If it has already been generated, it will not be regenerated</li>
+      <li>All sample data names are prefixed with <code>[Sample]</code> (for easy identification)</li>
+      <li>Delete individually if no longer needed</li>
+    </ul>
+
+    <hr />
+
+    <h2>3. T-CAFE Main Menu Structure</h2>
+    <p>T-CAFE provides the following pages via top tabs:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Tab</th>
+          <th>Description</th>
+          <th>Permission</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Overview</strong></td>
+          <td>Dashboard, statistics, board, Milestone</td>
+          <td>All users</td>
+        </tr>
+        <tr>
+          <td><strong>Test Cases</strong></td>
+          <td>Test case management</td>
+          <td>All users (varies by role)</td>
+        </tr>
+        <tr>
+          <td><strong>Test Plans</strong></td>
+          <td>Test plan management and execution</td>
+          <td>All users (varies by role)</td>
+        </tr>
+        <tr>
+          <td><strong>Test Reports</strong></td>
+          <td>Test reports</td>
+          <td>All users</td>
+        </tr>
+        <tr>
+          <td><strong>Configuration</strong></td>
+          <td>Settings (Priorities, Case Types, etc.)</td>
+          <td><strong>Admin / Team Admin</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Attachments</strong></td>
+          <td>Attachment management</td>
+          <td>All users</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ScreenshotSlot src={shotMainMenu} label="Top Tab Menu" />
+
+    <hr />
+
+    <h2>4. Project Selection and Language Change</h2>
+
+    <h3>Project Selection</h3>
+    <ul>
+      <li>T-CAFE <strong>isolates data per project</strong></li>
+      <li>Choose the project you want to work on from the project selector dropdown in the top-right</li>
+      <li>Changing the project switches all data to that project</li>
+    </ul>
+
+    <h3>Language Change</h3>
+    <ul>
+      <li>Choose English / 한국어 / 日本語 from the language selector menu in the top-right</li>
+      <li>Language settings are saved <strong>per user + per project</strong></li>
+    </ul>
+
+    <ScreenshotSlot src={shotProjectLang} label="Project / Language Selector" />
+
+    <hr />
+
+    <h2>5. Next Steps</h2>
+    <p>For first-time T-CAFE users, we recommend proceeding in this order:</p>
+    <ol>
+      <li><strong>Create sample data</strong> (section 2 above)</li>
+      <li><strong>Configure user permissions</strong> (<Link to="/support/guide/permissions">02. User Permissions</Link>)</li>
+      <li><strong>Explore Test Cases</strong> (<Link to="/support/guide/test-cases">05. Test Case Basics</Link>)</li>
+      <li><strong>Explore Test Plans</strong> (<Link to="/support/guide/test-plans">10. Test Plan Management</Link>)</li>
+      <li><strong>Write your own test cases</strong></li>
+    </ol>
+
+    <hr />
+
+    <h2>Common Issues</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Solution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Welcome Banner is not visible</td>
+          <td>Check whether it was previously closed, or whether you are on a different page</td>
+        </tr>
+        <tr>
+          <td>Create Sample Data button is disabled</td>
+          <td>Not shown to users without the Admin role</td>
+        </tr>
+        <tr>
+          <td>Sample data creation failed</td>
+          <td>Check whether it was already created (search for data with the [Sample] prefix)</td>
+        </tr>
+        <tr>
+          <td>Project is not visible</td>
+          <td>Verify your access permission for the project in Jira</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>For more details, see <Link to="/support/guide/faq">15. FAQ</Link>.</p>
+  </article>
+);
+
+export default { ko: <GettingStarted />, en: <GettingStartedEn /> };

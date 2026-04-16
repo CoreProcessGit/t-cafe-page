@@ -248,4 +248,248 @@ QA 팀에서 정리한 Factor Combination 활용 팁입니다.
   </article>
 );
 
-export default Board;
+const BoardEn = () => (
+  <article className="guide-article">
+    <h1>04. Board</h1>
+    <p className="guide-lead">
+      The Board is a space for sharing announcements and information with project team members. It is accessible from the T-CAFE Overview page.
+    </p>
+
+    <hr />
+
+    <h2>1. What is the Board?</h2>
+    <p>A bulletin board that collects test-management announcements, notices, and issues in one place so they can be shared with the team.</p>
+
+    <h3>Use Cases</h3>
+    <ul>
+      <li><strong>Announcement</strong>: "Starting next Monday, we will use the new test environment"</li>
+      <li><strong>Release notes</strong>: "v1.5 release — summary of newly added features"</li>
+      <li><strong>Test environment change</strong>: "Staging server maintenance notice"</li>
+      <li><strong>Welcoming new members</strong>: "Kim from the QA team has joined us"</li>
+      <li><strong>Best-practice sharing</strong>: "Tips for using Factor Combination"</li>
+    </ul>
+
+    <hr />
+
+    <h2>2. Navigation</h2>
+    <p>Top tab → <strong>Overview</strong> → Board section</p>
+    <ScreenshotSlot src={shotBoard} label="Board section inside Overview" />
+
+    <hr />
+
+    <h2>3. Permissions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>View post</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td><strong>Create post</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Edit post</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td><strong>Delete post</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+      </tbody>
+    </table>
+    <aside className="guide-callout"><strong>Creating / editing / deleting posts is Admin-only</strong>. Other users can only view posts.</aside>
+
+    <hr />
+
+    <h2>4. Category</h2>
+    <p>Each post is displayed with a category label. In the current version, the category cannot be chosen on the write form, and every post is stored with the <code>Notice</code> category. In the list and detail views, the title is prefixed with <code>[Notice]</code>.</p>
+
+    <hr />
+
+    <h2>5. Viewing Posts</h2>
+
+    <h3>List Columns</h3>
+    <ul>
+      <li><strong>#</strong> — Post number (the newest post has the largest number)</li>
+      <li><strong>Category</strong></li>
+      <li><strong>Title</strong></li>
+      <li><strong>Author</strong></li>
+      <li><strong>Created date</strong></li>
+    </ul>
+
+    <h3>Sorting</h3>
+    <ul>
+      <li>Fixed to newest-first by created date (cannot be changed by the user)</li>
+    </ul>
+
+    <h3>Pagination</h3>
+    <ul>
+      <li><strong>5 posts</strong> per page (fixed)</li>
+      <li>Navigate using the page-number buttons and the previous / next arrows</li>
+    </ul>
+
+    <h3>Viewing Post Details</h3>
+    <ol>
+      <li>Click a post row in the list</li>
+      <li>The detail modal opens</li>
+      <li>Displayed information: <strong>[Category] Title</strong>, author, created date, <strong>view count</strong>, body</li>
+      <li>Close with the <strong>List</strong> button at the bottom</li>
+    </ol>
+
+    <aside className="guide-callout">The view count is only shown on the detail view and is not displayed in the list.</aside>
+
+    <hr />
+
+    <h2>6. Creating a Post (Admin only)</h2>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Click the <strong>Write Post</strong> button at the bottom-right of the Board</li>
+      <li>The write modal opens</li>
+      <li>Fields:
+        <ul>
+          <li><strong>Title</strong> (required)</li>
+          <li><strong>Content</strong> (required) — rich text editor</li>
+        </ul>
+      </li>
+      <li>Click the <strong>Submit</strong> button</li>
+    </ol>
+
+    <aside className="guide-callout">The write form does not support category selection, file attachments, or <strong>image insertion</strong>. If you need images or files, upload them to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and paste the link into the body.</aside>
+
+    <ScreenshotSlot src={shotWriteBoard} label="Post write form" />
+
+    <h3>Body Editor Features (Quill toolbar)</h3>
+    <ul>
+      <li>Heading level (H1 / H2 / H3)</li>
+      <li><strong>Bold</strong>, <em>italic</em>, underline, strikethrough</li>
+      <li>Bulleted / numbered lists</li>
+      <li>Alignment (left / center / right)</li>
+      <li>Text color / background color</li>
+      <li>Insert link</li>
+    </ul>
+
+    <hr />
+
+    <h2>7. Editing a Post (Admin only)</h2>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Open the detail modal for the post you want to edit</li>
+      <li>Click the <strong>Edit</strong> button at the top-right of the detail modal</li>
+      <li>Edit the title / content</li>
+      <li>Click the <strong>Update</strong> button</li>
+    </ol>
+
+    <hr />
+
+    <h2>8. Deleting a Post (Admin only)</h2>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Open the detail modal for the post you want to delete</li>
+      <li>Click the <strong>Delete</strong> button at the top-right</li>
+      <li>Confirm in the "Confirm Action" dialog</li>
+    </ol>
+
+    <h3>Notes</h3>
+    <ul>
+      <li>Deleted posts cannot be recovered</li>
+    </ul>
+
+    <hr />
+
+    <h2>9. Board Best Practices</h2>
+
+    <h3>Admin Guidelines (writing posts)</h3>
+
+    <h4>DO</h4>
+    <ul>
+      <li><strong>Clear title</strong>: the topic of the post should be clear in a single line</li>
+      <li><strong>Keep it concise</strong>: keep the body under 500 KB (saving fails if exceeded)</li>
+      <li><strong>Put attachments in Attachments</strong>: upload images / PDFs / documents to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and insert the URL as a link in the body</li>
+    </ul>
+
+    <h4>DON'T</h4>
+    <ul>
+      <li>Meaningless titles (such as just "Notice" or "FYI")</li>
+      <li>Posting the same content multiple times</li>
+      <li>Pasting long raw text as-is (saving fails if it exceeds 500 KB) — replace with a link</li>
+    </ul>
+
+    <h3>End-user Guidelines (reading posts)</h3>
+    <ul>
+      <li>Check the Board regularly (once a week recommended)</li>
+      <li>Capture / save important notices</li>
+    </ul>
+
+    <hr />
+
+    <h2>10. Board Usage Examples</h2>
+
+    <h3>Example 1: New environment notice</h3>
+    <pre><code>{`[Title] New test environment notice (starting 2026-04-15)
+
+Hello — QA team here.
+
+Starting Monday, April 15, we will use the new test environment.
+
+1. New environment
+ - URL: https://staging-v2.example.com
+ - DB: new instance (test data is reset)
+
+2. Existing environment
+ - Available until April 14
+ - Decommissioned from April 15
+
+3. Changes
+ - 30% faster response time
+ - New payment module applied
+
+Contact: contact@coreprocess.co.kr`}</code></pre>
+
+    <h3>Example 2: Best-practice sharing</h3>
+    <pre><code>{`[Title] Using Factor Combination efficiently
+
+Tips from the QA team for using Factor Combination.
+
+1. If you have 4+ variables, Pairwise is recommended
+2. Use Constraints aggressively to eliminate impossible combinations
+3. See the Confluence documentation for details.`}</code></pre>
+
+    <h3>Example 3: Welcoming a new member</h3>
+    <pre><code>{`[Title] Welcome to the QA team
+
+Please welcome Kim, who joined the QA team this week.
+
+- Area: Frontend testing
+- Role: Tester in T-CAFE
+- Seat: 3rd floor of the office
+
+Your support and welcome are appreciated.`}</code></pre>
+
+    <hr />
+
+    <h2>11. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Write Post</strong> button is not visible</td><td>No Admin permission (no boardPost permission)</td><td>Ask an Admin</td></tr>
+        <tr><td>Want to embed an image in the body</td><td>Quill toolbar has no image button (the current version does not support inline images in the Board)</td><td>Upload the image to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and insert the download URL as a link in the body</td></tr>
+        <tr><td>Want to attach a file</td><td>The Board write form has no attachment field</td><td>Upload the file to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and paste the link in the body</td></tr>
+        <tr><td>A post is not visible</td><td>Pagination (5 per page)</td><td>Check the next page</td></tr>
+        <tr><td>Edit / Delete buttons are not visible</td><td>No Admin permission</td><td>Ask an Admin</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/overview-dashboard">03. Overview Dashboard</Link> — the main page where the Board appears</li>
+      <li><Link to="/support/guide/permissions">02. User Permissions</Link> — granting Admin permissions</li>
+    </ul>
+  </article>
+);
+
+export default { ko: <Board />, en: <BoardEn /> };

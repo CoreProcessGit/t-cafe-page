@@ -235,4 +235,236 @@ const Folders = () => (
   </article>
 );
 
-export default Folders;
+const FoldersEn = () => (
+  <article className="guide-article">
+    <h1>06. Folder Management</h1>
+    <p className="guide-lead">
+      T-CAFE lets you organize test cases in a folder-tree structure. Folders can be nested to unlimited depth and managed with intuitive drag and drop.
+    </p>
+
+    <hr />
+
+    <h2>1. What is a Folder?</h2>
+    <p>A folder is a unit for grouping test cases — by feature, by module, or by any criterion you choose.</p>
+
+    <h3>Typical Folder Structure</h3>
+    <pre><code>{`Project
+├── Login
+│ ├── Standard Login
+│ ├── Social Login
+│ └── Password Reset
+├── Dashboard
+│ ├── Widgets
+│ └── Performance
+├── User Management
+│ ├── Create User
+│ ├── Edit User
+│ └── Delete User
+├── Payment
+│ ├── Credit Card
+│ └── Bank Transfer
+└── API Tests
+ ├── Authentication
+ ├── User CRUD
+ └── Reports`}</code></pre>
+
+    <hr />
+
+    <h2>2. Folder Tree View</h2>
+
+    <h3>Navigation</h3>
+    <p>Top tab → <strong>Test Cases</strong> → left panel</p>
+
+    <h3>Layout</h3>
+    <ul>
+      <li><strong>Root folder</strong>: top level of the project</li>
+      <li><strong>Sub-folders</strong>: shown in a tree structure</li>
+      <li><strong>TC count</strong>: the number of TCs in each folder is shown to its right</li>
+      <li><strong>Expand / collapse arrow</strong>: click to expand or collapse</li>
+      <li><strong>⚡ icon (Factor Combination indicator)</strong>: when a folder has a Factor Combination configuration saved, an orange ⚡ icon appears next to the folder name. Hovering shows the tooltip "This folder has a Factor Combination configuration." The icon applies to <strong>that folder only</strong> and does not propagate to the parent (for example, if <code>Auth/Login</code> has a configuration, <code>Auth</code> itself is not marked). Clicking the icon has no separate action — select the folder and move to the Factor Combination screen from the top.</li>
+    </ul>
+
+    <ScreenshotSlot label="Folder tree" src={img01} />
+
+    <hr />
+
+    <h2>3. Creating a Folder</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Click the <strong>New Folder</strong> button at the top-left (or right-click an empty area in the folder tree → <strong>New Folder</strong>)</li>
+      <li>A folder with an auto-assigned name like <code>New Folder 1</code>, <code>New Folder 2</code>… is created immediately on click</li>
+      <li>To rename it, see "4. Renaming a Folder" below</li>
+    </ol>
+
+    <h3>Notes</h3>
+    <ul>
+      <li>The folder is created at the root level (you can move it elsewhere via drag or Move)</li>
+      <li><strong>You cannot create two folders with the same name at the same level</strong> — if the same name already exists under the same parent, the auto-number is incremented (<code>New Folder 2</code>, <code>3</code>…). This is enforced by a DB UNIQUE constraint.</li>
+      <li>The same name is allowed under different parents (for example, <code>Auth/Login</code> and <code>Payment/Login</code> can coexist).</li>
+    </ul>
+
+    <hr />
+
+    <h2>4. Renaming a Folder</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Right-click the folder → <strong>Rename Folder</strong></li>
+      <li>Enter the new name</li>
+      <li>Press Enter to save</li>
+    </ol>
+    <aside className="guide-callout">
+      If a folder with the same name already exists at the same level (under the same parent), the rename is rejected. Use a different name, or first move one of the folders elsewhere.
+    </aside>
+
+    <hr />
+
+    <h2>5. Moving a Folder</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Right-click the folder to move → <strong>Move Folder</strong></li>
+      <li>In the Move dialog, <strong>drag and drop</strong> the folder to the desired location</li>
+      <li>Save the changes with <strong>Save Changes</strong></li>
+    </ol>
+    <aside className="guide-callout">
+      If a folder with the same name already exists under the target parent, the move is rejected. Rename one of the folders first, or choose a different destination.
+    </aside>
+
+    <hr />
+
+    <h2>6. Copying a Folder</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Use Case</h3>
+    <ul>
+      <li>Quickly create a similar folder structure</li>
+    </ul>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Right-click the folder to copy → <strong>Copy Folder</strong></li>
+      <li>The copy is completed immediately on click (no name-entry or location-select step)</li>
+    </ol>
+
+    <h3>What Gets Copied</h3>
+    <ul>
+      <li>The folder itself and <strong>its sub-folder structure only</strong> is copied</li>
+      <li><strong>Test cases inside the folder are NOT copied</strong></li>
+    </ul>
+
+    <hr />
+
+    <h2>7. Deleting a Folder</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Right-click the folder to delete</li>
+      <li>Choose <strong>Delete Folder</strong></li>
+      <li>Review what will be deleted in the confirmation modal, then click <strong>Confirm</strong></li>
+    </ol>
+
+    <h3>Confirmation Modal</h3>
+    <p>Before deletion, the modal counts the items inside and explains the impact. The items that will actually be deleted are listed line by line:</p>
+    <ul>
+      <li>If there are <strong>sub-folders</strong>: "N sub-folder(s) will also be permanently deleted."</li>
+      <li>If there are <strong>test cases</strong>: "N test case(s) in this folder will be permanently deleted."</li>
+      <li>If there is a <strong>Factor Combination configuration or Factor TCs</strong>: "Factor Combination configuration and assignments in this folder will also be permanently deleted." is shown as a warning</li>
+      <li>For empty folders, only the confirmation message is shown with no additional details</li>
+      <li>You can cancel at any time with the <strong>Cancel</strong> button</li>
+    </ul>
+
+    <h3>What Actually Happens on Delete</h3>
+    <ul>
+      <li>The folder and <strong>all sub-folders</strong> under it are <strong>permanently deleted</strong></li>
+      <li><strong>All test cases (TCs)</strong> in the folder and its sub-folders are <strong>permanently deleted</strong></li>
+      <li><strong>Factor Combination configurations and Factor TC assignments</strong> linked to the folder and its sub-folders are <strong>permanently deleted</strong></li>
+      <li>All deletions run as a single transaction, so <strong>partial deletion never happens</strong> (either everything is deleted, or nothing is)</li>
+      <li>Deleted data <strong>cannot be recovered</strong></li>
+    </ul>
+
+    <aside className="guide-callout info">
+      <strong>Note</strong>: TCs that were already added to a Test Plan are snapshot-copied into the TP, so deleting the folder does not affect the execution history or data inside the TP.
+    </aside>
+
+    <hr />
+
+    <h2>8. Folder-Structure Best Practices</h2>
+
+    <h3>Recommendations</h3>
+    <ul>
+      <li><strong>By feature</strong>: Login, Dashboard, Payment, etc. (most common)</li>
+      <li><strong>By module</strong>: Frontend, Backend, Mobile, etc.</li>
+      <li><strong>By test type</strong>: Smoke, Regression, Performance, etc.</li>
+      <li><strong>Mixed</strong>: Feature at the first level, test type at the second level</li>
+    </ul>
+
+    <h3>Recommended Depth</h3>
+    <ul>
+      <li><strong>2–3 levels</strong> is the most usable</li>
+      <li>4 or more levels become hard to navigate</li>
+    </ul>
+
+    <h3>Folder Naming Rules</h3>
+    <ul>
+      <li><strong>Keep it short</strong>: 25 characters or fewer recommended</li>
+      <li><strong>Be consistent</strong>: use the same naming scheme across all folders</li>
+    </ul>
+
+    <h3>Anti-Patterns (structures to avoid)</h3>
+    <ul>
+      <li>Too many empty folders</li>
+      <li>Meaningless names ("Folder 1", "New Folder")</li>
+      <li>Folders with the same meaning scattered under different parents (for example, both <code>Frontend/Login</code> and <code>Mobile/Login</code>) — the same-parent case is auto-blocked by the UNIQUE constraint, but the different-parent case is allowed, so consolidate if not intentional</li>
+    </ul>
+
+    <hr />
+
+    <h2>9. Moving TCs Between Folders</h2>
+
+    <h3>Steps (single and multiple)</h3>
+    <ol>
+      <li>Select the TC(s) to move from the TC list (single selection, or multiple via checkboxes)</li>
+      <li>Click the <strong>Move</strong> button at the top</li>
+      <li>Choose the target folder in the folder-picker dialog</li>
+      <li>Click <strong>Move</strong></li>
+    </ol>
+
+    <hr />
+
+    <h2>10. Common Issues</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Cause</th>
+          <th>Solution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Add Folder button is not visible</td><td>No Admin / Team Admin permission</td><td>Ask an admin to grant permission</td></tr>
+        <tr><td>Drag does not work</td><td>No permission or browser compatibility</td><td>Check permission; refresh the browser</td></tr>
+        <tr><td>Folders are not visible</td><td>Page cache</td><td>Refresh (F5)</td></tr>
+        <tr><td>TCs are not visible after moving the folder</td><td>A filter is applied</td><td>Reset filters</td></tr>
+        <tr><td>Rename / Move is rejected</td><td>A folder with the same name already exists under the same parent (UNIQUE constraint)</td><td>Use a different name, or move one of the folders elsewhere first</td></tr>
+        <tr><td>Same folder is not created twice on Import (this is intended)</td><td>The UNIQUE constraint blocks same-level duplicates</td><td>Intended behavior — re-importing the same file keeps the folder as is</td></tr>
+        <tr><td>Folder deletion failed</td><td>System error</td><td>Move the TCs inside elsewhere first, then retry</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-cases">05. Test Case Basics</Link></li>
+      <li><Link to="/support/guide/test-cases-steps">07. Writing Test Steps</Link></li>
+    </ul>
+  </article>
+);
+
+export default { ko: <Folders />, en: <FoldersEn /> };

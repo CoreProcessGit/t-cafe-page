@@ -1,20 +1,70 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link, useLocation } from 'react-router-dom';
-import { guideCategories, guideMap, DEFAULT_GUIDE_SLUG } from './guidesIndex';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useParams, Link, useLocation, useNavigate } from 'react-router-dom';
+import {
+  guideCategories,
+  guideMap,
+  DEFAULT_GUIDE_SLUG,
+  SUPPORTED_LANGS,
+  DEFAULT_LANG,
+  LAYOUT_TEXT,
+} from './guidesIndex';
 import '../../styles/guide.css';
+
+const LANG_STORAGE_KEY = 'guideLang';
+
+const readInitialLang = (search) => {
+  try {
+    const params = new URLSearchParams(search);
+    const urlLang = params.get('lang');
+    if (urlLang && SUPPORTED_LANGS.includes(urlLang)) return urlLang;
+    const stored = typeof window !== 'undefined' ? window.localStorage.getItem(LANG_STORAGE_KEY) : null;
+    if (stored && SUPPORTED_LANGS.includes(stored)) return stored;
+  } catch (e) { /* ignore */ }
+  return DEFAULT_LANG;
+};
 
 const GuideLayout = () => {
   const params = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const slug = params.slug || DEFAULT_GUIDE_SLUG;
   const guide = guideMap[slug];
   const [sidebarCollapsed, setSidebarCollapsed] = useState(true);
+  const [lang, setLang] = useState(() => readInitialLang(location.search));
 
   useEffect(() => {
     setSidebarCollapsed(true);
   }, [location.pathname]);
 
-  const Content = guide?.component;
+  useEffect(() => {
+    const sp = new URLSearchParams(location.search);
+    if (!sp.get('lang')) {
+      sp.set('lang', lang);
+      navigate({ pathname: location.pathname, search: `?${sp.toString()}` }, { replace: true });
+    }
+  }, []);
+
+  const switchLang = useCallback((next) => {
+    if (!SUPPORTED_LANGS.includes(next) || next === lang) return;
+    setLang(next);
+    try { window.localStorage.setItem(LANG_STORAGE_KEY, next); } catch (e) { }
+    const sp = new URLSearchParams(location.search);
+    sp.set('lang', next);
+    navigate({ pathname: location.pathname, search: `?${sp.toString()}` }, { replace: true });
+  }, [lang, location.pathname, location.search, navigate]);
+
+  const t = (key) => (LAYOUT_TEXT[key] && LAYOUT_TEXT[key][lang]) || (LAYOUT_TEXT[key] && LAYOUT_TEXT[key][DEFAULT_LANG]) || key;
+  const pickTitle = (titles) => (titles && titles[lang]) || (titles && titles[DEFAULT_LANG]) || '';
+
+  const Content = guide && guide.components
+    ? (guide.components[lang] || guide.components[DEFAULT_LANG])
+    : null;
+
+  const buildLink = (s) => {
+    const params = new URLSearchParams(location.search);
+    params.set('lang', lang);
+    return `/support/guide/${s}?${params.toString()}`;
+  };
 
   return (
     <div className="guide-page">
@@ -24,25 +74,45 @@ const GuideLayout = () => {
         onClick={() => setSidebarCollapsed((prev) => !prev)}
         aria-expanded={!sidebarCollapsed}
       >
-        {sidebarCollapsed ? '▸ 가이드 목차 보기' : '▾ 가이드 목차 숨기기'}
+        {sidebarCollapsed ? t('showToc') : t('hideToc')}
       </button>
 
       <aside className={`guide-sidebar ${sidebarCollapsed ? 'collapsed' : ''}`}>
         <div className="guide-sidebar-header">
-          <h2>사용자 가이드</h2>
-          <p>T-CAFE 사용 매뉴얼</p>
+          <h2>{t('sidebarTitle')}</h2>
+          <p>{t('sidebarSubtitle')}</p>
+          {/* 
+          <div className="guide-lang-toggle" role="group" aria-label="Language">
+            <button
+              type="button"
+              className={`guide-lang-btn ${lang === 'en' ? 'active' : ''}`}
+              onClick={() => switchLang('en')}
+              aria-pressed={lang === 'en'}
+            >
+              {t('langEn')}
+            </button>
+            <button
+              type="button"
+              className={`guide-lang-btn ${lang === 'ko' ? 'active' : ''}`}
+              onClick={() => switchLang('ko')}
+              aria-pressed={lang === 'ko'}
+            >
+              {t('langKo')}
+            </button>
+          </div>
+          */}
         </div>
 
         {guideCategories.map((category) => (
-          <div key={category.title} className="guide-sidebar-category">
-            <div className="guide-sidebar-category-title">{category.title}</div>
+          <div key={pickTitle(category.titles)} className="guide-sidebar-category">
+            <div className="guide-sidebar-category-title">{pickTitle(category.titles)}</div>
             {category.items.map((item) => (
               <Link
                 key={item.slug}
-                to={`/support/guide/${item.slug}`}
+                to={buildLink(item.slug)}
                 className={`guide-sidebar-link ${item.slug === slug ? 'active' : ''}`}
               >
-                {item.title}
+                {pickTitle(item.titles)}
               </Link>
             ))}
           </div>
@@ -51,13 +121,13 @@ const GuideLayout = () => {
 
       <div className="guide-content-wrap">
         {Content ? (
-          <Content />
+          Content
         ) : (
           <div className="guide-not-found">
-            <h2>가이드를 찾을 수 없습니다</h2>
-            <p>요청하신 가이드 페이지가 존재하지 않습니다.</p>
+            <h2>{t('notFoundTitle')}</h2>
+            <p>{t('notFoundBody')}</p>
             <p>
-              <Link to={`/support/guide/${DEFAULT_GUIDE_SLUG}`}>시작하기 가이드로 이동</Link>
+              <Link to={buildLink(DEFAULT_GUIDE_SLUG)}>{t('goToStart')}</Link>
             </p>
           </div>
         )}

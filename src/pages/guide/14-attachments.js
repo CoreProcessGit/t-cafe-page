@@ -244,4 +244,244 @@ const Attachments = () => (
   </article>
 );
 
-export default Attachments;
+const AttachmentsEn = () => (
+  <article className="guide-article">
+    <h1>14. Attachments</h1>
+    <p className="guide-lead">
+      T-CAFE provides a <strong>project-scoped Attachments page</strong> for uploading, downloading, and managing external files. Attachments are stored in a secure data center, and uploaded files can be referenced as auto-recognized links inside test-case description, preconditions, expected-result text, and similar fields.
+    </p>
+
+    <hr />
+
+    <h2>1. Opening the Attachments Page</h2>
+    <p>Top tab → click <strong>Attachments</strong></p>
+    <aside className="guide-callout">The Attachments page is isolated per project. Attachments from other projects are not visible.</aside>
+
+    <hr />
+
+    <h2>2. Permissions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Action</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Upload</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Download / Preview</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Delete</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+    <p>→ <strong>All roles can use Attachments</strong>.</p>
+
+    <hr />
+
+    <h2>3. Storage Location and Security</h2>
+    <p>T-CAFE stores attachments in a <strong>secure data center</strong>.</p>
+    <ul>
+      <li>Isolated per project — attachments from other projects are not accessible</li>
+      <li>Data is encrypted and securely protected</li>
+    </ul>
+
+    <hr />
+
+    <h2>4. Storage Limits</h2>
+
+    <h3>Per Project</h3>
+    <ul>
+      <li><strong>Max: 200 MB</strong> (total of all attachments)</li>
+      <li>When exceeded, new uploads are rejected — delete some existing files and retry</li>
+    </ul>
+
+    <h3>Per File</h3>
+    <ul>
+      <li><strong>Max: 20 MB</strong> (per single file)</li>
+      <li>Files under 20 MB upload reliably.</li>
+    </ul>
+
+    <h3>Usage Indicator</h3>
+    <p>The top of the Attachments page shows:</p>
+    <ul>
+      <li>Used / total quota</li>
+      <li>Number of attachments</li>
+      <li>Remaining quota</li>
+    </ul>
+
+    <ScreenshotSlot label="Storage Usage indicator" src={img01} />
+
+    <hr />
+
+    <h2>5. Uploading Files</h2>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Top tab → <strong>Attachments</strong></li>
+      <li>Add files to the upload area (dashed box) one of these ways:
+        <ul>
+          <li>Click the <strong>Upload</strong> button → file picker dialog</li>
+          <li><strong>Drag and drop</strong> the file onto the area</li>
+        </ul>
+      </li>
+      <li>Chunked upload progress is displayed</li>
+      <li>On completion, the file appears in the attachment list</li>
+    </ol>
+
+    <h3>Multi-Upload</h3>
+    <ul>
+      <li>You can select or drag-and-drop multiple files at once</li>
+      <li>Files are uploaded in chunks, one after another</li>
+    </ul>
+
+    <aside className="guide-callout">Clipboard paste is not supported on the Attachments page. Use the upload dialog or drag-and-drop.</aside>
+
+    <hr />
+
+    <h2>6. Downloading and Previewing</h2>
+
+    <h3>Download</h3>
+    <ol>
+      <li>Click the <strong>Download</strong> button on the attachment row</li>
+      <li>Downloaded in chunks, then the browser shows a Save dialog</li>
+    </ol>
+
+    <h3>Preview</h3>
+    <ol>
+      <li>Click the <strong>Preview</strong> button on the attachment row</li>
+      <li>The modal shows these formats directly:
+        <ul>
+          <li><strong>Images</strong>: JPG / JPEG / PNG / GIF / SVG / WebP</li>
+          <li><strong>PDF</strong></li>
+        </ul>
+      </li>
+      <li>For other formats, an "unsupported" message is shown → use Download and view it locally</li>
+    </ol>
+
+    <ScreenshotSlot label="Preview modal" src={img02} />
+
+    <hr />
+
+    <h2>7. Deleting Files</h2>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Click the <strong>Delete</strong> button (trash icon) on the attachment row</li>
+      <li>Confirmation dialog → <strong>Confirm</strong></li>
+    </ol>
+
+    <h3>Notes</h3>
+    <ul>
+      <li>Deleted files <strong>cannot be recovered</strong></li>
+      <li>They are also removed from the data center immediately</li>
+      <li>After deletion, any link in TC text that referenced the file will stop working</li>
+    </ul>
+
+    <hr />
+
+    <h2>8. Attachment Metadata</h2>
+    <p>Each attachment shows the following information:</p>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>File name</strong></td><td>Original file name</td></tr>
+        <tr><td><strong>Size</strong></td><td>Automatically shown in KB / MB</td></tr>
+        <tr><td><strong>Type</strong></td><td>MIME type (e.g., image/png)</td></tr>
+        <tr><td><strong>Uploader</strong></td><td>Who uploaded the file</td></tr>
+        <tr><td><strong>Upload time</strong></td><td>When it was uploaded</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>9. Referencing Attachments from Test Cases</h2>
+    <p>T-CAFE does not provide a separate "TC attachment section". Instead, you can link attachments inside the body text as follows.</p>
+    <ol>
+      <li>Upload the file on the Attachments page</li>
+      <li>Copy the file's download URL (in the form <code>{'/attachment/content/<id>'}</code>)</li>
+      <li>Paste the URL into the TC's <strong>Description</strong> or <strong>Precondition</strong> input</li>
+      <li>The input auto-recognizes URLs and displays them as clickable links</li>
+      <li>When a user viewing the TC clicks the link, the file is downloaded immediately</li>
+    </ol>
+    <aside className="guide-callout info">This way, a single attachment can be referenced by many TCs at once and duplicate uploads are reduced.</aside>
+
+    <hr />
+
+    <h2>10. Attachment Best Practices</h2>
+
+    <h3>DO</h3>
+    <ul>
+      <li><strong>Compress</strong>: compress images / videos before uploading when possible</li>
+      <li><strong>Clear file names</strong>: e.g., <code>error-screenshot-2026-04-08.png</code></li>
+      <li><strong>Version markers</strong>: for different versions of the same asset, append v1, v2, etc. to the file name</li>
+      <li><strong>Regular cleanup</strong>: delete old attachments to keep room under the 200 MB quota</li>
+      <li><strong>Reuse via link</strong>: when the same asset is used in multiple TCs, upload it once and reference it by link</li>
+    </ul>
+
+    <h3>DON'T</h3>
+    <ul>
+      <li>Huge video files (only within the 20 MB single-file / 200 MB project total limits)</li>
+      <li>Meaningless file names (<code>screenshot.png</code>, <code>image1.jpg</code>)</li>
+      <li>Uploading the same file multiple times</li>
+      <li>Files containing sensitive information (real customer data, personal data, card info)</li>
+      <li>Executable files / files from untrusted sources</li>
+    </ul>
+
+    <hr />
+
+    <h2>11. Security Notes</h2>
+
+    <h3>Sensitive Data</h3>
+    <ul>
+      <li><strong>Do not attach real customer data, personal data, or card information</strong></li>
+      <li>Use only test dummy data</li>
+      <li>If you upload such data by mistake, delete it immediately and report per company policy</li>
+    </ul>
+
+    <h3>Malicious Files</h3>
+    <ul>
+      <li>Do not upload files from untrusted sources</li>
+      <li>Antivirus scanning before downloading is recommended</li>
+      <li>T-CAFE does not perform automatic antivirus scanning</li>
+    </ul>
+
+    <h3>External Sharing</h3>
+    <ul>
+      <li>Attachments are shared only with users of the same Jira project</li>
+      <li>If external sharing is needed, download the file and use a separate channel</li>
+    </ul>
+
+    <hr />
+
+    <h2>12. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Upload failed (single-file limit exceeded)</td><td>File exceeds 20 MB</td><td>Split or compress the file, then retry</td></tr>
+        <tr><td>Upload failed (project total limit exceeded)</td><td>Project exceeds 200 MB</td><td>Delete some existing files, then retry</td></tr>
+        <tr><td>Korean file name is garbled</td><td>Encoding issue</td><td>Rename to ASCII characters</td></tr>
+        <tr><td>Preview not supported</td><td>Format not supported</td><td>Download and view it locally</td></tr>
+        <tr><td>Slow download</td><td>Chunked transfer in progress</td><td>Retry on a stable network</td></tr>
+        <tr><td>Want to recover a deleted file</td><td>Permanently deleted</td><td>Cannot recover — re-upload is required</td></tr>
+        <tr><td>Link in TC body is broken</td><td>The referenced attachment was deleted</td><td>Upload the file again and recreate the link</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-cases">05. Test Case Basics</Link> — using attachment links in TC text</li>
+      <li><Link to="/support/guide/test-cases-steps">07. Writing Test Steps</Link> — text-input principles</li>
+      <li><Link to="/support/guide/test-execution">11. Test Execution</Link> — using attachments when tests fail</li>
+    </ul>
+  </article>
+);
+
+export default { ko: <Attachments />, en: <AttachmentsEn /> };

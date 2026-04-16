@@ -355,4 +355,356 @@ const Permissions = () => (
   </article>
 );
 
-export default Permissions;
+const PermissionsEn = () => (
+  <article className="guide-article">
+    <h1>02. User Permissions</h1>
+    <p className="guide-lead">
+      T-CAFE provides a role-based permission system. Four system roles are provided by default (Admin, Team Admin, Tester, Developer), and custom roles can be created as the project needs them.
+    </p>
+
+    <hr />
+
+    <h2>1. System Roles (4 defaults)</h2>
+    <p>System roles cannot be deleted, but the detailed permissions of each role can be changed by an Admin.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Key</th>
+          <th>Level</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Administrator</td>
+          <td>Admin</td>
+          <td>Top</td>
+          <td>Can use every feature, including Configuration and user-permission management</td>
+        </tr>
+        <tr>
+          <td>Team Administrator</td>
+          <td>Team Admin</td>
+          <td>Second</td>
+          <td>Create / edit / delete TCs and TPs, Import, execute tests, access / edit Configuration (except user and role management)</td>
+        </tr>
+        <tr>
+          <td>Tester</td>
+          <td>Tester</td>
+          <td>Third</td>
+          <td>Execute tests, comment, create / link issues, view, and export. Cannot create / edit / delete TCs or TPs</td>
+        </tr>
+        <tr>
+          <td>Developer</td>
+          <td>Developer</td>
+          <td>Lowest</td>
+          <td>View, export, execute tests (change status), and comment. Cannot create / edit / delete TCs or TPs, cannot create issues</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>2. Custom Roles</h2>
+    <p>In addition to the 4 default roles, you can create custom roles tailored to the project.</p>
+    <ul>
+      <li>Create / modify / delete from Configuration → User Permissions → Roles tab</li>
+      <li>Toggle granular action permissions by the 8 feature areas (Overview, Test Cases, Factor Combination, Test Plans, Reports, Configuration, User Management, Attachments)</li>
+      <li>System roles cannot be renamed or deleted, but their permissions can be changed</li>
+      <li>Custom roles can have both their name and permissions changed. They can only be deleted when no users are assigned to them</li>
+    </ul>
+
+    <hr />
+
+    <h2>3. Default Assignment Rules</h2>
+    <p>T-CAFE automatically assigns roles to users:</p>
+    <ul>
+      <li>The first user in a project: assigned Admin automatically</li>
+      <li>Subsequent new users: assigned Tester automatically</li>
+      <li>Changing a role: change in Configuration → User Permissions → Users tab via the role dropdown (both system and custom roles appear)</li>
+    </ul>
+
+    <h3>Activating / Deactivating Users</h3>
+    <ul>
+      <li>Activate or deactivate a user with the Activate toggle on the Users tab</li>
+      <li>A deactivated user is fully blocked and cannot access the project</li>
+      <li>When an Admin turns the toggle back ON, access is restored immediately</li>
+      <li>Use the Status filter (Active / Inactive / All) to review deactivated users</li>
+    </ul>
+
+    <hr />
+
+    <h2>4. Default Permission Matrix by System Role</h2>
+    <p>Below are the defaults for system roles. Admins can change each role's permissions on the Roles tab, and custom roles can be configured freely.</p>
+
+    <h3>4-1. Overview</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>View Overview</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>View statistics / charts</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Edit project description</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Create sample data</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Create Board post</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Delete Board post</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>View Milestone timeline</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-2. Test Cases</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Create TC (Single)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Create TC (Factor Combination)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Edit TC</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Delete TC</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Clone TC</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Move TC</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Import TCs (CSV / JSON / Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Export TCs (CSV / JSON / Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>View TC</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Search / filter TCs</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-3. Folders</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Create folder</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Rename folder</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Delete folder</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Copy folder</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Move folder</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>View folder structure</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-4. Test Plans</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Create TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Edit TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Delete TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Clone TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Add TC to TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Remove TC from TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Execute test (change status)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Add comment</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Create / link issue</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
+        <tr><td>View TP</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-5. Test Reports</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>View reports</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Export reports</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-6. Configuration</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Access Configuration page</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Edit Configuration (Priorities, Case Types, etc.)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Manage users (Users tab)</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Manage roles (Roles tab)</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>View issue types</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-7. Attachments</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Upload attachment</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Download attachment</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Delete attachment</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>5. Changing User Permissions</h2>
+
+    <h3>Steps to Change a Role</h3>
+    <ol>
+      <li>Click Configuration in the top tab (only roles with Configuration access see it)</li>
+      <li>Select User Permissions in the left menu</li>
+      <li>Find the user to change on the Users tab</li>
+      <li>Choose a new role from the role dropdown (both system and custom roles are listed)</li>
+      <li>Saves automatically</li>
+    </ol>
+
+    <h3>Steps to Create a Custom Role</h3>
+    <ol>
+      <li>Click the Roles tab</li>
+      <li>Click the Add Role button</li>
+      <li>Enter the role name</li>
+      <li>Toggle the permissions for each feature area</li>
+      <li>Click Create</li>
+    </ol>
+
+    <ScreenshotSlot src={shotPermissionChange} label="Change user permission" />
+
+    <h3>Notes</h3>
+    <ul>
+      <li>You cannot change your own role (another Admin must change it)</li>
+      <li>Last-admin protection: the last Admin of a project cannot be deleted or reassigned to another role</li>
+      <li>Role changes apply immediately (take effect when the user refreshes the page)</li>
+    </ul>
+
+    <hr />
+
+    <h2>6. Permission Flow (system behavior)</h2>
+    <ul>
+      <li>When a user accesses T-CAFE from Jira, the role is automatically verified</li>
+      <li>New users are assigned a role automatically (first user → Admin, subsequent users → Tester)</li>
+      <li>Permission changes are reflected in real time</li>
+      <li>On each page, buttons are shown or hidden based on the role</li>
+    </ul>
+
+    <hr />
+
+    <h2>7. Common Usage Scenarios</h2>
+
+    <h3>Scenario A: QA Team</h3>
+    <ul>
+      <li>QA manager: Admin</li>
+      <li>QA engineer: Team Admin (TC authoring / management)</li>
+      <li>Tester: Tester (execution focused)</li>
+      <li>Developer: Developer (view only)</li>
+    </ul>
+
+    <h3>Scenario B: Small Team</h3>
+    <ul>
+      <li>Dev lead: Admin</li>
+      <li>Every team member: Team Admin (free to create / edit)</li>
+      <li>No separation</li>
+    </ul>
+
+    <h3>Scenario C: Developer-authored TCs</h3>
+    <ul>
+      <li>Dev lead: Admin</li>
+      <li>Developer: Team Admin (authors TCs for their own code)</li>
+      <li>No dedicated QA headcount</li>
+    </ul>
+
+    <hr />
+
+    <h2>8. Common Issues</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Issue</th>
+          <th>Cause</th>
+          <th>Solution</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Configuration tab is not visible</td>
+          <td>No Admin / Team Admin permission</td>
+          <td>Ask an Admin to change your role</td>
+        </tr>
+        <tr>
+          <td>Create TC button is disabled</td>
+          <td>Tester / Developer role</td>
+          <td>Team Admin or higher is required</td>
+        </tr>
+        <tr>
+          <td>Cannot create Board posts</td>
+          <td>No Admin permission</td>
+          <td>Ask an Admin</td>
+        </tr>
+        <tr>
+          <td>Create Issue button is disabled</td>
+          <td>Developer role</td>
+          <td>Tester or higher is required</td>
+        </tr>
+        <tr>
+          <td>Cannot change your own role</td>
+          <td>Self-role changes are not allowed</td>
+          <td>Ask another Admin</td>
+        </tr>
+        <tr>
+          <td>User is not in the user list</td>
+          <td>No Jira project access</td>
+          <td>Add them to the Jira project, then refresh</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-cases">05. Test Case Basics</Link></li>
+      <li><Link to="/support/guide/configuration">13. Configuration</Link></li>
+    </ul>
+  </article>
+);
+
+export default { ko: <Permissions />, en: <PermissionsEn /> };

@@ -409,6 +409,461 @@ const faqData = [
   },
 ];
 
+const faqDataEn = [
+  {
+    category: 'General',
+    items: [
+      {
+        q: 'What is T-CAFE?',
+        a: <p>T-CAFE is a test management app for Atlassian Jira Cloud. It unifies test cases, test plans, execution results, and reports. Distinctive features include <strong>Factor Combination</strong> (auto-generating combinations), <strong>multilingual support</strong> (Korean / English / Japanese), and <strong>role-based access control</strong>.</p>,
+      },
+      {
+        q: 'What do I need to use T-CAFE?',
+        a: <p>An active Atlassian Jira Cloud subscription and Jira admin permission (for app installation). Self-hosted Jira (Server / Data Center) is not supported.</p>,
+      },
+      {
+        q: 'Which languages are supported?',
+        a: <p>Four options are available: <strong>Auto / English / 한국어 / 日本語</strong> (Auto follows the browser / Jira user locale). Switch via the language menu in the top-right.</p>,
+      },
+      {
+        q: 'Where is my T-CAFE data stored?',
+        a: <p>Both test data and attachments are stored in a secure data center. See the <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> for details.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Install / Start',
+    items: [
+      {
+        q: 'How do I install T-CAFE?',
+        a: <p>Jira Cloud → Settings → Apps → Find new apps → search "T-CAFE" → Get it now. See <Link to="/support/guide/getting-started">01. Getting Started</Link> for details.</p>,
+      },
+      {
+        q: 'What role does the first user receive?',
+        a: <p>The first user in a project is automatically assigned <strong>Admin</strong>. Later users are assigned Tester.</p>,
+      },
+      {
+        q: 'How do I create sample data?',
+        a: <p>Click the "<strong>Create Sample Data</strong>" button on the Welcome Banner of the Overview page. <strong>Admin permission</strong> is required. See <Link to="/support/guide/getting-started">01. Getting Started</Link> for details.</p>,
+      },
+      {
+        q: 'Can sample data be generated again?',
+        a: <p>If a project has generated sample data before, the Welcome Banner and the Create Sample Data button are hidden permanently. If regeneration is needed, please contact your administrator.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Permissions',
+    items: [
+      {
+        q: 'What are the roles?',
+        a: <p>Four default system roles — <strong>Admin</strong> / <strong>Team Admin</strong> / <strong>Tester</strong> / <strong>Developer</strong>. You can also create custom roles to fit the project. See <Link to="/support/guide/permissions">02. User Permissions</Link> for the full matrix.</p>,
+      },
+      {
+        q: 'Can I change my own role?',
+        a: <p>If you have Admin permission, you can edit your own role / permissions on the edit page. The system does block an Admin from demoting or deactivating themselves if they are the project's "last active Admin".</p>,
+      },
+      {
+        q: 'Can the last Admin be deleted?',
+        a: <p>No. Deletion, deactivation, and demotion are all blocked for the project's last active Admin.</p>,
+      },
+      {
+        q: 'The Configuration tab is not visible',
+        a: <p>The Configuration tab is shown only to <strong>Admin or Team Admin</strong>. Tester / Developer cannot access it. If you need a role change, ask an Admin.</p>,
+      },
+      {
+        q: 'Cannot Testers create TCs?',
+        a: <p>Correct. A Tester's <code>testCases</code> permission only enables <code>view: true, execute: true, export: true</code>, with create / edit / delete / import / manageFolder all false.</p>,
+      },
+      {
+        q: 'Can I create custom roles?',
+        a: <p>Yes. In Configuration → User Permissions → Roles, create custom roles and set fine-grained permissions across the <strong>8 feature areas</strong> (overview / testCases / factorCombination / testPlans / reports / configuration / userManagement / attachments). System roles (Admin, Team Admin, Tester, Developer) cannot be deleted (but their permissions can be changed).</p>,
+      },
+      {
+        q: 'Can I deactivate a user?',
+        a: <p>Yes. Turning the Activate toggle OFF on the Users tab returns all of that user's permissions as false, effectively blocking all access. Turning it back ON instantly restores the role's default permissions. Switch the Status filter to Inactive to list deactivated users.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Test Cases',
+    items: [
+      {
+        q: 'What is the difference between a TC and a TC Key?',
+        a: <p>A <strong>TC Key</strong> is an auto-assigned identifier (e.g., <code>PROJ-1</code>), while a <strong>TC</strong> is the actual content (name, description, steps, etc.) linked to that identifier.</p>,
+      },
+      {
+        q: 'Can a deleted TC be recovered?',
+        a: <p><strong>No</strong>. Back up (Export) before deleting.</p>,
+      },
+      {
+        q: 'Can I create multiple TCs with the same name?',
+        a: <p>Yes, but it is not recommended. Each TC is uniquely identified by its key, but identical names can confuse users.</p>,
+      },
+      {
+        q: 'Can TC keys be changed?',
+        a: <p>No. The TC key is auto-assigned and permanent.</p>,
+      },
+      {
+        q: 'Can a TC be moved to another project?',
+        a: <p>The current version has no direct move feature. Export and then Import into the target project.</p>,
+      },
+      {
+        q: 'Can I embed images in Test Steps?',
+        a: <p>Test Step cells are text inputs, so inline images cannot be inserted. However, you can paste the <code>[ATTACHMENT:id:filename]</code> tag of a file uploaded to <Link to="/support/guide/attachments">Attachments</Link> into Test Steps (Step / Test Data / Expected Result), Description, Precondition, or UDFs, and it will be automatically turned into a clickable download link in view mode.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Factor Combination',
+    items: [
+      {
+        q: 'What is Factor Combination?',
+        a: <p>A feature that bulk-creates TCs by auto-generating combinations of multiple variables. It is a <strong>differentiator unique to T-CAFE</strong> among the 8 competing apps. See <Link to="/support/guide/factor-combination">08. Factor Combination</Link> for details.</p>,
+      },
+      {
+        q: 'What is Pairwise?',
+        a: <p>An algorithm that builds a minimal set of combinations so that every pair of any two variables appears at least once. TC count drops by 50–80% vs. Full Combination, while still catching roughly 75% of defects statistically.</p>,
+      },
+      {
+        q: 'How many Factors can I define?',
+        a: <p>There is no hard limit on Factor count itself, but <strong>the number of generated combinations is capped at 5,000 as a safety net</strong> — generation halts when exceeded. In practice, keep Factors to <strong>5–7</strong> and use Constraints to remove unnecessary combinations.</p>,
+      },
+      {
+        q: 'What happens to existing TCs when I edit a Factor Combination?',
+        a: <p>Create the initial TCs with the <strong>Create Test Case</strong> button on the Factor Combination detail screen. To change per-combination properties (name, description, etc.) afterward, edit on the Details tab and apply the changes to those TCs with the <strong>Apply</strong> button. See <Link to="/support/guide/factor-combination">08. Factor Combination</Link> for full behavior.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Test Plans',
+    items: [
+      {
+        q: 'What is the difference between a TC and a TP?',
+        a: <p>A TC is a permanent artifact defining "what to test", while a TP is "a bundle of TCs to run this time". A single TC can belong to many TPs.</p>,
+      },
+      {
+        q: 'If I edit the source TC after adding it to a TP, does the execution item change?',
+        a: <p><strong>No</strong>. The execution item preserves the data at the moment of addition. Even if the source TC is edited, the execution item does not change. To sync, remove the execution item and re-add it.</p>,
+      },
+      {
+        q: 'Can I add the same TC to a TP multiple times?',
+        a: <p>It is possible but not recommended. Running the same TC several times can skew stats.</p>,
+      },
+      {
+        q: 'What should I do after a TP is finished?',
+        a: <p>The default Plan Statuses are <strong>Draft / Open / Completed</strong>, and it is recommended to change completed TPs to <strong>Completed</strong>. If your team needs a separate workflow, add custom statuses (e.g., Closed, Archived) in Configuration → Plan Status. Deletion is not recommended, to preserve audit trails.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Test Execution',
+    items: [
+      {
+        q: 'I cannot execute as a Tester',
+        a: (
+          <>
+            <p>Check the following:</p>
+            <ol>
+              <li>That the Tester role is correct</li>
+              <li>That the TP is in Open (or a custom in-progress status)</li>
+              <li>That you have Jira project access</li>
+            </ol>
+          </>
+        ),
+      },
+      {
+        q: 'What is the difference between Pass / Fail / Block / Skip?',
+        a: (
+          <ul>
+            <li><strong>Pass</strong>: every step worked as expected</li>
+            <li><strong>Fail</strong>: at least one step differed from the expected result</li>
+            <li><strong>Block</strong>: couldn't execute at all due to other issues (unmet preconditions, etc.)</li>
+            <li><strong>Skip</strong>: intentionally not executed</li>
+          </ul>
+        ),
+      },
+      {
+        q: 'Can I create a Jira issue when a test fails?',
+        a: <p>On the execution-item screen, open the Jira issue creation modal with the <strong>Create Issue</strong> button. Summary is empty and must be filled in; Description is pre-populated with a default template. It is not fully automatic.</p>,
+      },
+      {
+        q: 'Can I change the status of many execution items at once?',
+        a: <p>No. The current version's bulk actions are limited to <strong>Move</strong> and <strong>Delete</strong>. There is no bulk Pass / Fail / Block / Skip update. Status is changed per item.</p>,
+      },
+      {
+        q: 'Can I import results from automation tools?',
+        a: <p>Only manual entry is supported in the current version. Importing CI/CD automation results is on the roadmap.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Attachments',
+    items: [
+      {
+        q: 'Where are attachments stored?',
+        a: <p>In a secure data center. See <Link to="/support/guide/attachments">14. Attachments</Link> for details.</p>,
+      },
+      {
+        q: 'What is the file size limit?',
+        a: <p>The project total is <strong>200 MB</strong> (frontend <code>MAX_STORAGE_SIZE</code>). The single-file limit varies by server policy; when exceeded, a "single-file limit exceeded" error is shown on upload. See <Link to="/support/guide/attachments">14. Attachments</Link> for details.</p>,
+      },
+      {
+        q: 'Which file formats are supported?',
+        a: <p>Common formats — images (PNG / JPG / GIF), documents (PDF / DOC / XLS), text, archives, and more — are all supported. See <Link to="/support/guide/attachments">14. Attachments</Link> for the list.</p>,
+      },
+      {
+        q: 'Can a deleted attachment be recovered?',
+        a: <p><strong>No</strong>. Download and back up before deleting.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Import / Export',
+    items: [
+      {
+        q: 'Can I migrate from other tools (Xray, Zephyr, etc.)?',
+        a: <p>Import auto-recognizes T-CAFE's fixed column names (Folder, Folder Path, Key, Name, Description, Objective, Precondition, Type, Case Type, Priority, Owner, Components, Labels, UDF, Test Steps). <strong>There is no separate column-mapping UI</strong>, so edit the column headers of a file exported from another tool to match T-CAFE's format before importing. The safest start is the <strong>Import Template Modal</strong> shown when you click the Import button — download an empty template tailored to the current project. See <Link to="/support/guide/import-export">09. Import / Export</Link> for details.</p>,
+      },
+      {
+        q: 'What are the Export formats?',
+        a: <p>Three formats: CSV, JSON, and Excel (XLSX). Column order places Folder and Folder Path at the very front, making it easy to sort and filter by folder. Folder Path uses the <code>/</code> separator (e.g., <code>Authentication/Login/OAuth</code>).</p>,
+      },
+      {
+        q: 'Korean characters are garbled on Import',
+        a: <p>Save the file as <strong>UTF-8 BOM</strong>. In Excel, use "Save As" → "CSV UTF-8 (Comma delimited)".</p>,
+      },
+      {
+        q: 'How many TCs can I import at once?',
+        a: <p>A single Import processes up to <strong>5,000 rows</strong> (<code>MAX_IMPORT_SIZE</code> limit). 5,000 rows take about 20–25 seconds (500-row batches). Beyond that, split into multiple files. Even if there is a partial failure, <strong>re-importing the same file recovers safely thanks to idempotency</strong> (key match triggers UPDATE only).</p>,
+      },
+      {
+        q: 'Does importing the same file twice duplicate data?',
+        a: <p>No. T-CAFE <strong>guarantees idempotency</strong>. TCs with matching keys only UPDATE — no new INSERTs. Folders with the same <code>folder path</code> are reused (enforced by a DB UNIQUE constraint). Re-import after a partial failure is the safe recovery path.</p>,
+      },
+      {
+        q: 'Can multiple users import at the same time?',
+        a: <p><strong>Only one user at a time</strong> can import into the same project. If another user is in progress, the message "Another import is currently in progress for this project. Please try again in a few minutes." is shown. Abnormally terminated sessions auto-recover within 5 minutes, so retry works after a short wait.</p>,
+      },
+      {
+        q: 'How do I write the Folder Path column?',
+        a: <p>Use <code>/</code> as the separator (e.g., <code>Authentication/Login/OAuth</code>). All intermediate folders are auto-created and the TC is placed in the leaf folder. For compatibility with legacy exports, <code>{' > '}</code> is also recognized. If Folder Path is empty, a folder is auto-created from the uploaded file name.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Board',
+    items: [
+      {
+        q: 'Who can post on the Board?',
+        a: <p><strong>Admin only</strong> (the <code>overview.boardPost</code> permission). Team Admin / Tester / Developer can only view.</p>,
+      },
+      {
+        q: 'Can I edit / delete a post?',
+        a: <p>Only Admin can. Even on your own post, the edit / delete buttons are hidden without Admin permission.</p>,
+      },
+      {
+        q: 'Are there categories?',
+        a: <p>The current version's write form has no category picker, and every post is stored in the <code>Notice</code> category. There is no "pin to top" feature either — posts are sorted by newest created date only. See <Link to="/support/guide/board">04. Board</Link> for details.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Data Security',
+    items: [
+      {
+        q: 'How does T-CAFE protect data?',
+        a: (
+          <>
+            <ul>
+              <li><strong>Data protection</strong>: sensitive test data is stored with secure protection</li>
+              <li><strong>Access control</strong>: role-based (Admin / Team Admin / Tester / Developer)</li>
+              <li><strong>Isolation</strong>: data is isolated per Jira instance and per project</li>
+              <li><strong>Web security</strong>: complies with web-standard security baselines</li>
+            </ul>
+            <p>See the <a href="https://t-cafe.com/security-policy" target="_blank" rel="noopener noreferrer">Security Policy</a> for details.</p>
+          </>
+        ),
+      },
+      {
+        q: 'Does T-CAFE use our data to train AI?',
+        a: <p><strong>No</strong>. T-CAFE does not use customer data to train any AI or machine learning models.</p>,
+      },
+      {
+        q: 'Can we move data to our own servers?',
+        a: <p>Data is currently stored in a secure data center. Self-hosting is under future consideration.</p>,
+      },
+      {
+        q: 'Is T-CAFE GDPR compliant?',
+        a: <p>Yes. T-CAFE complies with GDPR, CCPA, and LGPD. See the <a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and the <a href="https://t-cafe.com/dpa" target="_blank" rel="noopener noreferrer">Data Processing Addendum</a>.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Billing / License',
+    items: [
+      {
+        q: 'How is T-CAFE priced?',
+        a: <p>See per-user pricing on the Atlassian Marketplace listing page. T-CAFE offers Standard and Advanced editions.</p>,
+      },
+      {
+        q: 'Are refunds possible?',
+        a: <p>Refunds follow the Atlassian Marketplace policy.</p>,
+      },
+      {
+        q: 'How does billing work?',
+        a: <p>Billing is handled by the Atlassian Marketplace. T-CAFE does not process payments directly.</p>,
+      },
+      {
+        q: 'Is there a trial period?',
+        a: <p>Yes — a 30-day free evaluation per the Atlassian Marketplace policy.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Technical Support',
+    items: [
+      {
+        q: 'How do I report an issue?',
+        a: <p>Email us at <strong>contact@coreprocess.co.kr</strong>.</p>,
+      },
+      {
+        q: 'Where can I suggest features?',
+        a: <p>Email your suggestion. We review for future roadmap consideration.</p>,
+      },
+      {
+        q: 'What is the response time?',
+        a: <p>We aim to respond within 24–48 hours on business days.</p>,
+      },
+      {
+        q: 'Is Korean support available?',
+        a: <p>Yes. Email inquiries in either Korean or English are welcome.</p>,
+      },
+      {
+        q: 'Is there an SLA?',
+        a: <p>There is no formal SLA at this time. Larger deployments can be discussed separately.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Compatibility',
+    items: [
+      {
+        q: 'Which browsers are supported?',
+        a: <p>Latest versions of Chrome, Firefox, Safari, and Edge are recommended. Internet Explorer is not supported.</p>,
+      },
+      {
+        q: 'Can I use it on mobile?',
+        a: <p>It runs in mobile browsers, but it is optimized for desktop. There is no mobile-only app.</p>,
+      },
+      {
+        q: 'Can I use it on Jira Server / Data Center?',
+        a: <p>Currently <strong>Jira Cloud only</strong>. Server / DC editions are not supported.</p>,
+      },
+      {
+        q: 'Can I use it on Atlassian Confluence?',
+        a: <p>No. T-CAFE is Jira-only.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Roadmap',
+    items: [
+      {
+        q: 'Will AI features be added?',
+        a: <p>Under consideration. If AI features are added, we will notify users in advance and clearly update our data-usage policy.</p>,
+      },
+      {
+        q: 'Is there a REST API?',
+        a: <p>On the future roadmap, planned together with CI/CD integration.</p>,
+      },
+      {
+        q: 'Is there SOC 2 certification?',
+        a: <p>Not currently. We will review it as the user base grows.</p>,
+      },
+      {
+        q: 'Where can I request new features?',
+        a: <p>Email contact@coreprocess.co.kr.</p>,
+      },
+    ],
+  },
+  {
+    category: 'Other',
+    items: [
+      {
+        q: 'Is there more material beyond this guide?',
+        a: (
+          <>
+            <p>Beyond this user guide, see:</p>
+            <ul>
+              <li><a href="https://t-cafe.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+              <li><a href="https://t-cafe.com/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+              <li><a href="https://t-cafe.com/dpa" target="_blank" rel="noopener noreferrer">Data Processing Addendum</a></li>
+              <li><a href="https://t-cafe.com/sub-processors" target="_blank" rel="noopener noreferrer">Sub-processors</a></li>
+              <li><a href="https://t-cafe.com/security-policy" target="_blank" rel="noopener noreferrer">Security Policy</a></li>
+            </ul>
+          </>
+        ),
+      },
+      {
+        q: 'Who develops T-CAFE?',
+        a: <p>Developed and operated by COREPROCESS.</p>,
+      },
+      {
+        q: 'How often is this guide updated?',
+        a: <p>It is updated on feature releases or policy changes. For major changes, we also announce on the Board.</p>,
+      },
+    ],
+  },
+];
+
+const FAQ_STRINGS = {
+  ko: {
+    title: '15. 자주 묻는 질문 (FAQ)',
+    lead: 'T-CAFE 사용 중 자주 묻는 질문과 답변을 정리했습니다. 검색하거나 카테고리에서 찾아보세요.',
+    searchPlaceholder: '질문 또는 답변에서 검색...',
+    clearSearch: '검색어 지우기',
+    expandAll: '모두 펼치기',
+    collapseAll: '모두 접기',
+    emptyLine1: '검색 결과가 없습니다.',
+    emptyLine2: '다른 키워드로 시도하거나, 답을 찾을 수 없으면 아래 이메일로 문의해주세요.',
+    contactTitle: '이 페이지에 답이 없다면?',
+    contactEmailPrefix: '이메일',
+    contactEmailSuffix: ' 으로 문의해주세요.',
+    contactHint: '문의 시 다음 정보를 함께 보내주시면 빠른 응답이 가능합니다:',
+    contactItems: [
+      'T-CAFE 사용 환경 (Jira Cloud URL)',
+      '발생한 문제의 구체적 설명',
+      '재현 단계',
+      '스크린샷 또는 에러 메시지',
+      '사용 중인 브라우저',
+      '사용자 권한 (Admin / Team Admin / Tester / Developer)',
+    ],
+  },
+  en: {
+    title: '15. Frequently Asked Questions (FAQ)',
+    lead: 'Common questions and answers about using T-CAFE. Search or browse by category.',
+    searchPlaceholder: 'Search questions or answers...',
+    clearSearch: 'Clear search',
+    expandAll: 'Expand all',
+    collapseAll: 'Collapse all',
+    emptyLine1: 'No results found.',
+    emptyLine2: "Try different keywords, or contact us by email below if you can't find an answer.",
+    contactTitle: 'Not finding your answer here?',
+    contactEmailPrefix: 'Email',
+    contactEmailSuffix: ' with any question.',
+    contactHint: 'Including the following with your message helps us respond faster:',
+    contactItems: [
+      'Your T-CAFE environment (Jira Cloud URL)',
+      'A specific description of the problem',
+      'Reproduction steps',
+      'Screenshots or error messages',
+      'Browser in use',
+      'User role (Admin / Team Admin / Tester / Developer)',
+    ],
+  },
+};
+
 const extractText = (node) => {
   if (node === null || node === undefined || typeof node === 'boolean') return '';
   if (typeof node === 'string' || typeof node === 'number') return String(node);
@@ -417,7 +872,7 @@ const extractText = (node) => {
   return '';
 };
 
-const FAQ = () => {
+const FAQView = ({ data, strings, totalCount }) => {
   const [search, setSearch] = useState('');
   const [openKeys, setOpenKeys] = useState(() => new Set());
 
@@ -425,7 +880,7 @@ const FAQ = () => {
   const query = norm(search.trim());
 
   const sectionsWithIndex = useMemo(() => {
-    return faqData.map((section, sIdx) => ({
+    return data.map((section, sIdx) => ({
       ...section,
       sIdx,
       items: section.items.map((item, iIdx) => ({
@@ -434,7 +889,7 @@ const FAQ = () => {
         searchText: norm(`${item.q} ${extractText(item.a)}`),
       })),
     }));
-  }, []);
+  }, [data]);
 
   const filteredSections = useMemo(() => {
     if (!query) return sectionsWithIndex;
@@ -466,8 +921,8 @@ const FAQ = () => {
 
   return (
     <article className="guide-article faq-article">
-      <h1>15. 자주 묻는 질문 (FAQ)</h1>
-      <p className="guide-lead">T-CAFE 사용 중 자주 묻는 질문과 답변을 정리했습니다. 검색하거나 카테고리에서 찾아보세요.</p>
+      <h1>{strings.title}</h1>
+      <p className="guide-lead">{strings.lead}</p>
 
       <div className="faq-controls">
         <div className="faq-search-box">
@@ -478,25 +933,25 @@ const FAQ = () => {
           <input
             type="search"
             className="faq-search-input"
-            placeholder="질문 또는 답변에서 검색..."
+            placeholder={strings.searchPlaceholder}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
           {search && (
-            <button type="button" className="faq-search-clear" onClick={() => setSearch('')} aria-label="검색어 지우기">×</button>
+            <button type="button" className="faq-search-clear" onClick={() => setSearch('')} aria-label={strings.clearSearch}>×</button>
           )}
         </div>
         <div className="faq-actions">
-          <span className="faq-count">{totalMatches} / 70</span>
-          <button type="button" className="faq-action-btn" onClick={expandAll} disabled={totalMatches === 0}>모두 펼치기</button>
-          <button type="button" className="faq-action-btn" onClick={collapseAll} disabled={openKeys.size === 0}>모두 접기</button>
+          <span className="faq-count">{totalMatches} / {totalCount}</span>
+          <button type="button" className="faq-action-btn" onClick={expandAll} disabled={totalMatches === 0}>{strings.expandAll}</button>
+          <button type="button" className="faq-action-btn" onClick={collapseAll} disabled={openKeys.size === 0}>{strings.collapseAll}</button>
         </div>
       </div>
 
       {filteredSections.length === 0 ? (
         <div className="faq-empty">
-          <p>검색 결과가 없습니다.</p>
-          <p>다른 키워드로 시도하거나, 답을 찾을 수 없으면 아래 이메일로 문의해주세요.</p>
+          <p>{strings.emptyLine1}</p>
+          <p>{strings.emptyLine2}</p>
         </div>
       ) : (
         filteredSections.map((section) => (
@@ -536,20 +991,20 @@ const FAQ = () => {
       )}
 
       <section className="faq-contact">
-        <h2>이 페이지에 답이 없다면?</h2>
-        <p><strong>이메일</strong>: <a href="mailto:contact@coreprocess.co.kr">contact@coreprocess.co.kr</a> 으로 문의해주세요.</p>
-        <p>문의 시 다음 정보를 함께 보내주시면 빠른 응답이 가능합니다:</p>
+        <h2>{strings.contactTitle}</h2>
+        <p><strong>{strings.contactEmailPrefix}</strong>: <a href="mailto:contact@coreprocess.co.kr">contact@coreprocess.co.kr</a>{strings.contactEmailSuffix}</p>
+        <p>{strings.contactHint}</p>
         <ul>
-          <li>T-CAFE 사용 환경 (Jira Cloud URL)</li>
-          <li>발생한 문제의 구체적 설명</li>
-          <li>재현 단계</li>
-          <li>스크린샷 또는 에러 메시지</li>
-          <li>사용 중인 브라우저</li>
-          <li>사용자 권한 (Admin / Team Admin / Tester / Developer)</li>
+          {strings.contactItems.map((li) => <li key={li}>{li}</li>)}
         </ul>
       </section>
     </article>
   );
 };
 
-export default FAQ;
+const countItems = (data) => data.reduce((sum, s) => sum + s.items.length, 0);
+
+const FAQ = () => <FAQView data={faqData} strings={FAQ_STRINGS.ko} totalCount={countItems(faqData)} />;
+const FAQEn = () => <FAQView data={faqDataEn} strings={FAQ_STRINGS.en} totalCount={countItems(faqDataEn)} />;
+
+export default { ko: <FAQ />, en: <FAQEn /> };

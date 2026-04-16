@@ -431,4 +431,429 @@ const FactorCombination = () => (
   </article>
 );
 
-export default FactorCombination;
+const FactorCombinationEn = () => (
+  <article className="guide-article">
+    <h1>08. Factor Combination</h1>
+    <p className="guide-lead">
+      <strong>Factor Combination</strong> is T-CAFE's distinctive feature. Automatically generate combinations of multiple variables (Factors) to bulk-create test cases.
+    </p>
+
+    <hr />
+
+    <h2>1. What is Factor Combination?</h2>
+    <p>For scenarios with many variables to test, it is the <strong>feature that automatically builds every meaningful combination</strong>.</p>
+
+    <h3>Use Cases</h3>
+    <ul>
+      <li><strong>Cross-browser testing</strong>: Chrome × Firefox × Safari × Edge</li>
+      <li><strong>Multilingual testing</strong>: Korean × English × Japanese × Chinese</li>
+      <li><strong>Permission testing</strong>: Admin × User × Guest</li>
+      <li><strong>OS × device</strong>: Windows × Mac × Linux × iOS × Android</li>
+      <li><strong>Payment methods</strong>: credit card × bank transfer × virtual account × PayPal</li>
+    </ul>
+
+    <h3>Why Automate It?</h3>
+    <p>If three variables have 4, 3, and 5 values respectively:</p>
+    <ul>
+      <li>Manual authoring: you'd have to write 4 × 3 × 5 = <strong>60 TCs</strong> by hand</li>
+      <li>Factor Combination: <strong>60 TCs auto-generated</strong>, and refreshed in one shot when anything changes</li>
+    </ul>
+
+    <hr />
+
+    <h2>2. Concepts</h2>
+    <table>
+      <thead>
+        <tr><th>Term</th><th>Key</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Factor</strong></td><td>Factor</td><td>Variable (e.g., Browser, OS, Language)</td></tr>
+        <tr><td><strong>Value</strong></td><td>Value</td><td>Value of a variable (e.g., Chrome, Firefox, Safari)</td></tr>
+        <tr><td><strong>Combination</strong></td><td>Combination</td><td>A combination of values from all Factors (e.g., Chrome + Windows + Korean)</td></tr>
+        <tr><td><strong>Constraint</strong></td><td>Constraint</td><td>A combination constraint (e.g., "Exclude Safari on Windows")</td></tr>
+        <tr><td><strong>Factor Type</strong></td><td>Type</td><td>Combination mode chosen per Factor (<strong>Full Combination</strong> or <strong>Pairwise</strong>). When different Factors use different types, the system automatically switches to Mixed.</td></tr>
+        <tr><td><strong>Simulated TC</strong></td><td>Simulated Test Case</td><td>A preview of the TC that will be created</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>3. Combination Type</h2>
+    <p>T-CAFE supports three combination algorithms.</p>
+
+    <h3>3-1. Full Combination</h3>
+    <p>Generates every possible combination.</p>
+    <p><strong>Example</strong>: Browser (3) × OS (2) × Language (2) = <strong>12 combinations</strong></p>
+    <table>
+      <thead>
+        <tr><th>Browser</th><th>OS</th><th>Language</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Chrome</td><td>Windows</td><td>Korean</td></tr>
+        <tr><td>Chrome</td><td>Windows</td><td>English</td></tr>
+        <tr><td>Chrome</td><td>Mac</td><td>Korean</td></tr>
+        <tr><td>Chrome</td><td>Mac</td><td>English</td></tr>
+        <tr><td>Firefox</td><td>Windows</td><td>Korean</td></tr>
+        <tr><td>Firefox</td><td>Windows</td><td>English</td></tr>
+        <tr><td>Firefox</td><td>Mac</td><td>Korean</td></tr>
+        <tr><td>Firefox</td><td>Mac</td><td>English</td></tr>
+        <tr><td>Safari</td><td>Windows</td><td>Korean</td></tr>
+        <tr><td>Safari</td><td>Windows</td><td>English</td></tr>
+        <tr><td>Safari</td><td>Mac</td><td>Korean</td></tr>
+        <tr><td>Safari</td><td>Mac</td><td>English</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Pro</strong>: 100% coverage<br /><strong>Con</strong>: explodes with many variables</p>
+
+    <h3>3-2. Pairwise Combination</h3>
+    <aside className="guide-callout info">
+      Test cases are composed so that <strong>when any two Factors are chosen</strong>, every <strong>pair of values from those two Factors appears at least once</strong>.
+    </aside>
+    <p>Even when you isolate any two Factors from the set, every pair of their values will have co-occurred at least once. Specific combinations formed by 3+ Factors simultaneously are not guaranteed.</p>
+
+    <p>Pairwise <strong>automatically picks the optimal set of combinations</strong> so that every 2-Factor value pair is covered.</p>
+
+    <p><strong>Example</strong>: Browser (3) × OS (3) × Language (2) — Full produces 18, <strong>Pairwise reduces to about 9</strong>.</p>
+    <p><strong>Pro</strong>: sharply reduces TC count (the more variables, the bigger the win)<br /><strong>Con</strong>: specific combinations formed by 3+ Factors simultaneously may be missed</p>
+
+    <p><strong>Automatic fallbacks</strong>:</p>
+    <ul>
+      <li>With 1 Factor → the Factor's values are listed directly</li>
+      <li>With 2 Factors → equivalent to Full Combination (by the definition of Pairwise)</li>
+      <li>With 3+ Factors → Pairwise optimization is applied automatically</li>
+    </ul>
+
+    <p><strong>Generation Limits</strong> (apply to all algorithms):</p>
+    <ul>
+      <li>A single Factor Combination simulation can create up to <strong>5,000 test cases</strong></li>
+      <li>Applies the same way regardless of Full / Pairwise / Mixed</li>
+      <li>Over 5,000 — a warning is shown at the simulation step and only the first 5,000 are displayed in the preview</li>
+      <li>If you are approaching 5,000, add Constraints or split Factors</li>
+    </ul>
+
+    <p><strong>When to use it</strong>:</p>
+    <ul>
+      <li>When time is limited (e.g., regression testing)</li>
+      <li>When there are too many variables to run all combinations</li>
+      <li>Empirically, a large share of defects is found in single-Factor and pair combinations</li>
+    </ul>
+
+    <h3>3-3. Mixed Combination (auto)</h3>
+    <aside className="guide-callout info">
+      Mixed is not a user-selectable option. It is <strong>auto-applied at simulation time when Factors are given different types</strong>.
+    </aside>
+    <p>If some Factors are set to <strong>Full Combination</strong> and others to <strong>Pairwise</strong>, T-CAFE keeps every combination of the Full-type Factors while distributing Pairwise-type Factor values evenly across them.</p>
+    <p><strong>Example</strong>: Browser / OS set to Full and Language set to Pairwise → every Browser × OS combination is kept, while Language values are cycled through.</p>
+
+    <hr />
+
+    <h2>4. Constraint</h2>
+    <p>Not every combination is meaningful in the real world. Use <strong>Constraints</strong> to exclude impossible or unnecessary combinations.</p>
+
+    <h3>Constraint Types (3)</h3>
+    <table>
+      <thead>
+        <tr><th>UI label</th><th>Meaning</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>If-Then</strong></td><td>When a condition is met, another Factor must take a specific value</td><td>"When Browser = Safari, OS must be Mac"</td></tr>
+        <tr><td><strong>One-Way Exclude</strong></td><td>When one condition is true, exclude a specific combination (one-direction)</td><td>"When OS = Windows, exclude Browser = Safari"</td></tr>
+        <tr><td><strong>Two-Way Exclude</strong></td><td>Ensure the two specified values never appear together (both directions)</td><td>"Exclude the Browser = Safari + OS = Windows combination"</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Example — "Safari does not work on Windows"</h3>
+    <ul>
+      <li><strong>One-Way Exclude</strong>: OS = Windows ➜ exclude Browser = Safari</li>
+      <li><strong>Two-Way Exclude</strong>: mark Browser = Safari and OS = Windows as incompatible</li>
+    </ul>
+    <p>→ Either way, the "Safari + Windows" combination is excluded from the simulation.</p>
+
+    <hr />
+
+    <h2>5. Factor Combination Flow</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Screen Layout</h3>
+    <p>The Factor Combination screen has <strong>three tabs</strong> at the top; work through them in order:</p>
+    <ol>
+      <li><strong>Simulation</strong> tab — define Factors / Constraints and simulate</li>
+      <li><strong>Details</strong> tab — enter properties common to every generated TC (Priority, Case Type, Owner, etc.)</li>
+      <li><strong>Steps &amp; Test Data</strong> tab — define the per-combination step matrix</li>
+    </ol>
+
+    <h3>Step 1: Pick a Folder</h3>
+    <ol>
+      <li>On the Test Cases page, select the folder for the Factor Combination (create one via <strong>New Folder</strong> if needed)</li>
+    </ol>
+    <aside className="guide-callout info">
+      <strong>Factor Combination indicator</strong>: any folder that has saved a Factor Combination at least once shows an orange <strong>⚡ icon</strong> next to its name in the left tree. You can see at a glance which folders have existing designs, making it easier to decide whether to edit an existing one or start fresh in a new folder. The icon does not propagate to the parent — it shows only on folders with an actual configuration.
+    </aside>
+
+    <h3>Step 2: Start the Factor Combination</h3>
+    <ol>
+      <li>Click the <strong>+ Create Test Case</strong> button at the top</li>
+      <li>Choose <strong>Factor Combination</strong> from the dropdown</li>
+      <li>The Factor Combination screen opens (Simulation tab)</li>
+    </ol>
+
+    <ScreenshotSlot label="Factor Combination entry screen" src={img01} />
+
+    <h3>Step 3: Define Factors (Simulation tab)</h3>
+    <ol>
+      <li>Click <strong>+ Add Factor</strong></li>
+      <li>Enter the Factor name (e.g., "Browser")</li>
+      <li>Pick the Factor type — <strong>Full Combination</strong> or <strong>Pairwise</strong></li>
+      <li><strong>Add Values</strong>: enter each value (e.g., Chrome, Firefox, Safari)</li>
+      <li>Repeat to add more Factors as needed</li>
+    </ol>
+
+    <ScreenshotSlot label="Factor definition screen" src={img02} />
+
+    <h3>Step 4: Add Constraints (optional, Simulation tab)</h3>
+    <ol>
+      <li>Click <strong>+ Add Constraint</strong></li>
+      <li>Pick a Constraint Type: <strong>If-Then</strong> / <strong>One-Way Exclude</strong> / <strong>Two-Way Exclude</strong></li>
+      <li>Pick the related Factors and values</li>
+      <li>Save with the <strong>Add Constraint</strong> button</li>
+    </ol>
+
+    <h3>Step 5: Simulate (Simulation tab)</h3>
+    <ol>
+      <li>Click the <strong>Simulate</strong> button</li>
+      <li>The preview of combinations that will be generated appears (up to 5,000; a warning is shown if over)</li>
+      <li>If the result isn't right, adjust Factors or Constraints and Simulate again</li>
+    </ol>
+
+    <ScreenshotSlot label="Simulation results" src={img03} />
+
+    <h3>Step 6: Common Properties (Details tab)</h3>
+    <ol>
+      <li>Click the <strong>Details</strong> tab at the top</li>
+      <li>Enter properties to apply to every generated TC (Description, Priority, Owner, Components, Labels, Case Type, UDFs, etc.)</li>
+      <li>Click <strong>Apply</strong> — the common info is saved and applied to subsequent TC creation</li>
+    </ol>
+
+    <aside className="guide-callout info">
+      If you don't save Details, TC creation shows a "Please save Details information first" warning and cannot proceed.
+    </aside>
+
+    <h3>Step 7: Steps Matrix (Steps &amp; Test Data tab, optional)</h3>
+    <ol>
+      <li>Click the <strong>Steps &amp; Test Data</strong> tab at the top</li>
+      <li>In a matrix of test steps (rows) × combinations (columns), choose which steps apply per combination and enter Test Data</li>
+      <li>See §8 Steps Matrix below for details</li>
+    </ol>
+
+    <h3>Step 8: Create TCs</h3>
+    <ol>
+      <li>Click the <strong>Create Test Case</strong> button at the top-right of the screen</li>
+      <li>A TC is automatically created for each simulated combination</li>
+      <li>TC names are assigned automatically in the form "<code>folder-Factor1value-Factor2value-…</code>" (e.g., "Cross Browser-Chrome-Desktop-Login")</li>
+      <li>Generated TCs are marked with an <strong>F</strong> badge (Factor type) in the list</li>
+    </ol>
+
+    <hr />
+
+    <h2>6. Characteristics of Generated TCs</h2>
+
+    <h3>Auto-assigned Fields</h3>
+    <ul>
+      <li><strong>Name</strong>: folder name + each Factor value joined with "-"</li>
+      <li><strong>TC key</strong>: auto-assigned (e.g., PROJ-15, PROJ-16…)</li>
+      <li><strong>Factor Values</strong>: the specific combination is stored as metadata</li>
+      <li><strong>Factor Signature</strong>: a key that uniquely identifies the combination</li>
+      <li><strong>Test steps</strong>: default template + each Factor value is auto-inserted</li>
+    </ul>
+
+    <h3>Common Fields (Assignment Statistics)</h3>
+    <p>Applied identically to every generated TC:</p>
+    <ul>
+      <li>Priority</li>
+      <li>Case Type</li>
+      <li>Components</li>
+      <li>Labels</li>
+      <li>Owner</li>
+      <li>UDFs (User Defined Fields)</li>
+    </ul>
+    <p>Entered once when creating the Factor Combination; automatically applied to every generated TC.</p>
+
+    <hr />
+
+    <h2>7. Editing Factor TCs / Factor Combinations</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Editing a Single Factor TC</h3>
+    <p>Each generated Factor TC can be opened and edited individually, just like a Single TC.</p>
+    <ol>
+      <li>Click the Key or Name of the Factor TC to edit in the TC list</li>
+      <li>On the edit page, modify the name · Description · Precondition · test steps · UDFs directly</li>
+      <li>Save</li>
+    </ol>
+    <p>The edit page uses the same UI as a Single TC. Factor metadata (which combination it is) is shown read-only.</p>
+
+    <h3>Re-editing the Factor Combination Structure (Factors / Values / Constraints)</h3>
+    <p>To change <strong>the structure itself (add / remove Factors, change Values, edit Constraints)</strong>, reopen the Factor Combination screen on that folder and adjust it on the Simulation tab. Update the Details and Steps &amp; Test Data tabs in turn, then regenerate via <strong>Apply</strong> / <strong>Create Test Case</strong>.</p>
+
+    <aside className="guide-callout info">
+      If you change the Factor Combination structure significantly, previously generated TCs may no longer match expectations. It is often cleanest to delete them and regenerate. TCs already in a TP with execution history are snapshot-copied and thus unaffected by structural changes.
+    </aside>
+
+    <hr />
+
+    <h2>8. Steps Matrix</h2>
+    <p>In Factor Combination, you can define <strong>different steps for each combination</strong>.</p>
+
+    <h3>Steps Matrix View</h3>
+    <ul>
+      <li>Rows: test steps (Step 1, 2, 3…)</li>
+      <li>Columns: each combination TC</li>
+    </ul>
+
+    <h3>Usage</h3>
+    <ol>
+      <li>Common steps are checked for every combination</li>
+      <li>Steps that apply only to specific combinations are checked for those columns only</li>
+      <li>Example: a "Mac-only permission check" step is checked only for Mac combinations</li>
+    </ol>
+
+    <ScreenshotSlot label="Steps Matrix" src={img04} />
+
+    <hr />
+
+    <h2>9. Real Example — Cross-browser Test</h2>
+
+    <h3>Scenario</h3>
+    <p>Test the login feature of a web application across various environments.</p>
+
+    <h3>Factors</h3>
+    <table>
+      <thead>
+        <tr><th>Factor</th><th>Values</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Browser</strong></td><td>Chrome, Firefox, Safari</td></tr>
+        <tr><td><strong>Device</strong></td><td>Desktop, Mobile</td></tr>
+        <tr><td><strong>Feature</strong></td><td>Login</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Constraint</h3>
+    <p>None (every combination is meaningful).</p>
+
+    <h3>Simulation Result</h3>
+    <p>3 × 2 × 1 = <strong>6 combinations</strong></p>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Browser</th><th>Device</th><th>Feature</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Chrome</td><td>Desktop</td><td>Login</td></tr>
+        <tr><td>2</td><td>Chrome</td><td>Mobile</td><td>Login</td></tr>
+        <tr><td>3</td><td>Firefox</td><td>Desktop</td><td>Login</td></tr>
+        <tr><td>4</td><td>Firefox</td><td>Mobile</td><td>Login</td></tr>
+        <tr><td>5</td><td>Safari</td><td>Desktop</td><td>Login</td></tr>
+        <tr><td>6</td><td>Safari</td><td>Mobile</td><td>Login</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Auto-generated TC Names</h3>
+    <ul>
+      <li>Cross Browser-Chrome-Desktop-Login</li>
+      <li>Cross Browser-Chrome-Mobile-Login</li>
+      <li>Cross Browser-Firefox-Desktop-Login</li>
+      <li>Cross Browser-Firefox-Mobile-Login</li>
+      <li>Cross Browser-Safari-Desktop-Login</li>
+      <li>Cross Browser-Safari-Mobile-Login</li>
+    </ul>
+
+    <h3>Common Steps</h3>
+    <ol>
+      <li>Open the application on that environment</li>
+      <li>Test the login feature</li>
+      <li>Verify UI rendering</li>
+    </ol>
+
+    <p>Every combination shares the same steps, but <strong>Test Data differs per environment</strong>.</p>
+
+    <hr />
+
+    <h2>10. Best Practices</h2>
+
+    <h3>DO</h3>
+    <ul>
+      <li><strong>Clear Factor names</strong>: self-descriptive, like "Browser" or "OS"</li>
+      <li><strong>Realistic values</strong>: only what you actually support (don't put Safari under Windows)</li>
+      <li><strong>Use Pairwise aggressively</strong>: with 4+ variables, Pairwise is recommended</li>
+      <li><strong>Use Constraints aggressively</strong>: remove impossible combinations up front</li>
+      <li><strong>Simulate before generating</strong>: preview first — don't generate blindly</li>
+    </ul>
+
+    <h3>DON'T</h3>
+    <ul>
+      <li>Too many Factors (10+ becomes unmanageable)</li>
+      <li>Too many Values per Factor (5–7 per Factor recommended)</li>
+      <li>Unrealistic combinations without Constraints</li>
+      <li>Uniform steps that ignore the Steps Matrix</li>
+    </ul>
+
+    <hr />
+
+    <h2>11. Differences between Factor TCs and Regular TCs</h2>
+    <table>
+      <thead>
+        <tr><th>Aspect</th><th>Single TC</th><th>Factor TC</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Creation</td><td>Manual</td><td>Bulk auto-generation via Factor Combination simulation</td></tr>
+        <tr><td>TC key</td><td>Auto-assigned</td><td>Auto-assigned</td></tr>
+        <tr><td>Name</td><td>User-entered</td><td>Folder name + each Factor value joined with "-", auto-assigned</td></tr>
+        <tr><td>Editable fields</td><td>All general properties</td><td>Name, Description, steps, UDFs — all general properties editable. Factor metadata (combination values) is read-only</td></tr>
+        <tr><td>Folder move</td><td>Move freely</td><td>Each TC can be moved freely (only folder_id changes). The Factor Combination definition stays in the original folder</td></tr>
+        <tr><td>List badge</td><td><strong>S</strong> badge</td><td><strong>F</strong> badge</td></tr>
+        <tr><td>Delete</td><td>Delete individually</td><td>Delete individually. The original Factor Combination definition (the factor_combinations record) remains until the folder is deleted</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>12. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Factor Combination is not in the + Create Test Case dropdown</td><td>No permission (canEditTC required)</td><td>Verify Admin / Team Admin permission</td></tr>
+        <tr><td>Simulation result has too many rows / over 5,000</td><td>Too many Factors / values, or not enough Constraints</td><td>Switch to Pairwise, add Constraints, or split Factors</td></tr>
+        <tr><td>Some combinations are missing after generation</td><td>Constraints over-restrict</td><td>Review the Constraints</td></tr>
+        <tr><td>"Please save Details information first" warning</td><td>You did not click Apply on the Details tab</td><td>Details tab → fill in required fields → click <strong>Apply</strong>, then retry</td></tr>
+        <tr><td>Duplicate Factor name error</td><td>Two Factors with the same name</td><td>Rename one</td></tr>
+        <tr><td>Korean Factor names are garbled</td><td>Encoding issue</td><td>Verify UTF-8</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>13. Why Is Pairwise Effective?</h2>
+    <p>Research suggests:</p>
+    <ul>
+      <li>Bugs from <strong>a single variable</strong>: roughly 35%</li>
+      <li>Bugs from <strong>two-variable combinations</strong>: roughly 40%</li>
+      <li>Bugs from <strong>three-variable combinations</strong>: roughly 15%</li>
+      <li>Bugs from <strong>four or more variables</strong>: roughly 10%</li>
+    </ul>
+    <p>→ <strong>Pairwise catches ~75% of bugs</strong>, with a 50–80% reduction in TC count compared to Full Combination.</p>
+    <p>(Source: NIST's research on combinatorial testing and analyses of industry defect data — see NIST SP 500-267, etc.)</p>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-cases">05. Test Case Basics</Link></li>
+      <li><Link to="/support/guide/test-plans">10. Test Plan Management</Link> — adding generated Factor TCs to a TP</li>
+      <li><Link to="/support/guide/configuration">13. Configuration</Link> — pre-configure Components and Case Types</li>
+    </ul>
+  </article>
+);
+
+export default { ko: <FactorCombination />, en: <FactorCombinationEn /> };

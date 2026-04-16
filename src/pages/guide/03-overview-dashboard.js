@@ -291,4 +291,289 @@ const OverviewDashboard = () => (
   </article>
 );
 
-export default OverviewDashboard;
+const OverviewDashboardEn = () => (
+  <article className="guide-article">
+    <h1>03. Overview Dashboard</h1>
+    <p className="guide-lead">
+      Overview is T-CAFE's main page — a dashboard that lets you see the overall status of a project at a glance.
+    </p>
+
+    <hr />
+
+    <h2>1. Navigation</h2>
+    <p>Top tab → <strong>Overview</strong> (T-CAFE's first page, by default)</p>
+
+    <hr />
+
+    <h2>2. Layout</h2>
+    <p>The Overview page arranges the following regions from top to bottom:</p>
+    <table>
+      <thead>
+        <tr><th>Order</th><th>Region</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1 (conditional)</td><td><strong>Welcome Banner</strong></td><td>Shown when sample data has not been generated and the banner has not been dismissed within the last 6 hours</td></tr>
+        <tr><td>2</td><td><strong>Board</strong></td><td>Project board list / write area</td></tr>
+        <tr><td>3 (side by side)</td><td><strong>Count Section + Test Milestone</strong></td><td>Left: count cards. Right: TP timeline</td></tr>
+        <tr><td>4</td><td><strong>Status Section</strong></td><td>A Kanban list of columns grouped by TP status</td></tr>
+      </tbody>
+    </table>
+
+    {/* <ScreenshotSlot label="Overview main screen" /> */}
+
+    <hr />
+
+    <h2>3. Permissions</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th className="center">Admin</th>
+          <th className="center">Team Admin</th>
+          <th className="center">Tester</th>
+          <th className="center">Developer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>View page</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>View Count / Milestone / Status</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td><strong>Create Sample Data</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td><strong>Create / edit / delete Board posts</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+      </tbody>
+    </table>
+    <p>→ <strong>All users can view</strong>. Creating sample data and creating / editing / deleting board posts is Admin-only.</p>
+
+    <hr />
+
+    <h2>4. Welcome Banner</h2>
+    <p>A welcome banner shown at the top when you enter the project.</p>
+
+    <h3>Display Conditions (all three must hold)</h3>
+    <ul>
+      <li><strong>Sample data has never been generated</strong> in this project (once generated, the banner is permanently hidden)</li>
+      <li>The banner has <strong>not been dismissed within the last 6 hours</strong>, or has never been dismissed</li>
+      <li>A project is currently selected</li>
+    </ul>
+
+    <h3>Components</h3>
+    <ul>
+      <li>Welcome title + subtitle</li>
+      <li><strong>Create Sample Data button</strong> — shown only to users who have the <code>overview.sampleData</code> permission (enabled by default for Admin), independently from <code>boardPost</code></li>
+      <li>Close button (×) — when clicked, hides the banner for 6 hours, scoped to the project</li>
+    </ul>
+
+    <ScreenshotSlot src={shotWelcome} label="Welcome Banner" />
+
+    <p>For sample-data creation, see <Link to="/support/guide/getting-started">01. Getting Started</Link>.</p>
+
+    <hr />
+
+    <h2>5. Board Section</h2>
+    <p>The Board is embedded near the top of the Overview page.</p>
+
+    <h3>Displayed Items</h3>
+    <ul>
+      <li>Fixed to <strong>5 posts</strong> per page</li>
+      <li>Sorted: <strong>created-date DESC (newest first)</strong> — there is no separate "pin notice at top" feature</li>
+      <li>Columns: #, Category, Title, Author, Created date (view count is not in the list — it appears only in the detail view)</li>
+    </ul>
+
+    <h3>Usage</h3>
+    <ul>
+      <li>Click a row → opens the post detail modal</li>
+      <li>Admin can create posts from the <strong>Write Post</strong> button at the bottom-right</li>
+    </ul>
+
+    <p>For details, see <Link to="/support/guide/board">04. Board</Link>.</p>
+
+    <hr />
+
+    <h2>6. Test Milestone (TP Timeline)</h2>
+    <p>Displays TPs as <strong>Gantt-style timeline bars</strong>.</p>
+
+    <h3>Information Displayed</h3>
+    <ul>
+      <li>TP name</li>
+      <li>Start date ~ end date (bar)</li>
+      <li>Progress (fill level inside the bar)</li>
+      <li>Status (Plan Status color applied)</li>
+    </ul>
+
+    <ScreenshotSlot src={shotMilestone} label="Test Milestone Timeline" />
+
+    <h3>Interactions</h3>
+    <ul>
+      <li>Click a bar → navigates to the Test Cases tab of that TP</li>
+      <li>Hover shows a summary with Total / Passed / Failed TC counts</li>
+      <li>Use the Refresh button in the section header to refresh manually</li>
+    </ul>
+
+    <h3>Filter and Sort</h3>
+    <ul>
+      <li>Show/hide checkboxes per status</li>
+      <li>Date filter: All / 7 days / 30 days / 90 days / custom (enter start and end dates)</li>
+      <li>Sort toggle: newest / oldest — based on start date by default</li>
+    </ul>
+
+    <hr />
+
+    <h2>7. Count Section</h2>
+    <p>Shows the project's basic metrics as three cards.</p>
+
+    <h3>Cards (3 total)</h3>
+    <table>
+      <thead>
+        <tr><th>Card</th><th>Content</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Test Cases</strong></td><td>Total number of TCs in the project</td></tr>
+        <tr><td><strong>Test Plans</strong></td><td>Total number of TPs in the project</td></tr>
+        <tr><td><strong>Total Users</strong></td><td>Number of users assigned to the project</td></tr>
+      </tbody>
+    </table>
+
+    <ScreenshotSlot src={shotCount} label="Count Section" />
+
+    <aside className="guide-callout">The cards themselves are not linked for navigation. To move to another page, use the top tabs.</aside>
+
+    <hr />
+
+    <h2>8. Status Section (Kanban by Status)</h2>
+    <p>A <strong>Kanban-style section</strong> that lists each Plan Status (for example, Draft / Open / Completed / custom) as a vertical column and groups TPs into those columns as cards. (No pie, bar, or trend charts are used.)</p>
+
+    <h3>Layout</h3>
+    <ul>
+      <li>Each column header: status name + color + total TP count for that status</li>
+      <li>Column body: TP cards for that status (title, period, progress info)</li>
+      <li>Click a card → navigates to the Test Cases tab of that TP</li>
+    </ul>
+
+    <h3>Top Controls</h3>
+    <ul>
+      <li>Sort toggle: newest / oldest</li>
+      <li>Date presets: All / 7 days / 30 days / 90 days</li>
+      <li>Custom start / end dates</li>
+      <li>Reset filters button</li>
+      <li>When more than 3 columns are present, left/right scroll buttons appear</li>
+    </ul>
+
+    <ScreenshotSlot src={shotStatus} label="Status Section Kanban" />
+
+    <hr />
+
+    <h2>9. Creating Sample Data (Admin only)</h2>
+    <p>Start from the <strong>Create Sample Data</strong> button on the Welcome Banner. A FullscreenLoader is shown while it runs, and the banner is permanently hidden on completion (per project).</p>
+    <p>For details, see <Link to="/support/guide/getting-started">01. Getting Started → 3. Sample Data</Link>.</p>
+
+    <hr />
+
+    <h2>10. Refresh Behavior</h2>
+    <table>
+      <thead>
+        <tr><th>Item</th><th>When it refreshes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Count / Board / Milestone / Status</td><td>On page entry, on project change</td></tr>
+        <tr><td>Milestone</td><td>In addition to the above, via the Refresh button in the Test Milestone section</td></tr>
+        <tr><td>Welcome Banner</td><td>Auto-refetched after sample data creation completes</td></tr>
+      </tbody>
+    </table>
+    <p>There is no periodic auto-refresh (polling). To reload everything, use the browser refresh (F5).</p>
+
+    <hr />
+
+    <h2>11. Changing Project</h2>
+    <p>Switching to another project via the project selector in the top-right changes the URL to that project's path and reloads Overview against the new project.</p>
+
+    <h3>On Switch</h3>
+    <ul>
+      <li>Count / Board / Milestone / Status are all replaced with the new project's data</li>
+      <li>Whether the Welcome Banner is shown is re-evaluated using the new project's sample-data state and dismiss timestamp</li>
+      <li>User permissions (<code>getUserRole</code>) are also re-fetched against the new project</li>
+    </ul>
+
+    <hr />
+
+    <h2>12. Changing Language</h2>
+    <p>In the language selector at the top-right, choose one of <strong>Auto / English / 한국어 / 日本語</strong> (Auto follows the browser / Jira user locale).</p>
+
+    <h3>Scope</h3>
+    <ul>
+      <li>UI text</li>
+      <li>Number / date locale formatting (areas that use <code>Intl</code>)</li>
+    </ul>
+
+    <p>For details, see <Link to="/support/guide/getting-started">01. Getting Started</Link>.</p>
+
+    <hr />
+
+    <h2>13. Common Scenarios for Using Overview</h2>
+
+    <h3>Scenario 1: Morning check-in</h3>
+    <pre><code>{`1. Open Jira → T-CAFE tab
+2. Overview page loads automatically
+3. Check for new notices in the Board
+4. Check TPs due today in the Milestone
+5. See whether the Pass Rate dropped vs. yesterday
+6. If needed, navigate to the Test Plans tab for details`}</code></pre>
+
+    <h3>Scenario 2: Weekly report for QA managers</h3>
+    <pre><code>{`1. Capture the overall metrics from Overview
+2. Capture the Milestone timeline
+3. Capture the charts in the Status Section
+4. Attach to the weekly report email`}</code></pre>
+
+    <h3>Scenario 3: New-member onboarding</h3>
+    <pre><code>{`1. Admin walks the new member through T-CAFE
+2. The new member reads the project overview on Overview
+3. Check the welcome message on the Board
+4. Move to the Test Cases tab and start learning`}</code></pre>
+
+    <hr />
+
+    <h2>14. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Overview is empty</td><td>The project has no TCs / TPs</td><td>Create sample data (Admin) or add TCs / TPs</td></tr>
+        <tr><td>Welcome Banner comes back after being dismissed</td><td>More than 6 hours have passed since dismiss</td><td>Intended behavior — to hide permanently, create sample data</td></tr>
+        <tr><td>A specific TP is not visible in Milestone</td><td>The TP has no start / end date, or it is excluded by the current date filter</td><td>Edit the TP to set start / end dates, or set the date filter to "All"</td></tr>
+        <tr><td>Milestone data looks stale</td><td>A TP was changed externally after page entry</td><td>Use the Refresh button in the Milestone section or press F5</td></tr>
+        <tr><td>Status Section has too many columns to view easily</td><td>Many Plan Statuses</td><td>Use the left/right scroll buttons at the bottom of the section</td></tr>
+        <tr><td>Write Post button is not visible</td><td>No Admin permission (<code>overview.boardPost</code> is false)</td><td>Ask an Admin</td></tr>
+        <tr><td>Create Sample Data button is not visible</td><td>No Admin permission (<code>overview.sampleData</code> is false) or already generated</td><td>Ask an Admin / already-generated projects no longer show it</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>15. Overview Best Practices</h2>
+
+    <h3>Admin</h3>
+    <ul>
+      <li>Right after creating a new project, provide learning material via <strong>Create Sample Data</strong></li>
+      <li>Post major notices and release info to the Board regularly</li>
+      <li>Always fill in TP start / end dates so they show up in the Milestone</li>
+    </ul>
+
+    <h3>End Users</h3>
+    <ul>
+      <li>Start the day by checking Overview (Board notices + Milestone progress)</li>
+      <li>Quickly inspect your own TP's status column in the Status Kanban</li>
+      <li>If the Count card numbers differ significantly from yesterday, check the Test Plans tab for details</li>
+    </ul>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/getting-started">01. Getting Started</Link></li>
+      <li><Link to="/support/guide/board">04. Board</Link></li>
+      <li><Link to="/support/guide/test-reports">12. Test Reports</Link> — more detailed reporting</li>
+    </ul>
+  </article>
+);
+
+export default { ko: <OverviewDashboard />, en: <OverviewDashboardEn /> };

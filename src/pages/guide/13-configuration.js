@@ -377,4 +377,374 @@ const Configuration = () => (
   </article>
 );
 
-export default Configuration;
+const ConfigurationEn = () => (
+  <article className="guide-article">
+    <h1>13. Configuration</h1>
+    <p className="guide-lead">
+      Configuration is the page for managing T-CAFE's master data. It is accessible to <strong>Admin / Team Admin</strong> and determines how the entire project behaves.
+    </p>
+
+    <hr />
+
+    <h2>1. Navigation</h2>
+    <p>Top tab → <strong>Configuration</strong></p>
+    <aside className="guide-callout"><strong>The tab is hidden for users without Admin / Team Admin permission</strong> (Tester / Developer cannot access it).</aside>
+
+    <h3>Configuration Left Menu</h3>
+
+    <h4>Test Case Section</h4>
+    <table>
+      <thead>
+        <tr><th>Menu</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Case Field (UDF)</strong></td><td>Manage user-defined fields</td></tr>
+        <tr><td><strong>Case Type</strong></td><td>Define case types</td></tr>
+        <tr><td><strong>Component</strong></td><td>Define components</td></tr>
+        <tr><td><strong>Priorities</strong></td><td>Define priorities</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Test Plan Section</h4>
+    <table>
+      <thead>
+        <tr><th>Menu</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Plan Status</strong></td><td>Define Test Plan statuses</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Retestable Section</h4>
+    <table>
+      <thead>
+        <tr><th>Menu</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Issue Type</strong></td><td>View Jira issue types</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Administrator Settings Section</h4>
+    <table>
+      <thead>
+        <tr><th>Menu</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>User Permissions</strong></td><td>Manage user roles / permissions</td></tr>
+      </tbody>
+    </table>
+
+    <ScreenshotSlot label="Configuration main screen" src={img01} />
+
+    <hr />
+
+    <h2>2. Case Field — User Defined Fields (UDF)</h2>
+    <p>User-defined fields added on top of the standard fields. It is the <strong>first menu</strong> under Configuration and is the most frequently used.</p>
+
+    <h3>2-1. UDF Types (9)</h3>
+    <table>
+      <thead>
+        <tr><th>Type</th><th>Key</th><th>Description</th><th>Examples</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Text</strong></td><td>Text</td><td>Single-line text input</td><td>"Notes", "Test environment memo"</td></tr>
+        <tr><td><strong>Number</strong></td><td>Number</td><td>Numeric value</td><td>"Estimated duration (min)", "Importance score"</td></tr>
+        <tr><td><strong>Date</strong></td><td>Date</td><td>Date picker (calendar)</td><td>"Last reviewed on", "Scheduled date"</td></tr>
+        <tr><td><strong>Timestamp</strong></td><td>Time stamp</td><td>Date + time</td><td>"Execution start time", "Completion time"</td></tr>
+        <tr><td><strong>Dropdown</strong></td><td>Dropdown</td><td>Single-select list</td><td>"Test environment" (Dev / Stage / Prod)</td></tr>
+        <tr><td><strong>Checkbox</strong></td><td>Checkbox</td><td>Multi-select list</td><td>"Automatable", "Review complete"</td></tr>
+        <tr><td><strong>Labels</strong></td><td>Labels</td><td>Tag-style multi-input</td><td>"Related modules", "Scope of impact"</td></tr>
+        <tr><td><strong>People</strong></td><td>People</td><td>Jira user picker</td><td>"Reviewer", "Assigned developer"</td></tr>
+        <tr><td><strong>URL</strong></td><td>URL</td><td>Web address. The Copy Link from Attachments works too</td><td>"Related document", "Figma design", "Attachment download link"</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2-2. Adding a UDF</h3>
+    <ol>
+      <li>Configuration left menu → <strong>User Defined</strong> (Case Field)</li>
+      <li>In the input area at the top, enter field info:
+        <ul>
+          <li><strong>Name</strong> (required)</li>
+          <li><strong>Description</strong> (optional)</li>
+          <li><strong>Type</strong> (required) — choose from the 9 types above</li>
+          <li><strong>Required</strong> toggle (whether input is required)</li>
+        </ul>
+      </li>
+      <li>Click the <strong>Add</strong> button on the right</li>
+    </ol>
+    <p>Additional settings are required for some types (for example, option lists for Dropdown / Checkbox, format / currency for Number, default value for Time stamp, etc.).</p>
+
+    <ScreenshotSlot label="Adding a UDF" src={img02} />
+
+    <h3>2-3. Type-specific Settings</h3>
+    <ul>
+      <li><strong>Dropdown / Checkbox</strong>: enter the option list (name + color). One option can be set as default</li>
+      <li><strong>Number</strong>: Format (Number / Percentage / Currency), currency (USD / EUR / JPY / KRW / GBP / CNY), default number</li>
+      <li><strong>Timestamp</strong>: "Set to current time by default" option is available</li>
+      <li><strong>Labels</strong>: choose default labels (pulled from the project's Jira labels and existing UDF labels)</li>
+      <li><strong>People</strong>: choose a default user; the "Restrict to a single user" option is available</li>
+      <li><strong>URL</strong>: enter a general web address, or paste a Copy Link from the Attachments page to use it as an attachment link</li>
+    </ul>
+
+    <h3>2-4. Using UDFs</h3>
+    <ul>
+      <li>UDF fields are shown automatically on the TC create / edit screen</li>
+      <li>UDF columns can be shown in the TC list</li>
+      <li>UDFs are included on Export</li>
+    </ul>
+
+    <hr />
+
+    <h2>3. Case Type</h2>
+    <p>Defines the kind of test case.</p>
+
+    <h3>3-1. Default Case Types (6)</h3>
+    <ul>
+      <li><strong>Function</strong> (default) — functional test</li>
+      <li><strong>Performance</strong> — performance test</li>
+      <li><strong>Security</strong> — security test</li>
+      <li><strong>UI/UX</strong> — UI/UX test</li>
+      <li><strong>API</strong> — API test</li>
+      <li><strong>Regression</strong> — regression test</li>
+    </ul>
+
+    <h3>3-2. Adding a Case Type</h3>
+    <ol>
+      <li>Configuration left menu → <strong>Case Type</strong></li>
+      <li>In the input area at the top, enter <strong>Name</strong> and <strong>Description</strong></li>
+      <li>Click the <strong>Add</strong> button on the right</li>
+    </ol>
+    <p>A case type that is in use cannot be deleted — change the type on related TCs first.</p>
+
+    <h3>3-3. Using Case Types</h3>
+    <ul>
+      <li>Choose from a dropdown on TC creation</li>
+      <li>Stats by case type are available in reports</li>
+    </ul>
+
+    <hr />
+
+    <h2>4. Component</h2>
+    <p>Defines components of the system under test. Multi-select is supported.</p>
+
+    <h3>4-1. Default Components</h3>
+    <ul>
+      <li><strong>Frontend</strong> — UI/UX components</li>
+      <li><strong>Backend API</strong> — backend API services</li>
+      <li><strong>Database</strong> — DB related</li>
+      <li><strong>Authentication</strong> — auth / authorization</li>
+      <li><strong>Payment</strong> — payment system</li>
+    </ul>
+
+    <h3>4-2. Adding a Component</h3>
+    <ol>
+      <li>Configuration left menu → <strong>Component</strong></li>
+      <li>In the input area at the top, enter <strong>Name</strong> and <strong>Description</strong></li>
+      <li>Click the <strong>Add</strong> button on the right</li>
+    </ol>
+    <p>A component that is in use cannot be deleted — remove it from referencing TCs first.</p>
+
+    <h3>4-3. Using Components</h3>
+    <ul>
+      <li>You can assign multiple components to a TC (e.g., "User Login" → Frontend, Authentication, Backend API)</li>
+      <li>Defect rates by component can be seen in reports</li>
+    </ul>
+
+    <hr />
+
+    <h2>5. Priorities</h2>
+    <p>Defines TC priorities.</p>
+
+    <h3>5-1. Default Priorities (4)</h3>
+    <ul>
+      <li><strong>Critical</strong> — color <code>#FF5630</code> (red), Bar Level 3</li>
+      <li><strong>High</strong> — color <code>#FF7452</code> (orange), Bar Level 3</li>
+      <li><strong>Medium</strong> — color <code>#FFAB00</code> (yellow), Bar Level 2, <strong>default</strong></li>
+      <li><strong>Low</strong> — color <code>#36B37E</code> (green), Bar Level 1</li>
+    </ul>
+
+    <h3>5-2. Adding a Priority</h3>
+    <ol>
+      <li>Configuration left menu → <strong>Priorities</strong></li>
+      <li>In the input area at the top, set:
+        <ul>
+          <li><strong>Name</strong> (up to 20 characters)</li>
+          <li><strong>Description</strong></li>
+          <li><strong>Bar Level</strong> — choose 0–3 in the preview dropdown (0 = no bar, 3 = highest)</li>
+          <li><strong>Color</strong> — pick from the color picker (no direct HEX input UI)</li>
+        </ul>
+      </li>
+      <li>Click the <strong>Add</strong> button on the right</li>
+    </ol>
+
+    <ScreenshotSlot label="Adding a Priority" src={img03} />
+
+    <h3>5-3. Editing / Deleting a Priority</h3>
+    <ul>
+      <li>Double-click a row to edit inline, or use the Edit button</li>
+      <li>Change the default with the Default toggle (only one item can be the default)</li>
+      <li>Reorder with Move Up / Move Down</li>
+      <li>A priority that is in use <strong>cannot be deleted</strong> — change the priority on those TCs first</li>
+    </ul>
+
+    <hr />
+
+    <h2>6. Plan Status</h2>
+    <p>Defines TP statuses.</p>
+
+    <h3>6-1. Default Statuses (3)</h3>
+    <ul>
+      <li><strong>Draft</strong> — color <code>#6B778C</code> (gray), <strong>default</strong></li>
+      <li><strong>Open</strong> — color <code>#0052CC</code> (blue)</li>
+      <li><strong>Completed</strong> — color <code>#36B37E</code> (green)</li>
+    </ul>
+    <aside className="guide-callout">Add custom statuses like "In Progress" or "Closed" as needed.</aside>
+
+    <h3>6-2. Adding a Status</h3>
+    <ol>
+      <li>Configuration left menu → <strong>Plan Status</strong></li>
+      <li>In the input area at the top, enter <strong>Name</strong>, <strong>Description</strong>, and <strong>Color</strong></li>
+      <li>Click the <strong>Add</strong> button on the right</li>
+    </ol>
+
+    <ScreenshotSlot label="Managing Plan Status" src={img04} />
+
+    <hr />
+
+    <h2>7. Retestable Configuration (Completion Status by Issue Type)</h2>
+    <p>For each Jira issue type, choose which workflow states are considered <strong>"Complete"</strong>. Based on this setting, when a linked issue reaches a completion status, the related test case is switched to <strong>Retestable</strong>.</p>
+
+    <h3>7-1. Concept</h3>
+    <ul>
+      <li>When a test run fails, create / link a Jira issue</li>
+      <li>When the issue is fixed by a developer and reaches a <strong>complete</strong> status</li>
+      <li>T-CAFE automatically flags the execution item as <strong>Retestable</strong></li>
+      <li>This page defines "which statuses count as complete" per issue type</li>
+    </ul>
+
+    <h3>7-2. How to Configure</h3>
+    <ol>
+      <li>Configuration → <strong>Issue Type</strong> (Retestable section)</li>
+      <li>The project's Jira issue types are listed (Bug, Task, Story, etc.)</li>
+      <li>Turn on each issue type's <strong>toggle</strong> to enable Retestable tracking</li>
+      <li>From the <strong>workflow state list</strong> of enabled issue types, select the states that count as "complete" (multi-select)</li>
+      <li>Click <strong>Save</strong></li>
+    </ol>
+
+    <h3>7-3. Layout</h3>
+    <ul>
+      <li><strong>Stats</strong>: total issue types / configured / unconfigured counts</li>
+      <li><strong>Per-issue-type card</strong>: toggle (enabled / disabled) + workflow state checkboxes</li>
+      <li>If an enabled issue type has no completion states selected, a warning is shown on save</li>
+    </ul>
+
+    <h3>7-4. Examples</h3>
+    <ul>
+      <li><strong>Bug</strong> issue type: set "Done" and "Closed" as complete → when a Bug changes to Done or Closed, the linked execution item becomes Retestable</li>
+      <li><strong>Task</strong> issue type: disabled → status changes on Task issues do not affect Retestable</li>
+    </ul>
+
+    <ScreenshotSlot label="Retestable Configuration" src={img05} />
+
+    <hr />
+
+    <h2>8. User Permissions</h2>
+    <p>User Permissions has two tabs: <strong>Users</strong> and <strong>Roles</strong>.</p>
+
+    <h3>8-1. Users Tab</h3>
+    <ul>
+      <li>List of project users</li>
+      <li>Role dropdown for each user (system + custom roles are selectable)</li>
+      <li><strong>Activate toggle</strong>: activate or deactivate a user, which grants or blocks access immediately</li>
+      <li><strong>Status filter</strong>: filter the list by Active / Inactive / All</li>
+    </ul>
+
+    <h3>8-2. Roles Tab</h3>
+    <ul>
+      <li>Role list: each role shows a system badge (whether it is a system role) and the assigned-user count</li>
+      <li><strong>Permission Matrix</strong>: view / change each role's permissions via a toggle table</li>
+      <li><strong>Add Role</strong>: create a new custom role with fine-grained permissions</li>
+      <li><strong>Edit / Delete</strong>: modify or delete existing roles (system roles cannot be deleted but their permissions can be changed)</li>
+    </ul>
+
+    <h3>8-3. Users Added Automatically</h3>
+    <ul>
+      <li>All users of the Jira project are shown automatically</li>
+      <li>No manual adding is required</li>
+    </ul>
+
+    <h3>8-4. Changing a Role</h3>
+    <ol>
+      <li>Click the role dropdown for the user's row on the Users tab</li>
+      <li>Choose a new role (system roles: Admin / Team Admin / Tester / Developer, or a custom role)</li>
+      <li>Saves automatically</li>
+    </ol>
+
+    <h3>8-5. Last-Admin Protection</h3>
+    <ul>
+      <li>The last Admin of a project <strong>cannot be deleted or reassigned to another role</strong></li>
+      <li>The system blocks this automatically</li>
+    </ul>
+
+    <p>For details, see <Link to="/support/guide/permissions">02. User Permissions</Link>.</p>
+
+    <hr />
+
+    <h2>9. Configuration Best Practices</h2>
+
+    <h3>Recommended Project Start-up Order</h3>
+    <ol>
+      <li><strong>Create sample data</strong> (automatically fills in the base Configuration)</li>
+      <li><strong>Define Case Fields (UDFs)</strong> — add fields specific to the project</li>
+      <li><strong>Review Case Types</strong> — add what you need (Usability, Accessibility, etc.)</li>
+      <li><strong>Define Components</strong> — match the real system structure</li>
+      <li><strong>Review Priorities</strong> — add / adjust to company standards</li>
+      <li><strong>Review Plan Status</strong> — align with the company workflow</li>
+      <li><strong>Configure user permissions</strong> — assign appropriate roles to team members</li>
+    </ol>
+
+    <h3>DO</h3>
+    <ul>
+      <li><strong>Standardize</strong>: use consistent priorities and components across the company</li>
+      <li><strong>Keep it short</strong>: too many options confuse users (5–10 per category recommended)</li>
+      <li><strong>Naming conventions</strong>: apply a consistent naming scheme across all items</li>
+      <li><strong>Document</strong>: share the meaning of your Configuration with the team</li>
+    </ul>
+
+    <h3>DON'T</h3>
+    <ul>
+      <li>Create once and keep growing without limit</li>
+      <li>Leave unused options around</li>
+      <li>Duplicates (e.g., both "High" and "Urgent")</li>
+      <li>Vague names ("Type 1", "Component A")</li>
+    </ul>
+
+    <hr />
+
+    <h2>10. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Configuration tab is not visible</td><td>No Admin / Team Admin permission</td><td>Ask an Admin to change your role</td></tr>
+        <tr><td>Priority cannot be deleted</td><td>It is currently used</td><td>Change the priority on TCs using it first</td></tr>
+        <tr><td>UDF is not shown on TC</td><td>Field configuration</td><td>Check the field in Case Field</td></tr>
+        <tr><td>Changing the default is not reflected on existing TCs</td><td>Existing TCs are unaffected</td><td>Applies to newly created TCs</td></tr>
+        <tr><td>Issue Types list is empty</td><td>Insufficient Jira project permission</td><td>Check project permissions in Jira</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/permissions">02. User Permissions</Link></li>
+      <li><Link to="/support/guide/test-cases">05. Test Cases</Link></li>
+      <li><Link to="/support/guide/import-export">09. Import / Export</Link></li>
+    </ul>
+  </article>
+);
+
+export default { ko: <Configuration />, en: <ConfigurationEn /> };

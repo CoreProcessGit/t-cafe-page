@@ -198,4 +198,199 @@ const Steps = () => (
   </article>
 );
 
-export default Steps;
+const StepsEn = () => (
+  <article className="guide-article">
+    <h1>07. Writing Test Steps</h1>
+    <p className="guide-lead">
+      Test Steps are the most important part of a test case — they define what the tester actually does and the expected result.
+    </p>
+
+    <hr />
+
+    <h2>1. Test Step Structure</h2>
+    <p>Each test step is composed of a <strong>number and three columns</strong>:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Key</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>#</strong></td><td>No.</td><td>Auto-assigned order (1, 2, 3…)</td></tr>
+        <tr><td><strong>Step</strong></td><td>Step</td><td>The action the tester performs</td></tr>
+        <tr><td><strong>Test Data</strong></td><td>Test Data</td><td>Input values, file names, accounts, etc.</td></tr>
+        <tr><td><strong>Expected Result</strong></td><td>Expected Result</td><td>The result that should occur when everything works</td></tr>
+      </tbody>
+    </table>
+    <p>Each cell is a <strong>multi-line textarea</strong> that automatically grows in height as you type.</p>
+
+    <h3>Example</h3>
+    <table>
+      <thead>
+        <tr><th>#</th><th>Step</th><th>Test Data</th><th>Expected Result</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Go to the login page</td><td>URL: /login</td><td>Login form is shown</td></tr>
+        <tr><td>2</td><td>Enter the username</td><td>username: testuser</td><td>Value is shown in the input field</td></tr>
+        <tr><td>3</td><td>Enter the password</td><td>password: testPassword</td><td>On successful login, navigates to dashboard</td></tr>
+        <tr><td>4</td><td>Click the login button</td><td>-</td><td>Navigates to the dashboard</td></tr>
+      </tbody>
+    </table>
+    <aside className="guide-callout">
+      <strong>Sensitive-data warning</strong>: T-CAFE stores Test Data securely. However, <strong>the T-CAFE UI displays it exactly as entered</strong>, and any user with access permission can read it. Do not put real production passwords, API keys, or personal data directly — use dummy accounts for testing only.
+    </aside>
+
+    <hr />
+
+    <h2>2. Adding a Step</h2>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>In the TC create / edit screen, go to the <strong>Test Steps</strong> section</li>
+      <li>Click the <strong>Add</strong> button below the table</li>
+      <li>A new row is added</li>
+      <li>Fill in each column</li>
+    </ol>
+
+    <ScreenshotSlot label="Test Steps editor" src={img01} />
+
+    <hr />
+
+    <h2>3. Deleting a Step</h2>
+
+    <h3>Steps</h3>
+    <ul>
+      <li>Click the <strong>× icon</strong> at the right of the step to delete</li>
+      <li>The row is removed immediately</li>
+    </ul>
+
+    <aside className="guide-callout">The last remaining step cannot be deleted (minimum of 1 step is kept).</aside>
+
+    <hr />
+
+    <h2>4. Step-Input Tips</h2>
+    <p>Step cells accept <strong>plain text</strong> only (no formatting or images). We recommend the following principles when writing text.</p>
+
+    <h3>Good examples</h3>
+    <ul>
+      <li>Keep each cell concise — ideally one line</li>
+      <li>When a condition is long, use line breaks (Enter) for readability</li>
+      <li>Spell out abbreviations and internal jargon</li>
+    </ul>
+
+    <h3>Avoid</h3>
+    <ul>
+      <li>Cramming multiple actions into one step</li>
+      <li>Vague phrasing ("click somewhere", "works fine")</li>
+    </ul>
+
+    <hr />
+
+    <h2>5. Precondition</h2>
+    <p>Separately from test steps, the <strong>Precondition</strong> defines the state that must be in place before the test can start.</p>
+
+    <h3>Where to Write It</h3>
+    <ul>
+      <li>The <strong>Precondition</strong> section on the TC write screen</li>
+      <li>A contenteditable plain-text input area</li>
+      <li>URLs are automatically turned into clickable links when entered</li>
+      <li>Attachment reference tags are also auto-detected</li>
+    </ul>
+
+    <h3>Good preconditions</h3>
+    <pre><code>{`- The user has completed sign-up
+- The database has at least 5 products registered
+- The payment module is set to test mode
+- User role: regular member`}</code></pre>
+
+    <h3>Bad preconditions</h3>
+    <pre><code>{`- The system should be working fine ← too vague
+- The data created yesterday should be there ← not verifiable`}</code></pre>
+
+    <h3>Data Protection</h3>
+    <p>T-CAFE stores preconditions and test steps securely — no extra setup is needed.</p>
+
+    <hr />
+
+    <h2>6. Test Data Writing Tips</h2>
+
+    <h3>Recommended Formats</h3>
+    <table>
+      <thead>
+        <tr><th>Format</th><th>Example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Key-value</td><td><code>username: testuser</code></td></tr>
+        <tr><td>URL</td><td><code>URL: https://example.com/login</code></td></tr>
+        <tr><td>File</td><td><code>file: sample.pdf (3KB)</code></td></tr>
+        <tr><td>JSON</td><td><code>{`{"id": 1, "name": "test"}`}</code></td></tr>
+        <tr><td>No input</td><td><code>-</code> or empty</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Handling Sensitive Data</h3>
+    <ul>
+      <li><strong>Never write real production passwords</strong></li>
+      <li>Use test-only account credentials</li>
+      <li>Mask personal data (national IDs, credit card numbers, etc.) or use dummy data</li>
+    </ul>
+
+    <hr />
+
+    <h2>7. Expected Result Writing Tips</h2>
+
+    <h3>Good Expected Results</h3>
+    <ul>
+      <li><strong>Specific</strong>: "A success message is shown" → "'Login successful' is shown on a green background for 3 seconds"</li>
+      <li><strong>Verifiable</strong>: worded so the tester can clearly judge pass/fail</li>
+      <li><strong>One check per step</strong>: a single core result per step</li>
+    </ul>
+
+    <h3>Bad Expected Results</h3>
+    <ul>
+      <li>"Works fine"</li>
+      <li>"No errors"</li>
+      <li>"Normal"</li>
+    </ul>
+
+    <h3>When Multiple Checks are Needed</h3>
+    <p>List several items on separate lines in one expected-result cell:</p>
+    <pre><code>{`- Page title changes to "Dashboard"
+- URL changes to /dashboard
+- Welcome message appears in the top-right
+- Logout button is enabled`}</code></pre>
+
+    <hr />
+
+    <h2>8. Best Practices</h2>
+
+    <h3>DO</h3>
+    <ul>
+      <li>Write specific, executable actions</li>
+      <li>One step = one action</li>
+      <li>Keep a consistent format</li>
+      <li>If a visual aid is needed, use <Link to="/support/guide/attachments">14. Attachments</Link> to attach it separately</li>
+    </ul>
+
+    <h3>DON'T</h3>
+    <ul>
+      <li>Cram too many actions into one step</li>
+      <li>Use vague phrasing ("appropriately", "nicely", "normally")</li>
+      <li>State results that cannot be verified</li>
+      <li>Rely on external documents for explanation</li>
+    </ul>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-cases">05. Test Case Basics</Link></li>
+      <li><Link to="/support/guide/factor-combination">08. Factor Combination</Link> — auto-generate multiple combinations</li>
+      <li><Link to="/support/guide/attachments">14. Attachments</Link> — when you need visual aids</li>
+    </ul>
+  </article>
+);
+
+export default { ko: <Steps />, en: <StepsEn /> };

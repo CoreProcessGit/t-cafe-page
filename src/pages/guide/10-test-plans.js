@@ -383,4 +383,381 @@ const TestPlans = () => (
   </article>
 );
 
-export default TestPlans;
+const TestPlansEn = () => (
+  <article className="guide-article">
+    <h1>10. Test Plan Management</h1>
+    <p className="guide-lead">
+      A Test Plan (TP) is a grouping of test cases that will be executed at a specific point in time for a specific purpose. It is used for sprints, releases, regression testing, and more.
+    </p>
+
+    <hr />
+
+    <h2>1. What is a Test Plan?</h2>
+    <p><strong>A TP is "a bundle of TCs to execute in this round"</strong>.</p>
+
+    <h3>TC vs TP</h3>
+    <table>
+      <thead>
+        <tr><th>Aspect</th><th>Test Case (TC)</th><th>Test Plan (TP)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Role</td><td>Defines what to test</td><td>Bundles when and how to execute</td></tr>
+        <tr><td>Reuse</td><td>Created once and reused across many TPs</td><td>One-off (a new one per sprint)</td></tr>
+        <tr><td>Execution result</td><td>No result on the TC itself</td><td>Pass/Fail recorded per TC inside the TP</td></tr>
+        <tr><td>Lifecycle</td><td>Permanent</td><td>Short-term (sprint, release, etc.)</td></tr>
+      </tbody>
+    </table>
+
+    <h3>TP Use Cases</h3>
+    <ul>
+      <li><strong>Sprint 1 Integration Test</strong> — verify the features added in Sprint 1</li>
+      <li><strong>v1.5 release regression</strong> — regress key features before the v1.5 release</li>
+      <li><strong>Monthly security sweep</strong> — run security-related TCs once a month</li>
+      <li><strong>Validation for customer A</strong> — verify a specific customer environment</li>
+    </ul>
+
+    <hr />
+
+    <h2>2. Key TP Fields</h2>
+    <table>
+      <thead>
+        <tr><th>Field</th><th>Key</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Name</strong></td><td>Name</td><td>TP title (required)</td></tr>
+        <tr><td><strong>Description</strong></td><td>Description</td><td>Purpose and scope of the TP</td></tr>
+        <tr><td><strong>Owner</strong></td><td>Owner</td><td>Owner of the TP</td></tr>
+        <tr><td><strong>Start Date</strong></td><td>Start Date</td><td>Scheduled test start date</td></tr>
+        <tr><td><strong>End Date</strong></td><td>End Date</td><td>Scheduled test end date</td></tr>
+        <tr><td><strong>Status</strong></td><td>Status</td><td>Draft / Open / Completed (custom statuses can be added)</td></tr>
+        <tr><td><strong>TC list</strong></td><td>Test Cases</td><td>TCs to execute</td></tr>
+        <tr><td><strong>Folder structure</strong></td><td>Folders</td><td>Organize TCs into folders inside the TP</td></tr>
+        <tr><td><strong>Execution stats</strong></td><td>Execution Status</td><td>Pass / Fail / Block / Skip / Not Yet counts</td></tr>
+        <tr><td><strong>Progress</strong></td><td>Progress</td><td>0–100%</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>3. Viewing TPs</h2>
+
+    <h3>Navigation</h3>
+    <p>Top tab → <strong>Test Plans</strong></p>
+
+    <h3>Layout</h3>
+    <ul>
+      <li><strong>Top</strong>: TP list (name, status, progress, start / end date)</li>
+      <li><strong>Click a TP</strong>: navigates to the TP detail page</li>
+      <li><strong>Detail page</strong>: TC list inside the TP + execution results</li>
+    </ul>
+
+    <ScreenshotSlot label="Test Plans main screen" src={img01} />
+
+    <h3>Filters</h3>
+    <ul>
+      <li>By status (default: Draft / Open / Completed, plus custom statuses)</li>
+      <li>By owner</li>
+    </ul>
+
+    <hr />
+
+    <h2>4. Creating a TP</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>On the Test Plans page, click <strong>+ Create Test Plan</strong> at the top</li>
+      <li>Fill in the required fields in the dialog:
+        <ul>
+          <li>Name (required)</li>
+          <li>Description</li>
+          <li>Status (required, default: Draft)</li>
+          <li>Owner (required)</li>
+          <li>Start Date / End Date (required; End Date must be after Start Date)</li>
+        </ul>
+      </li>
+      <li>Click the <strong>Create</strong> button at the bottom of the dialog</li>
+    </ol>
+
+    <ScreenshotSlot label="TP creation dialog" src={img02} />
+
+    <h3>Auto-assigned Fields</h3>
+    <ul>
+      <li><strong>TP key</strong>: <code>{'<project-key>-TP-<sequence>'}</code> (e.g., <code>TCAFE-TP-1</code>) — assigned automatically as (max of existing plan_key in the project) + 1</li>
+      <li><strong>Total TCs</strong>: 0 (TCs are added separately after creation)</li>
+      <li><strong>Progress</strong>: 0%</li>
+    </ul>
+
+    <hr />
+
+    <h2>5. Adding TCs to a TP</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>In the Test Plans list, click the target TP → open the TP detail page</li>
+      <li>Click the <strong>Test Cases</strong> tab at the top → go to the TC management page</li>
+      <li>Click the <strong>Add test cases</strong> button → the TC picker modal opens</li>
+      <li>In the modal's Test Case Repository, check the TCs to add (select by folder in the folder tree, or check individual TCs)</li>
+      <li>Confirm with the <strong>Add to Plan</strong> button</li>
+    </ol>
+
+    <h3>Selection Options</h3>
+    <ul>
+      <li><strong>Select in the folder tree</strong>: selecting a folder in the left tree includes its TCs in the selection</li>
+      <li><strong>Individual selection</strong>: check one at a time with checkboxes</li>
+      <li><strong>Search</strong>: use the top search box (Key, Name) to filter and then select</li>
+      <li><strong>Factor TCs</strong> can be selected the same way</li>
+    </ul>
+
+    <ScreenshotSlot label="Add TC screen" src={img03} />
+
+    <h3>Automatic Processing on Add</h3>
+    <ul>
+      <li>Each TC is converted into a TP <strong>execution item</strong></li>
+      <li>An execution-item key is auto-assigned</li>
+      <li>Initial status of each execution item: Not Yet</li>
+      <li>The TC's current state (name, steps, etc.) is <strong>preserved at the moment of addition</strong></li>
+    </ul>
+
+    <h3>What "preserved at the moment of addition" means</h3>
+    <ul>
+      <li>The TC state at the time of addition is copied and preserved as-is</li>
+      <li>If the source TC is edited later, the TP's execution item does not change</li>
+      <li>The data at execution time is preserved (for audit trails)</li>
+      <li>To re-sync with the source TC, remove and re-add manually</li>
+    </ul>
+
+    <hr />
+
+    <h2>6. TP Folder Structure</h2>
+    <p>You can also organize TCs into folders inside a TP (TP folders are separate from regular TC folders).</p>
+
+    <h3>Automatic Folder Creation</h3>
+    <ul>
+      <li>When a TC is added to a TP, a TP folder with the same name as the source TC's folder is auto-created</li>
+      <li>e.g., if the TC was in the "Login" folder → a "Login" folder is created inside the TP</li>
+    </ul>
+
+    <h3>Manual Folder Management</h3>
+    <ol>
+      <li>On the TP's Test Cases tab (execution-item management page), click <strong>New Folder</strong> (or right-click an empty area in the folder tree → <strong>New Folder</strong>)</li>
+      <li>A default name <code>New Folder</code> is pre-filled in the input — change it on the spot and press Enter if needed</li>
+      <li><strong>Drag and drop</strong> execution items (TCs) into the folder, or select items and use the <strong>Move</strong> button at the top</li>
+    </ol>
+
+    <ScreenshotSlot label="TP folder structure" src={img04} />
+
+    <hr />
+
+    <h2>7. Removing TCs from a TP</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>On the TP's Test Cases tab, enter selection mode (enable checkboxes)</li>
+      <li>Check the execution items (TCs) to remove</li>
+      <li>Click the <strong>Delete</strong> button in the top action bar</li>
+    </ol>
+
+    <h3>Notes</h3>
+    <ul>
+      <li>Removing an execution item does <strong>not delete the source TC</strong> — only the TP's TPTC record is removed</li>
+      <li>You can add the same TC to the TP again, but previous execution results are not restored</li>
+      <li>The <strong>execution result, comments, and linked issues of that TPTC are deleted together</strong></li>
+    </ul>
+
+    <hr />
+
+    <h2>8. Cloning a TP</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Use Cases</h3>
+    <ul>
+      <li>Create a new TP for the same regression run every week</li>
+      <li>Build the next sprint's TP based on the previous sprint's TP</li>
+    </ul>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Select the TP(s) to clone with checkboxes in the Test Plans list (single or multiple)</li>
+      <li>Click the <strong>Clone</strong> button at the top</li>
+      <li>The clone is completed immediately on click (no name-input / date-change / confirmation step)</li>
+    </ol>
+
+    <h3>What Gets Cloned</h3>
+    <ul>
+      <li>Basic metadata (Description, Owner, Start Date, End Date, etc.)</li>
+      <li>The name is automatically assigned as <code>&lt;original&gt; (Copy)</code> (if it already exists, <code>(Copy 2)</code>, <code>(Copy 3)</code> …)</li>
+      <li>A new plan_key is auto-assigned (<code>{'<project-key>-TP-<sequence>'}</code>)</li>
+    </ul>
+
+    <h3>What Is NOT Cloned</h3>
+    <ul>
+      <li><strong>Execution items (TPTC) inside the TP are NOT cloned</strong> — the new TP is created with an empty TC list</li>
+      <li>TP-internal folder structure (Test Plan Folders) is NOT cloned either</li>
+      <li>Execution results / comments / linked issues (all items from the original TP are excluded)</li>
+      <li>Progress and execution stats are reset to 0</li>
+      <li>Status is reset to the project's default Plan Status</li>
+    </ul>
+
+    <aside className="guide-callout info">
+      A clone is an "empty shell TP". Re-add the TCs you need on the Test Cases tab.
+    </aside>
+
+    <hr />
+
+    <h2>9. TP Status</h2>
+    <p>TP status changes along its lifecycle.</p>
+
+    <h3>Default Statuses (3)</h3>
+    <ul>
+      <li><strong>Draft</strong> — being authored, execution not yet started (default)</li>
+      <li><strong>Open</strong> — ready for execution</li>
+      <li><strong>Completed</strong> — all tests complete</li>
+    </ul>
+
+    <aside className="guide-callout">Add custom statuses like "In Progress" or "Closed" as needed (see Custom Statuses below).</aside>
+
+    <h3>Custom Statuses</h3>
+    <p>Add / modify in Configuration → Plan Status (Admin / Team Admin).</p>
+    <ul>
+      <li>See <Link to="/support/guide/configuration">13. Configuration</Link> for details</li>
+    </ul>
+
+    <h3>Changing Status</h3>
+    <ol>
+      <li>On the TP detail page, click the <strong>Edit</strong> button at the top-right → enter edit mode</li>
+      <li>Choose a new status from the Status dropdown</li>
+      <li>Click <strong>Save</strong> at the bottom to commit (Cancel discards changes)</li>
+    </ol>
+    <aside className="guide-callout info">
+      Status changes are not saved automatically. You must go through Edit → Save for the change to take effect.
+    </aside>
+
+    <hr />
+
+    <h2>10. TP Progress</h2>
+    <p>TP progress is calculated automatically.</p>
+
+    <h3>Formula</h3>
+    <pre><code>{`Progress = (Pass + Fail + Block) / (total execution items - Skip) × 100`}</code></pre>
+    <ul>
+      <li><strong>Numerator</strong>: Pass · Fail · Block (items that have actually been executed)</li>
+      <li><strong>Excluded from both numerator and denominator</strong>: Skip (deliberately skipped items are excluded from the denominator to avoid skewing the ratio)</li>
+      <li><strong>Denominator</strong>: total execution items − Skip</li>
+      <li>Not Yet is treated as not-yet-executed, so it is included in the denominator but not in the numerator</li>
+      <li>If everything is Skip, the denominator is 0 and Progress is shown as 0%</li>
+    </ul>
+
+    <h3>UI</h3>
+    <ul>
+      <li>Progress bar shown on the TP list</li>
+      <li>Large progress gauge at the top of the TP detail page</li>
+    </ul>
+
+    <hr />
+
+    <h2>11. Deleting a TP</h2>
+    <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
+
+    <h3>Steps</h3>
+    <ol>
+      <li>Select the TP(s) to delete with checkboxes in the Test Plans list (single or multiple)</li>
+      <li>Click the <strong>Delete</strong> button at the top</li>
+      <li>Click <strong>Confirm</strong> in the confirmation modal <em>"Are you sure you want to delete N test plan(s)?"</em></li>
+    </ol>
+
+    <h3>Notes</h3>
+    <ul>
+      <li>When a TP is deleted, its linked <strong>execution items (TPTC), execution results, TP folders, and execution history</strong> are all deleted together</li>
+      <li>Source TCs are unaffected (TPs and TCs are separate tables)</li>
+      <li>Deleted data <strong>cannot be recovered</strong></li>
+    </ul>
+
+    <h3>Recommendation — change status instead of deleting</h3>
+    <ul>
+      <li>If the history is worth keeping, it is safer to change to an end-state status defined in Configuration (e.g., Completed / Closed)</li>
+      <li>TPs in end states remain viewable later for audit / regression analysis</li>
+    </ul>
+
+    <hr />
+
+    <h2>12. Common TP Workflow</h2>
+
+    <h3>Scenario: Sprint Integration Test</h3>
+    <pre><code>{`1. Sprint starts (Monday)
+ ├─ Admin creates "Sprint 1 - Integration Test" TP (+ Create Test Plan)
+ ├─ Start date: Monday, End date: Friday
+ └─ Status: Draft (default)
+
+2. Add TCs (Monday ~ Tuesday)
+ ├─ TP detail → Test Cases tab → Add test cases button
+ ├─ Pick the TCs / folders you need in the modal → Add to Plan
+ └─ Organize into TP folders (New Folder) as needed
+
+3. Start execution (Tuesday)
+ ├─ On the TP detail, Edit → change status to Open → Save
+ └─ Share with testers
+
+4. In progress (Wednesday ~ Thursday)
+ ├─ Record status (Pass / Fail / Block / Skip) on each execution item
+ ├─ On Fail, create or link a Jira issue
+ └─ Progress updates automatically
+
+5. Completion (Friday)
+ ├─ Edit → change status to Completed → Save
+ ├─ View and share the Test Report
+ └─ Move any unresolved issues to the next sprint`}</code></pre>
+
+    <hr />
+
+    <h2>13. Common Issues</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>+ Create Test Plan button is not visible</td><td>No permission (Admin / Team Admin required)</td><td>Ask an admin for permission</td></tr>
+        <tr><td>After Clone, the TP has no TCs</td><td>Intended — Clone copies only the TP shell (metadata)</td><td>Re-add the TCs you need on the Test Cases tab</td></tr>
+        <tr><td>Value in the status dropdown doesn't change</td><td>Not in Edit mode</td><td>Click <strong>Edit</strong> at the top-right → change value → <strong>Save</strong></td></tr>
+        <tr><td>Progress does not refresh</td><td>Page cache</td><td>Refresh</td></tr>
+        <tr><td>Edited the source TC but the execution item didn't change</td><td>Intended — the TP preserves the snapshot at the time of addition</td><td>Delete the execution item and re-add it from the latest source TC</td></tr>
+        <tr><td>All Skip but progress is 0%</td><td>Intended — Skip is excluded from the denominator, so 0% when nothing is executed</td><td>Progress updates once any Pass / Fail / Block is recorded</td></tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    <h2>14. Best Practices</h2>
+
+    <h3>DO</h3>
+    <ul>
+      <li><strong>Clear names</strong>: "Sprint 1", "v2.5 Regression" — easy to identify</li>
+      <li><strong>Set start / end dates</strong>: essential for schedule tracking</li>
+      <li><strong>Smaller TPs</strong>: 50–200 execution items is manageable</li>
+      <li><strong>Use folders</strong>: group large TPs into folders</li>
+      <li><strong>Status management</strong>: keep the Draft → Open → Completed flow (or use custom statuses)</li>
+    </ul>
+
+    <h3>DON'T</h3>
+    <ul>
+      <li>Cram 1000+ TCs into one TP</li>
+      <li>Unnamed TPs ("Test Plan 1")</li>
+      <li>Forgetting to close TPs after they end</li>
+      <li>Adding the same TC to a TP multiple times</li>
+      <li>Using TPs as permanent storage (TPs are one-off)</li>
+    </ul>
+
+    <hr />
+
+    <h2>Next Steps</h2>
+    <ul>
+      <li><Link to="/support/guide/test-execution">11. Test Execution</Link> — running items and recording results</li>
+      <li><Link to="/support/guide/test-reports">12. Test Reports</Link> — generating TP result reports</li>
+      <li><Link to="/support/guide/configuration">13. Configuration</Link> → customizing Plan Status</li>
+    </ul>
+  </article>
+);
+
+export default { ko: <TestPlans />, en: <TestPlansEn /> };

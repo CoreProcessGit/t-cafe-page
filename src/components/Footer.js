@@ -17,7 +17,7 @@ const Footer = () => {
           <Link to="/sub-processors">Sub-processors</Link>
           <Link to="/security-policy">Security</Link>
           <Link to="/support">Support</Link>
-          <a href="mailto:cp.content100@gmail.com">Contact</a>
+          <a href="mailto:contact@coreprocess.co.kr">Contact</a>
         </div>
         <div className="footer-copyright">
           <p>&copy; 2026 COREPROCESS. All rights reserved.</p>

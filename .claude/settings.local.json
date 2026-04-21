@@ -19,7 +19,17 @@
       "Bash(magick -version)",
       "Bash(convert -version)",
       "Bash(powershell -Command \"Get-Host\")",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(node -e \"try{require.resolve\\('sharp'\\); console.log\\('sharp OK'\\)}catch\\(e\\){console.log\\('sharp MISSING'\\)}\")",
+      "Bash(pip install *)",
+      "Read(//c/Program Files \\(x86\\)/Microsoft/Edge/Application/**)",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Bash('/c/Program Files/Google/Chrome/Application/chrome.exe' --headless=new --disable-gpu --hide-scrollbars --window-size=880,176 '--screenshot=C:\\\\Users\\\\CP-010\\\\AppData\\\\Local\\\\Temp\\\\brand_render\\\\final_big.png' 'file:///C:\\\\Users\\\\CP-010\\\\AppData\\\\Local\\\\Temp\\\\brand_render\\\\final.html')",
+      "Bash(npm config *)",
+      "Bash(node install.cjs)",
+      "Read(//c/Program Files/nodejs/**)",
+      "Read(//c/Program Files/nodejs/node_modules/npm/**)",
+      "Bash(powershell -Command \"Get-Item 'C:\\\\Users\\\\CP-010\\\\.npmrc' | Select-Object Name, CreationTime, LastWriteTime, LastAccessTime | Format-List\")"
     ]
   }
 }

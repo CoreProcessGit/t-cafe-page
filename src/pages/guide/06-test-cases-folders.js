@@ -110,7 +110,9 @@ const Folders = () => (
 
     <h3>사용 사례</h3>
     <ul>
-      <li>비슷한 폴더 구조를 빠르게 만들 때</li>
+      <li>비슷한 폴더 구조와 테스트 케이스 세트를 빠르게 만들 때</li>
+      <li>기존 Factor Combination 설정을 새 폴더에 재사용할 때</li>
+      <li>템플릿 폴더를 복제해 새 테스트 사이클을 시작할 때</li>
     </ul>
 
     <h3>절차</h3>
@@ -120,10 +122,25 @@ const Folders = () => (
     </ol>
 
     <h3>복제 범위</h3>
+    <p>폴더를 복사하면 <strong>하위 폴더 트리 전체 + 각 폴더 안의 모든 Test Case + Factor Combination 설정까지 한 번에 복사</strong>됩니다. 각 항목의 상세는 다음과 같습니다:</p>
     <ul>
-      <li>폴더 자체와 <strong>하위 폴더 구조까지만</strong> 복사됩니다</li>
-      <li>폴더 안의 <strong>Test Case는 복사되지 않습니다</strong></li>
+      <li><strong>폴더 구조</strong>: 원본 폴더 + 모든 하위 폴더가 같은 계층 구조로 복사됩니다 (깊이 무제한)</li>
+      <li><strong>폴더 이름</strong>: 루트(복사 대상으로 선택한 폴더)만 <code>_copy</code> 접미사가 붙고, 하위 폴더 이름은 원본 그대로 유지됩니다. 예: <code>Login</code> 복사 → <code>Login_copy/Standard Login/...</code></li>
+      <li><strong>Test Case</strong>: 각 폴더 안의 모든 TC가 새 TC로 복사됩니다
+        <ul>
+          <li>TC Key는 프로젝트 번호의 다음 순번으로 새로 부여됩니다 (예: <code>PROJ-42</code> → <code>PROJ-87</code>)</li>
+          <li>이름, 설명, 테스트 스텝, 사전 조건, 우선순위, Case Type, Owner, Labels, Components, User-defined Fields 모두 그대로 복사됩니다</li>
+          <li><strong>Jira 이슈 링크(Linked Issues)는 복사되지 않습니다</strong> — 새 TC는 빈 상태로 시작 (기존 Jira 이슈 히스토리가 복사본으로 딸려오지 않도록)</li>
+        </ul>
+      </li>
+      <li><strong>Factor Combination 설정</strong>: 폴더에 저장된 Factor 설정(요인, 제약, 시뮬레이션된 조합, Matrix Rows, 메타데이터)이 새 폴더에 함께 복사됩니다</li>
+      <li><strong>Factor TC Assignment</strong>: 각 조합에 지정된 TC 배정 정보도 함께 복사됩니다</li>
+      <li><strong>전체가 원자적</strong>으로 처리됩니다 — 중간 실패 시 이미 복사된 항목도 자동 롤백되어 <strong>반쪽 복사 상태는 남지 않습니다</strong></li>
     </ul>
+
+    <aside className="guide-callout info">
+      <strong>성능 참고</strong>: 수백~수천 개 TC가 있는 폴더도 청크 단위로 분할 처리되어 안정적으로 복사됩니다. 다만 매우 큰 폴더(예: 5,000+ TC)는 완료까지 수십 초가 걸릴 수 있으니 브라우저를 닫지 말고 기다려 주세요.
+    </aside>
 
     <hr />
 
@@ -340,9 +357,11 @@ const FoldersEn = () => (
     <h2>6. Copying a Folder</h2>
     <aside className="guide-callout"><strong>Permission required</strong>: Admin or Team Admin</aside>
 
-    <h3>Use Case</h3>
+    <h3>Use Cases</h3>
     <ul>
-      <li>Quickly create a similar folder structure</li>
+      <li>Quickly create a similar folder structure with its test cases</li>
+      <li>Reuse an existing Factor Combination configuration in a new folder</li>
+      <li>Duplicate a template folder to start a new test cycle</li>
     </ul>
 
     <h3>Steps</h3>
@@ -352,10 +371,25 @@ const FoldersEn = () => (
     </ol>
 
     <h3>What Gets Copied</h3>
+    <p>Copying a folder clones <strong>the entire sub-folder tree + every Test Case inside each folder + the Factor Combination configuration</strong> in one operation. Details:</p>
     <ul>
-      <li>The folder itself and <strong>its sub-folder structure only</strong> is copied</li>
-      <li><strong>Test cases inside the folder are NOT copied</strong></li>
+      <li><strong>Folder structure</strong>: the source folder and all its sub-folders are copied preserving the hierarchy (unlimited depth)</li>
+      <li><strong>Folder names</strong>: only the root (the folder you clicked Copy on) gets the <code>_copy</code> suffix; sub-folders keep their original names. Example: copying <code>Login</code> → <code>Login_copy/Standard Login/...</code></li>
+      <li><strong>Test Cases</strong>: every TC in each folder is copied as a new TC
+        <ul>
+          <li>A new TC Key is issued from the next project-wide number (for example <code>PROJ-42</code> → <code>PROJ-87</code>)</li>
+          <li>Name, description, test steps, preconditions, priority, Case Type, Owner, Labels, Components, User-defined Fields are all copied as-is</li>
+          <li><strong>Linked Jira Issues are NOT copied</strong> — the new TC starts with an empty issue list (so that existing Jira issue history doesn't follow duplicated TCs)</li>
+        </ul>
+      </li>
+      <li><strong>Factor Combination configuration</strong>: factors, constraints, simulated test cases, matrix rows, and metadata saved on the folder are copied to the new folder as well</li>
+      <li><strong>Factor TC Assignments</strong>: the TC assignments per combination are copied together</li>
+      <li>The whole operation is <strong>atomic</strong> — if anything fails mid-way, already-copied items are rolled back so <strong>partial copies never remain</strong></li>
     </ul>
+
+    <aside className="guide-callout info">
+      <strong>Performance note</strong>: folders with hundreds or thousands of TCs are copied in chunks and remain stable. Very large folders (for example 5,000+ TCs) can take tens of seconds to finish — please keep the browser open until it completes.
+    </aside>
 
     <hr />
 

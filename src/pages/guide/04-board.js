@@ -56,7 +56,13 @@ const Board = () => (
     <hr />
 
     <h2>4. 카테고리</h2>
-    <p>게시글에는 카테고리 라벨이 표시됩니다. 현재 버전에서는 작성 화면에서 카테고리를 선택할 수 없으며, 모든 게시글은 <code>Notice</code> 카테고리로 저장됩니다. 목록/상세 화면에서는 제목 앞에 <code>[Notice]</code> 형태로 노출됩니다.</p>
+    <p>게시글에는 카테고리 라벨이 표시됩니다. 작성/수정 화면에서 다음 3가지 중 하나를 선택할 수 있습니다:</p>
+    <ul>
+      <li><code>Notice</code> — 공지 (기본값)</li>
+      <li><code>News</code> — 뉴스</li>
+      <li><code>Etc</code> — 기타</li>
+    </ul>
+    <p>목록/상세 화면에서는 제목 앞에 <code>[카테고리]</code> 형태로 노출됩니다 (예: <code>[Notice] 새 환경 안내</code>).</p>
 
     <hr />
 
@@ -102,6 +108,7 @@ const Board = () => (
       <li>작성 모달이 열림</li>
       <li>입력 항목:
         <ul>
+          <li><strong>카테고리</strong> (필수) — <code>Notice</code> / <code>News</code> / <code>Etc</code> 중 선택 (기본값: <code>Notice</code>)</li>
           <li><strong>제목</strong> (필수)</li>
           <li><strong>내용</strong> (필수) — 리치 텍스트 에디터</li>
         </ul>
@@ -109,7 +116,7 @@ const Board = () => (
       <li><strong>등록하기</strong> 버튼 클릭</li>
     </ol>
 
-    <aside className="guide-callout">작성 화면에는 카테고리 선택, 파일 첨부, <strong>이미지 삽입</strong> 기능이 없습니다. 이미지·파일이 필요하면 T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 업로드한 뒤 링크를 본문에 붙여주세요.</aside>
+    <aside className="guide-callout">작성 화면에는 파일 첨부, <strong>이미지 삽입</strong> 기능이 없습니다. 이미지·파일이 필요하면 T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 업로드한 뒤 링크를 본문에 붙여주세요.</aside>
 
     <ScreenshotSlot src={shotWriteBoard} label="게시글 작성 폼" />
 
@@ -300,7 +307,13 @@ const BoardEn = () => (
     <hr />
 
     <h2>4. Category</h2>
-    <p>Each post is displayed with a category label. In the current version, the category cannot be chosen on the write form, and every post is stored with the <code>Notice</code> category. In the list and detail views, the title is prefixed with <code>[Notice]</code>.</p>
+    <p>Each post is displayed with a category label. You can choose one of the following three categories on the write / edit form:</p>
+    <ul>
+      <li><code>Notice</code> — announcements (default)</li>
+      <li><code>News</code> — news</li>
+      <li><code>Etc</code> — other</li>
+    </ul>
+    <p>In the list and detail views, the title is prefixed with <code>[Category]</code> (for example, <code>[Notice] New environment guide</code>).</p>
 
     <hr />
 
@@ -346,6 +359,7 @@ const BoardEn = () => (
       <li>The write modal opens</li>
       <li>Fields:
         <ul>
+          <li><strong>Category</strong> (required) — choose one of <code>Notice</code> / <code>News</code> / <code>Etc</code> (default: <code>Notice</code>)</li>
           <li><strong>Title</strong> (required)</li>
           <li><strong>Content</strong> (required) — rich text editor</li>
         </ul>
@@ -353,7 +367,7 @@ const BoardEn = () => (
       <li>Click the <strong>Submit</strong> button</li>
     </ol>
 
-    <aside className="guide-callout">The write form does not support category selection, file attachments, or <strong>image insertion</strong>. If you need images or files, upload them to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and paste the link into the body.</aside>
+    <aside className="guide-callout">The write form does not support file attachments or <strong>image insertion</strong>. If you need images or files, upload them to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and paste the link into the body.</aside>
 
     <ScreenshotSlot src={shotWriteBoard} label="Post write form" />
 

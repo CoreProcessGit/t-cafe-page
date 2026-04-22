@@ -47,7 +47,7 @@ const GettingStarted = () => (
       <li>
         <strong>기본 샘플 Configuration</strong> (Configuration에서 자유롭게 추가/수정/삭제 가능):
         Priority (Critical/High/Medium/Low), Case Type (Function/Performance/Regression/Security),
-        Component (Frontend/Backend API/Database/Authentication/Payment), Plan Status (Draft/Open/Completed)
+        Component (Frontend/Backend API/Database/Authentication/Payment), Plan Status (Prepairing/Open/Completed)
       </li>
     </ul>
 
@@ -221,7 +221,7 @@ const GettingStartedEn = () => (
       <li>
         <strong>Default sample Configuration</strong> (freely add/edit/delete in Configuration):
         Priority (Critical/High/Medium/Low), Case Type (Function/Performance/Regression/Security),
-        Component (Frontend/Backend API/Database/Authentication/Payment), Plan Status (Draft/Open/Completed)
+        Component (Frontend/Backend API/Database/Authentication/Payment), Plan Status (Prepairing/Open/Completed)
       </li>
     </ul>
 

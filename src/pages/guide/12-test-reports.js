@@ -91,7 +91,7 @@ const TestReports = () => (
 
     <h3>필터 옵션 (3종)</h3>
     <ul>
-      <li><strong>Status</strong> — TP 상태(Draft / Open / Completed 등, Configuration에서 정의된 Plan Status 기준)</li>
+      <li><strong>Status</strong> — TP 상태(Prepairing / Open / Completed 등, Configuration에서 정의된 Plan Status 기준)</li>
       <li><strong>Owner</strong> — TP 소유자로 필터</li>
       <li><strong>Progress</strong> — Not Started / In Progress / Completed (진행률 구간)</li>
     </ul>
@@ -340,7 +340,7 @@ const TestReportsEn = () => (
 
     <h3>Filter Options (3)</h3>
     <ul>
-      <li><strong>Status</strong> — TP status (Draft / Open / Completed, etc., based on the Plan Statuses defined in Configuration)</li>
+      <li><strong>Status</strong> — TP status (Prepairing / Open / Completed, etc., based on the Plan Statuses defined in Configuration)</li>
       <li><strong>Owner</strong> — filter by TP owner</li>
       <li><strong>Progress</strong> — Not Started / In Progress / Completed (progress-rate bands)</li>
     </ul>

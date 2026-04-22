@@ -154,7 +154,7 @@ const OverviewDashboard = () => (
     <hr />
 
     <h2>8. Status Section (상태별 Kanban)</h2>
-    <p>Plan Status 목록(예: Draft / Open / Completed / 사용자 정의)을 각각 세로 컬럼으로 나열하고, TP들을 상태별로 그룹핑해 카드로 보여주는 <strong>Kanban 형태의 섹션</strong>입니다. (파이/막대/트렌드 차트는 사용하지 않습니다.)</p>
+    <p>Plan Status 목록(예: Prepairing / Open / Completed / 사용자 정의)을 각각 세로 컬럼으로 나열하고, TP들을 상태별로 그룹핑해 카드로 보여주는 <strong>Kanban 형태의 섹션</strong>입니다. (파이/막대/트렌드 차트는 사용하지 않습니다.)</p>
 
     <h3>구성</h3>
     <ul>
@@ -439,7 +439,7 @@ const OverviewDashboardEn = () => (
     <hr />
 
     <h2>8. Status Section (Kanban by Status)</h2>
-    <p>A <strong>Kanban-style section</strong> that lists each Plan Status (for example, Draft / Open / Completed / custom) as a vertical column and groups TPs into those columns as cards. (No pie, bar, or trend charts are used.)</p>
+    <p>A <strong>Kanban-style section</strong> that lists each Plan Status (for example, Prepairing / Open / Completed / custom) as a vertical column and groups TPs into those columns as cards. (No pie, bar, or trend charts are used.)</p>
 
     <h3>Layout</h3>
     <ul>

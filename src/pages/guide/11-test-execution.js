@@ -23,7 +23,7 @@ const TestExecution = () => (
 
     <h3>사전 확인</h3>
     <ul>
-      <li>TP의 상태가 <strong>Open</strong> (또는 사용자 정의된 진행 중 상태)인지 확인 (Draft는 실행 시작 전)</li>
+      <li>TP의 상태가 <strong>Open</strong> (또는 사용자 정의된 진행 중 상태)인지 확인 (Prepairing은 실행 시작 전)</li>
       <li>실행 항목 상태 변경(Pass/Fail 등)은 <strong>Admin / Team Admin / Tester</strong>만 가능. Developer는 조회와 코멘트 입력만 가능</li>
     </ul>
 
@@ -371,7 +371,7 @@ const TestExecutionEn = () => (
 
     <h3>Pre-check</h3>
     <ul>
-      <li>Confirm the TP status is <strong>Open</strong> (or a custom in-progress status). Draft means execution has not started</li>
+      <li>Confirm the TP status is <strong>Open</strong> (or a custom in-progress status). Prepairing means execution has not started</li>
       <li>Execution-item status changes (Pass/Fail, etc.) require <strong>Admin / Team Admin / Tester</strong>. Developers can only view and add comments</li>
     </ul>
 

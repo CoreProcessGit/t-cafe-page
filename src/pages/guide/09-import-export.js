@@ -26,10 +26,10 @@ const ImportExport = () => (
       </thead>
       <tbody>
         <tr><td><strong>Import (CSV/JSON/Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>Export (CSV/JSON/Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
+        <tr><td><strong>Export (CSV/JSON/Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>Export는 모든 역할</strong>이 가능 (데이터 조회 성격)<br />→ <strong>Import는 Admin/Team Admin만</strong> 가능 (데이터 변경 성격)</p>
+    <p>→ <strong>Export는 Admin / Team Admin / Tester만</strong> 가능 (Developer는 조회만)<br />→ <strong>Import는 Admin / Team Admin만</strong> 가능 (데이터 변경 성격)</p>
 
     <hr />
 
@@ -362,10 +362,10 @@ const ImportExportEn = () => (
       </thead>
       <tbody>
         <tr><td><strong>Import (CSV / JSON / Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>Export (CSV / JSON / Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
+        <tr><td><strong>Export (CSV / JSON / Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>Export is available to all roles</strong> (read action)<br />→ <strong>Import is Admin / Team Admin only</strong> (write action)</p>
+    <p>→ <strong>Export is available to Admin / Team Admin / Tester</strong> (Developers have view-only access)<br />→ <strong>Import is Admin / Team Admin only</strong> (write action)</p>
 
     <hr />
 

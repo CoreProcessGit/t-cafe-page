@@ -144,7 +144,7 @@ const faqData = [
       },
       {
         q: 'TP를 끝내면 어떻게 처리해야 하나요?',
-        a: <p>기본 제공 Plan Status는 <strong>Draft / Open / Completed</strong> 3종이며, 완료된 TP는 <strong>Completed</strong>로 변경하는 것을 권장합니다. 팀 내 절차가 별도로 필요하면 Configuration → Plan Status에서 커스텀 상태(예: Closed, Archived 등)를 추가해 사용하세요. 삭제는 감사 추적을 위해 권장하지 않습니다.</p>,
+        a: <p>기본 제공 Plan Status는 <strong>Prepairing / Open / Completed</strong> 3종이며, 완료된 TP는 <strong>Completed</strong>로 변경하는 것을 권장합니다. 팀 내 절차가 별도로 필요하면 Configuration → Plan Status에서 커스텀 상태(예: Closed, Archived 등)를 추가해 사용하세요. 삭제는 감사 추적을 위해 권장하지 않습니다.</p>,
       },
     ],
   },
@@ -552,7 +552,7 @@ const faqDataEn = [
       },
       {
         q: 'What should I do after a TP is finished?',
-        a: <p>The default Plan Statuses are <strong>Draft / Open / Completed</strong>, and it is recommended to change completed TPs to <strong>Completed</strong>. If your team needs a separate workflow, add custom statuses (e.g., Closed, Archived) in Configuration → Plan Status. Deletion is not recommended, to preserve audit trails.</p>,
+        a: <p>The default Plan Statuses are <strong>Prepairing / Open / Completed</strong>, and it is recommended to change completed TPs to <strong>Completed</strong>. If your team needs a separate workflow, add custom statuses (e.g., Closed, Archived) in Configuration → Plan Status. Deletion is not recommended, to preserve audit trails.</p>,
       },
     ],
   },

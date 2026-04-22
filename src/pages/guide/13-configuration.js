@@ -225,7 +225,7 @@ const Configuration = () => (
 
     <h3>6-1. 기본 제공 상태 (3종)</h3>
     <ul>
-      <li><strong>Draft</strong> — 색상 <code>#6B778C</code> (회색), <strong>기본값</strong></li>
+      <li><strong>Prepairing</strong> — 색상 <code>#6B778C</code> (회색), <strong>기본값</strong></li>
       <li><strong>Open</strong> — 색상 <code>#0052CC</code> (파랑)</li>
       <li><strong>Completed</strong> — 색상 <code>#36B37E</code> (녹색)</li>
     </ul>
@@ -595,7 +595,7 @@ const ConfigurationEn = () => (
 
     <h3>6-1. Default Statuses (3)</h3>
     <ul>
-      <li><strong>Draft</strong> — color <code>#6B778C</code> (gray), <strong>default</strong></li>
+      <li><strong>Prepairing</strong> — color <code>#6B778C</code> (gray), <strong>default</strong></li>
       <li><strong>Open</strong> — color <code>#0052CC</code> (blue)</li>
       <li><strong>Completed</strong> — color <code>#36B37E</code> (green)</li>
     </ul>

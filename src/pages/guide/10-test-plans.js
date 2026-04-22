@@ -52,7 +52,7 @@ const TestPlans = () => (
         <tr><td><strong>소유자</strong></td><td>Owner</td><td>TP 책임자</td></tr>
         <tr><td><strong>시작일</strong></td><td>Start Date</td><td>테스트 시작 예정일</td></tr>
         <tr><td><strong>종료일</strong></td><td>End Date</td><td>테스트 종료 예정일</td></tr>
-        <tr><td><strong>상태</strong></td><td>Status</td><td>Draft / Open / Completed (사용자 정의 상태 추가 가능)</td></tr>
+        <tr><td><strong>상태</strong></td><td>Status</td><td>Prepairing / Open / Completed (사용자 정의 상태 추가 가능)</td></tr>
         <tr><td><strong>TC 목록</strong></td><td>Test Cases</td><td>실행할 TC들</td></tr>
         <tr><td><strong>폴더 구조</strong></td><td>Folders</td><td>TP 내부에서 TC를 폴더로 정리</td></tr>
         <tr><td><strong>실행 통계</strong></td><td>Execution Status</td><td>Pass/Fail/Block/Skip/Not Yet 카운트</td></tr>
@@ -78,7 +78,7 @@ const TestPlans = () => (
 
     <h3>필터</h3>
     <ul>
-      <li>상태별 (기본: Draft / Open / Completed, 사용자 정의 상태 포함)</li>
+      <li>상태별 (기본: Prepairing / Open / Completed, 사용자 정의 상태 포함)</li>
       <li>소유자별</li>
     </ul>
 
@@ -94,7 +94,7 @@ const TestPlans = () => (
         <ul>
           <li>Name (필수)</li>
           <li>Description</li>
-          <li>Status (필수, 기본값: Draft)</li>
+          <li>Status (필수, 기본값: Prepairing)</li>
           <li>Owner (필수)</li>
           <li>Start Date / End Date (필수, End Date는 Start Date 이후여야 함)</li>
         </ul>
@@ -235,7 +235,7 @@ const TestPlans = () => (
 
     <h3>기본 상태 (3종)</h3>
     <ul>
-      <li><strong>Draft</strong> (초안) — 작성 중, 아직 실행 시작 안 함 (기본값)</li>
+      <li><strong>Prepairing</strong> (초안) — 작성 중, 아직 실행 시작 안 함 (기본값)</li>
       <li><strong>Open</strong> (열림) — 실행 가능 상태</li>
       <li><strong>Completed</strong> (완료) — 모든 테스트 완료</li>
     </ul>
@@ -312,7 +312,7 @@ const TestPlans = () => (
     <pre><code>{`1. 스프린트 시작 (월요일)
  ├─ Admin이 "Sprint 1 - Integration Test" TP 생성 (+ Create Test Plan)
  ├─ 시작일: 월요일, 종료일: 금요일
- └─ 상태: Draft (기본값)
+ └─ 상태: Prepairing (기본값)
 
 2. TC 추가 (월요일~화요일)
  ├─ TP 상세 → Test Cases 탭 → Add test cases 버튼
@@ -360,7 +360,7 @@ const TestPlans = () => (
       <li><strong>시작/종료일 설정</strong>: 일정 추적에 필수</li>
       <li><strong>소규모 TP</strong>: 50~200개 실행 항목이 관리하기 좋음</li>
       <li><strong>폴더로 정리</strong>: 큰 TP는 폴더로 그룹화</li>
-      <li><strong>상태 관리</strong>: Draft → Open → Completed 흐름 유지 (또는 사용자 정의 상태 활용)</li>
+      <li><strong>상태 관리</strong>: Prepairing → Open → Completed 흐름 유지 (또는 사용자 정의 상태 활용)</li>
     </ul>
 
     <h3>DON'T</h3>
@@ -429,7 +429,7 @@ const TestPlansEn = () => (
         <tr><td><strong>Owner</strong></td><td>Owner</td><td>Owner of the TP</td></tr>
         <tr><td><strong>Start Date</strong></td><td>Start Date</td><td>Scheduled test start date</td></tr>
         <tr><td><strong>End Date</strong></td><td>End Date</td><td>Scheduled test end date</td></tr>
-        <tr><td><strong>Status</strong></td><td>Status</td><td>Draft / Open / Completed (custom statuses can be added)</td></tr>
+        <tr><td><strong>Status</strong></td><td>Status</td><td>Prepairing / Open / Completed (custom statuses can be added)</td></tr>
         <tr><td><strong>TC list</strong></td><td>Test Cases</td><td>TCs to execute</td></tr>
         <tr><td><strong>Folder structure</strong></td><td>Folders</td><td>Organize TCs into folders inside the TP</td></tr>
         <tr><td><strong>Execution stats</strong></td><td>Execution Status</td><td>Pass / Fail / Block / Skip / Not Yet counts</td></tr>
@@ -455,7 +455,7 @@ const TestPlansEn = () => (
 
     <h3>Filters</h3>
     <ul>
-      <li>By status (default: Draft / Open / Completed, plus custom statuses)</li>
+      <li>By status (default: Prepairing / Open / Completed, plus custom statuses)</li>
       <li>By owner</li>
     </ul>
 
@@ -471,7 +471,7 @@ const TestPlansEn = () => (
         <ul>
           <li>Name (required)</li>
           <li>Description</li>
-          <li>Status (required, default: Draft)</li>
+          <li>Status (required, default: Prepairing)</li>
           <li>Owner (required)</li>
           <li>Start Date / End Date (required; End Date must be after Start Date)</li>
         </ul>
@@ -612,7 +612,7 @@ const TestPlansEn = () => (
 
     <h3>Default Statuses (3)</h3>
     <ul>
-      <li><strong>Draft</strong> — being authored, execution not yet started (default)</li>
+      <li><strong>Prepairing</strong> — being authored, execution not yet started (default)</li>
       <li><strong>Open</strong> — ready for execution</li>
       <li><strong>Completed</strong> — all tests complete</li>
     </ul>
@@ -689,7 +689,7 @@ const TestPlansEn = () => (
     <pre><code>{`1. Sprint starts (Monday)
  ├─ Admin creates "Sprint 1 - Integration Test" TP (+ Create Test Plan)
  ├─ Start date: Monday, End date: Friday
- └─ Status: Draft (default)
+ └─ Status: Prepairing (default)
 
 2. Add TCs (Monday ~ Tuesday)
  ├─ TP detail → Test Cases tab → Add test cases button
@@ -737,7 +737,7 @@ const TestPlansEn = () => (
       <li><strong>Set start / end dates</strong>: essential for schedule tracking</li>
       <li><strong>Smaller TPs</strong>: 50–200 execution items is manageable</li>
       <li><strong>Use folders</strong>: group large TPs into folders</li>
-      <li><strong>Status management</strong>: keep the Draft → Open → Completed flow (or use custom statuses)</li>
+      <li><strong>Status management</strong>: keep the Prepairing → Open → Completed flow (or use custom statuses)</li>
     </ul>
 
     <h3>DON'T</h3>

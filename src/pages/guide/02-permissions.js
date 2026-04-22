@@ -46,7 +46,7 @@ const Permissions = () => (
           <td>개발자</td>
           <td>Developer</td>
           <td>최하위</td>
-          <td>조회, TC Export, 코멘트 입력만 가능. 테스트 실행(상태 변경)/리포트 Export/Issue 생성·연결 불가. TC/TP 생성/편집/삭제도 불가</td>
+          <td>조회 및 코멘트 입력만 가능. Export(TC/리포트)·테스트 실행(상태 변경)·Issue 생성·연결 모두 불가. TC/TP 생성/편집/삭제도 불가</td>
         </tr>
       </tbody>
     </table>
@@ -126,7 +126,7 @@ const Permissions = () => (
         <tr><td>TC 복제 (Clone)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>TC 이동 (Move)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>TC Import (CSV/JSON/Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>TC Export (CSV/JSON/Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>TC Export (CSV/JSON/Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>TC 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>TC 검색/필터</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
@@ -398,7 +398,7 @@ const PermissionsEn = () => (
           <td>Developer</td>
           <td>Developer</td>
           <td>Lowest</td>
-          <td>View, export TCs, and add comments only. Cannot execute tests (change status), export reports, create/link issues, or create/edit/delete TCs/TPs</td>
+          <td>View and add comments only. Cannot export (TCs / reports), execute tests (change status), create/link issues, or create/edit/delete TCs/TPs</td>
         </tr>
       </tbody>
     </table>
@@ -478,7 +478,7 @@ const PermissionsEn = () => (
         <tr><td>Clone TC</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>Move TC</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>Import TCs (CSV / JSON / Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>Export TCs (CSV / JSON / Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Export TCs (CSV / JSON / Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>View TC</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Search / filter TCs</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>

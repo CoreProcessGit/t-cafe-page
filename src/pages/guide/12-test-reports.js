@@ -31,10 +31,10 @@ const TestReports = () => (
         <tr><td>Admin</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Team Admin</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td><strong>Tester</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
-        <tr><td><strong>Developer</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
+        <tr><td><strong>Developer</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>X</strong></td></tr>
       </tbody>
     </table>
-    <p>→ <strong>모든 역할이 리포트를 조회/Export할 수 있습니다</strong> (테스트 결과는 팀 전체에 투명하게 공유)</p>
+    <p>→ <strong>리포트 조회는 모든 역할이 가능</strong>하지만, Export는 Admin / Team Admin / Tester만 가능합니다. Developer는 조회만 가능합니다.</p>
 
     <hr />
 
@@ -280,10 +280,10 @@ const TestReportsEn = () => (
         <tr><td>Admin</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Team Admin</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td><strong>Tester</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
-        <tr><td><strong>Developer</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
+        <tr><td><strong>Developer</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>X</strong></td></tr>
       </tbody>
     </table>
-    <p>→ <strong>All roles can view and export reports</strong> (test results are shared transparently across the team).</p>
+    <p>→ <strong>All roles can view reports</strong>, but only Admin / Team Admin / Tester can export. Developers have view-only access.</p>
 
     <hr />
 

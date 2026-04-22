@@ -46,7 +46,7 @@ const Permissions = () => (
           <td>개발자</td>
           <td>Developer</td>
           <td>최하위</td>
-          <td>조회, Export, 테스트 실행(상태 변경)·코멘트 입력. TC/TP 생성/편집/삭제 불가, Issue 생성 불가</td>
+          <td>조회, TC Export, 코멘트 입력만 가능. 테스트 실행(상태 변경)/리포트 Export/Issue 생성·연결 불가. TC/TP 생성/편집/삭제도 불가</td>
         </tr>
       </tbody>
     </table>
@@ -171,7 +171,7 @@ const Permissions = () => (
         <tr><td>TP 복제 (Clone)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>TP에 TC 추가</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>TP에서 TC 제거</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>테스트 실행 (상태 변경)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>테스트 실행 (상태 변경)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>코멘트 입력</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Issue 생성/연결</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>TP 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
@@ -191,7 +191,7 @@ const Permissions = () => (
       </thead>
       <tbody>
         <tr><td>리포트 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td>리포트 Export</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>리포트 Export</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
       </tbody>
     </table>
 
@@ -283,7 +283,7 @@ const Permissions = () => (
       <li>QA 매니저: Admin</li>
       <li>QA 엔지니어: Team Admin (TC 작성/관리)</li>
       <li>테스터: Tester (실행 전담)</li>
-      <li>개발자: Developer (조회만)</li>
+      <li>개발자: Developer (조회 + 코멘트만 가능)</li>
     </ul>
 
     <h3>시나리오 B: 작은 팀</h3>
@@ -398,7 +398,7 @@ const PermissionsEn = () => (
           <td>Developer</td>
           <td>Developer</td>
           <td>Lowest</td>
-          <td>View, export, execute tests (change status), and comment. Cannot create / edit / delete TCs or TPs, cannot create issues</td>
+          <td>View, export TCs, and add comments only. Cannot execute tests (change status), export reports, create/link issues, or create/edit/delete TCs/TPs</td>
         </tr>
       </tbody>
     </table>
@@ -523,7 +523,7 @@ const PermissionsEn = () => (
         <tr><td>Clone TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>Add TC to TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>Remove TC from TP</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td>Execute test (change status)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Execute test (change status)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>Add comment</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Create / link issue</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>View TP</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
@@ -543,7 +543,7 @@ const PermissionsEn = () => (
       </thead>
       <tbody>
         <tr><td>View reports</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td>Export reports</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Export reports</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
       </tbody>
     </table>
 
@@ -635,7 +635,7 @@ const PermissionsEn = () => (
       <li>QA manager: Admin</li>
       <li>QA engineer: Team Admin (TC authoring / management)</li>
       <li>Tester: Tester (execution focused)</li>
-      <li>Developer: Developer (view only)</li>
+      <li>Developer: Developer (view + comments only)</li>
     </ul>
 
     <h3>Scenario B: Small Team</h3>

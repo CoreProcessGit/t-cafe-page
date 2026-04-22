@@ -24,7 +24,7 @@ const TestExecution = () => (
     <h3>사전 확인</h3>
     <ul>
       <li>TP의 상태가 <strong>Open</strong> (또는 사용자 정의된 진행 중 상태)인지 확인 (Draft는 실행 시작 전)</li>
-      <li>실행 항목 상태 변경과 코멘트 입력은 모든 역할(Admin / Team Admin / Tester / Developer)이 수행 가능</li>
+      <li>실행 항목 상태 변경(Pass/Fail 등)은 <strong>Admin / Team Admin / Tester</strong>만 가능. Developer는 조회와 코멘트 입력만 가능</li>
     </ul>
 
     <h3>화면 구성</h3>
@@ -50,7 +50,8 @@ const TestExecution = () => (
         </tr>
       </thead>
       <tbody>
-        <tr><td>실행 항목 실행 (상태 변경)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
+        <tr><td>실행 항목 실행 (상태 변경)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
+        <tr><td>Start Date / End Date 편집</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>코멘트 입력</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
         <tr><td>Issue 생성</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>Issue 연결</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
@@ -58,7 +59,7 @@ const TestExecution = () => (
         <tr><td>실행 항목 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
     </table>
-    <aside className="guide-callout"><strong>모든 역할이 테스트를 직접 실행하고 코멘트를 남길 수 있습니다.</strong> Developer만 Jira Issue 생성·연결이 제한됩니다.</aside>
+    <aside className="guide-callout"><strong>Admin / Team Admin / Tester는 테스트 실행과 코멘트를 모두 수행할 수 있습니다.</strong> Developer는 조회와 코멘트만 가능하며, 상태 변경·Start/End Date 편집·Issue 생성/연결은 불가합니다.</aside>
 
     <hr />
 
@@ -309,7 +310,9 @@ const TestExecution = () => (
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>
       </thead>
       <tbody>
-        <tr><td>Issue 생성 버튼이 안 보임</td><td>Developer 권한</td><td>Tester 이상 필요 (상태 변경·코멘트는 Developer도 가능)</td></tr>
+        <tr><td>Pass/Fail 등 상태 변경 불가</td><td>Developer 권한</td><td>Tester 이상 필요 (Developer는 조회·코멘트만 가능)</td></tr>
+        <tr><td>Start/End Date 편집 불가</td><td>Developer 권한</td><td>Tester 이상 필요</td></tr>
+        <tr><td>Issue 생성 버튼이 안 보임</td><td>Developer 권한</td><td>Tester 이상 필요</td></tr>
         <tr><td>Issue 생성 실패</td><td>Jira 권한 부족</td><td>Jira에서 Create Issue 권한 확인</td></tr>
         <tr><td>Issue가 검색되지 않음</td><td>다른 프로젝트의 Issue</td><td>같은 프로젝트만 검색 가능</td></tr>
         <tr><td>첨부파일 업로드 실패</td><td>프로젝트 저장 한도(200 MB) 초과</td><td>Attachments에서 기존 첨부 정리 후 재시도</td></tr>
@@ -369,7 +372,7 @@ const TestExecutionEn = () => (
     <h3>Pre-check</h3>
     <ul>
       <li>Confirm the TP status is <strong>Open</strong> (or a custom in-progress status). Draft means execution has not started</li>
-      <li>Any role (Admin / Team Admin / Tester / Developer) can change execution-item status and add comments</li>
+      <li>Execution-item status changes (Pass/Fail, etc.) require <strong>Admin / Team Admin / Tester</strong>. Developers can only view and add comments</li>
     </ul>
 
     <h3>Layout</h3>
@@ -395,7 +398,8 @@ const TestExecutionEn = () => (
         </tr>
       </thead>
       <tbody>
-        <tr><td>Execute item (change status)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
+        <tr><td>Execute item (change status)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
+        <tr><td>Edit Start Date / End Date</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>Add comment</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td></tr>
         <tr><td>Create issue</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
         <tr><td>Link issue</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
@@ -403,7 +407,7 @@ const TestExecutionEn = () => (
         <tr><td>View execution item</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
     </table>
-    <aside className="guide-callout"><strong>All roles can execute tests and leave comments themselves.</strong> Only Developers are restricted from creating / linking Jira issues.</aside>
+    <aside className="guide-callout"><strong>Admin / Team Admin / Tester can execute tests and leave comments.</strong> Developers can only view and add comments — status changes, Start/End Date edits, and Create/Link Issue are not permitted.</aside>
 
     <hr />
 
@@ -654,7 +658,9 @@ const TestExecutionEn = () => (
         <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
       </thead>
       <tbody>
-        <tr><td>Create Issue button is not visible</td><td>Developer role</td><td>Tester or higher is required (Developers can still change status / add comments)</td></tr>
+        <tr><td>Cannot change Pass/Fail status</td><td>Developer role</td><td>Tester or higher is required (Developers can only view / comment)</td></tr>
+        <tr><td>Cannot edit Start/End Date</td><td>Developer role</td><td>Tester or higher is required</td></tr>
+        <tr><td>Create Issue button is not visible</td><td>Developer role</td><td>Tester or higher is required</td></tr>
         <tr><td>Issue creation fails</td><td>Insufficient Jira permission</td><td>Check Create Issue permission in Jira</td></tr>
         <tr><td>Issue not found in search</td><td>Issue in a different project</td><td>Search is limited to the same project</td></tr>
         <tr><td>Attachment upload fails</td><td>Project storage limit (200 MB) exceeded</td><td>Clean up existing attachments in Attachments and retry</td></tr>

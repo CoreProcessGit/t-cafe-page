@@ -16,7 +16,7 @@ const TestReports = () => (
     <hr />
 
     <h2>1. 리포트 진입</h2>
-    <p>상단 탭 → <strong>Test Reports</strong></p>
+    <p>상단 탭 → Test Reports</p>
 
     <ScreenshotSlot label="Test Reports 메인 화면" src={img01} />
 
@@ -30,11 +30,11 @@ const TestReports = () => (
       <tbody>
         <tr><td>Admin</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Team Admin</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td><strong>Tester</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
-        <tr><td><strong>Developer</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>X</strong></td></tr>
+        <tr><td>Tester</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Developer</td><td className="center">O</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>리포트 조회는 모든 역할이 가능</strong>하지만, Export는 Admin / Team Admin / Tester만 가능합니다. Developer는 조회만 가능합니다.</p>
+    <p>→ 리포트 조회는 모든 역할이 가능하지만, Export는 Admin / Team Admin / Tester만 가능합니다. Developer는 조회만 가능합니다.</p>
 
     <hr />
 
@@ -45,35 +45,35 @@ const TestReports = () => (
     <h3>3-2. TP 상세 리포트 — View Type (3종)</h3>
     <p>TP 상세 리포트에서는 실행 결과를 3가지 관점(View Type)으로 테이블 형태로 확인할 수 있습니다. 세 가지 중 하나를 라디오 버튼으로 선택합니다.</p>
     <ul>
-      <li><strong>Folder View</strong> — TP 내부의 폴더 단위로 집계. 추가로 <em>All Levels / Level 1 / Level 2 …</em>로 폴더 깊이를 제한해 볼 수 있음</li>
-      <li><strong>Component View</strong> — TC의 Components 값(예: Frontend / Backend API …)별로 집계</li>
-      <li><strong>Tester View</strong> — 마지막으로 실행한 사용자(실행자)별로 집계</li>
+      <li>Folder View — TP 내부의 폴더 단위로 집계. 추가로 <em>All Levels / Level 1 / Level 2 …</em>로 폴더 깊이를 제한해 볼 수 있음</li>
+      <li>Component View — TC의 Components 값(예: Frontend / Backend API …)별로 집계</li>
+      <li>Tester View — 마지막으로 실행한 사용자(실행자)별로 집계</li>
     </ul>
 
     <h3>3-3. 리포트 테이블 컬럼 (선택 View별 공통)</h3>
     <p>선택한 View에 따라 첫 번째 컬럼이 Folder Name / Component Name / User Name으로 바뀌며, 나머지 통계 컬럼은 동일합니다:</p>
     <ul>
-      <li><strong>Total (A)</strong> — 전체 실행 항목 수</li>
-      <li><strong>Execution Results</strong> — Pass / Fail / Block / Skip (각 컬럼은 B / C / D / E로 표기)</li>
-      <li><strong>Weekly Planned (F)</strong> — 주간 계획 수</li>
-      <li><strong>Not Executed</strong> — <code>A - E - B - C - D</code></li>
-      <li><strong>Total Execution Rate</strong> — <code>(B+C+D)/(A-E)×100</code></li>
-      <li><strong>Planned Execution Rate</strong> — <code>(B+C+D)/F×100</code></li>
-      <li><strong>Total Success Rate</strong> — <code>B/(A-E)×100</code></li>
-      <li><strong>Execution Success Rate</strong> — <code>B/(B+C+D)×100</code></li>
+      <li>Total (A) — 전체 실행 항목 수</li>
+      <li>Execution Results — Pass / Fail / Block / Skip (각 컬럼은 B / C / D / E로 표기)</li>
+      <li>Weekly Planned (F) — 주간 계획 수</li>
+      <li>Not Executed — <code>A - E - B - C - D</code></li>
+      <li>Total Execution Rate — <code>(B+C+D)/(A-E)×100</code></li>
+      <li>Planned Execution Rate — <code>(B+C+D)/F×100</code></li>
+      <li>Total Success Rate — <code>B/(A-E)×100</code></li>
+      <li>Execution Success Rate — <code>B/(B+C+D)×100</code></li>
     </ul>
 
     <h3>3-4. Retestable Test Cases 섹션</h3>
-    <p>상세 페이지에는 연결된 Jira Issue가 완료 상태가 되어 재테스트가 필요한 TC를 모아 보여주는 섹션이 별도로 있습니다. <strong>Check Retestable</strong> 버튼은 Admin/Team Admin 권한 보유자만 이용할 수 있으며, 마지막 확인 시각(Retestable checked time)이 표시됩니다.</p>
+    <p>상세 페이지에는 연결된 Jira Issue가 완료 상태가 되어 재테스트가 필요한 TC를 모아 보여주는 섹션이 별도로 있습니다. Check Retestable 버튼은 Admin/Team Admin 권한 보유자만 이용할 수 있으며, 마지막 확인 시각(Retestable checked time)이 표시됩니다.</p>
 
     <hr />
 
     <h2>4. 시각화 방식</h2>
-    <p>T-CAFE의 Test Reports는 <strong>테이블 기반 metrics 뷰</strong>로 정보를 제공합니다. 파이/막대/선 등 별도의 차트 UI는 제공하지 않으며, Pass Rate 수준에 따라 행 배경색/텍스트 색상이 다음과 같이 달라집니다:</p>
+    <p>T-CAFE의 Test Reports는 테이블 기반 metrics 뷰로 정보를 제공합니다. 파이/막대/선 등 별도의 차트 UI는 제공하지 않으며, Pass Rate 수준에 따라 행 배경색/텍스트 색상이 다음과 같이 달라집니다:</p>
     <ul>
-      <li><strong>Pass Rate &gt; 80%</strong> — 상위 구간 (강조 색상)</li>
-      <li><strong>Pass Rate &gt; 60%</strong> — 중간 구간</li>
-      <li><strong>Pass Rate &lt; 60%</strong> — 경고 구간</li>
+      <li>Pass Rate &gt; 80% — 상위 구간 (강조 색상)</li>
+      <li>Pass Rate &gt; 60% — 중간 구간</li>
+      <li>Pass Rate &lt; 60% — 경고 구간</li>
     </ul>
     <p>실행 상태별 색상(Pass/Fail/Block/Skip/Not Yet)은 테이블 내 상태 셀·진행 바에 일관되게 적용됩니다.</p>
 
@@ -91,11 +91,11 @@ const TestReports = () => (
 
     <h3>필터 옵션 (3종)</h3>
     <ul>
-      <li><strong>Status</strong> — TP 상태(Prepairing / Open / Completed 등, Configuration에서 정의된 Plan Status 기준)</li>
-      <li><strong>Owner</strong> — TP 소유자로 필터</li>
-      <li><strong>Progress</strong> — Not Started / In Progress / Completed (진행률 구간)</li>
+      <li>Status — TP 상태(Prepairing / Open / Completed 등, Configuration에서 정의된 Plan Status 기준)</li>
+      <li>Owner — TP 소유자로 필터</li>
+      <li>Progress — Not Started / In Progress / Completed (진행률 구간)</li>
     </ul>
-    <p>필터 패널 상단의 <strong>Reset</strong> 또는 헤더의 <strong>Clear</strong> 버튼으로 전체 초기화 가능.</p>
+    <p>필터 패널 상단의 Reset 또는 헤더의 Clear 버튼으로 전체 초기화 가능.</p>
 
     <h3>컬럼 표시/숨기기</h3>
     <ul>
@@ -114,14 +114,14 @@ const TestReports = () => (
 
     <h3>지원 형식</h3>
     <ul>
-      <li><strong>Excel (XLSX)</strong> 단일 형식만 지원합니다. CSV / JSON 형식 export는 Test Reports에서는 제공하지 않습니다.</li>
+      <li>Excel (XLSX) 단일 형식만 지원합니다. CSV / JSON 형식 export는 Test Reports에서는 제공하지 않습니다.</li>
     </ul>
 
     <h3>절차</h3>
     <ol>
       <li>TP 상세 리포트 페이지에 진입</li>
       <li>원하는 View Type(Folder / Component / Tester)을 선택</li>
-      <li>테이블 헤더 우측의 <strong>Export to Excel</strong> 버튼 클릭</li>
+      <li>테이블 헤더 우측의 Export to Excel 버튼 클릭</li>
       <li>XLSX 파일이 즉시 다운로드됨 (별도 형식 선택 단계 없음)</li>
     </ol>
 
@@ -194,11 +194,11 @@ const TestReports = () => (
 
     <h3>경고 신호</h3>
     <ul>
-      <li><strong>Pass율이 갑자기 떨어짐</strong>: 새 빌드의 회귀 발생 가능성</li>
-      <li><strong>Block이 많음</strong>: 환경 문제 또는 사전 조건 미충족</li>
-      <li><strong>Skip이 많음</strong>: 테스트 자원 부족 또는 일정 압박</li>
-      <li><strong>Not Yet이 50% 이상</strong>: 진행이 너무 느림</li>
-      <li><strong>특정 컴포넌트만 Fail이 집중</strong>: 해당 모듈 품질 문제</li>
+      <li>Pass율이 갑자기 떨어짐: 새 빌드의 회귀 발생 가능성</li>
+      <li>Block이 많음: 환경 문제 또는 사전 조건 미충족</li>
+      <li>Skip이 많음: 테스트 자원 부족 또는 일정 압박</li>
+      <li>Not Yet이 50% 이상: 진행이 너무 느림</li>
+      <li>특정 컴포넌트만 Fail이 집중: 해당 모듈 품질 문제</li>
     </ul>
 
     <h3>안티 패턴 (피해야 할 상태)</h3>
@@ -223,7 +223,7 @@ const TestReports = () => (
     <p>A. 현재 버전에서는 프로젝트별로 분리되어 있습니다. 각 프로젝트에서 Excel로 Export한 뒤 외부 도구(Power BI, Excel 등)에서 통합하는 방식을 권장합니다.</p>
 
     <h3>Q. 리포트에 차트(파이/막대 등)가 포함되나요?</h3>
-    <p>A. 현재 Test Reports는 <strong>테이블 기반 metrics 뷰</strong>만 제공하며, 파이·막대·선 차트 같은 그래픽 시각화는 제공하지 않습니다. Excel Export 파일에도 차트는 포함되지 않습니다. 시각적 공유가 필요하다면 화면 스크린샷을 활용하거나 Export 후 Excel에서 차트를 직접 생성하시면 됩니다.</p>
+    <p>A. 현재 Test Reports는 테이블 기반 metrics 뷰만 제공하며, 파이·막대·선 차트 같은 그래픽 시각화는 제공하지 않습니다. Excel Export 파일에도 차트는 포함되지 않습니다. 시각적 공유가 필요하다면 화면 스크린샷을 활용하거나 Export 후 Excel에서 차트를 직접 생성하시면 됩니다.</p>
 
     <h3>Q. 리포트를 자동으로 이메일로 보낼 수 있나요?</h3>
     <p>A. 현재 버전에서는 수동 Export만 지원합니다. 자동 전송·스케줄링 기능은 제공하지 않습니다.</p>
@@ -265,7 +265,7 @@ const TestReportsEn = () => (
     <hr />
 
     <h2>1. Opening Reports</h2>
-    <p>Top tab → <strong>Test Reports</strong></p>
+    <p>Top tab → Test Reports</p>
 
     <ScreenshotSlot label="Test Reports main screen" src={img01} />
 
@@ -279,11 +279,11 @@ const TestReportsEn = () => (
       <tbody>
         <tr><td>Admin</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Team Admin</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td><strong>Tester</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>O</strong></td></tr>
-        <tr><td><strong>Developer</strong></td><td className="center"><strong>O</strong></td><td className="center"><strong>X</strong></td></tr>
+        <tr><td>Tester</td><td className="center">O</td><td className="center">O</td></tr>
+        <tr><td>Developer</td><td className="center">O</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>All roles can view reports</strong>, but only Admin / Team Admin / Tester can export. Developers have view-only access.</p>
+    <p>→ All roles can view reports, but only Admin / Team Admin / Tester can export. Developers have view-only access.</p>
 
     <hr />
 
@@ -294,35 +294,35 @@ const TestReportsEn = () => (
     <h3>3-2. TP Detail Report — View Types (3)</h3>
     <p>On the TP detail report, execution results are shown in a table format from three perspectives (View Types). Choose one via a radio button.</p>
     <ul>
-      <li><strong>Folder View</strong> — aggregates by folders inside the TP. You can also restrict depth with <em>All Levels / Level 1 / Level 2 …</em></li>
-      <li><strong>Component View</strong> — aggregates by the Components value of each TC (e.g., Frontend / Backend API …)</li>
-      <li><strong>Tester View</strong> — aggregates by the last executor (the user who ran it)</li>
+      <li>Folder View — aggregates by folders inside the TP. You can also restrict depth with <em>All Levels / Level 1 / Level 2 …</em></li>
+      <li>Component View — aggregates by the Components value of each TC (e.g., Frontend / Backend API …)</li>
+      <li>Tester View — aggregates by the last executor (the user who ran it)</li>
     </ul>
 
     <h3>3-3. Report Table Columns (common across Views)</h3>
     <p>Depending on the selected View, the first column becomes Folder Name / Component Name / User Name. The remaining metric columns are identical:</p>
     <ul>
-      <li><strong>Total (A)</strong> — number of executed items overall</li>
-      <li><strong>Execution Results</strong> — Pass / Fail / Block / Skip (labeled B / C / D / E)</li>
-      <li><strong>Weekly Planned (F)</strong> — weekly planned count</li>
-      <li><strong>Not Executed</strong> — <code>A - E - B - C - D</code></li>
-      <li><strong>Total Execution Rate</strong> — <code>(B+C+D)/(A-E)×100</code></li>
-      <li><strong>Planned Execution Rate</strong> — <code>(B+C+D)/F×100</code></li>
-      <li><strong>Total Success Rate</strong> — <code>B/(A-E)×100</code></li>
-      <li><strong>Execution Success Rate</strong> — <code>B/(B+C+D)×100</code></li>
+      <li>Total (A) — number of executed items overall</li>
+      <li>Execution Results — Pass / Fail / Block / Skip (labeled B / C / D / E)</li>
+      <li>Weekly Planned (F) — weekly planned count</li>
+      <li>Not Executed — <code>A - E - B - C - D</code></li>
+      <li>Total Execution Rate — <code>(B+C+D)/(A-E)×100</code></li>
+      <li>Planned Execution Rate — <code>(B+C+D)/F×100</code></li>
+      <li>Total Success Rate — <code>B/(A-E)×100</code></li>
+      <li>Execution Success Rate — <code>B/(B+C+D)×100</code></li>
     </ul>
 
     <h3>3-4. Retestable Test Cases Section</h3>
-    <p>The detail page has a dedicated section that collects TCs whose linked Jira issue has reached a completed status and therefore need retesting. The <strong>Check Retestable</strong> button is available only to users with Admin / Team Admin permission, and the last check time (Retestable checked time) is displayed.</p>
+    <p>The detail page has a dedicated section that collects TCs whose linked Jira issue has reached a completed status and therefore need retesting. The Check Retestable button is available only to users with Admin / Team Admin permission, and the last check time (Retestable checked time) is displayed.</p>
 
     <hr />
 
     <h2>4. Visualization</h2>
-    <p>Test Reports in T-CAFE provides information as a <strong>table-based metrics view</strong>. There are no separate chart UIs (pie / bar / line). Row background and text colors differ by Pass Rate threshold:</p>
+    <p>Test Reports in T-CAFE provides information as a table-based metrics view. There are no separate chart UIs (pie / bar / line). Row background and text colors differ by Pass Rate threshold:</p>
     <ul>
-      <li><strong>Pass Rate &gt; 80%</strong> — upper band (accent color)</li>
-      <li><strong>Pass Rate &gt; 60%</strong> — middle band</li>
-      <li><strong>Pass Rate &lt; 60%</strong> — warning band</li>
+      <li>Pass Rate &gt; 80% — upper band (accent color)</li>
+      <li>Pass Rate &gt; 60% — middle band</li>
+      <li>Pass Rate &lt; 60% — warning band</li>
     </ul>
     <p>The per-state colors (Pass / Fail / Block / Skip / Not Yet) are applied consistently to status cells and progress bars in the table.</p>
 
@@ -340,11 +340,11 @@ const TestReportsEn = () => (
 
     <h3>Filter Options (3)</h3>
     <ul>
-      <li><strong>Status</strong> — TP status (Prepairing / Open / Completed, etc., based on the Plan Statuses defined in Configuration)</li>
-      <li><strong>Owner</strong> — filter by TP owner</li>
-      <li><strong>Progress</strong> — Not Started / In Progress / Completed (progress-rate bands)</li>
+      <li>Status — TP status (Prepairing / Open / Completed, etc., based on the Plan Statuses defined in Configuration)</li>
+      <li>Owner — filter by TP owner</li>
+      <li>Progress — Not Started / In Progress / Completed (progress-rate bands)</li>
     </ul>
-    <p>Reset everything with <strong>Reset</strong> at the top of the filter panel or <strong>Clear</strong> in the header.</p>
+    <p>Reset everything with Reset at the top of the filter panel or Clear in the header.</p>
 
     <h3>Show / Hide Columns</h3>
     <ul>
@@ -363,14 +363,14 @@ const TestReportsEn = () => (
 
     <h3>Supported Format</h3>
     <ul>
-      <li>Only <strong>Excel (XLSX)</strong> is supported. CSV / JSON export is not offered in Test Reports.</li>
+      <li>Only Excel (XLSX) is supported. CSV / JSON export is not offered in Test Reports.</li>
     </ul>
 
     <h3>Steps</h3>
     <ol>
       <li>Open the TP detail report</li>
       <li>Select the desired View Type (Folder / Component / Tester)</li>
-      <li>Click the <strong>Export to Excel</strong> button at the top-right of the table</li>
+      <li>Click the Export to Excel button at the top-right of the table</li>
       <li>The XLSX file downloads immediately (no extra format-select step)</li>
     </ol>
 
@@ -443,11 +443,11 @@ const TestReportsEn = () => (
 
     <h3>Warning Signals</h3>
     <ul>
-      <li><strong>Pass rate dropped suddenly</strong>: a regression in a new build is likely</li>
-      <li><strong>Many Blocks</strong>: environment issues or unmet preconditions</li>
-      <li><strong>Many Skips</strong>: resource shortage or schedule pressure</li>
-      <li><strong>Not Yet over 50%</strong>: progress is too slow</li>
-      <li><strong>Fails concentrated in a single component</strong>: module quality issue</li>
+      <li>Pass rate dropped suddenly: a regression in a new build is likely</li>
+      <li>Many Blocks: environment issues or unmet preconditions</li>
+      <li>Many Skips: resource shortage or schedule pressure</li>
+      <li>Not Yet over 50%: progress is too slow</li>
+      <li>Fails concentrated in a single component: module quality issue</li>
     </ul>
 
     <h3>Anti-Patterns (avoid)</h3>
@@ -472,7 +472,7 @@ const TestReportsEn = () => (
     <p>A. The current version is project-scoped. We recommend exporting from each project to Excel and consolidating in an external tool (Power BI, Excel, etc.).</p>
 
     <h3>Q. Do reports include charts (pie / bar, etc.)?</h3>
-    <p>A. Test Reports currently provides only a <strong>table-based metrics view</strong>, with no graphical visualizations like pie / bar / line charts. The exported Excel file does not include charts either. If you need visual sharing, use screenshots or create charts in Excel after exporting.</p>
+    <p>A. Test Reports currently provides only a table-based metrics view, with no graphical visualizations like pie / bar / line charts. The exported Excel file does not include charts either. If you need visual sharing, use screenshots or create charts in Excel after exporting.</p>
 
     <h3>Q. Can reports be emailed automatically?</h3>
     <p>A. Only manual export is supported in the current version. Automatic sending / scheduling is not provided.</p>

@@ -25,11 +25,11 @@ const ImportExport = () => (
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>Import (CSV/JSON/Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>Export (CSV/JSON/Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td><td className="center">X</td></tr>
+        <tr><td>Import (CSV/JSON/Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Export (CSV/JSON/Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>Export는 Admin / Team Admin / Tester만</strong> 가능 (Developer는 조회만)<br />→ <strong>Import는 Admin / Team Admin만</strong> 가능 (데이터 변경 성격)</p>
+    <p>→ Export는 Admin / Team Admin / Tester만 가능 (Developer는 조회만)<br />→ Import는 Admin / Team Admin만 가능 (데이터 변경 성격)</p>
 
     <hr />
 
@@ -39,9 +39,9 @@ const ImportExport = () => (
         <tr><th>형식</th><th className="center">Import</th><th className="center">Export</th><th>비고</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>CSV</strong></td><td className="center">O</td><td className="center">O</td><td>엑셀/구글 시트 호환</td></tr>
-        <tr><td><strong>JSON</strong></td><td className="center">O</td><td className="center">O</td><td>다른 시스템 통합</td></tr>
-        <tr><td><strong>Excel (XLSX)</strong></td><td className="center">O</td><td className="center">O</td><td>엑셀 직접 사용</td></tr>
+        <tr><td>CSV</td><td className="center">O</td><td className="center">O</td><td>엑셀/구글 시트 호환</td></tr>
+        <tr><td>JSON</td><td className="center">O</td><td className="center">O</td><td>다른 시스템 통합</td></tr>
+        <tr><td>Excel (XLSX)</td><td className="center">O</td><td className="center">O</td><td>엑셀 직접 사용</td></tr>
       </tbody>
     </table>
 
@@ -50,50 +50,52 @@ const ImportExport = () => (
     <h2>3. Export (내보내기)</h2>
 
     <h3>3-1. 진입 경로</h3>
-    <p>Test Cases 페이지 상단 액션 바의 <strong>Export</strong> 버튼</p>
+    <p>Test Cases 페이지 상단 액션 바의 Export 버튼</p>
 
     <h3>3-2. 절차</h3>
     <ol>
       <li>(선택) 좌측 폴더에서 특정 폴더 선택, 또는 검색·필터 적용, 또는 체크박스로 TC 선택</li>
-      <li>상단의 <strong>Export</strong> 버튼 클릭</li>
-      <li>드롭다운 메뉴에서 형식 선택: <strong>Excel (.xlsx)</strong> / <strong>CSV (.csv)</strong> / <strong>JSON (.json)</strong> — 클릭 즉시 파일이 다운로드되며 별도 확인 단계는 없습니다</li>
+      <li>상단의 Export 버튼 클릭</li>
+      <li>드롭다운 메뉴에서 형식 선택: Excel (.xlsx) / CSV (.csv) / JSON (.json) — 클릭 즉시 파일이 다운로드되며 별도 확인 단계는 없습니다</li>
     </ol>
 
     <h3>3-2-1. 자동 적용되는 Export 범위</h3>
     <p>별도의 "범위 선택" 다이얼로그는 없으며, 다음 우선순위로 자동 결정됩니다:</p>
     <ol>
-      <li><strong>체크박스로 선택한 TC가 있으면</strong> → 선택된 TC만 Export</li>
-      <li><strong>선택이 없으면</strong> → 현재 화면에 표시된 필터 결과(filteredTestCases) 전체 Export</li>
+      <li>체크박스로 선택한 TC가 있으면 → 선택된 TC만 Export</li>
+      <li>선택이 없으면 → 현재 화면에 표시된 필터 결과(filteredTestCases) 전체 Export</li>
     </ol>
     <p>표시된 결과가 없으면 "No test cases to export" 경고가 표시됩니다.</p>
 
     <ScreenshotSlot label="Export 메뉴" src={img01} />
 
     <h3>3-3. Export 항목 (실제 출력 필드 — 컬럼 순서 그대로)</h3>
+    <aside className="guide-callout info">
+      Excel / CSV / JSON 세 포맷 모두 동일한 컬럼 순서로 출력됩니다. 한 포맷에서 편집한 파일을 다른 포맷으로 저장하여 재 import해도 round-trip 호환됩니다.
+    </aside>
     <ol>
-      <li><strong>Folder</strong> — TC가 속한 폴더의 leaf 이름 (예: <code>OAuth</code>)</li>
-      <li><strong>Folder Path</strong> — 루트부터의 전체 경로, <code>/</code> 구분자 (예: <code>Authentication/Login/OAuth</code>)</li>
-      <li><strong>Key</strong> (예: PROJ-1)</li>
-      <li><strong>Name</strong> (필수, 헤더에 <code>*</code> 표시)</li>
-      <li><strong>Description</strong></li>
-      <li><strong>Objective</strong></li>
-      <li><strong>Precondition</strong></li>
-      <li><strong>Type</strong> (single / factor)</li>
-      <li><strong>Case Type</strong></li>
-      <li><strong>Priority</strong></li>
-      <li><strong>Owner</strong></li>
-      <li><strong>Components</strong>, <strong>Labels</strong></li>
-      <li><strong>User Defined Fields (UDF)</strong> — 정의된 필드 각각이 별도 컬럼으로 추가 (필수 필드는 헤더에 <code>*</code> 표시)</li>
-      <li><strong>Test Steps</strong> — Step No / Step / Test Data / Expected Result</li>
+      <li>Folder — TC가 속한 폴더의 leaf 이름 (예: <code>OAuth</code>)</li>
+      <li>Folder Path — 루트부터의 전체 경로, <code>/</code> 구분자 (예: <code>Authentication/Login/OAuth</code>)</li>
+      <li>Key (예: PROJ-1)</li>
+      <li>Name (필수, 헤더에 <code>*</code> 표시)</li>
+      <li>Description</li>
+      <li>Precondition</li>
+      <li>Type (single / factor)</li>
+      <li>Case Type</li>
+      <li>Priority</li>
+      <li>Status — <code>Draft</code> 또는 <code>Confirmed</code> (TC Status)</li>
+      <li>Components, Labels</li>
+      <li>User Defined Fields (UDF) — 정의된 필드 각각이 별도 컬럼으로 추가 (필수 필드는 헤더에 <code>*</code> 표시)</li>
+      <li>Test Steps — Step No / Step / Test Data / Expected Result</li>
     </ol>
 
     <h3>3-4. CSV 형식 예시</h3>
-    <pre><code>{`Folder,Folder Path,Key,Name *,Description,Type,Case Type,Priority,Owner,Components,Labels,Step No,Step,Test Data,Expected Result
-OAuth,Authentication/Login/OAuth,PROJ-1,Login with valid credentials,Verify user can login,single,Function,High,John Doe,"Frontend,Authentication","smoke,critical",1,Navigate to login page,URL: /login,Login page displayed
-,,,,,,,,,,,2,Enter credentials,user/pass,Logged in
-Login,Authentication/Login,PROJ-2,Login with invalid password,,single,Function,Medium,John Doe,"Frontend,Authentication",negative,1,Open page,-,Page loads`}</code></pre>
+    <pre><code>{`Folder,Folder Path,Key,Name *,Description,Precondition,Type,Case Type,Priority,Status,Components,Labels,Step No,Step,Test Data,Expected Result
+OAuth,Authentication/Login/OAuth,PROJ-1,Login with valid credentials,Verify user can login,User account exists,single,Function,High,Confirmed,"Frontend,Authentication","smoke,critical",1,Navigate to login page,URL: /login,Login page displayed
+,,,,,,,,,,,,2,Enter credentials,user/pass,Logged in
+Login,Authentication/Login,PROJ-2,Login with invalid password,,,single,Function,Medium,Draft,"Frontend,Authentication",negative,1,Open page,-,Page loads`}</code></pre>
     <aside className="guide-callout info">
-      <strong>다단계 스텝 표기</strong>: 같은 TC에 여러 스텝이 있으면 두 번째 스텝부터 같은 TC의 메타데이터(Folder/Key/Name 등)를 비워둡니다. 같은 TC에 이어지는 스텝으로 인식됩니다.
+      다단계 스텝 표기: 같은 TC에 여러 스텝이 있으면 두 번째 스텝부터 같은 TC의 메타데이터(Folder/Key/Name 등)를 비워둡니다. 같은 TC에 이어지는 스텝으로 인식됩니다.
     </aside>
 
     <h3>3-5. JSON 형식 예시 (실제 구조)</h3>
@@ -107,19 +109,19 @@ Login,Authentication/Login,PROJ-2,Login with invalid password,,single,Function,M
   },
   "testCases": [
     {
+      "folder": "OAuth",
+      "folderPath": "Authentication/Login/OAuth",
       "key": "PROJ-1",
       "name": "Login with valid credentials",
       "description": "Verify user can login",
-      "objective": "",
       "precondition": "User account exists",
       "type": "single",
       "caseType": "Function",
       "priority": "High",
-      "owner": "John Doe",
+      "status": "Confirmed",
       "components": ["Frontend", "Authentication"],
       "labels": ["smoke", "critical"],
-      "folder": "OAuth",
-      "folderPath": "Authentication/Login/OAuth",
+      "userDefinedFields": {},
       "testSteps": [
         {
           "step": "Navigate to login page",
@@ -144,84 +146,119 @@ Login,Authentication/Login,PROJ-2,Login with invalid password,,single,Function,M
     <h2>4. Import (가져오기)</h2>
 
     <h3>4-1. 진입 경로</h3>
-    <p>Test Cases 페이지 상단 액션 바의 <strong>Import</strong> 버튼</p>
+    <p>Test Cases 페이지 상단 액션 바의 Import 버튼</p>
     <aside className="guide-callout">Admin / Team Admin만 표시됩니다 (Tester / Developer는 Import 불가).</aside>
 
     <h3>4-2. 절차</h3>
     <ol>
-      <li>상단의 <strong>Import</strong> 버튼 클릭</li>
-      <li><strong>Import Template Modal</strong>이 열립니다. 다음 두 가지 작업이 가능합니다:
+      <li>상단의 Import 버튼 클릭</li>
+      <li>Import Template Modal이 열립니다. 다음 두 가지 작업이 가능합니다:
         <ul>
-          <li><strong>템플릿 다운로드</strong> — CSV / Excel / JSON 3가지 형식 중 선택. 템플릿에는 현재 프로젝트의 Priorities, Case Types, Components, User-Defined Fields가 미리 채워져 있어 다운로드 → 데이터 입력 → 그대로 Import 가능합니다</li>
-          <li><strong>파일 선택하여 Import</strong> — 이미 준비된 파일이 있으면 바로 업로드</li>
+          <li>템플릿 다운로드 — CSV / Excel / JSON 3가지 형식 중 선택. 템플릿에는 현재 프로젝트의 Priorities, Case Types, Components, User-Defined Fields가 미리 채워져 있어 다운로드 → 데이터 입력 → 그대로 Import 가능합니다</li>
+          <li>파일 선택하여 Import — 이미 준비된 파일이 있으면 바로 업로드</li>
         </ul>
       </li>
       <li>"Select File to Import" 버튼 → OS 파일 선택 다이얼로그 → <code>.csv</code> / <code>.json</code> / <code>.xlsx</code> 선택</li>
       <li>업로드된 파일이 파싱·검증·import됩니다 (별도 매핑 화면, 미리보기 화면, 옵션 선택 화면은 없습니다)</li>
-      <li>진행률 다이얼로그가 표시됩니다 (한 번에 최대 <strong>5,000개</strong>)</li>
+      <li>진행률 다이얼로그가 표시됩니다 (한 번에 최대 5,000개)</li>
       <li>완료 후 결과 요약 모달(Added / Updated / Skipped / Failed 카운트)과 경고/실패 목록이 표시됩니다</li>
     </ol>
 
     <ScreenshotSlot label="Import 메뉴" src={img02} />
 
     <h3>4-3. Import 동작 방식 (자동 merge 모드)</h3>
-    <p>T-CAFE는 항상 <strong>merge 모드</strong>로 import하며, Skip / Overwrite / Create Duplicate 같은 사용자 선택 옵션을 제공하지 않습니다. 동작은 다음과 같이 자동 결정됩니다:</p>
+    <p>T-CAFE는 항상 merge 모드로 import하며, Skip / Overwrite / Create Duplicate 같은 사용자 선택 옵션을 제공하지 않습니다. 동작은 다음과 같이 자동 결정됩니다:</p>
     <ul>
-      <li>파일의 <code>key</code>가 기존 TC의 <code>key</code>와 일치하면 → <strong>해당 TC를 부분 업데이트</strong> (입력된 비어있지 않은 필드만 갱신)</li>
-      <li>일치하는 TC가 없거나 <code>key</code>가 비어 있으면 → <strong>새 TC 생성</strong>, 새 키 자동 부여 (<code>{'<프로젝트키>-<순번>'}</code>)</li>
-      <li>유효하지 않은 행(필수 항목 누락 등)은 <strong>Skipped</strong>로 카운트되며 경고에 사유가 기록됩니다</li>
+      <li>파일의 <code>key</code>가 기존 TC의 <code>key</code>와 일치하면 → 해당 TC를 부분 업데이트 (입력된 비어있지 않은 필드만 갱신)</li>
+      <li>일치하는 TC가 없거나 <code>key</code>가 비어 있으면 → 새 TC 생성, 새 키 자동 부여 (<code>{'<프로젝트키>-<순번>'}</code>)</li>
+      <li>유효하지 않은 행(필수 항목 누락 등)은 Skipped로 카운트되며 경고에 사유가 기록됩니다</li>
+    </ul>
+
+    <h3>4-3-0. Key 검증 규칙</h3>
+    <ul>
+      <li>비어있음 → 자동으로 <code>{'<프로젝트키>-<순번>'}</code> 형식으로 생성됨</li>
+      <li>형식이 잘못됨 (예: <code>bad-key</code>) → 경고 후 자동 생성으로 대체</li>
+      <li>다른 프로젝트 prefix (예: RC01 프로젝트에 <code>PROJ-999</code>) → 경고 후 자동 생성으로 대체</li>
+      <li>같은 파일 내에서 같은 Key 를 여러 행에 사용 → 2번째 이후 행은 Failed 로 분류</li>
+      <li>같은 import 세션에서 방금 생성된 Key 를 재사용 → Failed 로 분류 (덮어쓰기 방지)</li>
+      <li>기존 DB 에 존재하는 Key → 해당 TC UPDATE</li>
+    </ul>
+
+    <h3>4-3-1. 필드 / 배열 길이 상한</h3>
+    <p>아래 상한을 초과하는 값이 들어오면 자동으로 잘린 후 저장되고 결과 리포트에 경고가 표시됩니다 (TC 자체는 저장됨):</p>
+    <table className="guide-table">
+      <thead>
+        <tr><th>필드</th><th>상한</th><th>초과 시</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Name</td><td>500자</td><td>500자까지 저장</td></tr>
+        <tr><td>Description</td><td>16,000자</td><td>잘림</td></tr>
+        <tr><td>Precondition</td><td>16,000자</td><td>잘림</td></tr>
+        <tr><td>Test Steps (개수)</td><td>500개</td><td>앞 500개만 유지</td></tr>
+        <tr><td>각 Step의 Step / Test Data / Expected Result</td><td>5,000자</td><td>잘림</td></tr>
+        <tr><td>Components / Labels (개수)</td><td>각 50개</td><td>앞 50개만 유지</td></tr>
+        <tr><td>UDF Text</td><td>16,000자</td><td>잘림</td></tr>
+        <tr><td>UDF URL</td><td>2,000자</td><td>잘림</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-3-2. Status (TC Status) 컬럼</h3>
+    <ul>
+      <li>허용 값: <code>Draft</code>, <code>Confirmed</code> (대소문자 무관)</li>
+      <li>빈 값 또는 허용 값 외: <code>Draft</code> 로 저장되며 경고 기록</li>
+      <li>Confirmed 로 import 한 TC는 Test Plan 에 바로 추가 가능. Draft 는 Test Plan 추가 목록에 나오지 않음.</li>
     </ul>
 
     <h3>4-3-1. 폴더 자동 생성 (folderPath 기반)</h3>
     <p>Import 시 <code>folder path</code> 컬럼 값에 따라 폴더가 자동 처리됩니다:</p>
     <ul>
-      <li><code>folder path</code>가 <strong>지정된 경로 형식</strong>(예: <code>Authentication/Login/OAuth</code>)이면 → 경로의 각 레벨이 <strong>자동 생성</strong>되고 TC가 leaf 폴더에 배정됩니다. 이미 존재하는 폴더는 재사용되어 중복 생성되지 않습니다.</li>
-      <li><code>folder path</code>가 <strong>비어 있으면</strong> → 업로드한 파일명에서 확장자를 제거한 이름으로 root-level 폴더가 자동 생성되고 TC가 그 폴더에 배정됩니다 (기존 동작 유지).</li>
+      <li><code>folder path</code>가 지정된 경로 형식(예: <code>Authentication/Login/OAuth</code>)이면 → 경로의 각 레벨이 자동 생성되고 TC가 leaf 폴더에 배정됩니다. 이미 존재하는 폴더는 재사용되어 중복 생성되지 않습니다.</li>
+      <li><code>folder path</code>가 비어 있으면 → 업로드한 파일명에서 확장자를 제거한 이름으로 root-level 폴더가 자동 생성되고 TC가 그 폴더에 배정됩니다 (기존 동작 유지).</li>
       <li>구분자는 <code>/</code> (권장) 또는 <code>{' > '}</code>(legacy 호환) 둘 다 인식됩니다.</li>
     </ul>
     <aside className="guide-callout info">
-      <strong>동일 레벨 폴더명 중복 방지</strong>: 같은 부모 폴더 아래에 같은 이름의 폴더는 단 1개만 존재합니다. Import가 같은 경로에 대해 중복 폴더를 만들지 않으므로, 같은 파일을 여러 번 import해도 폴더는 그대로 유지됩니다.
+      동일 레벨 폴더명 중복 방지: 같은 부모 폴더 아래에 같은 이름의 폴더는 단 1개만 존재합니다. Import가 같은 경로에 대해 중복 폴더를 만들지 않으므로, 같은 파일을 여러 번 import해도 폴더는 그대로 유지됩니다.
     </aside>
 
     <h3>4-3-2. 멱등성 (같은 파일 재 import)</h3>
     <p>같은 Export 파일을 다시 import하면:</p>
     <ul>
-      <li>Key가 일치하는 모든 TC는 <strong>UPDATE</strong>만 발생, 새 INSERT는 일어나지 않습니다.</li>
-      <li>folderPath가 같으면 <strong>같은 폴더가 재사용</strong>되어 새 폴더가 생기지 않습니다.</li>
-      <li>결과적으로 <strong>데이터 중복 없이 정합성이 회복</strong>됩니다 — 부분 실패 시 같은 파일을 다시 import하면 안전하게 회복됩니다.</li>
+      <li>Key가 일치하는 모든 TC는 UPDATE만 발생, 새 INSERT는 일어나지 않습니다.</li>
+      <li>folderPath가 같으면 같은 폴더가 재사용되어 새 폴더가 생기지 않습니다.</li>
+      <li>결과적으로 데이터 중복 없이 정합성이 회복됩니다 — 부분 실패 시 같은 파일을 다시 import하면 안전하게 회복됩니다.</li>
     </ul>
 
     <h3>4-3-3. 동시 Import 차단 (세션 lock)</h3>
-    <p>같은 프로젝트에 대해 Import는 <strong>동시에 1명만</strong> 실행할 수 있습니다:</p>
+    <p>같은 프로젝트에 대해 Import는 동시에 1명만 실행할 수 있습니다:</p>
     <ul>
-      <li>다른 사용자가 이미 Import 진행 중이면 → "<strong>Another import is currently in progress for this project. Please try again in a few minutes.</strong>" 메시지가 표시되고 차단됩니다.</li>
-      <li>비정상 종료(브라우저 닫기, 네트워크 단절)로 세션이 멈춰도 <strong>5분 이내 자동 회복</strong>되어 다른 사용자가 Import 가능합니다.</li>
+      <li>다른 사용자가 이미 Import 진행 중이면 → "Another import is currently in progress for this project. Please try again in a few minutes." 메시지가 표시되고 차단됩니다.</li>
+      <li>비정상 종료(브라우저 닫기, 네트워크 단절)로 세션이 멈춰도 5분 이내 자동 회복되어 다른 사용자가 Import 가능합니다.</li>
     </ul>
 
     <h3>4-4. 인식되는 컬럼명 (대소문자 무시, 끝의 <code>*</code> 자동 제거)</h3>
     <ul>
-      <li><strong>필수</strong>: <code>name</code></li>
-      <li><strong>식별</strong>: <code>key</code> — 매칭 시 업데이트, 비어 있으면 신규 생성</li>
-      <li><strong>일반 필드</strong>: <code>description</code>, <code>objective</code>, <code>precondition</code>, <code>type</code>(single/factor), <code>case type</code>, <code>priority</code>, <code>owner</code></li>
-      <li><strong>폴더</strong>: <code>folder</code>, <code>folder path</code> — <code>folder path</code>가 우선 적용. 경로 형식(<code>A/B/C</code>)이면 중첩 폴더가 자동 생성됨. 둘 다 비어 있으면 파일명으로 폴더 자동 생성</li>
-      <li><strong>다중값</strong>: <code>components</code>, <code>labels</code> — 콤마 또는 세미콜론으로 구분</li>
-      <li><strong>스텝</strong>: <code>step no</code>, <code>step</code>(또는 <code>step description</code>), <code>test data</code>, <code>expected result</code></li>
-      <li><strong>UDF</strong>: Configuration에 정의된 사용자 정의 필드 이름과 일치하면 자동 매핑 (체크박스/숫자/선택형은 적절히 변환). <strong>required UDF가 비어 있으면 해당 행 SKIP</strong></li>
+      <li>필수: <code>name</code></li>
+      <li>식별: <code>key</code> — 매칭 시 업데이트, 비어 있으면 신규 생성</li>
+      <li>일반 필드: <code>description</code>, <code>objective</code>, <code>precondition</code>, <code>type</code>(single/factor), <code>case type</code>, <code>priority</code>, <code>owner</code></li>
+      <li>폴더: <code>folder</code>, <code>folder path</code> — <code>folder path</code>가 우선 적용. 경로 형식(<code>A/B/C</code>)이면 중첩 폴더가 자동 생성됨. 둘 다 비어 있으면 파일명으로 폴더 자동 생성</li>
+      <li>다중값: <code>components</code>, <code>labels</code> — 콤마 또는 세미콜론으로 구분</li>
+      <li>스텝: <code>step no</code>, <code>step</code>(또는 <code>step description</code>), <code>test data</code>, <code>expected result</code></li>
+      <li>UDF: Configuration에 정의된 사용자 정의 필드 이름과 일치하면 자동 매핑 (체크박스/숫자/선택형은 적절히 변환). required UDF가 비어 있으면 해당 행 SKIP</li>
     </ul>
 
     <h3>4-5. Import 결과 응답</h3>
     <p>완료 후 결과 모달에 다음 값이 표시됩니다:</p>
     <ul>
-      <li><strong>Added</strong> — 새로 생성된 TC 개수 (녹색 배지)</li>
-      <li><strong>Updated</strong> — 키 매칭으로 업데이트된 TC 개수 (파란 배지)</li>
-      <li><strong>Skipped</strong> — 검증 실패로 건너뛴 행 개수 (주황 배지) — name 누락, required UDF 누락 등</li>
-      <li><strong>Failed</strong> — INSERT/UPDATE 도중 SQL 에러로 실패한 행 (빨간 배지, 신규)</li>
-      <li><strong>warnings</strong> 카테고리화: <strong>Replaced</strong>(invalid 값을 default로 대체), <strong>Excluded</strong>(unknown component/issue 제외), <strong>Skipped</strong>(SKIP 사유), <strong>Other</strong>(기타). 각 항목은 <strong>row 번호</strong>와 함께 표시됩니다.</li>
-      <li><strong>Download Log</strong> 버튼으로 텍스트 파일 다운로드 가능 — 외부 도구로 분석할 수 있도록 모든 카테고리(Failed/Replaced/Excluded/Skipped/Other)가 row 번호와 함께 기록됩니다.</li>
+      <li>Added — 새로 생성된 TC 개수 (녹색 배지)</li>
+      <li>Updated — 키 매칭으로 업데이트된 TC 개수 (파란 배지)</li>
+      <li>Skipped — 검증 실패로 건너뛴 행 개수 (주황 배지) — name 누락, required UDF 누락 등</li>
+      <li>Failed — INSERT/UPDATE 도중 SQL 에러로 실패한 행 (빨간 배지, 신규)</li>
+      <li>warnings 카테고리화: Replaced(invalid 값을 default로 대체), Excluded(unknown component/issue 제외), Skipped(SKIP 사유), Other(기타). 각 항목은 row 번호와 함께 표시됩니다.</li>
+      <li>Download Log 버튼으로 텍스트 파일 다운로드 가능 — 외부 도구로 분석할 수 있도록 모든 카테고리(Failed/Replaced/Excluded/Skipped/Other)가 row 번호와 함께 기록됩니다.</li>
     </ul>
     <p>한 번의 Import에서 5,000개를 초과하면 전체가 거부되며 "Import size exceeds maximum limit of 5000 test cases" 에러가 표시됩니다.</p>
     <aside className="guide-callout info">
-      <strong>5,000 TC 처리 시간</strong>: 평균 약 20~25초 (500개 batch × 10번 = 약 1.5~2초/batch). Bulk INSERT + 메모리 폴더 캐시로 N+1 쿼리 없이 처리됩니다.
+      5,000 TC 처리 시간: 평균 약 20~25초 (500개 batch × 10번 = 약 1.5~2초/batch). Bulk INSERT + 메모리 폴더 캐시로 N+1 쿼리 없이 처리됩니다.
     </aside>
 
     <hr />
@@ -258,20 +295,20 @@ PROJ-1 | 2 | Type | username | Field filled`}</code></pre>
 
     <h3>DO</h3>
     <ul>
-      <li><strong>Import Template Modal에서 템플릿 다운로드</strong>: 현재 프로젝트의 Priority/Case Type/Component/UDF가 미리 채워져 있어 검증 오류가 줄어듭니다</li>
-      <li><strong>소량으로 먼저 테스트</strong>: 5~10개로 Import 테스트 후 전체 진행</li>
-      <li><strong>백업 후 Import</strong>: 기존 데이터를 먼저 Export하여 보관</li>
-      <li><strong>인코딩 확인</strong>: UTF-8 (한글 사용 시 BOM 권장)</li>
-      <li><strong>컬럼명 확인</strong>: 인식되는 컬럼명(4-4)에 맞춰 헤더 작성</li>
-      <li><strong>folder path 활용</strong>: 중첩 폴더 구조를 유지하려면 <code>folder path</code> 컬럼에 <code>A/B/C</code> 형식으로 작성</li>
-      <li><strong>5,000건 단위 분할</strong>: 한 번에 5,000건 초과 시 거부됨</li>
-      <li><strong>실패 시 같은 파일 재 import</strong>: 멱등성이 보장되므로 부분 실패 후 재 import해도 안전</li>
+      <li>Import Template Modal에서 템플릿 다운로드: 현재 프로젝트의 Priority/Case Type/Component/UDF가 미리 채워져 있어 검증 오류가 줄어듭니다</li>
+      <li>소량으로 먼저 테스트: 5~10개로 Import 테스트 후 전체 진행</li>
+      <li>백업 후 Import: 기존 데이터를 먼저 Export하여 보관</li>
+      <li>인코딩 확인: UTF-8 (한글 사용 시 BOM 권장)</li>
+      <li>컬럼명 확인: 인식되는 컬럼명(4-4)에 맞춰 헤더 작성</li>
+      <li>folder path 활용: 중첩 폴더 구조를 유지하려면 <code>folder path</code> 컬럼에 <code>A/B/C</code> 형식으로 작성</li>
+      <li>5,000건 단위 분할: 한 번에 5,000건 초과 시 거부됨</li>
+      <li>실패 시 같은 파일 재 import: 멱등성이 보장되므로 부분 실패 후 재 import해도 안전</li>
     </ul>
 
     <h3>DON'T</h3>
     <ul>
       <li>5,000건 초과 단일 파일 (자동 거부됨)</li>
-      <li>같은 <code>key</code>를 가진 행을 두 번 Import (merge 모드라 두 번째에 업데이트 발생) — 단, <strong>의도적 멱등성 활용</strong>은 OK</li>
+      <li>같은 <code>key</code>를 가진 행을 두 번 Import (merge 모드라 두 번째에 업데이트 발생) — 단, 의도적 멱등성 활용은 OK</li>
       <li>Configuration(Priority / Case Type / Component) 미설정 상태로 Import — 검증 오류 다수 발생</li>
       <li>같은 프로젝트에 두 사람이 동시 Import — 두 번째 사용자는 차단됨</li>
       <li>Folder Path에 <code>/</code> 문자가 포함된 폴더명 사용 (구분자로 잘못 인식됨)</li>
@@ -361,11 +398,11 @@ const ImportExportEn = () => (
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>Import (CSV / JSON / Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>Export (CSV / JSON / Excel)</strong></td><td className="center">O</td><td className="center">O</td><td className="center"><strong>O</strong></td><td className="center">X</td></tr>
+        <tr><td>Import (CSV / JSON / Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Export (CSV / JSON / Excel)</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>Export is available to Admin / Team Admin / Tester</strong> (Developers have view-only access)<br />→ <strong>Import is Admin / Team Admin only</strong> (write action)</p>
+    <p>→ Export is available to Admin / Team Admin / Tester (Developers have view-only access)<br />→ Import is Admin / Team Admin only (write action)</p>
 
     <hr />
 
@@ -375,9 +412,9 @@ const ImportExportEn = () => (
         <tr><th>Format</th><th className="center">Import</th><th className="center">Export</th><th>Notes</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>CSV</strong></td><td className="center">O</td><td className="center">O</td><td>Compatible with Excel / Google Sheets</td></tr>
-        <tr><td><strong>JSON</strong></td><td className="center">O</td><td className="center">O</td><td>For integration with other systems</td></tr>
-        <tr><td><strong>Excel (XLSX)</strong></td><td className="center">O</td><td className="center">O</td><td>Used directly in Excel</td></tr>
+        <tr><td>CSV</td><td className="center">O</td><td className="center">O</td><td>Compatible with Excel / Google Sheets</td></tr>
+        <tr><td>JSON</td><td className="center">O</td><td className="center">O</td><td>For integration with other systems</td></tr>
+        <tr><td>Excel (XLSX)</td><td className="center">O</td><td className="center">O</td><td>Used directly in Excel</td></tr>
       </tbody>
     </table>
 
@@ -386,50 +423,52 @@ const ImportExportEn = () => (
     <h2>3. Export</h2>
 
     <h3>3-1. Navigation</h3>
-    <p>The <strong>Export</strong> button in the top action bar of the Test Cases page.</p>
+    <p>The Export button in the top action bar of the Test Cases page.</p>
 
     <h3>3-2. Steps</h3>
     <ol>
       <li>(Optional) Select a folder in the left panel, or apply a search / filter, or check TCs with checkboxes</li>
-      <li>Click the <strong>Export</strong> button at the top</li>
-      <li>Choose a format from the dropdown: <strong>Excel (.xlsx)</strong> / <strong>CSV (.csv)</strong> / <strong>JSON (.json)</strong> — the file downloads immediately on click, without a confirmation step</li>
+      <li>Click the Export button at the top</li>
+      <li>Choose a format from the dropdown: Excel (.xlsx) / CSV (.csv) / JSON (.json) — the file downloads immediately on click, without a confirmation step</li>
     </ol>
 
     <h3>3-2-1. Automatic Export Scope</h3>
     <p>There is no separate "Select Scope" dialog. The scope is determined automatically by the following priority:</p>
     <ol>
-      <li><strong>If any TCs are checked</strong> → only the selected TCs are exported</li>
-      <li><strong>If nothing is selected</strong> → the entire filtered result (filteredTestCases) currently displayed is exported</li>
+      <li>If any TCs are checked → only the selected TCs are exported</li>
+      <li>If nothing is selected → the entire filtered result (filteredTestCases) currently displayed is exported</li>
     </ol>
     <p>If there are no displayed results, a "No test cases to export" warning is shown.</p>
 
     <ScreenshotSlot label="Export menu" src={img01} />
 
     <h3>3-3. Export Fields (output order as written)</h3>
+    <aside className="guide-callout info">
+      Excel / CSV / JSON all three formats share the same column order. A file edited in one format can be re-imported as any other format (round-trip compatible).
+    </aside>
     <ol>
-      <li><strong>Folder</strong> — the leaf folder name the TC belongs to (e.g., <code>OAuth</code>)</li>
-      <li><strong>Folder Path</strong> — the full path from root, joined by <code>/</code> (e.g., <code>Authentication/Login/OAuth</code>)</li>
-      <li><strong>Key</strong> (e.g., PROJ-1)</li>
-      <li><strong>Name</strong> (required, marked with <code>*</code> in the header)</li>
-      <li><strong>Description</strong></li>
-      <li><strong>Objective</strong></li>
-      <li><strong>Precondition</strong></li>
-      <li><strong>Type</strong> (single / factor)</li>
-      <li><strong>Case Type</strong></li>
-      <li><strong>Priority</strong></li>
-      <li><strong>Owner</strong></li>
-      <li><strong>Components</strong>, <strong>Labels</strong></li>
-      <li><strong>User Defined Fields (UDF)</strong> — each defined field is added as a separate column (required fields are marked with <code>*</code> in the header)</li>
-      <li><strong>Test Steps</strong> — Step No / Step / Test Data / Expected Result</li>
+      <li>Folder — the leaf folder name the TC belongs to (e.g., <code>OAuth</code>)</li>
+      <li>Folder Path — the full path from root, joined by <code>/</code> (e.g., <code>Authentication/Login/OAuth</code>)</li>
+      <li>Key (e.g., PROJ-1)</li>
+      <li>Name (required, marked with <code>*</code> in the header)</li>
+      <li>Description</li>
+      <li>Precondition</li>
+      <li>Type (single / factor)</li>
+      <li>Case Type</li>
+      <li>Priority</li>
+      <li>Status — <code>Draft</code> or <code>Confirmed</code> (TC Status)</li>
+      <li>Components, Labels</li>
+      <li>User Defined Fields (UDF) — each defined field is added as a separate column (required fields are marked with <code>*</code> in the header)</li>
+      <li>Test Steps — Step No / Step / Test Data / Expected Result</li>
     </ol>
 
     <h3>3-4. CSV Example</h3>
-    <pre><code>{`Folder,Folder Path,Key,Name *,Description,Type,Case Type,Priority,Owner,Components,Labels,Step No,Step,Test Data,Expected Result
-OAuth,Authentication/Login/OAuth,PROJ-1,Login with valid credentials,Verify user can login,single,Function,High,John Doe,"Frontend,Authentication","smoke,critical",1,Navigate to login page,URL: /login,Login page displayed
-,,,,,,,,,,,2,Enter credentials,user/pass,Logged in
-Login,Authentication/Login,PROJ-2,Login with invalid password,,single,Function,Medium,John Doe,"Frontend,Authentication",negative,1,Open page,-,Page loads`}</code></pre>
+    <pre><code>{`Folder,Folder Path,Key,Name *,Description,Precondition,Type,Case Type,Priority,Status,Components,Labels,Step No,Step,Test Data,Expected Result
+OAuth,Authentication/Login/OAuth,PROJ-1,Login with valid credentials,Verify user can login,User account exists,single,Function,High,Confirmed,"Frontend,Authentication","smoke,critical",1,Navigate to login page,URL: /login,Login page displayed
+,,,,,,,,,,,,2,Enter credentials,user/pass,Logged in
+Login,Authentication/Login,PROJ-2,Login with invalid password,,,single,Function,Medium,Draft,"Frontend,Authentication",negative,1,Open page,-,Page loads`}</code></pre>
     <aside className="guide-callout info">
-      <strong>Multi-step rows</strong>: when a TC has multiple steps, leave the TC metadata (Folder / Key / Name, etc.) blank from the second step onward — these rows are recognized as continuation steps of the same TC.
+      Multi-step rows: when a TC has multiple steps, leave the TC metadata (Folder / Key / Name, etc.) blank from the second step onward — these rows are recognized as continuation steps of the same TC.
     </aside>
 
     <h3>3-5. JSON Example (actual structure)</h3>
@@ -443,19 +482,19 @@ Login,Authentication/Login,PROJ-2,Login with invalid password,,single,Function,M
   },
   "testCases": [
     {
+      "folder": "OAuth",
+      "folderPath": "Authentication/Login/OAuth",
       "key": "PROJ-1",
       "name": "Login with valid credentials",
       "description": "Verify user can login",
-      "objective": "",
       "precondition": "User account exists",
       "type": "single",
       "caseType": "Function",
       "priority": "High",
-      "owner": "John Doe",
+      "status": "Confirmed",
       "components": ["Frontend", "Authentication"],
       "labels": ["smoke", "critical"],
-      "folder": "OAuth",
-      "folderPath": "Authentication/Login/OAuth",
+      "userDefinedFields": {},
       "testSteps": [
         {
           "step": "Navigate to login page",
@@ -480,84 +519,119 @@ Login,Authentication/Login,PROJ-2,Login with invalid password,,single,Function,M
     <h2>4. Import</h2>
 
     <h3>4-1. Navigation</h3>
-    <p>The <strong>Import</strong> button in the top action bar of the Test Cases page.</p>
+    <p>The Import button in the top action bar of the Test Cases page.</p>
     <aside className="guide-callout">Shown to Admin / Team Admin only (Tester / Developer cannot import).</aside>
 
     <h3>4-2. Steps</h3>
     <ol>
-      <li>Click the <strong>Import</strong> button at the top</li>
-      <li>The <strong>Import Template Modal</strong> opens, offering two actions:
+      <li>Click the Import button at the top</li>
+      <li>The Import Template Modal opens, offering two actions:
         <ul>
-          <li><strong>Download a template</strong> — choose CSV / Excel / JSON. The template is pre-filled with the current project's Priorities, Case Types, Components, and User-Defined Fields, so you can download → fill in → import as-is</li>
-          <li><strong>Select a file and import</strong> — if you already have a prepared file, upload it directly</li>
+          <li>Download a template — choose CSV / Excel / JSON. The template is pre-filled with the current project's Priorities, Case Types, Components, and User-Defined Fields, so you can download → fill in → import as-is</li>
+          <li>Select a file and import — if you already have a prepared file, upload it directly</li>
         </ul>
       </li>
       <li>"Select File to Import" → OS file-picker → choose a <code>.csv</code> / <code>.json</code> / <code>.xlsx</code> file</li>
       <li>The uploaded file is parsed, validated, and imported (there is no separate mapping / preview / options screen)</li>
-      <li>A progress dialog is shown (up to <strong>5,000 rows</strong> at a time)</li>
+      <li>A progress dialog is shown (up to 5,000 rows at a time)</li>
       <li>On completion, a result summary modal (Added / Updated / Skipped / Failed counts) and a warnings / failures list are shown</li>
     </ol>
 
     <ScreenshotSlot label="Import menu" src={img02} />
 
     <h3>4-3. How Import Behaves (auto merge mode)</h3>
-    <p>T-CAFE always imports in <strong>merge mode</strong>, without user-selected options like Skip / Overwrite / Create Duplicate. Behavior is determined automatically:</p>
+    <p>T-CAFE always imports in merge mode, without user-selected options like Skip / Overwrite / Create Duplicate. Behavior is determined automatically:</p>
     <ul>
-      <li>If the file's <code>key</code> matches an existing TC's <code>key</code> → <strong>partially update that TC</strong> (update only non-empty input fields)</li>
-      <li>If there is no matching TC, or <code>key</code> is empty → <strong>create a new TC</strong> with a newly assigned key (<code>{'<project-key>-<sequence>'}</code>)</li>
-      <li>Invalid rows (missing required fields, etc.) are counted as <strong>Skipped</strong>, with the reason recorded in the warnings</li>
+      <li>If the file's <code>key</code> matches an existing TC's <code>key</code> → partially update that TC (update only non-empty input fields)</li>
+      <li>If there is no matching TC, or <code>key</code> is empty → create a new TC with a newly assigned key (<code>{'<project-key>-<sequence>'}</code>)</li>
+      <li>Invalid rows (missing required fields, etc.) are counted as Skipped, with the reason recorded in the warnings</li>
+    </ul>
+
+    <h3>4-3-0. Key Validation Rules</h3>
+    <ul>
+      <li>Empty → auto-generated as <code>{'<project-key>-<sequence>'}</code></li>
+      <li>Invalid format (e.g., <code>bad-key</code>) → warning, replaced by auto-generated key</li>
+      <li>Different project prefix (e.g., <code>PROJ-999</code> in RC01 project) → warning, replaced by auto-generated key</li>
+      <li>Same Key used in multiple rows of one file → rows after the first are marked Failed</li>
+      <li>Reusing a Key that was just inserted earlier in the same import session → marked Failed (prevents silent overwrite)</li>
+      <li>Key matches an existing TC in the DB → that TC is UPDATEd</li>
+    </ul>
+
+    <h3>4-3-0-1. Field / Array Size Limits</h3>
+    <p>Values exceeding these caps are automatically truncated and a warning is included in the result summary. The TC is still saved (only the value is trimmed):</p>
+    <table className="guide-table">
+      <thead>
+        <tr><th>Field</th><th>Limit</th><th>On exceed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Name</td><td>500 chars</td><td>kept up to 500</td></tr>
+        <tr><td>Description</td><td>16,000 chars</td><td>truncated</td></tr>
+        <tr><td>Precondition</td><td>16,000 chars</td><td>truncated</td></tr>
+        <tr><td>Test Steps (count)</td><td>500</td><td>first 500 kept</td></tr>
+        <tr><td>Each Step's Step / Test Data / Expected Result</td><td>5,000 chars</td><td>truncated</td></tr>
+        <tr><td>Components / Labels (count)</td><td>50 each</td><td>first 50 kept</td></tr>
+        <tr><td>UDF Text</td><td>16,000 chars</td><td>truncated</td></tr>
+        <tr><td>UDF URL</td><td>2,000 chars</td><td>truncated</td></tr>
+      </tbody>
+    </table>
+
+    <h3>4-3-0-2. Status (TC Status) Column</h3>
+    <ul>
+      <li>Allowed values: <code>Draft</code>, <code>Confirmed</code> (case-insensitive)</li>
+      <li>Empty or unknown values: saved as <code>Draft</code> with a warning</li>
+      <li>Confirmed TCs can be added to Test Plans immediately. Draft TCs do not appear in the Test Plan "Add TC" list.</li>
     </ul>
 
     <h3>4-3-1. Auto-Created Folders (from folder path)</h3>
     <p>Folders are handled automatically based on the <code>folder path</code> column value:</p>
     <ul>
-      <li>If <code>folder path</code> is a <strong>path form</strong> (e.g., <code>Authentication/Login/OAuth</code>) → each level is <strong>auto-created</strong> and the TC is placed in the leaf folder. Existing folders are reused (no duplicates).</li>
-      <li>If <code>folder path</code> is <strong>empty</strong> → a root-level folder with the uploaded file's name (without extension) is auto-created and the TC is placed there (existing behavior preserved).</li>
+      <li>If <code>folder path</code> is a path form (e.g., <code>Authentication/Login/OAuth</code>) → each level is auto-created and the TC is placed in the leaf folder. Existing folders are reused (no duplicates).</li>
+      <li>If <code>folder path</code> is empty → a root-level folder with the uploaded file's name (without extension) is auto-created and the TC is placed there (existing behavior preserved).</li>
       <li>Both <code>/</code> (recommended) and <code>{' > '}</code> (legacy compatibility) are recognized as separators.</li>
     </ul>
     <aside className="guide-callout info">
-      <strong>No same-name folder duplicates at the same level</strong>: under the same parent, only one folder with a given name can exist. Import does not create duplicate folders for the same path, so re-importing the same file leaves folders intact.
+      No same-name folder duplicates at the same level: under the same parent, only one folder with a given name can exist. Import does not create duplicate folders for the same path, so re-importing the same file leaves folders intact.
     </aside>
 
     <h3>4-3-2. Idempotency (re-importing the same file)</h3>
     <p>Re-importing the same export file:</p>
     <ul>
-      <li>All TCs with matching keys are <strong>UPDATEd</strong>; no new INSERTs happen.</li>
-      <li>Matching folderPaths <strong>reuse the same folders</strong>; no new folders are created.</li>
-      <li>Net effect: <strong>integrity is restored without data duplication</strong> — on partial failures, re-importing the same file safely recovers.</li>
+      <li>All TCs with matching keys are UPDATEd; no new INSERTs happen.</li>
+      <li>Matching folderPaths reuse the same folders; no new folders are created.</li>
+      <li>Net effect: integrity is restored without data duplication — on partial failures, re-importing the same file safely recovers.</li>
     </ul>
 
     <h3>4-3-3. Concurrent Import Blocking (session lock)</h3>
-    <p>Only <strong>one user at a time</strong> can import into the same project:</p>
+    <p>Only one user at a time can import into the same project:</p>
     <ul>
-      <li>If another user is already importing → "<strong>Another import is currently in progress for this project. Please try again in a few minutes.</strong>" is displayed and the attempt is blocked.</li>
-      <li>If a session is left hanging by abnormal termination (browser close, network outage), it is <strong>auto-recovered within 5 minutes</strong>, allowing others to import.</li>
+      <li>If another user is already importing → "Another import is currently in progress for this project. Please try again in a few minutes." is displayed and the attempt is blocked.</li>
+      <li>If a session is left hanging by abnormal termination (browser close, network outage), it is auto-recovered within 5 minutes, allowing others to import.</li>
     </ul>
 
     <h3>4-4. Recognized Column Names (case-insensitive; trailing <code>*</code> auto-stripped)</h3>
     <ul>
-      <li><strong>Required</strong>: <code>name</code></li>
-      <li><strong>Identifier</strong>: <code>key</code> — updates on match; creates when empty</li>
-      <li><strong>Common fields</strong>: <code>description</code>, <code>objective</code>, <code>precondition</code>, <code>type</code> (single / factor), <code>case type</code>, <code>priority</code>, <code>owner</code></li>
-      <li><strong>Folder</strong>: <code>folder</code>, <code>folder path</code> — <code>folder path</code> wins. If the path form (<code>A/B/C</code>) is used, nested folders are auto-created. If both are empty, a folder is auto-created from the file name</li>
-      <li><strong>Multi-value</strong>: <code>components</code>, <code>labels</code> — separated by comma or semicolon</li>
-      <li><strong>Steps</strong>: <code>step no</code>, <code>step</code> (or <code>step description</code>), <code>test data</code>, <code>expected result</code></li>
-      <li><strong>UDF</strong>: columns that match a User Defined Field name in Configuration are auto-mapped (checkbox / number / select types are converted as appropriate). <strong>If a required UDF is empty, the row is SKIPPED</strong></li>
+      <li>Required: <code>name</code></li>
+      <li>Identifier: <code>key</code> — updates on match; creates when empty</li>
+      <li>Common fields: <code>description</code>, <code>objective</code>, <code>precondition</code>, <code>type</code> (single / factor), <code>case type</code>, <code>priority</code>, <code>owner</code></li>
+      <li>Folder: <code>folder</code>, <code>folder path</code> — <code>folder path</code> wins. If the path form (<code>A/B/C</code>) is used, nested folders are auto-created. If both are empty, a folder is auto-created from the file name</li>
+      <li>Multi-value: <code>components</code>, <code>labels</code> — separated by comma or semicolon</li>
+      <li>Steps: <code>step no</code>, <code>step</code> (or <code>step description</code>), <code>test data</code>, <code>expected result</code></li>
+      <li>UDF: columns that match a User Defined Field name in Configuration are auto-mapped (checkbox / number / select types are converted as appropriate). If a required UDF is empty, the row is SKIPPED</li>
     </ul>
 
     <h3>4-5. Import Result Response</h3>
     <p>On completion, the result modal shows:</p>
     <ul>
-      <li><strong>Added</strong> — number of newly created TCs (green badge)</li>
-      <li><strong>Updated</strong> — number of TCs updated via key match (blue badge)</li>
-      <li><strong>Skipped</strong> — number of rows skipped due to validation failure (orange badge) — missing name, missing required UDF, etc.</li>
-      <li><strong>Failed</strong> — rows that failed on INSERT / UPDATE due to SQL errors (red badge, new)</li>
-      <li><strong>warnings</strong> categorized: <strong>Replaced</strong> (invalid value replaced with default), <strong>Excluded</strong> (unknown component / issue excluded), <strong>Skipped</strong> (SKIP reason), <strong>Other</strong>. Each item is shown with its <strong>row number</strong>.</li>
-      <li>Download a text log via the <strong>Download Log</strong> button — all categories (Failed / Replaced / Excluded / Skipped / Other) are recorded with row numbers for external analysis.</li>
+      <li>Added — number of newly created TCs (green badge)</li>
+      <li>Updated — number of TCs updated via key match (blue badge)</li>
+      <li>Skipped — number of rows skipped due to validation failure (orange badge) — missing name, missing required UDF, etc.</li>
+      <li>Failed — rows that failed on INSERT / UPDATE due to SQL errors (red badge, new)</li>
+      <li>warnings categorized: Replaced (invalid value replaced with default), Excluded (unknown component / issue excluded), Skipped (SKIP reason), Other. Each item is shown with its row number.</li>
+      <li>Download a text log via the Download Log button — all categories (Failed / Replaced / Excluded / Skipped / Other) are recorded with row numbers for external analysis.</li>
     </ul>
     <p>If a single import exceeds 5,000 rows, the entire import is rejected with the error "Import size exceeds maximum limit of 5000 test cases".</p>
     <aside className="guide-callout info">
-      <strong>Processing 5,000 TCs</strong>: on average about 20–25 seconds (500-row batches × 10 ≈ 1.5–2 s per batch). Bulk INSERT + an in-memory folder cache process this without N+1 queries.
+      Processing 5,000 TCs: on average about 20–25 seconds (500-row batches × 10 ≈ 1.5–2 s per batch). Bulk INSERT + an in-memory folder cache process this without N+1 queries.
     </aside>
 
     <hr />
@@ -594,20 +668,20 @@ PROJ-1 | 2 | Type | username | Field filled`}</code></pre>
 
     <h3>DO</h3>
     <ul>
-      <li><strong>Download a template from the Import Template Modal</strong>: it is pre-filled with the current project's Priority / Case Type / Component / UDF, which reduces validation errors</li>
-      <li><strong>Test with a small batch first</strong>: run an import test with 5–10 rows before a full run</li>
-      <li><strong>Export before importing</strong>: keep an Export of the current data as a backup</li>
-      <li><strong>Check encoding</strong>: UTF-8 (with BOM recommended for Korean)</li>
-      <li><strong>Double-check column names</strong>: use the recognized column names (4-4) for the header</li>
-      <li><strong>Use folder path</strong>: to preserve nested folder structures, write <code>A/B/C</code> in the <code>folder path</code> column</li>
-      <li><strong>Split at 5,000 rows</strong>: imports over 5,000 rows are rejected</li>
-      <li><strong>On failure, re-import the same file</strong>: idempotency makes it safe to retry after a partial failure</li>
+      <li>Download a template from the Import Template Modal: it is pre-filled with the current project's Priority / Case Type / Component / UDF, which reduces validation errors</li>
+      <li>Test with a small batch first: run an import test with 5–10 rows before a full run</li>
+      <li>Export before importing: keep an Export of the current data as a backup</li>
+      <li>Check encoding: UTF-8 (with BOM recommended for Korean)</li>
+      <li>Double-check column names: use the recognized column names (4-4) for the header</li>
+      <li>Use folder path: to preserve nested folder structures, write <code>A/B/C</code> in the <code>folder path</code> column</li>
+      <li>Split at 5,000 rows: imports over 5,000 rows are rejected</li>
+      <li>On failure, re-import the same file: idempotency makes it safe to retry after a partial failure</li>
     </ul>
 
     <h3>DON'T</h3>
     <ul>
       <li>A single file with more than 5,000 rows (auto-rejected)</li>
-      <li>Importing the same row (same <code>key</code>) twice (merge mode updates on the second pass) — <strong>using idempotency intentionally is fine</strong></li>
+      <li>Importing the same row (same <code>key</code>) twice (merge mode updates on the second pass) — using idempotency intentionally is fine</li>
       <li>Importing before Configuration is set up (Priority / Case Type / Component) — many validation errors will occur</li>
       <li>Two people importing into the same project simultaneously — the second user is blocked</li>
       <li>Using folder names that contain the <code>/</code> character (incorrectly parsed as a separator)</li>

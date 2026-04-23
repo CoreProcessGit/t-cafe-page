@@ -18,17 +18,17 @@ const Board = () => (
 
     <h3>사용 사례</h3>
     <ul>
-      <li><strong>공지</strong>: "다음 주 월요일부터 새 테스트 환경 사용"</li>
-      <li><strong>릴리스 노트</strong>: "v1.5 릴리스 — 새로 추가된 기능 안내"</li>
-      <li><strong>테스트 환경 변경</strong>: "스테이징 서버 점검 안내"</li>
-      <li><strong>신규 멤버 환영</strong>: "QA팀 김OO 사원이 합류했습니다"</li>
-      <li><strong>베스트 프랙티스 공유</strong>: "Factor Combination 활용 팁"</li>
+      <li>공지: "다음 주 월요일부터 새 테스트 환경 사용"</li>
+      <li>릴리스 노트: "v1.5 릴리스 — 새로 추가된 기능 안내"</li>
+      <li>테스트 환경 변경: "스테이징 서버 점검 안내"</li>
+      <li>신규 멤버 환영: "QA팀 김OO 사원이 합류했습니다"</li>
+      <li>베스트 프랙티스 공유: "Factor Combination 활용 팁"</li>
     </ul>
 
     <hr />
 
     <h2>2. 진입 경로</h2>
-    <p>상단 탭 → <strong>Overview</strong> → 게시판 섹션</p>
+    <p>상단 탭 → Overview → 게시판 섹션</p>
     <ScreenshotSlot src={shotBoard} label="Overview 안의 게시판 영역" />
 
     <hr />
@@ -46,12 +46,12 @@ const Board = () => (
       </thead>
       <tbody>
         <tr><td>게시글 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td><strong>게시글 작성</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>게시글 작성</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>게시글 수정</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>게시글 삭제</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>게시글 삭제</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <aside className="guide-callout"><strong>게시글 작성/수정/삭제는 Admin 전용</strong>입니다. 일반 사용자는 조회만 가능합니다.</aside>
+    <aside className="guide-callout">게시글 작성/수정/삭제는 Admin 전용입니다. 일반 사용자는 조회만 가능합니다.</aside>
 
     <hr />
 
@@ -70,11 +70,11 @@ const Board = () => (
 
     <h3>목록 컬럼</h3>
     <ul>
-      <li><strong>#</strong> — 게시글 번호 (최신 게시글이 가장 큰 번호)</li>
-      <li><strong>카테고리</strong></li>
-      <li><strong>제목</strong></li>
-      <li><strong>작성자</strong></li>
-      <li><strong>작성일</strong></li>
+      <li># — 게시글 번호 (최신 게시글이 가장 큰 번호)</li>
+      <li>카테고리</li>
+      <li>제목</li>
+      <li>작성자</li>
+      <li>작성일</li>
     </ul>
 
     <h3>정렬</h3>
@@ -84,7 +84,7 @@ const Board = () => (
 
     <h3>페이지네이션</h3>
     <ul>
-      <li>한 페이지에 <strong>5개</strong>씩 표시 (고정)</li>
+      <li>한 페이지에 5개씩 표시 (고정)</li>
       <li>페이지 번호 버튼과 이전/다음 화살표로 이동</li>
     </ul>
 
@@ -92,8 +92,8 @@ const Board = () => (
     <ol>
       <li>목록에서 게시글 행을 클릭</li>
       <li>상세 모달이 열림</li>
-      <li>표시 정보: <strong>[카테고리] 제목</strong>, 작성자, 작성일, <strong>조회수</strong>, 본문</li>
-      <li>하단 <strong>목록</strong> 버튼으로 닫기</li>
+      <li>표시 정보: [카테고리] 제목, 작성자, 작성일, 조회수, 본문</li>
+      <li>하단 목록 버튼으로 닫기</li>
     </ol>
 
     <aside className="guide-callout">조회수는 상세 화면에만 표시되며 목록에는 노출되지 않습니다.</aside>
@@ -104,26 +104,26 @@ const Board = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>게시판 하단 우측의 <strong>글작성</strong> 버튼 클릭</li>
+      <li>게시판 하단 우측의 글작성 버튼 클릭</li>
       <li>작성 모달이 열림</li>
       <li>입력 항목:
         <ul>
-          <li><strong>카테고리</strong> (필수) — <code>Notice</code> / <code>News</code> / <code>Etc</code> 중 선택 (기본값: <code>Notice</code>)</li>
-          <li><strong>제목</strong> (필수)</li>
-          <li><strong>내용</strong> (필수) — 리치 텍스트 에디터</li>
+          <li>카테고리 (필수) — <code>Notice</code> / <code>News</code> / <code>Etc</code> 중 선택 (기본값: <code>Notice</code>)</li>
+          <li>제목 (필수)</li>
+          <li>내용 (필수) — 리치 텍스트 에디터</li>
         </ul>
       </li>
-      <li><strong>등록하기</strong> 버튼 클릭</li>
+      <li>등록하기 버튼 클릭</li>
     </ol>
 
-    <aside className="guide-callout">작성 화면에는 파일 첨부, <strong>이미지 삽입</strong> 기능이 없습니다. 이미지·파일이 필요하면 T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 업로드한 뒤 링크를 본문에 붙여주세요.</aside>
+    <aside className="guide-callout">작성 화면에는 파일 첨부, 이미지 삽입 기능이 없습니다. 이미지·파일이 필요하면 T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 업로드한 뒤 링크를 본문에 붙여주세요.</aside>
 
     <ScreenshotSlot src={shotWriteBoard} label="게시글 작성 폼" />
 
     <h3>본문 에디터 기능 (Quill 툴바)</h3>
     <ul>
       <li>제목 수준 (H1 / H2 / H3)</li>
-      <li><strong>굵게</strong>, <em>기울임</em>, 밑줄, 취소선</li>
+      <li>굵게, <em>기울임</em>, 밑줄, 취소선</li>
       <li>글머리 기호 / 번호 목록</li>
       <li>정렬 (왼쪽/가운데/오른쪽)</li>
       <li>글자색 / 배경색</li>
@@ -137,9 +137,9 @@ const Board = () => (
     <h3>절차</h3>
     <ol>
       <li>수정할 게시글의 상세 모달을 엽니다</li>
-      <li>상세 모달 우측 상단의 <strong>수정</strong> 버튼 클릭</li>
+      <li>상세 모달 우측 상단의 수정 버튼 클릭</li>
       <li>제목/내용을 수정합니다</li>
-      <li><strong>수정하기</strong> 버튼 클릭</li>
+      <li>수정하기 버튼 클릭</li>
     </ol>
 
     <hr />
@@ -149,7 +149,7 @@ const Board = () => (
     <h3>절차</h3>
     <ol>
       <li>삭제할 게시글의 상세 모달을 엽니다</li>
-      <li>우측 상단 <strong>삭제</strong> 버튼 클릭</li>
+      <li>우측 상단 삭제 버튼 클릭</li>
       <li>"작업 확인" 다이얼로그에서 확인</li>
     </ol>
 
@@ -166,9 +166,9 @@ const Board = () => (
 
     <h4>DO</h4>
     <ul>
-      <li><strong>명확한 제목</strong>: 무엇에 관한 글인지 한 줄로 파악 가능</li>
-      <li><strong>간결하게</strong>: 본문은 500KB 이내로 유지 (초과 시 저장 실패)</li>
-      <li><strong>첨부 자료는 Attachments에</strong>: 이미지·PDF·문서는 T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 업로드하고 URL을 본문에 링크로 삽입</li>
+      <li>명확한 제목: 무엇에 관한 글인지 한 줄로 파악 가능</li>
+      <li>간결하게: 본문은 500KB 이내로 유지 (초과 시 저장 실패)</li>
+      <li>첨부 자료는 Attachments에: 이미지·PDF·문서는 T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 업로드하고 URL을 본문에 링크로 삽입</li>
     </ul>
 
     <h4>DON'T</h4>
@@ -237,7 +237,7 @@ QA 팀에서 정리한 Factor Combination 활용 팁입니다.
         <tr><th>문제</th><th>원인</th><th>해결</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>글작성</strong> 버튼이 안 보임</td><td>Admin 권한 없음 (boardPost 권한 없음)</td><td>Admin에게 요청</td></tr>
+        <tr><td>글작성 버튼이 안 보임</td><td>Admin 권한 없음 (boardPost 권한 없음)</td><td>Admin에게 요청</td></tr>
         <tr><td>이미지를 본문에 넣고 싶음</td><td>Quill 툴바에 이미지 버튼 없음 (현재 버전은 게시판 본문 이미지 삽입 미지원)</td><td>T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 이미지를 업로드한 뒤, 다운로드 URL을 본문에 링크로 삽입</td></tr>
         <tr><td>파일을 첨부하고 싶음</td><td>게시판 작성 화면에 첨부 필드 없음</td><td>T-CAFE <Link to="/support/guide/attachments">Attachments</Link>에 파일을 업로드한 뒤, 링크를 본문에 붙여넣기</td></tr>
         <tr><td>게시글이 보이지 않음</td><td>페이지네이션 (한 페이지 5개)</td><td>다음 페이지 확인</td></tr>
@@ -269,17 +269,17 @@ const BoardEn = () => (
 
     <h3>Use Cases</h3>
     <ul>
-      <li><strong>Announcement</strong>: "Starting next Monday, we will use the new test environment"</li>
-      <li><strong>Release notes</strong>: "v1.5 release — summary of newly added features"</li>
-      <li><strong>Test environment change</strong>: "Staging server maintenance notice"</li>
-      <li><strong>Welcoming new members</strong>: "Kim from the QA team has joined us"</li>
-      <li><strong>Best-practice sharing</strong>: "Tips for using Factor Combination"</li>
+      <li>Announcement: "Starting next Monday, we will use the new test environment"</li>
+      <li>Release notes: "v1.5 release — summary of newly added features"</li>
+      <li>Test environment change: "Staging server maintenance notice"</li>
+      <li>Welcoming new members: "Kim from the QA team has joined us"</li>
+      <li>Best-practice sharing: "Tips for using Factor Combination"</li>
     </ul>
 
     <hr />
 
     <h2>2. Navigation</h2>
-    <p>Top tab → <strong>Overview</strong> → Board section</p>
+    <p>Top tab → Overview → Board section</p>
     <ScreenshotSlot src={shotBoard} label="Board section inside Overview" />
 
     <hr />
@@ -297,12 +297,12 @@ const BoardEn = () => (
       </thead>
       <tbody>
         <tr><td>View post</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td><strong>Create post</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Create post</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
         <tr><td>Edit post</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>Delete post</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Delete post</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <aside className="guide-callout"><strong>Creating / editing / deleting posts is Admin-only</strong>. Other users can only view posts.</aside>
+    <aside className="guide-callout">Creating / editing / deleting posts is Admin-only. Other users can only view posts.</aside>
 
     <hr />
 
@@ -321,11 +321,11 @@ const BoardEn = () => (
 
     <h3>List Columns</h3>
     <ul>
-      <li><strong>#</strong> — Post number (the newest post has the largest number)</li>
-      <li><strong>Category</strong></li>
-      <li><strong>Title</strong></li>
-      <li><strong>Author</strong></li>
-      <li><strong>Created date</strong></li>
+      <li># — Post number (the newest post has the largest number)</li>
+      <li>Category</li>
+      <li>Title</li>
+      <li>Author</li>
+      <li>Created date</li>
     </ul>
 
     <h3>Sorting</h3>
@@ -335,7 +335,7 @@ const BoardEn = () => (
 
     <h3>Pagination</h3>
     <ul>
-      <li><strong>5 posts</strong> per page (fixed)</li>
+      <li>5 posts per page (fixed)</li>
       <li>Navigate using the page-number buttons and the previous / next arrows</li>
     </ul>
 
@@ -343,8 +343,8 @@ const BoardEn = () => (
     <ol>
       <li>Click a post row in the list</li>
       <li>The detail modal opens</li>
-      <li>Displayed information: <strong>[Category] Title</strong>, author, created date, <strong>view count</strong>, body</li>
-      <li>Close with the <strong>List</strong> button at the bottom</li>
+      <li>Displayed information: [Category] Title, author, created date, view count, body</li>
+      <li>Close with the List button at the bottom</li>
     </ol>
 
     <aside className="guide-callout">The view count is only shown on the detail view and is not displayed in the list.</aside>
@@ -355,26 +355,26 @@ const BoardEn = () => (
 
     <h3>Steps</h3>
     <ol>
-      <li>Click the <strong>Write Post</strong> button at the bottom-right of the Board</li>
+      <li>Click the Write Post button at the bottom-right of the Board</li>
       <li>The write modal opens</li>
       <li>Fields:
         <ul>
-          <li><strong>Category</strong> (required) — choose one of <code>Notice</code> / <code>News</code> / <code>Etc</code> (default: <code>Notice</code>)</li>
-          <li><strong>Title</strong> (required)</li>
-          <li><strong>Content</strong> (required) — rich text editor</li>
+          <li>Category (required) — choose one of <code>Notice</code> / <code>News</code> / <code>Etc</code> (default: <code>Notice</code>)</li>
+          <li>Title (required)</li>
+          <li>Content (required) — rich text editor</li>
         </ul>
       </li>
-      <li>Click the <strong>Submit</strong> button</li>
+      <li>Click the Submit button</li>
     </ol>
 
-    <aside className="guide-callout">The write form does not support file attachments or <strong>image insertion</strong>. If you need images or files, upload them to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and paste the link into the body.</aside>
+    <aside className="guide-callout">The write form does not support file attachments or image insertion. If you need images or files, upload them to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and paste the link into the body.</aside>
 
     <ScreenshotSlot src={shotWriteBoard} label="Post write form" />
 
     <h3>Body Editor Features (Quill toolbar)</h3>
     <ul>
       <li>Heading level (H1 / H2 / H3)</li>
-      <li><strong>Bold</strong>, <em>italic</em>, underline, strikethrough</li>
+      <li>Bold, <em>italic</em>, underline, strikethrough</li>
       <li>Bulleted / numbered lists</li>
       <li>Alignment (left / center / right)</li>
       <li>Text color / background color</li>
@@ -388,9 +388,9 @@ const BoardEn = () => (
     <h3>Steps</h3>
     <ol>
       <li>Open the detail modal for the post you want to edit</li>
-      <li>Click the <strong>Edit</strong> button at the top-right of the detail modal</li>
+      <li>Click the Edit button at the top-right of the detail modal</li>
       <li>Edit the title / content</li>
-      <li>Click the <strong>Update</strong> button</li>
+      <li>Click the Update button</li>
     </ol>
 
     <hr />
@@ -400,7 +400,7 @@ const BoardEn = () => (
     <h3>Steps</h3>
     <ol>
       <li>Open the detail modal for the post you want to delete</li>
-      <li>Click the <strong>Delete</strong> button at the top-right</li>
+      <li>Click the Delete button at the top-right</li>
       <li>Confirm in the "Confirm Action" dialog</li>
     </ol>
 
@@ -417,9 +417,9 @@ const BoardEn = () => (
 
     <h4>DO</h4>
     <ul>
-      <li><strong>Clear title</strong>: the topic of the post should be clear in a single line</li>
-      <li><strong>Keep it concise</strong>: keep the body under 500 KB (saving fails if exceeded)</li>
-      <li><strong>Put attachments in Attachments</strong>: upload images / PDFs / documents to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and insert the URL as a link in the body</li>
+      <li>Clear title: the topic of the post should be clear in a single line</li>
+      <li>Keep it concise: keep the body under 500 KB (saving fails if exceeded)</li>
+      <li>Put attachments in Attachments: upload images / PDFs / documents to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and insert the URL as a link in the body</li>
     </ul>
 
     <h4>DON'T</h4>
@@ -488,7 +488,7 @@ Your support and welcome are appreciated.`}</code></pre>
         <tr><th>Issue</th><th>Cause</th><th>Solution</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Write Post</strong> button is not visible</td><td>No Admin permission (no boardPost permission)</td><td>Ask an Admin</td></tr>
+        <tr><td>Write Post button is not visible</td><td>No Admin permission (no boardPost permission)</td><td>Ask an Admin</td></tr>
         <tr><td>Want to embed an image in the body</td><td>Quill toolbar has no image button (the current version does not support inline images in the Board)</td><td>Upload the image to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and insert the download URL as a link in the body</td></tr>
         <tr><td>Want to attach a file</td><td>The Board write form has no attachment field</td><td>Upload the file to T-CAFE <Link to="/support/guide/attachments">Attachments</Link> and paste the link in the body</td></tr>
         <tr><td>A post is not visible</td><td>Pagination (5 per page)</td><td>Check the next page</td></tr>

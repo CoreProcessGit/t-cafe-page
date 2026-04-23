@@ -16,7 +16,7 @@ const OverviewDashboard = () => (
     <hr />
 
     <h2>1. 진입 경로</h2>
-    <p>상단 탭 → <strong>Overview</strong> (T-CAFE의 첫 페이지, 기본값)</p>
+    <p>상단 탭 → Overview (T-CAFE의 첫 페이지, 기본값)</p>
 
     <hr />
 
@@ -27,10 +27,10 @@ const OverviewDashboard = () => (
         <tr><th>순서</th><th>영역</th><th>설명</th></tr>
       </thead>
       <tbody>
-        <tr><td>1 (조건부)</td><td><strong>Welcome Banner</strong></td><td>샘플 데이터 미생성 + 최근 6시간 내 dismiss 안 된 경우 표시</td></tr>
-        <tr><td>2</td><td><strong>Board (게시판)</strong></td><td>프로젝트 게시판 목록/작성 영역</td></tr>
-        <tr><td>3 (나란히)</td><td><strong>Count Section + Test Milestone</strong></td><td>좌: 카운트 카드, 우: TP 타임라인</td></tr>
-        <tr><td>4</td><td><strong>Status Section</strong></td><td>TP 상태별 컬럼(Kanban) 목록</td></tr>
+        <tr><td>1</td><td>Welcome Banner</td><td>샘플 데이터 미생성 + 최근 6시간 내 dismiss 안 된 경우 표시</td></tr>
+        <tr><td>2</td><td>Board (게시판)</td><td>프로젝트 게시판 목록/작성 영역</td></tr>
+        <tr><td>3</td><td>Count Section + Test Milestone</td><td>좌: 카운트 카드, 우: TP 타임라인</td></tr>
+        <tr><td>4</td><td>Status Section</td><td>TP 상태별 컬럼(Kanban) 목록</td></tr>
       </tbody>
     </table>
 
@@ -52,11 +52,11 @@ const OverviewDashboard = () => (
       <tbody>
         <tr><td>페이지 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>Count/Milestone/Status 조회</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td><strong>샘플 데이터 생성</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>게시판 글 작성/수정/삭제</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>샘플 데이터 생성</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>게시판 글 작성/수정/삭제</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>모든 사용자가 조회 가능</strong>, 샘플 데이터 생성 및 게시글 작성/수정/삭제는 Admin 전용</p>
+    <p>→ 모든 사용자가 조회 가능, 샘플 데이터 생성 및 게시글 작성/수정/삭제는 Admin 전용</p>
 
     <hr />
 
@@ -65,15 +65,15 @@ const OverviewDashboard = () => (
 
     <h3>표시 조건 (3가지 모두 만족 시)</h3>
     <ul>
-      <li>해당 프로젝트에 <strong>샘플 데이터가 생성된 적 없음</strong> (한 번이라도 생성하면 영구 숨김)</li>
-      <li>Banner를 <strong>dismiss한 뒤 6시간이 지났거나</strong>, 아직 dismiss한 적이 없음</li>
+      <li>해당 프로젝트에 샘플 데이터가 생성된 적 없음 (한 번이라도 생성하면 영구 숨김)</li>
+      <li>Banner를 dismiss한 뒤 6시간이 지났거나, 아직 dismiss한 적이 없음</li>
       <li>현재 프로젝트가 선택되어 있음</li>
     </ul>
 
     <h3>구성 요소</h3>
     <ul>
       <li>환영 제목 + 부제</li>
-      <li><strong>Create Sample Data 버튼</strong> — <code>boardPost</code>와 별개로 <code>overview.sampleData</code> 권한(Admin 기본 O)을 가진 사용자에게만 노출</li>
+      <li>Create Sample Data 버튼 — <code>boardPost</code>와 별개로 <code>overview.sampleData</code> 권한(Admin 기본 O)을 가진 사용자에게만 노출</li>
       <li>닫기 버튼 (×) — 클릭 시 프로젝트 단위로 6시간 동안 숨김</li>
     </ul>
 
@@ -88,15 +88,15 @@ const OverviewDashboard = () => (
 
     <h3>표시 항목</h3>
     <ul>
-      <li>한 페이지당 <strong>5개</strong> 고정</li>
-      <li>정렬: <strong>작성일 DESC (최신순)</strong> — 별도의 Notice 상단 고정 기능 없음</li>
+      <li>한 페이지당 5개 고정</li>
+      <li>정렬: 작성일 DESC (최신순) — 별도의 Notice 상단 고정 기능 없음</li>
       <li>컬럼: #, 카테고리, 제목, 작성자, 작성일 (조회수는 목록에 없음, 상세에서만 표시)</li>
     </ul>
 
     <h3>사용</h3>
     <ul>
       <li>행 클릭 → 해당 게시글 상세 모달 열림</li>
-      <li>Admin은 하단 우측 <strong>글작성</strong> 버튼으로 작성 가능</li>
+      <li>Admin은 하단 우측 글작성 버튼으로 작성 가능</li>
     </ul>
 
     <p>자세한 내용은 <Link to="/support/guide/board">04. 게시판</Link> 참고</p>
@@ -104,7 +104,7 @@ const OverviewDashboard = () => (
     <hr />
 
     <h2>6. Test Milestone (테스트 마일스톤 타임라인)</h2>
-    <p>TP들을 <strong>간트 차트 형식의 타임라인 막대</strong>로 표시합니다.</p>
+    <p>TP들을 간트 차트 형식의 타임라인 막대로 표시합니다.</p>
 
     <h3>표시 정보</h3>
     <ul>
@@ -141,9 +141,9 @@ const OverviewDashboard = () => (
         <tr><th>카드</th><th>내용</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Test Cases</strong></td><td>프로젝트의 전체 TC 개수</td></tr>
-        <tr><td><strong>Test Plans</strong></td><td>프로젝트의 전체 TP 개수</td></tr>
-        <tr><td><strong>Total Users</strong></td><td>프로젝트에 할당된 사용자 수</td></tr>
+        <tr><td>Test Cases</td><td>프로젝트의 전체 TC 개수</td></tr>
+        <tr><td>Test Plans</td><td>프로젝트의 전체 TP 개수</td></tr>
+        <tr><td>Total Users</td><td>프로젝트에 할당된 사용자 수</td></tr>
       </tbody>
     </table>
 
@@ -154,7 +154,7 @@ const OverviewDashboard = () => (
     <hr />
 
     <h2>8. Status Section (상태별 Kanban)</h2>
-    <p>Plan Status 목록(예: Prepairing / Open / Completed / 사용자 정의)을 각각 세로 컬럼으로 나열하고, TP들을 상태별로 그룹핑해 카드로 보여주는 <strong>Kanban 형태의 섹션</strong>입니다. (파이/막대/트렌드 차트는 사용하지 않습니다.)</p>
+    <p>Plan Status 목록(예: Prepairing / Open / Completed / 사용자 정의)을 각각 세로 컬럼으로 나열하고, TP들을 상태별로 그룹핑해 카드로 보여주는 Kanban 형태의 섹션입니다. (파이/막대/트렌드 차트는 사용하지 않습니다.)</p>
 
     <h3>구성</h3>
     <ul>
@@ -177,8 +177,16 @@ const OverviewDashboard = () => (
     <hr />
 
     <h2>9. 샘플 데이터 생성 (Admin 전용)</h2>
-    <p>Welcome Banner의 <strong>Create Sample Data</strong> 버튼으로 시작합니다. 생성 중에는 FullscreenLoader가 표시되며, 완료 시 Banner는 영구 숨김 처리됩니다(프로젝트 단위).</p>
-    <p>자세한 내용은 <Link to="/support/guide/getting-started">01. 시작하기 → 3. 샘플 데이터 생성</Link> 참고</p>
+    <p>Welcome Banner의 Create Sample Data 버튼으로 시작합니다. 생성 중에는 전체 화면 진행 모달이 표시되며 (진행률 % 포함), 완료 시 Banner는 영구 숨김 처리됩니다 (프로젝트 단위).</p>
+    <p>생성되는 샘플 데이터 구성:</p>
+    <ul>
+      <li>6 개의 [Sample] 폴더 (Login / Dashboard / User Management / Payment / API Tests / Cross Browser)</li>
+      <li>약 10 개의 Single Test Case — 일부는 Confirmed, 나머지는 Draft (실무 예시)</li>
+      <li>20 여 개의 Factor Combination Test Case ([Sample] Cross Browser 폴더) — Browser / Device / OS / Feature 4 factor + Two-Way Exclude 제약 예시 포함</li>
+      <li>2 개의 Test Plan (Sprint 1 / Sprint 2) — Confirmed TC 로 구성</li>
+      <li>2 개의 공지 게시물</li>
+    </ul>
+    <p>자세한 내용은 <Link to="/support/guide/getting-started">01. 시작하기 → 2. 샘플 데이터 생성</Link> 참고</p>
 
     <hr />
 
@@ -210,7 +218,7 @@ const OverviewDashboard = () => (
     <hr />
 
     <h2>12. 언어 변경</h2>
-    <p>우상단 언어 선택 메뉴에서 <strong>Auto / English / 한국어 / 日本語</strong> 4개 중 선택 가능 (Auto는 브라우저/Jira 사용자 locale 추종).</p>
+    <p>우상단 언어 선택 메뉴에서 Auto / English / 한국어 / 日本語 4개 중 선택 가능 (Auto는 브라우저/Jira 사용자 locale 추종).</p>
 
     <h3>영향 범위</h3>
     <ul>
@@ -268,7 +276,7 @@ const OverviewDashboard = () => (
 
     <h3>Admin</h3>
     <ul>
-      <li>신규 프로젝트 생성 직후 <strong>Create Sample Data</strong>로 학습 자료 제공</li>
+      <li>신규 프로젝트 생성 직후 Create Sample Data로 학습 자료 제공</li>
       <li>주요 공지/릴리스 정보는 게시판에 정기적으로 등록</li>
       <li>TP의 시작일·종료일을 꼭 입력해 Milestone에 노출되도록 유지</li>
     </ul>
@@ -301,7 +309,7 @@ const OverviewDashboardEn = () => (
     <hr />
 
     <h2>1. Navigation</h2>
-    <p>Top tab → <strong>Overview</strong> (T-CAFE's first page, by default)</p>
+    <p>Top tab → Overview (T-CAFE's first page, by default)</p>
 
     <hr />
 
@@ -312,10 +320,10 @@ const OverviewDashboardEn = () => (
         <tr><th>Order</th><th>Region</th><th>Description</th></tr>
       </thead>
       <tbody>
-        <tr><td>1 (conditional)</td><td><strong>Welcome Banner</strong></td><td>Shown when sample data has not been generated and the banner has not been dismissed within the last 6 hours</td></tr>
-        <tr><td>2</td><td><strong>Board</strong></td><td>Project board list / write area</td></tr>
-        <tr><td>3 (side by side)</td><td><strong>Count Section + Test Milestone</strong></td><td>Left: count cards. Right: TP timeline</td></tr>
-        <tr><td>4</td><td><strong>Status Section</strong></td><td>A Kanban list of columns grouped by TP status</td></tr>
+        <tr><td>1</td><td>Welcome Banner</td><td>Shown when sample data has not been generated and the banner has not been dismissed within the last 6 hours</td></tr>
+        <tr><td>2</td><td>Board</td><td>Project board list / write area</td></tr>
+        <tr><td>3</td><td>Count Section + Test Milestone</td><td>Left: count cards. Right: TP timeline</td></tr>
+        <tr><td>4</td><td>Status Section</td><td>A Kanban list of columns grouped by TP status</td></tr>
       </tbody>
     </table>
 
@@ -337,11 +345,11 @@ const OverviewDashboardEn = () => (
       <tbody>
         <tr><td>View page</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
         <tr><td>View Count / Milestone / Status</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
-        <tr><td><strong>Create Sample Data</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
-        <tr><td><strong>Create / edit / delete Board posts</strong></td><td className="center"><strong>O</strong></td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Create Sample Data</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
+        <tr><td>Create / edit / delete Board posts</td><td className="center">O</td><td className="center">X</td><td className="center">X</td><td className="center">X</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>All users can view</strong>. Creating sample data and creating / editing / deleting board posts is Admin-only.</p>
+    <p>→ All users can view. Creating sample data and creating / editing / deleting board posts is Admin-only.</p>
 
     <hr />
 
@@ -350,15 +358,15 @@ const OverviewDashboardEn = () => (
 
     <h3>Display Conditions (all three must hold)</h3>
     <ul>
-      <li><strong>Sample data has never been generated</strong> in this project (once generated, the banner is permanently hidden)</li>
-      <li>The banner has <strong>not been dismissed within the last 6 hours</strong>, or has never been dismissed</li>
+      <li>Sample data has never been generated in this project (once generated, the banner is permanently hidden)</li>
+      <li>The banner has not been dismissed within the last 6 hours, or has never been dismissed</li>
       <li>A project is currently selected</li>
     </ul>
 
     <h3>Components</h3>
     <ul>
       <li>Welcome title + subtitle</li>
-      <li><strong>Create Sample Data button</strong> — shown only to users who have the <code>overview.sampleData</code> permission (enabled by default for Admin), independently from <code>boardPost</code></li>
+      <li>Create Sample Data button — shown only to users who have the <code>overview.sampleData</code> permission (enabled by default for Admin), independently from <code>boardPost</code></li>
       <li>Close button (×) — when clicked, hides the banner for 6 hours, scoped to the project</li>
     </ul>
 
@@ -373,15 +381,15 @@ const OverviewDashboardEn = () => (
 
     <h3>Displayed Items</h3>
     <ul>
-      <li>Fixed to <strong>5 posts</strong> per page</li>
-      <li>Sorted: <strong>created-date DESC (newest first)</strong> — there is no separate "pin notice at top" feature</li>
+      <li>Fixed to 5 posts per page</li>
+      <li>Sorted: created-date DESC (newest first) — there is no separate "pin notice at top" feature</li>
       <li>Columns: #, Category, Title, Author, Created date (view count is not in the list — it appears only in the detail view)</li>
     </ul>
 
     <h3>Usage</h3>
     <ul>
       <li>Click a row → opens the post detail modal</li>
-      <li>Admin can create posts from the <strong>Write Post</strong> button at the bottom-right</li>
+      <li>Admin can create posts from the Write Post button at the bottom-right</li>
     </ul>
 
     <p>For details, see <Link to="/support/guide/board">04. Board</Link>.</p>
@@ -389,7 +397,7 @@ const OverviewDashboardEn = () => (
     <hr />
 
     <h2>6. Test Milestone (TP Timeline)</h2>
-    <p>Displays TPs as <strong>Gantt-style timeline bars</strong>.</p>
+    <p>Displays TPs as Gantt-style timeline bars.</p>
 
     <h3>Information Displayed</h3>
     <ul>
@@ -426,9 +434,9 @@ const OverviewDashboardEn = () => (
         <tr><th>Card</th><th>Content</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>Test Cases</strong></td><td>Total number of TCs in the project</td></tr>
-        <tr><td><strong>Test Plans</strong></td><td>Total number of TPs in the project</td></tr>
-        <tr><td><strong>Total Users</strong></td><td>Number of users assigned to the project</td></tr>
+        <tr><td>Test Cases</td><td>Total number of TCs in the project</td></tr>
+        <tr><td>Test Plans</td><td>Total number of TPs in the project</td></tr>
+        <tr><td>Total Users</td><td>Number of users assigned to the project</td></tr>
       </tbody>
     </table>
 
@@ -439,7 +447,7 @@ const OverviewDashboardEn = () => (
     <hr />
 
     <h2>8. Status Section (Kanban by Status)</h2>
-    <p>A <strong>Kanban-style section</strong> that lists each Plan Status (for example, Prepairing / Open / Completed / custom) as a vertical column and groups TPs into those columns as cards. (No pie, bar, or trend charts are used.)</p>
+    <p>A Kanban-style section that lists each Plan Status (for example, Prepairing / Open / Completed / custom) as a vertical column and groups TPs into those columns as cards. (No pie, bar, or trend charts are used.)</p>
 
     <h3>Layout</h3>
     <ul>
@@ -462,8 +470,16 @@ const OverviewDashboardEn = () => (
     <hr />
 
     <h2>9. Creating Sample Data (Admin only)</h2>
-    <p>Start from the <strong>Create Sample Data</strong> button on the Welcome Banner. A FullscreenLoader is shown while it runs, and the banner is permanently hidden on completion (per project).</p>
-    <p>For details, see <Link to="/support/guide/getting-started">01. Getting Started → 3. Sample Data</Link>.</p>
+    <p>Start from the Create Sample Data button on the Welcome Banner. A full-screen progress modal (with a percentage indicator) is shown while it runs, and the banner is permanently hidden on completion (per project).</p>
+    <p>What the sample data contains:</p>
+    <ul>
+      <li>6 [Sample] folders (Login / Dashboard / User Management / Payment / API Tests / Cross Browser)</li>
+      <li>About 10 Single Test Cases — some Confirmed, others Draft (realistic mix)</li>
+      <li>About 20 Factor Combination Test Cases ([Sample] Cross Browser folder) — Browser / Device / OS / Feature four factors with a Two-Way Exclude constraint example</li>
+      <li>2 Test Plans (Sprint 1 / Sprint 2) — composed of Confirmed TCs</li>
+      <li>2 board posts</li>
+    </ul>
+    <p>For details, see <Link to="/support/guide/getting-started">01. Getting Started → 2. Sample Data</Link>.</p>
 
     <hr />
 
@@ -495,7 +511,7 @@ const OverviewDashboardEn = () => (
     <hr />
 
     <h2>12. Changing Language</h2>
-    <p>In the language selector at the top-right, choose one of <strong>Auto / English / 한국어 / 日本語</strong> (Auto follows the browser / Jira user locale).</p>
+    <p>In the language selector at the top-right, choose one of Auto / English / 한국어 / 日本語 (Auto follows the browser / Jira user locale).</p>
 
     <h3>Scope</h3>
     <ul>
@@ -553,7 +569,7 @@ const OverviewDashboardEn = () => (
 
     <h3>Admin</h3>
     <ul>
-      <li>Right after creating a new project, provide learning material via <strong>Create Sample Data</strong></li>
+      <li>Right after creating a new project, provide learning material via Create Sample Data</li>
       <li>Post major notices and release info to the Board regularly</li>
       <li>Always fill in TP start / end dates so they show up in the Milestone</li>
     </ul>

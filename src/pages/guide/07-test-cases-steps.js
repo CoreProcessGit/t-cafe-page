@@ -13,7 +13,7 @@ const Steps = () => (
     <hr />
 
     <h2>1. 테스트 스텝 구조</h2>
-    <p>각 테스트 스텝은 <strong>번호 + 3개의 컬럼</strong>으로 구성됩니다:</p>
+    <p>각 테스트 스텝은 번호 + 3개의 컬럼으로 구성됩니다:</p>
     <table>
       <thead>
         <tr>
@@ -23,13 +23,13 @@ const Steps = () => (
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>#</strong></td><td>No.</td><td>자동 부여되는 순번 (1, 2, 3...)</td></tr>
-        <tr><td><strong>단계</strong></td><td>Step</td><td>테스터가 수행할 동작</td></tr>
-        <tr><td><strong>테스트 데이터</strong></td><td>Test Data</td><td>입력값, 파일명, 계정 등</td></tr>
-        <tr><td><strong>기대 결과</strong></td><td>Expected Result</td><td>정상이라면 어떤 결과가 나와야 하는지</td></tr>
+        <tr><td>#</td><td>No.</td><td>자동 부여되는 순번 (1, 2, 3...)</td></tr>
+        <tr><td>단계</td><td>Step</td><td>테스터가 수행할 동작</td></tr>
+        <tr><td>테스트 데이터</td><td>Test Data</td><td>입력값, 파일명, 계정 등</td></tr>
+        <tr><td>기대 결과</td><td>Expected Result</td><td>정상이라면 어떤 결과가 나와야 하는지</td></tr>
       </tbody>
     </table>
-    <p>각 셀은 <strong>여러 줄 입력 가능한 textarea</strong>이며, 입력 내용에 맞춰 자동으로 높이가 늘어납니다.</p>
+    <p>각 셀은 여러 줄 입력 가능한 textarea이며, 입력 내용에 맞춰 자동으로 높이가 늘어납니다.</p>
 
     <h3>예시</h3>
     <table>
@@ -44,7 +44,7 @@ const Steps = () => (
       </tbody>
     </table>
     <aside className="guide-callout">
-      <strong>민감 정보 주의</strong>: T-CAFE는 Test Data를 안전하게 보호하여 저장합니다. 단, <strong>T-CAFE 화면에서는 입력한 그대로 표시</strong>되며, 권한이 있는 사용자라면 누구나 볼 수 있습니다. 실제 운영 비밀번호·API 키·개인정보를 직접 적지 말고, 테스트 전용 더미 계정 정보를 사용하세요.
+      민감 정보 주의: T-CAFE는 Test Data를 안전하게 보호하여 저장합니다. 단, T-CAFE 화면에서는 입력한 그대로 표시되며, 권한이 있는 사용자라면 누구나 볼 수 있습니다. 실제 운영 비밀번호·API 키·개인정보를 직접 적지 말고, 테스트 전용 더미 계정 정보를 사용하세요.
     </aside>
 
     <hr />
@@ -53,8 +53,8 @@ const Steps = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>TC 작성/수정 화면의 <strong>Test Steps</strong> 섹션</li>
-      <li>표 하단의 <strong>Add</strong> 버튼 클릭</li>
+      <li>TC 작성/수정 화면의 Test Steps 섹션</li>
+      <li>표 하단의 Add 버튼 클릭</li>
       <li>새 행이 추가됨</li>
       <li>각 컬럼에 내용 입력</li>
     </ol>
@@ -67,7 +67,7 @@ const Steps = () => (
 
     <h3>절차</h3>
     <ul>
-      <li>삭제할 스텝 우측의 <strong>× 아이콘</strong> 클릭</li>
+      <li>삭제할 스텝 우측의 × 아이콘 클릭</li>
       <li>행이 즉시 제거됨</li>
     </ul>
 
@@ -76,7 +76,7 @@ const Steps = () => (
     <hr />
 
     <h2>4. 스텝 입력 팁</h2>
-    <p>스텝 셀은 <strong>plain text</strong> 입력입니다 (서식·이미지 미지원). 텍스트 작성 시 다음 원칙을 권장합니다.</p>
+    <p>스텝 셀은 plain text 입력입니다 (서식·이미지 미지원). 텍스트 작성 시 다음 원칙을 권장합니다.</p>
 
     <h3>좋은 작성 예</h3>
     <ul>
@@ -94,11 +94,11 @@ const Steps = () => (
     <hr />
 
     <h2>5. 사전 조건 (Precondition)</h2>
-    <p>테스트 스텝과 별도로, <strong>사전 조건</strong>은 테스트를 시작하기 전에 갖춰져야 할 상태를 정의합니다.</p>
+    <p>테스트 스텝과 별도로, 사전 조건은 테스트를 시작하기 전에 갖춰져야 할 상태를 정의합니다.</p>
 
     <h3>작성 위치</h3>
     <ul>
-      <li>TC 작성 화면의 <strong>Precondition</strong> 섹션</li>
+      <li>TC 작성 화면의 Precondition 섹션</li>
       <li>contenteditable 입력 영역 (plain text)</li>
       <li>URL을 입력하면 자동으로 클릭 가능한 링크로 변환됨</li>
       <li>첨부파일 참조 태그도 자동 인식</li>
@@ -137,7 +137,7 @@ const Steps = () => (
 
     <h3>민감 정보 처리</h3>
     <ul>
-      <li><strong>실제 운영 패스워드를 적지 마세요</strong></li>
+      <li>실제 운영 패스워드를 적지 마세요</li>
       <li>테스트 전용 계정 정보만 사용</li>
       <li>개인정보(주민번호, 신용카드 등)는 마스킹 또는 더미 데이터</li>
     </ul>
@@ -148,9 +148,9 @@ const Steps = () => (
 
     <h3>좋은 기대 결과</h3>
     <ul>
-      <li><strong>구체적</strong>: "성공 메시지가 표시됨" → "녹색 배경에 'Login successful'이 3초간 표시됨"</li>
-      <li><strong>검증 가능</strong>: 테스터가 명확히 판단할 수 있는 표현</li>
-      <li><strong>단일 검증</strong>: 한 스텝당 하나의 핵심 결과</li>
+      <li>구체적: "성공 메시지가 표시됨" → "녹색 배경에 'Login successful'이 3초간 표시됨"</li>
+      <li>검증 가능: 테스터가 명확히 판단할 수 있는 표현</li>
+      <li>단일 검증: 한 스텝당 하나의 핵심 결과</li>
     </ul>
 
     <h3>좋지 않은 기대 결과</h3>
@@ -208,7 +208,7 @@ const StepsEn = () => (
     <hr />
 
     <h2>1. Test Step Structure</h2>
-    <p>Each test step is composed of a <strong>number and three columns</strong>:</p>
+    <p>Each test step is composed of a number and three columns:</p>
     <table>
       <thead>
         <tr>
@@ -218,13 +218,13 @@ const StepsEn = () => (
         </tr>
       </thead>
       <tbody>
-        <tr><td><strong>#</strong></td><td>No.</td><td>Auto-assigned order (1, 2, 3…)</td></tr>
-        <tr><td><strong>Step</strong></td><td>Step</td><td>The action the tester performs</td></tr>
-        <tr><td><strong>Test Data</strong></td><td>Test Data</td><td>Input values, file names, accounts, etc.</td></tr>
-        <tr><td><strong>Expected Result</strong></td><td>Expected Result</td><td>The result that should occur when everything works</td></tr>
+        <tr><td>#</td><td>No.</td><td>Auto-assigned order (1, 2, 3…)</td></tr>
+        <tr><td>Step</td><td>Step</td><td>The action the tester performs</td></tr>
+        <tr><td>Test Data</td><td>Test Data</td><td>Input values, file names, accounts, etc.</td></tr>
+        <tr><td>Expected Result</td><td>Expected Result</td><td>The result that should occur when everything works</td></tr>
       </tbody>
     </table>
-    <p>Each cell is a <strong>multi-line textarea</strong> that automatically grows in height as you type.</p>
+    <p>Each cell is a multi-line textarea that automatically grows in height as you type.</p>
 
     <h3>Example</h3>
     <table>
@@ -239,7 +239,7 @@ const StepsEn = () => (
       </tbody>
     </table>
     <aside className="guide-callout">
-      <strong>Sensitive-data warning</strong>: T-CAFE stores Test Data securely. However, <strong>the T-CAFE UI displays it exactly as entered</strong>, and any user with access permission can read it. Do not put real production passwords, API keys, or personal data directly — use dummy accounts for testing only.
+      Sensitive-data warning: T-CAFE stores Test Data securely. However, the T-CAFE UI displays it exactly as entered, and any user with access permission can read it. Do not put real production passwords, API keys, or personal data directly — use dummy accounts for testing only.
     </aside>
 
     <hr />
@@ -248,8 +248,8 @@ const StepsEn = () => (
 
     <h3>Steps</h3>
     <ol>
-      <li>In the TC create / edit screen, go to the <strong>Test Steps</strong> section</li>
-      <li>Click the <strong>Add</strong> button below the table</li>
+      <li>In the TC create / edit screen, go to the Test Steps section</li>
+      <li>Click the Add button below the table</li>
       <li>A new row is added</li>
       <li>Fill in each column</li>
     </ol>
@@ -262,7 +262,7 @@ const StepsEn = () => (
 
     <h3>Steps</h3>
     <ul>
-      <li>Click the <strong>× icon</strong> at the right of the step to delete</li>
+      <li>Click the × icon at the right of the step to delete</li>
       <li>The row is removed immediately</li>
     </ul>
 
@@ -271,7 +271,7 @@ const StepsEn = () => (
     <hr />
 
     <h2>4. Step-Input Tips</h2>
-    <p>Step cells accept <strong>plain text</strong> only (no formatting or images). We recommend the following principles when writing text.</p>
+    <p>Step cells accept plain text only (no formatting or images). We recommend the following principles when writing text.</p>
 
     <h3>Good examples</h3>
     <ul>
@@ -289,11 +289,11 @@ const StepsEn = () => (
     <hr />
 
     <h2>5. Precondition</h2>
-    <p>Separately from test steps, the <strong>Precondition</strong> defines the state that must be in place before the test can start.</p>
+    <p>Separately from test steps, the Precondition defines the state that must be in place before the test can start.</p>
 
     <h3>Where to Write It</h3>
     <ul>
-      <li>The <strong>Precondition</strong> section on the TC write screen</li>
+      <li>The Precondition section on the TC write screen</li>
       <li>A contenteditable plain-text input area</li>
       <li>URLs are automatically turned into clickable links when entered</li>
       <li>Attachment reference tags are also auto-detected</li>
@@ -332,7 +332,7 @@ const StepsEn = () => (
 
     <h3>Handling Sensitive Data</h3>
     <ul>
-      <li><strong>Never write real production passwords</strong></li>
+      <li>Never write real production passwords</li>
       <li>Use test-only account credentials</li>
       <li>Mask personal data (national IDs, credit card numbers, etc.) or use dummy data</li>
     </ul>
@@ -343,9 +343,9 @@ const StepsEn = () => (
 
     <h3>Good Expected Results</h3>
     <ul>
-      <li><strong>Specific</strong>: "A success message is shown" → "'Login successful' is shown on a green background for 3 seconds"</li>
-      <li><strong>Verifiable</strong>: worded so the tester can clearly judge pass/fail</li>
-      <li><strong>One check per step</strong>: a single core result per step</li>
+      <li>Specific: "A success message is shown" → "'Login successful' is shown on a green background for 3 seconds"</li>
+      <li>Verifiable: worded so the tester can clearly judge pass/fail</li>
+      <li>One check per step: a single core result per step</li>
     </ul>
 
     <h3>Bad Expected Results</h3>

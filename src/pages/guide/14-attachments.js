@@ -8,13 +8,13 @@ const Attachments = () => (
   <article className="guide-article">
     <h1>14. 첨부파일</h1>
     <p className="guide-lead">
-      T-CAFE는 <strong>프로젝트 단위 첨부파일 페이지</strong>를 통해 외부 자료를 업로드·다운로드·관리할 수 있습니다. 첨부파일은 안전한 데이터센터에 저장되며, 업로드한 파일은 테스트 케이스 설명·사전 조건·기대 결과 등의 텍스트 안에 자동 인식되는 링크 형태로 참조할 수 있습니다.
+      T-CAFE는 프로젝트 단위 첨부파일 페이지를 통해 외부 자료를 업로드·다운로드·관리할 수 있습니다. 첨부파일은 안전한 데이터센터에 저장되며, 업로드한 파일은 테스트 케이스 설명·사전 조건·기대 결과 등의 텍스트 안에 자동 인식되는 링크 형태로 참조할 수 있습니다.
     </p>
 
     <hr />
 
     <h2>1. 첨부파일 페이지 진입</h2>
-    <p>상단 탭 → <strong>Attachments</strong> 클릭</p>
+    <p>상단 탭 → Attachments 클릭</p>
     <aside className="guide-callout">Attachments 페이지는 프로젝트별로 분리되어 있습니다. 다른 프로젝트의 첨부파일은 보이지 않습니다.</aside>
 
     <hr />
@@ -36,12 +36,12 @@ const Attachments = () => (
         <tr><td>삭제</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>모든 역할이 첨부파일을 사용 가능</strong>합니다.</p>
+    <p>→ 모든 역할이 첨부파일을 사용 가능합니다.</p>
 
     <hr />
 
     <h2>3. 저장 위치 및 보안</h2>
-    <p>T-CAFE는 첨부파일을 <strong>안전한 데이터센터</strong>에 저장합니다.</p>
+    <p>T-CAFE는 첨부파일을 안전한 데이터센터에 저장합니다.</p>
     <ul>
       <li>프로젝트 단위로 격리되어 다른 프로젝트의 첨부는 접근 불가</li>
       <li>데이터는 암호화되어 안전하게 보호됩니다</li>
@@ -53,13 +53,13 @@ const Attachments = () => (
 
     <h3>프로젝트 전체</h3>
     <ul>
-      <li><strong>최대: 200 MB</strong> (모든 첨부파일 합계)</li>
+      <li>최대: 200 MB (모든 첨부파일 합계)</li>
       <li>한도 초과 시 새 업로드는 거부됨 → 기존 파일을 일부 삭제 후 재시도</li>
     </ul>
 
     <h3>단일 파일</h3>
     <ul>
-      <li><strong>최대: 20 MB</strong> (한 파일당)</li>
+      <li>최대: 20 MB (한 파일당)</li>
       <li>20 MB 이내의 파일은 안정적으로 업로드됩니다.</li>
     </ul>
 
@@ -79,11 +79,11 @@ const Attachments = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>상단 탭 → <strong>Attachments</strong></li>
+      <li>상단 탭 → Attachments</li>
       <li>업로드 영역(점선 박스)에 다음 중 하나로 파일 추가
         <ul>
-          <li><strong>Upload</strong> 버튼 클릭 → 파일 선택 다이얼로그</li>
-          <li>파일을 영역 위로 <strong>드래그 앤 드롭</strong></li>
+          <li>Upload 버튼 클릭 → 파일 선택 다이얼로그</li>
+          <li>파일을 영역 위로 드래그 앤 드롭</li>
         </ul>
       </li>
       <li>분할 업로드 진행률 표시</li>
@@ -104,17 +104,17 @@ const Attachments = () => (
 
     <h3>다운로드</h3>
     <ol>
-      <li>첨부파일 행의 <strong>Download</strong> 버튼</li>
+      <li>첨부파일 행의 Download 버튼</li>
       <li>분할 단위로 내려받은 후 브라우저가 저장 다이얼로그 표시</li>
     </ol>
 
     <h3>미리보기</h3>
     <ol>
-      <li>첨부파일 행의 <strong>Preview</strong> 버튼</li>
+      <li>첨부파일 행의 Preview 버튼</li>
       <li>모달에서 다음 형식이 직접 표시됨
         <ul>
-          <li><strong>이미지</strong>: JPG / JPEG / PNG / GIF / SVG / WebP</li>
-          <li><strong>PDF</strong></li>
+          <li>이미지: JPG / JPEG / PNG / GIF / SVG / WebP</li>
+          <li>PDF</li>
         </ul>
       </li>
       <li>그 외 형식은 미지원 안내 → Download 후 로컬에서 확인</li>
@@ -128,13 +128,13 @@ const Attachments = () => (
 
     <h3>절차</h3>
     <ol>
-      <li>첨부파일 행의 <strong>Delete</strong> 버튼 (휴지통 아이콘)</li>
-      <li>확인 다이얼로그 → <strong>Confirm</strong></li>
+      <li>첨부파일 행의 Delete 버튼 (휴지통 아이콘)</li>
+      <li>확인 다이얼로그 → Confirm</li>
     </ol>
 
     <h3>주의 사항</h3>
     <ul>
-      <li>삭제된 파일은 <strong>복구할 수 없습니다</strong></li>
+      <li>삭제된 파일은 복구할 수 없습니다</li>
       <li>데이터센터에서도 즉시 삭제됨</li>
       <li>삭제 후 해당 파일을 참조하던 TC 본문의 링크는 작동하지 않게 됩니다</li>
     </ul>
@@ -148,11 +148,11 @@ const Attachments = () => (
         <tr><th>항목</th><th>설명</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>파일명</strong></td><td>원본 파일 이름</td></tr>
-        <tr><td><strong>크기</strong></td><td>자동으로 KB / MB로 표시</td></tr>
-        <tr><td><strong>타입</strong></td><td>MIME 타입 (image/png 등)</td></tr>
-        <tr><td><strong>업로드 사용자</strong></td><td>누가 올렸는지</td></tr>
-        <tr><td><strong>업로드 일시</strong></td><td>언제 올렸는지</td></tr>
+        <tr><td>파일명</td><td>원본 파일 이름</td></tr>
+        <tr><td>크기</td><td>자동으로 KB / MB로 표시</td></tr>
+        <tr><td>타입</td><td>MIME 타입 (image/png 등)</td></tr>
+        <tr><td>업로드 사용자</td><td>누가 올렸는지</td></tr>
+        <tr><td>업로드 일시</td><td>언제 올렸는지</td></tr>
       </tbody>
     </table>
 
@@ -163,7 +163,7 @@ const Attachments = () => (
     <ol>
       <li>Attachments 페이지에서 파일을 업로드</li>
       <li>파일의 다운로드 URL을 복사 (<code>{'/attachment/content/<id>'}</code> 형태)</li>
-      <li>TC의 <strong>Description</strong> 또는 <strong>Precondition</strong> 입력란에 URL을 붙여넣기</li>
+      <li>TC의 Description 또는 Precondition 입력란에 URL을 붙여넣기</li>
       <li>입력 영역이 URL을 자동으로 인식하여 클릭 가능한 링크로 표시</li>
       <li>TC를 보는 사용자가 링크를 클릭하면 즉시 해당 파일이 다운로드됨</li>
     </ol>
@@ -175,11 +175,11 @@ const Attachments = () => (
 
     <h3>DO</h3>
     <ul>
-      <li><strong>압축</strong>: 가능하면 이미지/동영상을 압축한 후 업로드</li>
-      <li><strong>명확한 파일명</strong>: <code>error-screenshot-2026-04-08.png</code> 형식</li>
-      <li><strong>버전 표시</strong>: 같은 자료의 여러 버전은 파일명 끝에 v1, v2 등 표시</li>
-      <li><strong>정기 정리</strong>: 오래된 첨부파일은 삭제하여 200 MB 한도 확보</li>
-      <li><strong>링크로 재사용</strong>: 같은 자료를 여러 TC에서 쓸 때는 한 번만 업로드하고 링크로 참조</li>
+      <li>압축: 가능하면 이미지/동영상을 압축한 후 업로드</li>
+      <li>명확한 파일명: <code>error-screenshot-2026-04-08.png</code> 형식</li>
+      <li>버전 표시: 같은 자료의 여러 버전은 파일명 끝에 v1, v2 등 표시</li>
+      <li>정기 정리: 오래된 첨부파일은 삭제하여 200 MB 한도 확보</li>
+      <li>링크로 재사용: 같은 자료를 여러 TC에서 쓸 때는 한 번만 업로드하고 링크로 참조</li>
     </ul>
 
     <h3>DON'T</h3>
@@ -197,7 +197,7 @@ const Attachments = () => (
 
     <h3>민감 정보 처리</h3>
     <ul>
-      <li><strong>실제 고객 데이터, 개인정보, 카드 정보 등은 첨부 금지</strong></li>
+      <li>실제 고객 데이터, 개인정보, 카드 정보 등은 첨부 금지</li>
       <li>테스트용 더미 데이터만 사용</li>
       <li>실수로 올렸다면 즉시 삭제 + 회사 정책에 따라 보고</li>
     </ul>
@@ -248,13 +248,13 @@ const AttachmentsEn = () => (
   <article className="guide-article">
     <h1>14. Attachments</h1>
     <p className="guide-lead">
-      T-CAFE provides a <strong>project-scoped Attachments page</strong> for uploading, downloading, and managing external files. Attachments are stored in a secure data center, and uploaded files can be referenced as auto-recognized links inside test-case description, preconditions, expected-result text, and similar fields.
+      T-CAFE provides a project-scoped Attachments page for uploading, downloading, and managing external files. Attachments are stored in a secure data center, and uploaded files can be referenced as auto-recognized links inside test-case description, preconditions, expected-result text, and similar fields.
     </p>
 
     <hr />
 
     <h2>1. Opening the Attachments Page</h2>
-    <p>Top tab → click <strong>Attachments</strong></p>
+    <p>Top tab → click Attachments</p>
     <aside className="guide-callout">The Attachments page is isolated per project. Attachments from other projects are not visible.</aside>
 
     <hr />
@@ -276,12 +276,12 @@ const AttachmentsEn = () => (
         <tr><td>Delete</td><td className="center">O</td><td className="center">O</td><td className="center">O</td><td className="center">O</td></tr>
       </tbody>
     </table>
-    <p>→ <strong>All roles can use Attachments</strong>.</p>
+    <p>→ All roles can use Attachments.</p>
 
     <hr />
 
     <h2>3. Storage Location and Security</h2>
-    <p>T-CAFE stores attachments in a <strong>secure data center</strong>.</p>
+    <p>T-CAFE stores attachments in a secure data center.</p>
     <ul>
       <li>Isolated per project — attachments from other projects are not accessible</li>
       <li>Data is encrypted and securely protected</li>
@@ -293,13 +293,13 @@ const AttachmentsEn = () => (
 
     <h3>Per Project</h3>
     <ul>
-      <li><strong>Max: 200 MB</strong> (total of all attachments)</li>
+      <li>Max: 200 MB (total of all attachments)</li>
       <li>When exceeded, new uploads are rejected — delete some existing files and retry</li>
     </ul>
 
     <h3>Per File</h3>
     <ul>
-      <li><strong>Max: 20 MB</strong> (per single file)</li>
+      <li>Max: 20 MB (per single file)</li>
       <li>Files under 20 MB upload reliably.</li>
     </ul>
 
@@ -319,11 +319,11 @@ const AttachmentsEn = () => (
 
     <h3>Steps</h3>
     <ol>
-      <li>Top tab → <strong>Attachments</strong></li>
+      <li>Top tab → Attachments</li>
       <li>Add files to the upload area (dashed box) one of these ways:
         <ul>
-          <li>Click the <strong>Upload</strong> button → file picker dialog</li>
-          <li><strong>Drag and drop</strong> the file onto the area</li>
+          <li>Click the Upload button → file picker dialog</li>
+          <li>Drag and drop the file onto the area</li>
         </ul>
       </li>
       <li>Chunked upload progress is displayed</li>
@@ -344,17 +344,17 @@ const AttachmentsEn = () => (
 
     <h3>Download</h3>
     <ol>
-      <li>Click the <strong>Download</strong> button on the attachment row</li>
+      <li>Click the Download button on the attachment row</li>
       <li>Downloaded in chunks, then the browser shows a Save dialog</li>
     </ol>
 
     <h3>Preview</h3>
     <ol>
-      <li>Click the <strong>Preview</strong> button on the attachment row</li>
+      <li>Click the Preview button on the attachment row</li>
       <li>The modal shows these formats directly:
         <ul>
-          <li><strong>Images</strong>: JPG / JPEG / PNG / GIF / SVG / WebP</li>
-          <li><strong>PDF</strong></li>
+          <li>Images: JPG / JPEG / PNG / GIF / SVG / WebP</li>
+          <li>PDF</li>
         </ul>
       </li>
       <li>For other formats, an "unsupported" message is shown → use Download and view it locally</li>
@@ -368,13 +368,13 @@ const AttachmentsEn = () => (
 
     <h3>Steps</h3>
     <ol>
-      <li>Click the <strong>Delete</strong> button (trash icon) on the attachment row</li>
-      <li>Confirmation dialog → <strong>Confirm</strong></li>
+      <li>Click the Delete button (trash icon) on the attachment row</li>
+      <li>Confirmation dialog → Confirm</li>
     </ol>
 
     <h3>Notes</h3>
     <ul>
-      <li>Deleted files <strong>cannot be recovered</strong></li>
+      <li>Deleted files cannot be recovered</li>
       <li>They are also removed from the data center immediately</li>
       <li>After deletion, any link in TC text that referenced the file will stop working</li>
     </ul>
@@ -388,11 +388,11 @@ const AttachmentsEn = () => (
         <tr><th>Field</th><th>Description</th></tr>
       </thead>
       <tbody>
-        <tr><td><strong>File name</strong></td><td>Original file name</td></tr>
-        <tr><td><strong>Size</strong></td><td>Automatically shown in KB / MB</td></tr>
-        <tr><td><strong>Type</strong></td><td>MIME type (e.g., image/png)</td></tr>
-        <tr><td><strong>Uploader</strong></td><td>Who uploaded the file</td></tr>
-        <tr><td><strong>Upload time</strong></td><td>When it was uploaded</td></tr>
+        <tr><td>File name</td><td>Original file name</td></tr>
+        <tr><td>Size</td><td>Automatically shown in KB / MB</td></tr>
+        <tr><td>Type</td><td>MIME type (e.g., image/png)</td></tr>
+        <tr><td>Uploader</td><td>Who uploaded the file</td></tr>
+        <tr><td>Upload time</td><td>When it was uploaded</td></tr>
       </tbody>
     </table>
 
@@ -403,7 +403,7 @@ const AttachmentsEn = () => (
     <ol>
       <li>Upload the file on the Attachments page</li>
       <li>Copy the file's download URL (in the form <code>{'/attachment/content/<id>'}</code>)</li>
-      <li>Paste the URL into the TC's <strong>Description</strong> or <strong>Precondition</strong> input</li>
+      <li>Paste the URL into the TC's Description or Precondition input</li>
       <li>The input auto-recognizes URLs and displays them as clickable links</li>
       <li>When a user viewing the TC clicks the link, the file is downloaded immediately</li>
     </ol>
@@ -415,11 +415,11 @@ const AttachmentsEn = () => (
 
     <h3>DO</h3>
     <ul>
-      <li><strong>Compress</strong>: compress images / videos before uploading when possible</li>
-      <li><strong>Clear file names</strong>: e.g., <code>error-screenshot-2026-04-08.png</code></li>
-      <li><strong>Version markers</strong>: for different versions of the same asset, append v1, v2, etc. to the file name</li>
-      <li><strong>Regular cleanup</strong>: delete old attachments to keep room under the 200 MB quota</li>
-      <li><strong>Reuse via link</strong>: when the same asset is used in multiple TCs, upload it once and reference it by link</li>
+      <li>Compress: compress images / videos before uploading when possible</li>
+      <li>Clear file names: e.g., <code>error-screenshot-2026-04-08.png</code></li>
+      <li>Version markers: for different versions of the same asset, append v1, v2, etc. to the file name</li>
+      <li>Regular cleanup: delete old attachments to keep room under the 200 MB quota</li>
+      <li>Reuse via link: when the same asset is used in multiple TCs, upload it once and reference it by link</li>
     </ul>
 
     <h3>DON'T</h3>
@@ -437,7 +437,7 @@ const AttachmentsEn = () => (
 
     <h3>Sensitive Data</h3>
     <ul>
-      <li><strong>Do not attach real customer data, personal data, or card information</strong></li>
+      <li>Do not attach real customer data, personal data, or card information</li>
       <li>Use only test dummy data</li>
       <li>If you upload such data by mistake, delete it immediately and report per company policy</li>
     </ul>
